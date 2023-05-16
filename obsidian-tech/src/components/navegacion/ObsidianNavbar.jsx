@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCartShopping, faCircleQuestion, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faCartShopping, faCircleQuestion, faHeart } from '@fortawesome/free-solid-svg-icons';
+
+import FilterComponent from '../filtroNavegacion/FilterComponent';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -59,7 +61,7 @@ window.addEventListener('scroll', changeColorAndSearch)
               <NavLink className='navLink'><FontAwesomeIcon icon={faCircleQuestion} /></NavLink>
               </div>
             </Nav>
-            {/* <FilterComponent show = {show}/> */}
+            <FilterComponent show = {show}/>
           </div>
         </Navbar.Collapse>
       </Container>
