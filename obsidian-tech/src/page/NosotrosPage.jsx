@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const NosotrosPage = () => {
+const NosotrosPage = () => {
   return (
     <div>NosotrosPage</div>
   )
 }
+
+export default NosotrosPage

@@ -7,10 +7,14 @@ import { AdministracionPage } from './page/AdministracionPage';
 import { RecContraseñaPage } from './page/RecContraseñaPage';
 import { NosotrosPage } from './page/NosotrosPage';
 import { Error404Page } from './page/Error404Page';
+import { ObsidianNavbar } from './components/navegacion/ObsidianNavbar';
+
+
 
 function App() {
   return (
     <BrowserRouter>
+    <ObsidianNavbar/>
       <Routes>
         <Route path='/' element={<InicioPage />} />
         <Route path='administracion' element={<AdministracionPage />} />

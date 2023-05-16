@@ -9,8 +9,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import '../obsidianNavbar/ObsidianNavbar.css';
-import { FilterComponent } from '../filtro/FilterComponent';
+import '../navegacion/ObsidianNavbar.css'
+
 
 export const ObsidianNavbar = () => {
 //contador de carrito y wishlist
@@ -59,7 +59,7 @@ window.addEventListener('scroll', changeColorAndSearch)
               <NavLink className='navLink'><FontAwesomeIcon icon={faCircleQuestion} /></NavLink>
               </div>
             </Nav>
-            <FilterComponent show = {show}/>
+            {/* <FilterComponent show = {show}/> */}
           </div>
         </Navbar.Collapse>
       </Container>

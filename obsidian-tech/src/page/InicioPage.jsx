@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const InicioPage = () => {
+const InicioPage = () => {
   return (
     <div>InicioPage</div>
   )
 }
+
+export default InicioPage
