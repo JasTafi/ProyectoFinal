@@ -7,25 +7,72 @@ import '../filtroNavegacion/FilterComponent.css'
 
 const FilterComponent = ({show}) => {
 
-const [data, setData] = useState([])
+  const [dataApi, setDataApi] = useState([])
+  const [filtered, setFiltered] = useState('')
+  const [resultado, setResultado] = useState([])
 
-const [filter, setFilter] = useState({
-    id: "",
-    name: "",
-})
+  async function GetDataAllCharacters() {
+    const resultado = await fetch('https://rickandmortyapi.com/api/character?limit=846')
+    return await resultado.json()
+  }
 
-function filterCharacters(data) {
-    return data.filter((character) => {})
-}
+  const filtrado = (valorDelInput) => {
+    const resultadoBusqueda = dataApi.filter((item) => {
+      if(item.name.toLowerCase().includes(valorDelInput.toLowerCase())){
+        return item
+      }
+    })
+    setResultado(resultadoBusqueda)
+  }
 
+  const handleChange = (e) => {
+    e.preventDefault()
+    const inputValue = e.target.value
+    setFiltered(inputValue)
+    filtrado(inputValue)
+  }
+
+  useEffect(() => {
+    GetDataAllCharacters()
+    .then(({results}) => {
+      setDataApi(results)
+    })
+    .catch(error => console.log(error))
+  }, [])
+
+  const showResults = resultado.length > 0 && filtered !== ''
 
   return (
+    <>
     <form className={show ? 'invisible' : 'navbar-form'}>
         <div>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-        <input className='input-navbar' type="text" placeholder='Buscar productos...'/>
+        <input className='input-navbar' 
+        onChange={handleChange}
+        value={filtered}
+        type="text" 
+        placeholder='Buscar productos...'/>
         </div>
     </form>
+    {
+      showResults && (
+        <div className='containerShowResults'>
+          <div className='containerResults'>
+          {
+            resultado.map((item) => {
+              return (
+                <div className='cardResults'>
+                  <img src={item.image} />
+                  <div>{item.name}</div>
+                </div>
+              )
+            })
+          }
+          </div>
+        </div>
+      )
+    }
+    </>
   )
 }
 

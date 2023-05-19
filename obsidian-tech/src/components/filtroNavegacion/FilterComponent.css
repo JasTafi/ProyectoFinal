@@ -30,3 +30,31 @@
 .input-navbar:focus {
     outline: none;
 }
+.containerShowResults {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: all 0.3s;
+}
+.containerShowResults .containerResults {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #cfcfcf;
+    border: 1px solid #000;
+    padding-top: 70px;
+    margin-top: 3px;
+    max-height: 300px;
+    overflow-y: scroll;
+    width: 300px;
+}
+.cardResults {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+.cardResults img {
+    margin-right: 5px;
+    width: 60px;
+}
