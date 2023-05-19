@@ -44,10 +44,10 @@ window.addEventListener('scroll', changeColorAndSearch)
               navbarScroll
             >
               <div className='group-links'>
-              <NavLink href="#" className='navLink'>Destacados</NavLink>
+              <NavLink className='navLink'>Destacados</NavLink>
               <NavLink href="#" className='navLink'>Contacto</NavLink>
               </div>
-              <Navbar.Brand className='text-white' href="#home">Obsidian-tech</Navbar.Brand>
+              <NavLink className='brandLink' to={'/'}>Obsidian-tech</NavLink>
               <div className='group-links'>
               <NavLink className='navLink'><FontAwesomeIcon icon={faUser} /></NavLink>
               <div className='boxIcon'>
