@@ -68,6 +68,7 @@ const FilterComponent = ({show}) => {
               )
             })
           }
+          <div className='btnGeneral'>{resultado.length} Resultados</div>
           </div>
         </div>
       )
