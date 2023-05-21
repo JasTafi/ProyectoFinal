@@ -37,9 +37,6 @@
     margin: 0 12px;
     text-decoration: none;
 }
-.navLink:hover {
-    border-bottom: 1px solid #fff;
-}
 .brandLink {
     font-size: 1.7rem;
     font-weight: 500;
@@ -55,9 +52,31 @@
     justify-content: center;
     align-items: center;
 }
+.buttonIcon {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    margin: 0 5px;
+}
+.boxLoginRegister {
+    position: absolute;
+    right: 20%;
+    background-color: #fff;
+    border: 1px solid black;
+    height: 0;
+    overflow: hidden;
+    width: 100px;
+    transition: all 0.2s;
+}
+.visible {
+    height: 70px;
+    overflow: visible;
+    transition: all 0.2s;
+}
 .contador {
     position: absolute;
-    top: -9px;
+    top: -5px;
     right: 3px;
     background: linear-gradient(to right, #7035C0, #0396FE);
     border: none;

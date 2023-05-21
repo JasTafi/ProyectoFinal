@@ -18,12 +18,19 @@ export const ObsidianNavbar = () => {
 //contador de carrito y wishlist
 const [item, setItem] = useState(0)
 
+// const [mostrar, setMostrar] = useState(false)
+
 function addItem() {
   setItem( item + 1)
 }
 //cambio de color y ocultar input scroll nav
 const [show, setShow] = useState(false)
 
+const [mostrar, setMostrar] = useState(false)
+
+function mostrarDiv() {
+  setMostrar(!mostrar)
+}
 function changeColorAndSearch () {
     if(window.scrollY > 0){
         setShow(true)
@@ -49,16 +56,22 @@ window.addEventListener('scroll', changeColorAndSearch)
               </div>
               <NavLink className='brandLink' to={'/'}>Obsidian-tech</NavLink>
               <div className='group-links'>
-              <NavLink className='navLink'><FontAwesomeIcon icon={faUser} /></NavLink>
+              <div>
+                <button onClick={mostrarDiv} className='buttonIcon'><FontAwesomeIcon icon={faUser} /></button>
+                <div className={ mostrar ? 'boxLoginRegister visible':'boxLoginRegister'}>
+                  <p>login</p>
+                  <p>register</p>
+                </div>
+              </div>
               <div className='boxIcon'>
-                  <NavLink className='navLink'><FontAwesomeIcon icon={faCartShopping} /></NavLink>
+                  <button className='buttonIcon'><FontAwesomeIcon icon={faCartShopping} /></button>
                   <div className='contador'>{item}</div>
               </div>
               <div className='boxIcon'>
-                  <NavLink className='navLink'><FontAwesomeIcon icon={faHeart} /></NavLink>
+                  <button className='buttonIcon'><FontAwesomeIcon icon={faHeart} /></button>
                   <div className='contador'>{item}</div>
               </div>
-              <NavLink className='navLink'><FontAwesomeIcon icon={faCircleQuestion} /></NavLink>
+              <button className='buttonIcon'><FontAwesomeIcon icon={faCircleQuestion} /></button>
               </div>
             </Nav>
             <FilterComponent show = {show}/>
