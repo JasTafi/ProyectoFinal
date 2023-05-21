@@ -31,13 +31,29 @@
     text-align: center;
 }
 .group-links .navLink {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #fff;
-    margin: 0 12px;
+    margin: 0 1rem;
     text-decoration: none;
+    position: relative;
+}
+/*efecto subrayado*/
+.navLink::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    height: 1px;
+    width: 0;
+    transition: 0.3s;
+}
+.navLink:hover::before {
+    width: 100%;
 }
 .brandLink {
+    color: #fff;
     font-size: 1.7rem;
     font-weight: 500;
     text-decoration: none;
@@ -45,7 +61,9 @@
 .brandLink:hover {
     color: #fff;
 }
-
+.brandLink span {
+    color: #7035C0;
+}
 .boxIcon {
     position: relative;
     display: flex;
@@ -59,9 +77,12 @@
     font-size: 1.3rem;
     margin: 0 5px;
 }
+.boxUser {
+    position: relative;
+}
 .boxLoginRegister {
     position: absolute;
-    right: 20%;
+    right: 10px;
     background-color: #fff;
     border: 1px solid black;
     height: 0;

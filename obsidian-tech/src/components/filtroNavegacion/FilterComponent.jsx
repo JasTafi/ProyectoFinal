@@ -45,7 +45,7 @@ const FilterComponent = ({show}) => {
   return (
     <>
     <form className={show ? 'invisible' : 'navbar-form'}>
-        <div>
+        <div className='boxInput'>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
         onChange={handleChange}
@@ -59,9 +59,9 @@ const FilterComponent = ({show}) => {
         <div className='containerShowResults'>
           <div className='containerResults'>
           {
-            resultado.map((item) => {
+            resultado.map((item,index) => {
               return (
-                <div className='cardResults'>
+                <div className='cardResults'key={index}>
                   <img src={item.image} />
                   <div>{item.name}</div>
                 </div>

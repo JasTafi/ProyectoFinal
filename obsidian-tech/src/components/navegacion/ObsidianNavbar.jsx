@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCartShopping, faCircleQuestion, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCartShopping, faCircleQuestion, faHeart, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import FilterComponent from '../filtroNavegacion/FilterComponent';
 
@@ -54,9 +54,9 @@ window.addEventListener('scroll', changeColorAndSearch)
               <NavLink className='navLink'>Destacados</NavLink>
               <NavLink href="#" className='navLink'>Contacto</NavLink>
               </div>
-              <NavLink className='brandLink' to={'/'}>Obsidian-tech</NavLink>
+              <NavLink className='brandLink' to={'/'}>Obsidian<span>-</span>Tech</NavLink>
               <div className='group-links'>
-              <div>
+              <div className='boxUser'>
                 <button onClick={mostrarDiv} className='buttonIcon'><FontAwesomeIcon icon={faUser} /></button>
                 <div className={ mostrar ? 'boxLoginRegister visible':'boxLoginRegister'}>
                   <p>login</p>
