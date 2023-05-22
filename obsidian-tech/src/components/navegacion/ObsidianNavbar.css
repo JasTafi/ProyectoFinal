@@ -1,45 +1,44 @@
-.containerFluid {
-    padding: 0 !important;
-    background-color: #000;
-}
-.navbar-container {
-    height: 100px;
-    padding: 0 !important;
-}
-.nav-flex-column {
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0 0;
-    padding: 10px 0 0;
-    width: 100%;
-    height: 100px;
-}
-.navbar-links {
+.navBarContainer {
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid black;
-    justify-content: space-around;
-    height: 100%;
-    width: 100%;
-}
-.navbar-scroll-color {
+    justify-content: space-between;
     background-color: #000;
-    transition: all 0.3s linear;
+    height: 4.5rem;
+    padding: 0 1rem;
 }
-.group-links {
-    display: flex;
-    text-align: center;
-}
-.group-links .navLink {
-    font-size: 1rem;
-    font-weight: 700;
+.navBarContainer h2 {
     color: #fff;
-    margin: 0 1rem;
+}
+.navBarContainer span {
+    color: #7035C0;
+}
+.halfContainer {
+    display: flex;
+    align-items: center;
+}
+.iconContainer button {
+    margin-right: .6rem;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+}
+.iconContainer button:hover {
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+.linkStyle {
+    background-color: transparent;
+    color: #fff;
     text-decoration: none;
+    margin-right: .5rem;
     position: relative;
 }
-/*efecto subrayado*/
-.navLink::before {
+.linkStyle:hover{
+    color: #fff;
+}
+.linkStyle::before {
     content: '';
     position: absolute;
     left: 0;
@@ -49,67 +48,63 @@
     width: 0;
     transition: 0.3s;
 }
-.navLink:hover::before {
+.linkStyle:hover::before{
     width: 100%;
 }
-.brandLink {
-    color: #fff;
-    font-size: 1.7rem;
-    font-weight: 500;
-    text-decoration: none;
-}
-.brandLink:hover {
-    color: #fff;
-}
-.brandLink span {
-    color: #7035C0;
-}
-.boxIcon {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.buttonIcon {
+.burger button {
     background-color: transparent;
     border: none;
     color: #fff;
-    font-size: 1.3rem;
-    margin: 0 5px;
+    font-size: 2rem;
 }
-.boxUser {
-    position: relative;
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    padding: .3rem 0;
 }
-.boxLoginRegister {
-    position: absolute;
-    right: 10px;
-    background-color: #fff;
-    border: 1px solid black;
-    height: 0;
-    overflow: hidden;
-    width: 100px;
-    transition: all 0.2s;
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
 }
-.visible {
-    height: 70px;
-    overflow: visible;
-    transition: all 0.2s;
-}
-.contador {
-    position: absolute;
-    top: -5px;
-    right: 3px;
-    background: linear-gradient(to right, #7035C0, #0396FE);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 0.7rem;
-    width: 15px;
-}
-@media (max-width: 768px) {
-    .navbar-container {
-        display: flex;
-        flex-direction: column;
+@media (max-width: 769px) {
+    .linksContainer {
+        position: absolute;
+        right: -400px;
+        margin: 0 auto;
+        text-align: center;
+        transition: all 0.3s;
+    }
+    .linksContainer.active{
+        width: 100%;
         height: auto;
+        background-color: #fff;
+        position: absolute;
+        top: 4rem;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 1;
+        transition: all 0.3s;
+    }
+    .linkStyle {
+        display: block;
+        color: #000;
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+    .inputContainer {
+        position: absolute;
+        top: 0;
+        right: -400px;
+    }
+    .inputContainer.active{
+        width: 100%;
+        position: absolute;
+        top: 11.4rem;
+        right: 0;
+        background-color: #fff;
+        z-index: 1;
+        transition: all 0.3s;
     }
 }

@@ -44,7 +44,7 @@ const FilterComponent = ({show}) => {
 
   return (
     <>
-    <form className={show ? 'invisible' : 'navbar-form'}>
+    <div className={show ? 'invisible' : 'navbar-form'}>
         <div className='boxInput'>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
@@ -53,7 +53,7 @@ const FilterComponent = ({show}) => {
         type="text" 
         placeholder='Buscar productos...'/>
         </div>
-    </form>
+    </div>
     {
       showResults && (
         <div className='containerShowResults'>

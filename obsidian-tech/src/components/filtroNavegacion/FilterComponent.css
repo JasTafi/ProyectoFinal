@@ -2,13 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: transparent;
-    border-bottom: 1px solid black;
-    padding: 5px 0;
+    padding: .5rem 0;
     width: 100%;
-}
-.invisible {
-    display: none;
-    transition: all 0.3s linear;
 }
 .boxInput {
     position: relative;
@@ -35,6 +30,7 @@
     outline: none;
 }
 .containerShowResults {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,13 +38,14 @@
     transition: all 0.3s;
 }
 .containerShowResults .containerResults {
+    position: absolute;
+    top: 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: #fff;
     border: 1px solid #000;
-    padding-top: 70px;
-    margin-top: 3px;
+    padding-top: 0.5rem;
     max-height: 300px;
     overflow-y: scroll;
     width: 300px;
