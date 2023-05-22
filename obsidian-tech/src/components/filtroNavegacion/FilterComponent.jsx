@@ -63,7 +63,7 @@ const FilterComponent = ({show}) => {
               return (
                 <div className='cardResults'key={index}>
                   <img src={item.image} />
-                  <div>{item.name}</div>
+                  <p>{item.name}</p>
                 </div>
               )
             })
