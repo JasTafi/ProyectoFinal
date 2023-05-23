@@ -10,10 +10,17 @@ import FilterComponent from '../filtroNavegacion/FilterComponent';
 
 export const ObsidianNavbar = () => {
 
+//useState para menu burger
   const [clicked, setClicked] = useState(false)
 
   function clickear(){
     setClicked(!clicked)
+  }
+//useState para boton user
+  const [login, setLogin] = useState(false)
+
+  function openedUser(){
+    setLogin(!login)
   }
 
   return (
@@ -28,8 +35,8 @@ export const ObsidianNavbar = () => {
       <div className='halfContainer'>
         <div className='iconContainer'>
           <div className='userContainer'>
-            <button onClick={clickear}><FontAwesomeIcon icon={faUser} /></button>
-            <div className={ clicked ? 'loginContainer active' : 'loginContainer'}>
+            <button onClick={openedUser}><FontAwesomeIcon icon={faUser} /></button>
+            <div className={ login ? 'loginContainer active' : 'loginContainer'}>
               <h6>Login</h6>
               <h6>Registro</h6>
             </div>

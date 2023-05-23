@@ -84,7 +84,7 @@
     flex-direction: column;
     padding: .3rem 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .burger {
         display: none;
     }
@@ -132,4 +132,22 @@
         z-index: 1;
         transition: all 0.3s;
     }
+}
+@media (max-width: 375px){
+  .navBarContainer h2, 
+  span,
+  .iconContainer button {
+    font-size: 1.1rem;
+  }
+  .burger button{
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 321px){
+  .navBarContainer h2{
+    font-size: 0.9rem;
+  }
+  .iconContainer button{
+    margin-right: .4rem;
+  }
 }

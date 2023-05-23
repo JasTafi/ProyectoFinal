@@ -5,7 +5,7 @@ import '../ventanadaResultados/ContainerResults.css'
 export const ContainerResults = ({resultado, filtered}) => {
 
   const showResults = resultado.length > 0 && filtered !== ''
-
+  
   return (
     <>
       {
