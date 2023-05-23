@@ -54,7 +54,7 @@
     background-color: transparent;
     color: #fff;
     text-decoration: none;
-    margin-right: .5rem;
+    margin-right: .7rem;
     position: relative;
 }
 .linkStyle:hover{
@@ -88,6 +88,20 @@
     .burger {
         display: none;
     }
+}
+@media (max-width: 1000px) and (min-width: 770px) {
+  .navBarContainer h2, 
+  span {
+    font-size: .9rem;
+  }
+  .linkStyle {
+    font-size: .7rem;
+    margin-right: .4rem;
+  }
+  .iconContainer button{
+    font-size: .9rem;
+    margin-right: .4rem;
+  }
 }
 @media (max-width: 769px) {
     .linksContainer {
