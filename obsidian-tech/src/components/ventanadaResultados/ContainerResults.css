@@ -1,0 +1,39 @@
+.containerShowResults {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: all 0.3s;
+}
+.containerShowResults .containerResults {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    padding-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: scroll;
+    width: 300px;
+}
+.cardResults {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+.cardResults img {
+    margin-right: 5px;
+    width: 60px;
+}
+.btnGeneral {
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border-radius: 0px 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 3px;
+    padding: 0.5rem 1rem;
+    width: 120px;
+}

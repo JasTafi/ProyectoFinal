@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import '../filtroNavegacion/FilterComponent.css'
+import { ContainerResults } from '../ventanadaResultados/ContainerResults'
 
 const FilterComponent = ({show}) => {
 
@@ -40,39 +41,21 @@ const FilterComponent = ({show}) => {
     .catch(error => console.log(error))
   }, [])
 
-  const showResults = resultado.length > 0 && filtered !== ''
-
+  
   return (
     <>
-    <div className={show ? 'invisible' : 'navbar-form'}>
+    <form className={show ? 'invisible' : 'navbar-form'}>
         <div className='boxInput'>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
         onChange={handleChange}
         value={filtered}
         type="text" 
+        maxLength={25}
         placeholder='Buscar productos...'/>
         </div>
-    </div>
-    {
-      showResults && (
-        <div className='containerShowResults'>
-          <div className='containerResults'>
-          {
-            resultado.map((item,index) => {
-              return (
-                <div className='cardResults'key={index}>
-                  <img src={item.image} />
-                  <p>{item.name}</p>
-                </div>
-              )
-            })
-          }
-          <div className='btnGeneral'>{resultado.length} Resultados</div>
-          </div>
-        </div>
-      )
-    }
+    </form>
+    <ContainerResults resultado = {resultado} filtered = {filtered}/>
     </>
   )
 }

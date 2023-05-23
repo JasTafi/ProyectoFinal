@@ -29,50 +29,12 @@
 .input-navbar:focus {
     outline: none;
 }
-.containerShowResults {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    transition: all 0.3s;
-}
-.containerShowResults .containerResults {
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #fff;
-    border: 1px solid #000;
-    padding-top: 0.5rem;
-    max-height: 300px;
-    overflow-y: scroll;
-    width: 300px;
-}
-.cardResults {
-    display: flex;
-    align-items: center;
-    padding: 3px;
-}
-.cardResults img {
-    margin-right: 5px;
-    width: 60px;
-}
-.btnGeneral {
-    background: linear-gradient(to right, #7035C0, #0396FE);
-    border-radius: 0px 10px;
-    font-size: 0.9rem;
-    color: #fff;
-    margin: 3px;
-    padding: 0.5rem 1rem;
-    width: 120px;
-}
+
 ::-webkit-scrollbar{
     width: 5px;
 }
 ::-webkit-scrollbar-track{
-    background-color: #000;
+    background-color: transparent;
 }
 ::-webkit-scrollbar-thumb{
     background-color: #6D717A;

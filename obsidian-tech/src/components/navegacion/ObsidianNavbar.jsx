@@ -27,7 +27,13 @@ export const ObsidianNavbar = () => {
       </div>
       <div className='halfContainer'>
         <div className='iconContainer'>
-          <button><FontAwesomeIcon icon={faUser} /></button>
+          <div className='userContainer'>
+            <button onClick={clickear}><FontAwesomeIcon icon={faUser} /></button>
+            <div className={ clicked ? 'loginContainer active' : 'loginContainer'}>
+              <h6>Login</h6>
+              <h6>Registro</h6>
+            </div>
+          </div>
           <button><FontAwesomeIcon icon={faCartShopping} /></button>
           <button><FontAwesomeIcon icon={faHeart} /></button>
           <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
