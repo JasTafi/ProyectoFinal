@@ -19,13 +19,12 @@ const FilterComponent = ({show}) => {
 
   const filtrado = (valorDelInput) => {
     const resultadoBusqueda = dataApi.filter((item) => {
-      if(item.name.toLowerCase().includes(valorDelInput.toLowerCase())){
+      if(item.nombre.toLowerCase().includes(valorDelInput.toLowerCase())){
         return item
       }
     })
     setResultado(resultadoBusqueda)
   }
-
   const handleChange = (e) => {
     e.preventDefault()
     const inputValue = e.target.value
@@ -35,8 +34,7 @@ const FilterComponent = ({show}) => {
 
   useEffect(() => {
     GetDataAllCharacters()
-    .then((data) => {
-      console.log(data)
+    .then(({data}) => {
       setDataApi(data)
     })
     .catch(error => console.log(error))
