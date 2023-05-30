@@ -11,9 +11,9 @@ const FilterComponent = ({show}) => {
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
-
+ //rompe el filtro pero si funciona el fetch
   async function GetDataAllCharacters() {
-    const resultado = await fetch('https://rickandmortyapi.com/api/character?limit=846')
+    const resultado = await fetch('http://localhost:5000/api/accesorio')
     return await resultado.json()
   }
 
@@ -35,8 +35,9 @@ const FilterComponent = ({show}) => {
 
   useEffect(() => {
     GetDataAllCharacters()
-    .then(({results}) => {
-      setDataApi(results)
+    .then((data) => {
+      console.log(data)
+      setDataApi(data)
     })
     .catch(error => console.log(error))
   }, [])
