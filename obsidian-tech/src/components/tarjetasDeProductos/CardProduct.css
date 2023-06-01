@@ -1,3 +1,13 @@
+.mySwiper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}/* ver estilos del contenedor padre*/
+.swiperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;
     background: linear-gradient(to right, #6f35c091, #0395fe91);
@@ -5,6 +15,7 @@
     height: 500px;
     padding: 2px;
     width: 290px;
+    margin: 5px;
 }
 .cardContainer {
     display: flex;

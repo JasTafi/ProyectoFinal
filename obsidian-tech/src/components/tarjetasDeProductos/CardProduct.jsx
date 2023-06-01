@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from "swiper";
 
 import { getAllProductsFromDB } from '../../services/api'
+
+import 'swiper/css';
+import "swiper/css/pagination";
 
 import '../tarjetasDeProductos/CardProduct.css'
 
@@ -14,7 +19,6 @@ export const CardProduct = () => {
   useEffect(() => {
     getAllProductsFromDB()
     .then(({data}) => {
-      console.log(data)
       setDataApi(data)
     })
     .catch(error => console.log(error))
@@ -23,6 +27,16 @@ export const CardProduct = () => {
 
   return (
     <>
+    <Swiper
+        slidesPerView={4}
+        spaceBetween={40}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide className='swiperContainer'>
     {
       dataApi.map((item, index) => {
         return(
@@ -61,6 +75,8 @@ export const CardProduct = () => {
         )
       })
     }
+    </SwiperSlide>
+    </Swiper>
     </>
   )
 }
