@@ -1,12 +1,8 @@
-.mySwiper{
+.swiperContainer {/*faltan estilos para centrar*/
     display: flex;
     justify-content: center;
-    width: 100%;
-}/* ver estilos del contenedor padre*/
-.swiperContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-x: hidden;
+    padding: 0 2rem;
 }
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;

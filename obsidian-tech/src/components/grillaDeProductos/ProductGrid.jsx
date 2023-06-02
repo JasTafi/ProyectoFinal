@@ -4,7 +4,6 @@ import { CardProduct } from '../tarjetasDeProductos/CardProduct'
 
 import '../grillaDeProductos/ProductGrid.css'
 
-
 export const ProductGrid = () => {
   return (
     <div className='gridContainer'>
