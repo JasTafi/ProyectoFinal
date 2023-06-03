@@ -37,12 +37,24 @@ export const CardProduct = () => {
         }}
         breakpoints={{
           320: {
-            slidesPerView: 1.1,
+            slidesPerView: 1,
             spaceBetween: 15
           },
           375: {
             slidesPerView: 1.2,
             spaceBetween: 15
+          },
+          425: {
+            slidesPerView: 1.4,
+            spaceBetween: 20
+          },
+          560: {
+            slidesPerView:1.8,
+            spaceBetween:20
+          },
+          768: {
+            slidesPerView:2.4,
+            spaceBetween: 20
           }
         }}
         modules={[Pagination]}
