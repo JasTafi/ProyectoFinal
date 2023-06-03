@@ -16,7 +16,7 @@ export const ContainerResults = ({resultado, filtered}) => {
                 resultado.map((item,index) => {
                   return (
                     <div className='cardResults'key={index}>
-                      <img src={item.urlImagen} />
+                      <img src={item.urlImg} />
                       <div className='nombreYPrecio'>
                         <p>{item.nombre}</p>
                         <p>${item.precio}</p>

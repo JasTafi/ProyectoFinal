@@ -35,6 +35,7 @@ const FilterComponent = ({show}) => {
   useEffect(() => {
     GetDataAllCharacters()
     .then(({data}) => {
+      console.log(data)
       setDataApi(data)
     })
     .catch(error => console.log(error))
