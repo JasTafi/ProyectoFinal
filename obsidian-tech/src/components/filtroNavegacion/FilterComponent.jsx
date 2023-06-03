@@ -5,17 +5,13 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import '../filtroNavegacion/FilterComponent.css'
 import { ContainerResults } from '../ventanadaResultados/ContainerResults'
+import { getAllProductsFromDB } from '../../services/api'
 
 const FilterComponent = ({show}) => {
 
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
- //rompe el filtro pero si funciona el fetch
-  async function GetDataAllCharacters() {
-    const resultado = await fetch('http://localhost:5000/api/accesorio')
-    return await resultado.json()
-  }
 
   const filtrado = (valorDelInput) => {
     const resultadoBusqueda = dataApi.filter((item) => {
@@ -33,9 +29,8 @@ const FilterComponent = ({show}) => {
   }
 
   useEffect(() => {
-    GetDataAllCharacters()
+    getAllProductsFromDB()
     .then(({data}) => {
-      console.log(data)
       setDataApi(data)
     })
     .catch(error => console.log(error))

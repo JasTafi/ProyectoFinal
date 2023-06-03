@@ -25,32 +25,34 @@ export const ObsidianNavbar = () => {
 
   return (
     <>
-    <div className='navBarContainer'>
-      <h2>Obsidian<span>-</span>Tech</h2>
-      <div className={ clicked ? 'linksContainer active': 'linksContainer'}>
-        <NavLink className='linkStyle' to={'/'}>Home</NavLink>
-        <NavLink className='linkStyle' to={'/administracion'}>Administracion</NavLink>
-        <NavLink className='linkStyle' to={'/nosotros'}>Nosotros</NavLink>
-      </div>
-      <div className='halfContainer'>
-        <div className='iconContainer'>
-          <div className='userContainer'>
-            <button onClick={openedUser}><FontAwesomeIcon icon={faUser} /></button>
-            <div className={ login ? 'loginContainer active' : 'loginContainer'}>
-              <h6>Login</h6>
-              <h6>Registro</h6>
+    <div className='navBarBox'>
+      <div className='navBarContainer'>
+        <h2>Obsidian<span>-</span>Tech</h2>
+        <div className={ clicked ? 'linksContainer active': 'linksContainer'}>
+          <NavLink className='linkStyle' to={'/'}>Home</NavLink>
+          <NavLink className='linkStyle' to={'/administracion'}>Administracion</NavLink>
+          <NavLink className='linkStyle' to={'/nosotros'}>Nosotros</NavLink>
+        </div>
+        <div className='halfContainer'>
+          <div className='iconContainer'>
+            <div className='userContainer'>
+              <button onClick={openedUser}><FontAwesomeIcon icon={faUser} /></button>
+              <div className={ login ? 'loginContainer active' : 'loginContainer'}>
+                <h6>Login</h6>
+                <h6>Registro</h6>
+              </div>
             </div>
+            <button><FontAwesomeIcon icon={faCartShopping} /></button>
+            <button><FontAwesomeIcon icon={faHeart} /></button>
+            <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
           </div>
-          <button><FontAwesomeIcon icon={faCartShopping} /></button>
-          <button><FontAwesomeIcon icon={faHeart} /></button>
-          <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
+          <div className='burger'>
+            <button onClick={clickear}><FontAwesomeIcon icon={faBars} /></button>
+          </div>
         </div>
-        <div className='burger'>
-          <button onClick={clickear}><FontAwesomeIcon icon={faBars} /></button>
+        <div className={clicked ? 'inputContainer active':'inputContainer'}>
+          <FilterComponent/>
         </div>
-      </div>
-      <div className={clicked ? 'inputContainer active':'inputContainer'}>
-        <FilterComponent/>
       </div>
     </div>
     </>

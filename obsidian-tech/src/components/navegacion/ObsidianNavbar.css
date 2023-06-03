@@ -1,5 +1,8 @@
-.navBarContainer {
+.navBarBox {
     position: sticky;
+}
+.navBarContainer {
+    position: absolute;
     top: 0;
     display: flex;
     align-items: center;
@@ -7,6 +10,7 @@
     background-color: #000;
     height: 4.5rem;
     padding: 0 1rem;
+    width: 100%;
 }
 .navBarContainer h2 {
     color: #fff;
