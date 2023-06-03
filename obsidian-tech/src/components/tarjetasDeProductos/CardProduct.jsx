@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from "swiper";
 
 import { getAllProductsFromDB } from '../../services/api'
 
 import '../tarjetasDeProductos/CardProduct.css'
+
 import 'swiper/css';
+import "swiper/css/pagination";
 
 export const CardProduct = () => {
 
@@ -27,14 +30,29 @@ export const CardProduct = () => {
     <>
     <div className='swiperContainer'>
       <Swiper
-        slidesPerView={3}
-        spaceBetween={60}
+        slidesPerView={4.5}
+        spaceBetween={40}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.1,
+            spaceBetween: 15
+          },
+          375: {
+            slidesPerView: 1.2,
+            spaceBetween: 15
+          }
+        }}
+        modules={[Pagination]}
+        className='mySwiper'
       >
     {
       dataApi.map((item, index) => {
         return(
-          <SwiperSlide>
-            <div className='cardBorder' key={index}>
+          <SwiperSlide key={index}>
+            <div className='cardBorder'>
               <div className='cardContainer'>
                 <div className='cardHead'>
                   <div className='boxCategory'>{item.categoria}</div>
@@ -72,6 +90,7 @@ export const CardProduct = () => {
     }
       </Swiper>
     </div>
+    <div className='paginacion'/>
     </>
   )
 }

@@ -2,7 +2,13 @@
     display: flex;
     justify-content: center;
     overflow-x: hidden;
-    padding: 0 2rem;
+    padding: 0 1rem;
+}
+.mySwiper {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   height: 530px;
 }
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;
@@ -116,7 +122,7 @@
 }
 @media (max-width: 320px) {
     .cardBorder {
-        width: 260px;
+        width: 270px;
     }
     .cardBody .boxTitle h4 {
         width: 230px;
