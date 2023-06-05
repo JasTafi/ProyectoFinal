@@ -5,6 +5,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from "swiper";
+import { Navigation } from "swiper";
 
 import { getAllProductsFromDB } from '../../services/api'
 
@@ -12,6 +13,7 @@ import '../tarjetasDeProductos/CardProduct.css'
 
 import 'swiper/css';
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 export const CardProduct = () => {
 
@@ -30,34 +32,40 @@ export const CardProduct = () => {
     <>
     <div className='swiperContainer'>
       <Swiper
-        slidesPerView={4.5}
-        spaceBetween={40}
+        slidesPerView={4}
+        spaceBetween={20}
+        navigation={true}
         pagination={{
           dynamicBullets: true,
+          clickable:true,
         }}
         breakpoints={{
-          320: {
+          "320": {
             slidesPerView: 1,
-            spaceBetween: 15
+            spaceBetween: 10,
           },
-          375: {
+          "375": {
             slidesPerView: 1.2,
-            spaceBetween: 15
+            spaceBetween: 20,
           },
-          425: {
+          "@0.75": {
             slidesPerView: 1.4,
-            spaceBetween: 20
+            spaceBetween: 20,
           },
-          560: {
-            slidesPerView:1.8,
-            spaceBetween:20
+          "@1.00": {
+            slidesPerView: 2.5,
+            spaceBetween: 40,
           },
-          768: {
-            slidesPerView:2.4,
-            spaceBetween: 20
-          }
+          "@1.25": {//768
+            slidesPerView: 2.8,
+            spaceBetween: 30,
+          },
+          "@1.50": {
+            slidesPerView: 5,
+            spaceBetween: 40,
+          },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Navigation]}
         className='mySwiper'
       >
     {
