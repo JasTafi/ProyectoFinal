@@ -3,13 +3,14 @@
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    
 }
 .mySwiper {
    height: 530px;
     /* .swiper-button-disabled con esta clase accedo al css del btn*/
 }
-
+.swiperSlide {
+    z-index: -1;
+}
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;
     background: linear-gradient(to right, #6f35c091, #0395fe91);
@@ -59,7 +60,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 260px;
+    width: 230px;
     margin: 15px 0;
 }
 .cardBody .boxTitle p {
@@ -121,6 +122,9 @@
     transition: all 0.2s;
 }
 @media (max-width: 320px) {
+    .swiperContainer {
+        padding: 0 1rem;
+    }
     .cardBorder {
         width: 280px;
     }

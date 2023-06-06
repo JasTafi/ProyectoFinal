@@ -71,7 +71,7 @@ export const CardProduct = () => {
     {
       dataApi.map((item, index) => {
         return(
-          <SwiperSlide key={index}>
+          <SwiperSlide className='swiperSlide' key={index}>
             <div className='cardBorder'>
               <div className='cardContainer'>
                 <div className='cardHead'>
