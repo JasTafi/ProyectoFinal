@@ -18,6 +18,7 @@ export const ObsidianNavbar = () => {
   }
 //useState para boton user
   const [login, setLogin] = useState(false)
+//para cambiar de color el navbar
   const [scrolling, setSCrolling] = useState(false)
 
   function changeBackG() {
