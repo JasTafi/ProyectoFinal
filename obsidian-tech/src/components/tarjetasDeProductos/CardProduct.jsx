@@ -61,7 +61,7 @@ export const CardProduct = () => {
             spaceBetween: 30,
           },
           "@1.50": {
-            slidesPerView: 5,
+            slidesPerView: 4.5,
             spaceBetween: 40,
           },
         }}
@@ -71,7 +71,7 @@ export const CardProduct = () => {
     {
       dataApi.map((item, index) => {
         return(
-          <SwiperSlide className='swiperSlide' key={index}>
+          <SwiperSlide key={index}>
             <div className='cardBorder'>
               <div className='cardContainer'>
                 <div className='cardHead'>

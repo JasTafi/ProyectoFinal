@@ -1,15 +1,12 @@
-.swiperContainer {/*faltan estilos para centrar*/
+.swiperContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
+    width: 100%;
 }
 .mySwiper {
-   height: 530px;
+    height: 530px;
+    width: 100%;
     /* .swiper-button-disabled con esta clase accedo al css del btn*/
-}
-.swiperSlide {
-    z-index: -1;
 }
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;
