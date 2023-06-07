@@ -1,14 +1,24 @@
-.navBarContainer {
+.navBarBox {
     position: sticky;
+    height: 4.5rem;
+    background-color: transparent;
+    transition: background-color 0.2s;
+    z-index: 99999;
+}
+.navBarContainer {
+    position: fixed;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #000;
     height: 4.5rem;
     padding: 0 1rem;
     width: 100%;
     z-index: 99999;
+}
+.navBarContainer.scroll {
+    background-color: #000;
+    transition: all 0.1s;
 }
 .navBarContainer h2 {
     color: #fff;

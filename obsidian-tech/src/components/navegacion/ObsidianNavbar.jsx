@@ -18,15 +18,25 @@ export const ObsidianNavbar = () => {
   }
 //useState para boton user
   const [login, setLogin] = useState(false)
+  const [scrolling, setSCrolling] = useState(false)
 
+  function changeBackG() {
+    if(window.scrollY >= 10){
+      setSCrolling(true);
+    }else{
+      setSCrolling(false);
+    }
+  }
   function openedUser(){
     setLogin(!login)
   }
 
+  window.addEventListener("scroll",changeBackG);
+
   return (
     <>
     <div className='navBarBox'>
-      <div className='navBarContainer'>
+      <div className={ scrolling ? 'navBarContainer scroll' : 'navBarContainer'}>
         <h2>Obsidian<span>-</span>Tech</h2>
         <div className={ clicked ? 'linksContainer active': 'linksContainer'}>
           <NavLink className='linkStyle' to={'/'}>Home</NavLink>
