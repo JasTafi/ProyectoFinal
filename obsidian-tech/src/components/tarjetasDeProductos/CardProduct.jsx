@@ -57,7 +57,7 @@ export const CardProduct = () => {
             spaceBetween: 40,
           },
           "@1.25": {//768
-            slidesPerView: 2.8,
+            slidesPerView: 2.6,
             spaceBetween: 30,
           },
           "@1.50": {
