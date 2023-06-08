@@ -29,6 +29,10 @@
     margin-right: 5px;
     width: 70px;
 }
+.cardResults .linkAccesorio {
+    text-decoration: none;
+    color: #000;
+}
 .nombreYPrecio {
     font-weight: 700;
     display: flex;

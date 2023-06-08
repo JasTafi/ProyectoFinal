@@ -1,0 +1,23 @@
+.containerProductDetail {
+    background-color: #000;
+    height: 100vh;
+    padding: 4.5rem;
+}
+.containerDetail {
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 80vh;
+    width: 50%;
+}
+.containerDetail .linkBack {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    width: 60px;
+}
