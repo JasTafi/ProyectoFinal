@@ -2,7 +2,8 @@
     background-color: #000;
     display: flex;
     justify-content: space-around;
-    height: 100vh;
+    align-items: center;
+    height: 100%;
     width: 100%;
     padding: 4.5rem;
 }
@@ -135,18 +136,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 50%;
     width: 50%;
 }
 .containerPictures .borderColorBox {/*bordes*/
     background: linear-gradient(to right, #6f35c091, #0395fe91);
     border-radius: 0px 15px;
-    width: 90%;
+    height: 500px;
+    width: 600px;
     padding: 2px;
 }
 .borderColorBox .containerImg {
     background-color: #000;
     border-radius: 0px 15px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 15px;
 }
 .containerImg img {
-    width: 80%;
+    width: auto;
 }
