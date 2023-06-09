@@ -1,16 +1,18 @@
 .containerProductDetail {
     background-color: #000;
+    display: flex;
+    justify-content: space-around;
     height: 100vh;
+    width: 100%;
     padding: 4.5rem;
 }
 .containerDetail {
-    border: 1px solid #fff;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     height: 80vh;
-    width: 50%;
+    width: 40%;
 }
 .containerDetail .linkBack {
     text-decoration: none;
@@ -20,4 +22,131 @@
     align-items: center;
     font-size: 0.9rem;
     width: 60px;
+}
+.containerDetail h2 {
+    color: #fff;
+    font-weight: 700;
+}
+.containerDetail h6 {
+    color: #6D717A;
+}
+.boxCateogy {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+}
+.boxCateogy .category {
+    background: linear-gradient(to left, #7035C0, #0396FE);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-right: 5px;
+    padding: 0 7px;
+}
+.boxCateogy button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    margin: 0 5px;
+}
+.boxCateogy p {
+    color: #fff;
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+.boxDetail {
+    display: flex;
+    color: #6D717A;
+    font-size: 0.9rem;
+    width: auto;
+}
+.boxDetail p{
+    margin-right: 10px;
+}
+.boxInputSelect {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #fff;
+}
+.boxInputSelect label {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+.boxInputSelect select {
+    background: transparent;
+    border: 1px solid #6D717A;
+    border-radius: 0px 15px;
+    color: #6D717A;
+    padding: 8px;
+    width: 100%;
+}
+.boxPrice1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.boxPrice1 .precio {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.boxPrice1 .boxQuantity {
+    display: flex;
+    color: #6D717A;
+}
+.boxQuantity p {
+    margin-right: 10px;
+}
+.boxQuantity .lbl {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #6D717A;
+    border-radius: 0px 10px;
+    height: 30px;
+    width: 100px;
+}
+.boxQuantity .lbl button {
+    background-color: transparent;
+    border: none;
+    color: #6D717A;
+    font-size: 1.2rem;
+}
+.boxBuyAndAdd button {
+    border: 1px solid transparent;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border-radius: 0px 10px;
+    color: #fff;
+    margin-right: 20px;
+    padding: 0.3rem 1.2rem;
+    transition: all 0.2s;
+}
+.boxBuyAndAdd button:hover {
+    background: transparent;
+    border: 1px solid #6D717A;
+    color: #6D717A;
+    transition: all 0.2s;
+}
+.containerPictures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.containerPictures .borderColorBox {/*bordes*/
+    background: linear-gradient(to right, #6f35c091, #0395fe91);
+    border-radius: 0px 15px;
+    width: 90%;
+    padding: 2px;
+}
+.borderColorBox .containerImg {
+    background-color: #000;
+    border-radius: 0px 15px;
+}
+.containerImg img {
+    width: 80%;
 }

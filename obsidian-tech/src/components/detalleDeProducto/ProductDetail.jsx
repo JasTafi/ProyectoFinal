@@ -28,7 +28,7 @@ const ProductDetail = () => {
 					<button><FontAwesomeIcon icon={faHeart} /></button>
 					<p>Agregar a lista de deseos.</p>
 				</div>
-				<h3>Nombre del Producto.</h3>
+				<h2>Nombre del Producto.</h2>
 				<div  className='boxDetail'>
 					<p>TYPE: categoria</p>
 					<p>ID: 1234567</p>
@@ -41,13 +41,13 @@ const ProductDetail = () => {
 						<option value="color2">Blanco</option>
 					</select>
 				</div>
-				<div className='boxPrice'>
-					<h4>$ 10000</h4>
+				<div className='boxPrice1'>
+					<span className='precio'>$ 10000</span>
 					<div className='boxQuantity'>
-						<label htmlFor="cantidad">Cantidad:</label>
+						<p>Cantidad:</p>
 						<div className='lbl'>
 							<button>-</button>
-							<input type="number" name="" id="cantidad"/>
+							<span className='num'>1</span>
 							<button>+</button>
 						</div>
 					</div>
@@ -57,7 +57,13 @@ const ProductDetail = () => {
 					<button>Comprar ya!</button>
 				</div>
 			</div>
-			<div className='containerPictures'></div>
+			<div className='containerPictures'>
+				<div className='borderColorBox'>
+					<div className='containerImg'>
+						<img src="https://zonagamer.co/wp-content/uploads/2021/06/J-10L1-.png" alt="" />
+					</div>
+				</div>
+			</div>
 		</div>
   )
 }
