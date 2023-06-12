@@ -16,9 +16,12 @@ const ProductDetail = () => {
 	
 	const [data, setData] = useState([]);
 	const [num, setNum] = useState(1)
-
+	const stock = data.stock
+	
 	function sumar(){
-		setNum( num + 1)
+		if(num < stock){
+			setNum(num + 1)
+		}
 	}
 	function restar(){
 		if(num == 1){
@@ -62,7 +65,7 @@ const ProductDetail = () => {
 						<div className='lbl'>
 							<button onClick={restar}>-</button>
 							<span className='num'>{num}</span>
-							<button onClick={sumar}>+</button>
+							<button onClick={sumar} disabled={num==stock}>+</button>
 						</div>
 					</div>
 				</div>
