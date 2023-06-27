@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 import { NavLink } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fort
 
 import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
+import Login from '../login/ModalLogin';
 
 export const ObsidianNavbar = () => {
 
@@ -43,6 +44,7 @@ export const ObsidianNavbar = () => {
           <NavLink className='linkStyle' to={'/'}>Home</NavLink>
           <NavLink className='linkStyle' to={'/administracion'}>Administracion</NavLink>
           <NavLink className='linkStyle' to={'/nosotros'}>Nosotros</NavLink>
+          <NavLink className='linkStyle' to={'/recContraseña'}>Recuperar Contraseña</NavLink>
         </div>
         <div className='halfContainer'>
           <div className='iconContainer'>
@@ -56,6 +58,7 @@ export const ObsidianNavbar = () => {
             <button><FontAwesomeIcon icon={faCartShopping} /></button>
             <button><FontAwesomeIcon icon={faHeart} /></button>
             <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
+            <Login />
           </div>
           <div className='burger'>
             <button onClick={clickear}><FontAwesomeIcon icon={faBars} /></button>

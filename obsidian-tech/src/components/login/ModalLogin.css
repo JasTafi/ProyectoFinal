@@ -1,0 +1,14 @@
+.modal {
+  width: 400px;
+  height: 400px;
+}
+
+.modal-content {
+  width: 400px;
+  height: 400px;
+}
+
+.btn-login {
+  font-size: 0.5em;
+  color: green;
+}
