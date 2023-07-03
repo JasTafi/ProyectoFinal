@@ -7,7 +7,7 @@ import '../filtroNavegacion/FilterComponent.css'
 import { ContainerResults } from '../ventanadaResultados/ContainerResults'
 import { getAllProductsFromDB } from '../../services/api'
 
-const FilterComponent = ({show}) => {
+const FilterComponent = () => {
 
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
@@ -39,7 +39,7 @@ const FilterComponent = ({show}) => {
   
   return (
     <>
-    <form className={show ? 'invisible' : 'navbar-form'}>
+    <form className={'navbar-form'}>
         <div className='boxInput'>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
