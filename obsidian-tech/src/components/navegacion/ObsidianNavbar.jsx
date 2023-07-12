@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -55,7 +55,7 @@ export const ObsidianNavbar = () => {
               </div>
             </div>
             <button><FontAwesomeIcon icon={faCartShopping} /></button>
-            <button><FontAwesomeIcon icon={faHeart} /></button>
+            <Link to="/favoritos" className='fav'><FontAwesomeIcon icon={faHeart} /></Link>
             <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
           </div>
           <div className='burger'>
