@@ -1,7 +1,22 @@
-.container_form {
-    display: flex;
+.containerGral {
+    background-color: black;
+    padding-top: 4.5rem;
     width: 100%;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
+}
+.ventanaFav {
+    width: 100%;
+    height: 100%;
+}
+.boxTitleFav {
+    padding: 4rem;
+}
+.boxFav {
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    padding: 10px;
+}
+.boxFav h3 {
+    text-align: center;
 }
