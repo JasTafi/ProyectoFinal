@@ -1,19 +1,29 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
-import '../login/ModalLogin.css';
+import  { Login } from '../../services/user_service';
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+import'../login/ModalLogin.css';
+import { DataProvider } from '../../context/DataContext';
+
+export default function ModalLogin() {
+  const { setUserInfo, useInfo } = useContext(DataProvider)
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+    allowsLocaStorage: false,
+  });
   const [showModal, setShowModal] = useState(false);
 
-  const handleLogin = () => {
-    console.log('Usuario:', username);
-    console.log('Contraseña:', password);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-// Restablecer los campos de entrada
-    setUsername('');
-    setPassword('');
+    Login({
+      email: user.email,
+      password: user.password,
+    })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   };
 
   const toggleModal = () => {
@@ -23,36 +33,52 @@ const Login = () => {
   return (
     <div>
       <button className='btn-login' onClick={toggleModal}>Iniciar Sesión</button>
-      {showModal && (
-        <div className='modal'>
-          <div className='modal-content'>
-            <h2>Inicio de Sesión</h2>
-            <form>
-              <label>
-                Usuario:
-                <input
-                  type='text'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </label>
-              <label>
-                Contraseña:
-                <input
-                  type='password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-              <button type='button' onClick={handleLogin}>
-                Iniciar Sesión
-              </button>
-            </form>
-          </div>
+      <div className={ showModal? 'modalContainer active': 'modalContainer'}>
+        <div className='modalContent'>
+          <button className='btnCerrar' onClick={toggleModal}>cerrar</button>
+          <h3>Inicio de Sesión</h3>
+          <form>
+            <label>
+              Ingresa tu mail:
+              <input
+                type='email'
+                name='email'
+                onChange={(e) => setUser({
+                  ...user,
+                  email: e.target.value,
+                  })
+                }
+              />
+            </label>
+            <label>
+              Contraseña:
+              <input
+                type='password'
+                name='password'
+                onChange={(e) => setUser({
+                  ...user,
+                  password: e.target.value,
+                  })
+                }
+              />
+            </label>
+            <label>
+              Mantenerme conectado
+              <input 
+                type='checkbox'
+                name='checkbox'
+                onClick={(e) => setUser({
+                  ...user,
+                  allowsLocaStorage: e.target.checked,
+                })}
+              />
+            </label>
+            <button className='btnSesion' type='button' onClick={handleLogin}>
+              Iniciar Sesión
+            </button>
+          </form>
         </div>
-      )}
+      </div>
     </div>
   );
-};
-
-export default Login;
+}

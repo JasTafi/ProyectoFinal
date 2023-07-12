@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import '../filtroNavegacion/FilterComponent.css'
 import { ContainerResults } from '../ventanadaResultados/ContainerResults'
-import { getAllProductsFromDB } from '../../services/api'
+import { getAllProductsFromDB } from '../../services/product_service'
 
-const FilterComponent = ({show}) => {
-
+const FilterComponent = () => {
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
@@ -30,16 +29,15 @@ const FilterComponent = ({show}) => {
 
   useEffect(() => {
     getAllProductsFromDB()
-    .then(({data}) => {
-      setDataApi(data)
+    .then(({ data }) => {
+      setDataApi(data);
     })
-    .catch(error => console.log(error))
-  }, [])
+    .catch(error => console.log(error));
+  }, []);
 
-  
   return (
     <>
-    <form className={show ? 'invisible' : 'navbar-form'}>
+    <form className='navbar-form'>
         <div className='boxInput'>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
@@ -52,7 +50,7 @@ const FilterComponent = ({show}) => {
     </form>
     <ContainerResults resultado = {resultado} filtered = {filtered}/>
     </>
-  )
-}
+  );
+};
 
 export default FilterComponent

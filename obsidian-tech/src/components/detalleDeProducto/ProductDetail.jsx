@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useParams, Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-import { getProductByIdFromDb } from '../../services/api';
+import { getProductByIdFromDb } from '../../services/product_service';
 import '../detalleDeProducto/ProductDetail.css';
 
 

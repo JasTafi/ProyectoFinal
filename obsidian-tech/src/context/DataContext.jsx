@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 export const DataProvider = createContext();
 
 export const DataContext = ({ children }) => {
-  const [isLogged, SetIsLogged] = useState(false);
+  const [userInfo, SetUserInfo] = useState({
+    isLogged: false,
+    user: null,
+  });
 
   const initiallValues = {
-    secion: {
-      isLogged,
-      SetIsLogged,
-    },
+    userInfo,
+    SetUserInfo,
   };
 
   return (

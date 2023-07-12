@@ -7,7 +7,7 @@ import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fort
 
 import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
-import Login from '../login/ModalLogin';
+import ModalLogin from '../login/ModalLogin';
 
 export const ObsidianNavbar = () => {
 
@@ -58,7 +58,6 @@ export const ObsidianNavbar = () => {
             <button><FontAwesomeIcon icon={faCartShopping} /></button>
             <button><FontAwesomeIcon icon={faHeart} /></button>
             <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
-            <Login />
           </div>
           <div className='burger'>
             <button onClick={clickear}><FontAwesomeIcon icon={faBars} /></button>
@@ -66,6 +65,9 @@ export const ObsidianNavbar = () => {
         </div>
         <div className={clicked ? 'inputContainer active':'inputContainer'}>
           <FilterComponent/>
+        </div>
+        <div>
+          <ModalLogin />
         </div>
       </div>
     </div>
