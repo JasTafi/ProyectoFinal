@@ -20,12 +20,12 @@ const Favoritos = () => {
 		})
 		.then(({favorite_producs
 		}) => {
-			setFav(favorite_producs
-				)
+			setFav(favorite_producs)
 		})
 		.catch(err => console.log(err))
 	}, [])
-
+	
+	
 	const favoritos = fav.length > 0
   return (
     <div className='containerGral'>
@@ -40,7 +40,7 @@ const Favoritos = () => {
 								<h3>Favoritos {fav.length}</h3>
 								<div className='containerCardFav'>
 								{
-								(fav.length == 0 ? <h2 className='favEmpty'>No tienes productos agregados a favoritos!</h2> : <CardFavorites fav={fav}/>)
+								(fav.length == 0 ? <h2 className='favEmpty'>No tienes productos agregados a favoritos!</h2> : <CardFavorites fav={fav} />)
 								}
 								</div>
 							</div>
