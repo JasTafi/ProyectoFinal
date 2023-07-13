@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import '../favoritos/Favoritos.css';
+
 import { Link } from 'react-router-dom';
+
 import { GetFavoriteProduct } from '../../services/user_service';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { CardFavorites } from './CardFavorites';
+import '../favoritos/Favoritos.css';
+
 
 const Favoritos = () => {
 	const [ fav, setFav ] = useState([])
@@ -21,60 +25,35 @@ const Favoritos = () => {
 		})
 		.catch(err => console.log(err))
 	}, [])
-	//falta dar estilos
 
+	const favoritos = fav.length > 0
   return (
     <div className='containerGral'>
-        <div className='ventanaFav'>
-            <div className='boxTitleFav'>
-						<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft} className='icon'/>Inicio</Link>
-							<h2>Lista de Favoritos</h2>
-							<p>Aquí podras ver todos los productos que hayas seleccionado, así como también quitarlos si encuentras uno mejor!.</p>
-						</div>
-						<div className='boxFav'>
-							<h3>Favoritos (1)</h3>
-							<div className='containerCardFav'>
-							{
-							 fav.map((item, index) => {
-								return(
-									<div className='cardBorderFav' key={index}>
-										<div className='cardContainerFav'>
-											<div className='cardHeadFav'>
-												<div className='boxCategory'>{item.categoria}</div>
-												<button className={'boxIcon'}>
-													<FontAwesomeIcon icon={faHeart}/>
-												</button>
-											</div>
-											<div className='cardBody'>
-												<div className='boxTitle'>
-													<h4>{item.nombre}</h4>
-													<p>TYPE: {item.categoria}</p>
-												</div>
-												<div className='boxImage'>
-													<img src={item.urlImg} />
-												</div>
-											</div>
-											<div className='cardFooterFav'>
-												{/* <div className='boxInput'>
-													<label htmlFor="color">Color:</label>
-													<select className='options' name='color'>
-															<option value={"color1"}>Blanco</option>
-															<option value={"color2"}>Negro</option>
-													</select>
-												</div> */}
-												<div className='boxPrice'>
-														<p>$ {item.precio}</p>
-														{/* <button> Add to Cart </button> */}
-												</div>
-											</div>
-										</div>
-									</div>									
-								)
-								})
-							}
+        <div className='containerFav'>
+					<div className='ventanaFav'>
+							<div className='boxTitleFav'>
+							<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft} className='icon'/>Inicio</Link>
+								<h2>Lista de Favoritos</h2>
+								<p>Aquí podras ver todos los productos que hayas seleccionado, así como también quitarlos si encuentras uno mejor!.</p>
 							</div>
-						</div>
-        </div>
+							<div className='boxFav'>
+								<h3>Favoritos {fav.length}</h3>
+								<div className='containerCardFav'>
+								{
+								(fav.length == 0 ? <h2 className='favEmpty'>No tienes productos agregados a favoritos!</h2> : <CardFavorites fav={fav}/>)
+								}
+								</div>
+							</div>
+					</div>
+					{
+						favoritos && (
+							<div className='buttonsFav'>
+								<button className='buttonCartFav'> Seguir comprando </button>
+								<button className='buttonCartFav'> Vaciar favoritos </button>
+							</div>
+						)
+					}
+				</div>
     </div>
   )
 }
