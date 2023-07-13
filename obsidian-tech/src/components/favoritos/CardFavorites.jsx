@@ -40,7 +40,8 @@ export const CardFavorites = ({fav}) => {
 													setFavDelete(item._id)
 													handleRemoveFav()
 													location.reload()
-													}}>
+													}}
+													title='Eliminar Favorito'>
 														<FontAwesomeIcon icon={faHeart}/>
 												</button>
 										</div>
