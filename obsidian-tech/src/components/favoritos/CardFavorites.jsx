@@ -14,19 +14,18 @@ export const CardFavorites = ({fav}) => {
 		token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkxMjcxOTZ9.Yh0-nCN2dkt4n0k34QIHi1NcQfYYu77HY-E0h0ynQiE"
 	}
 	// funcion para eliminar fav de la lista
-	function handleRemoveFav(){
+	function handleRemoveFav(id){
 		
 		DeleteFavoriteById({
 			id: usuario.id,
-			productId: favDelete,
+			productId: id,
 			token: usuario.token
 		})
 		.then(res => console.log(res))
 		.catch(err => console.log(err))
+		location.reload();
 	}
 
-	console.log(favDelete)
-	
   return (
     <>
 		{
@@ -37,9 +36,7 @@ export const CardFavorites = ({fav}) => {
 										<div className='cardHeadFav'>
 												<div className='boxCategory'>{item.categoria}</div>
 												<button className={'boxIcon'} onClick={() => {
-													setFavDelete(item._id)
-													handleRemoveFav()
-													location.reload()
+													handleRemoveFav(item._id)
 													}}
 													title='Eliminar Favorito'>
 														<FontAwesomeIcon icon={faHeart}/>
