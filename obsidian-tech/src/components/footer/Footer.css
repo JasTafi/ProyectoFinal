@@ -1,0 +1,72 @@
+.containerGralFooter {
+    height: 40vh;
+    width: 100%;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+}
+.circulo {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #701ae9;
+    border-radius: 50%;
+}
+.circulo.der {
+    top: 0;
+    right: 10px;
+}
+.circulo.izq {
+    bottom: -30px;
+    left: 35px;
+}
+.containerFooter {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(45px);
+    color: #fff;
+}
+
+.containerFooter .containerLogFooter, .containerLinksFooter, .containerSocialFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    height: 100%;
+    border: 1px solid #fff;
+}/*faltan dar algunos estilos*/
+.containerFooter .containerLinksFooter ul, 
+.containerSocialFooter ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.containerFooter .containerLinksFooter ul .linksFoot,
+.containerSocialFooter ul .linksFoot {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 0;
+}
+.containerFooter .containerLinksFooter ul .linksFoot::before,
+.containerSocialFooter ul .linksFoot::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    height: 1px;
+    width: 0;
+    transition: 0.3s;
+}
+.containerFooter .containerLinksFooter ul .linksFoot:hover::before,
+.containerSocialFooter ul .linksFoot:hover::before{
+    width: 100%;
+}
