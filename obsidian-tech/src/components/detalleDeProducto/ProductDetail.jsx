@@ -36,7 +36,7 @@ const ProductDetail = () => {
   return (
     <div className='containerProductDetail'>
 			<div className='containerDetail'>
-				<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft}/>Inicio</Link>
+				<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft} className='icon'/>Inicio</Link>
 				<div className='boxCateogy'>
 					<div className='category'>{data.categoria}</div>
 					<button><FontAwesomeIcon icon={faHeart} /></button>
