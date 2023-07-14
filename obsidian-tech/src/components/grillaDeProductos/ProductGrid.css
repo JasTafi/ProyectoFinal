@@ -28,7 +28,7 @@
     background: linear-gradient(to left, #7035C0, #0396FE);
     font-weight: 700;
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text;/* tira una advertencia */
 }
 .buttonLinkContainer {
     display: flex;
