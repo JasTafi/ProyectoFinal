@@ -11,6 +11,7 @@ import DetalleProductoPage from './page/DetalleProductoPage';
 import FavoritosPage from './page/FavoritosPage';
 import { ObsidianNavbar } from './components/navegacion/ObsidianNavbar';
 import { DataContext } from './context/DataContext';
+import Footer from './components/footer/Footer';
 
 
 
@@ -28,6 +29,7 @@ function App() {
             <Route path='favoritos' element={<FavoritosPage />} />
             <Route path='*' element={<Error404Page />} />
           </Routes>
+          <Footer/>
       </BrowserRouter>
     </DataContext>
   );
