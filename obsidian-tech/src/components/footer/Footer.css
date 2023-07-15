@@ -31,7 +31,9 @@
     backdrop-filter: blur(45px);
     color: #fff;
 }
-
+.containerLogFooter p {
+    padding: 0 15px;
+}
 .containerFooter .containerLogFooter, .containerLinksFooter, .containerSocialFooter {
     display: flex;
     flex-direction: column;
@@ -39,7 +41,6 @@
     justify-content: center;
     width: 33%;
     height: 100%;
-    border: 1px solid #fff;
 }/*faltan dar algunos estilos*/
 .containerFooter .containerLinksFooter ul, 
 .containerSocialFooter ul {

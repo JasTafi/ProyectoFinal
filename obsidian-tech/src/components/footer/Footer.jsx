@@ -13,6 +13,9 @@ const Footer = () => {
             <div className='containerLogFooter'>
                 <h2>Obsidian-Tech</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, nesciunt perspiciatis quos temporibus fuga sed aspernatur qui fugit labore in!</p>
+								<div>
+									<p>Hecho por alumnos de la comision 28i RollingCode</p>
+								</div>
             </div>
             <div className='containerLinksFooter'>
                 <h4>NAVEGACIÓN:</h4>
