@@ -43,16 +43,15 @@ const Favoritos = () => {
 								(fav.length == 0 ? <h2 className='favEmpty'>No tienes productos agregados a favoritos!</h2> : <CardFavorites fav={fav} />)
 								}
 								</div>
+								{
+								favoritos && (
+									<div className='buttonsFav'>
+										<button className='buttonCartFav'> Seguir comprando </button>
+									</div>
+									)
+								}
 							</div>
 					</div>
-					{
-						favoritos && (
-							<div className='buttonsFav'>
-								<button className='buttonCartFav'> Seguir comprando </button>
-								<button className='buttonCartFav'> Vaciar favoritos </button>
-							</div>
-						)
-					}
 				</div>
     </div>
   )
