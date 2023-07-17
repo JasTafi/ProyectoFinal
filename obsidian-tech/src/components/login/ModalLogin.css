@@ -1,11 +1,15 @@
+.containerLoginGral {
+  position: relative;
+}
 .modalContainer {
   position: absolute;
   top: -400px;
   right: 35%;
-  background-color: #000;
+  background-color: #000000a6;
   border-radius: 10px;
   width: 350px;
   height: 350px;
+  backdrop-filter: blur(10px);
   transition: all 0.5s;
 }
 .modalContainer.active {
@@ -37,6 +41,7 @@
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
+  color: #fff;
 }
 .modalContent form label {
   display: flex;
@@ -59,4 +64,42 @@
   color: #fff;
   margin-right: 20px;
   padding: 0.3rem 1.2rem;
+}
+.containerLoginGral .btn-login {
+  border: 1px solid transparent;
+  background: linear-gradient(to right, #7035C0, #0396FE);
+  border-radius: 0px 10px;
+  color: #fff;
+  padding: 0.3rem 1.2rem;
+  font-size: 0.9rem;
+}
+.containerLoginGral .loginContainerLogin {
+  position: absolute;
+  left: -3rem;
+  background-color: #ffffff60;
+  border: none;
+  border-radius: 5px;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: .5rem;
+  transition: all 0.1s;
+}
+.containerLoginGral .loginContainerLogin.active {
+  position: absolute;
+  top: 3.2rem;
+  height: 4.5rem;
+  opacity: 1;
+  transition: all 0.3s;
+  width: 6rem;
+}
+.containerLoginGral .btnLoginUser {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+}
+/*MEDIAQUERY*/
+@media (max-width: 321px){
+ /* ver responsive*/
 }

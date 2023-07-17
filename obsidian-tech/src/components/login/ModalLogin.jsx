@@ -1,5 +1,8 @@
 import { useState, useContext } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 import  { Login } from '../../services/user_service';
 
 import'../login/ModalLogin.css';
@@ -12,6 +15,9 @@ export default function ModalLogin() {
     password: '',
     allowsLocaStorage: false,
   });
+  //useState para boton user
+  const [loginButton, setLoginButton] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
 
   const handleLogin = (e) => {
@@ -29,13 +35,23 @@ export default function ModalLogin() {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+  function openedUserLogin(){//para boton login user
+    setLoginButton(!loginButton)
+  }
 
   return (
-    <div>
-      <button className='btn-login' onClick={toggleModal}>Iniciar Sesión</button>
+    <div className='containerLoginGral'>
+      <button className='btnLoginUser' onClick={openedUserLogin}><FontAwesomeIcon icon={faUser} /></button>
+      <div className={ loginButton ? 'loginContainerLogin active' : 'loginContainerLogin'}>
+                <button className='btn-login' onClick={toggleModal}>Login</button>
+                <h6>Registro</h6>
+              </div>
       <div className={ showModal? 'modalContainer active': 'modalContainer'}>
         <div className='modalContent'>
-          <button className='btnCerrar' onClick={toggleModal}>cerrar</button>
+          <button className='btnCerrar' onClick={() => {
+            setShowModal(false)
+            setLoginButton(false)
+            }}>cerrar</button>
           <h3>Inicio de Sesión</h3>
           <form>
             <label>

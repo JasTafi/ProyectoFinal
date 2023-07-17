@@ -38,9 +38,6 @@
     color: #fff;
     font-size: 1.3rem;
 }
-.iconContainer button:hover {
-    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);
-}
 .loginContainer {
     position: absolute;
     left: -3rem;
