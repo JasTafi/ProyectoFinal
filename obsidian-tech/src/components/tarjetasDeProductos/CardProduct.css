@@ -6,7 +6,6 @@
 .mySwiper {
     height: 530px;
     width: 100%;
-    /* .swiper-button-disabled con esta clase accedo al css del btn*/
 }
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;
@@ -46,6 +45,9 @@
     border: none;
     color: #fff;
     font-size: 0.9rem;
+}
+.cardHead .boxIcon.active{
+    color: lightgreen;
 }
 .cardBody {
     display: flex;

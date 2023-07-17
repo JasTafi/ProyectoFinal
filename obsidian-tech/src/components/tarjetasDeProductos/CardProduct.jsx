@@ -18,6 +18,15 @@ import "swiper/css/navigation";
 export const CardProduct = () => {
 
   const [dataApi, setDataApi] = useState([])
+  const [addFav, setAddFav] = useState(false)//boron addFav
+
+  function addFavoritos(e){
+    
+    if(e.target== e.target){
+      setAddFav(!addFav)
+    }
+    
+  }
 
   useEffect(() => {
     getAllProductsFromDB()
@@ -76,7 +85,7 @@ export const CardProduct = () => {
               <div className='cardContainer'>
                 <div className='cardHead'>
                   <div className='boxCategory'>{item.categoria}</div>
-                  <button className='boxIcon'>
+                  <button className={addFav ? 'boxIcon active':'boxIcon'} onClick={addFavoritos}>
                     <FontAwesomeIcon icon={faHeart}/>
                   </button>
                 </div>
