@@ -142,5 +142,9 @@
   }
   ::-webkit-scrollbar{
     display: none;
-}
+  }
+  .containerCardFav .cardBorderFav {
+    height: 420px;
+    width: 230px;
+  }
 }
