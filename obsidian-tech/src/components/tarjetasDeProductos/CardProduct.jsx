@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
-import { getAllProductsFromDB } from '../../services/api'
+import { getAllProductsFromDB } from '../../services/product_service'
 
 import '../tarjetasDeProductos/CardProduct.css'
 
