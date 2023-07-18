@@ -25,7 +25,8 @@ export const ProductGrid = () => {
     {
       Loading()
     }
-    <div className='gridContainer'>
+    {
+      !loading && (<div className='gridContainer'>
       <div className='introContainer'>
         <div className='titleContainer'>
           <h3>Los Mejores Accesorios Para <span className='titleSpan'>Un Jugador Profesional</span>.</h3>
@@ -38,7 +39,8 @@ export const ProductGrid = () => {
         </div>
       </div>
       <CardProduct/>
-    </div>
+    </div>)
+    }
     </>
   )
 }
