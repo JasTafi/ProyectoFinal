@@ -1,12 +1,30 @@
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
-import { CardProduct } from '../tarjetasDeProductos/CardProduct'
+import { CardProduct } from '../tarjetasDeProductos/CardProduct';
+
+import Loader from '../loader/Loader';
 
 import '../grillaDeProductos/ProductGrid.css';
 
 export const ProductGrid = () => {
-  
+
+  const [loading, setLoading] = useState(true);
+
+  function Loading(){
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
+  }
   return (
+    <>
+    {
+      loading && <Loader/>
+    }
+    {
+      Loading()
+    }
     <div className='gridContainer'>
       <div className='introContainer'>
         <div className='titleContainer'>
@@ -21,5 +39,6 @@ export const ProductGrid = () => {
       </div>
       <CardProduct/>
     </div>
+    </>
   )
 }
