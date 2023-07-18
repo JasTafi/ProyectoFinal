@@ -31,12 +31,15 @@
     display: flex;
     align-items: center;
 }
-.iconContainer button {
+.iconContainer button, .fav {
     margin-right: .6rem;
     background-color: transparent;
     border: none;
     color: #fff;
     font-size: 1.3rem;
+}
+.iconContainer .fav:hover {
+    color: #fff;
 }
 .iconContainer button:hover {
     box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);

@@ -1,12 +1,13 @@
 import {useState} from 'react'
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
+import Favoritos from '../favoritos/Favoritos';
 import ModalLogin from '../login/ModalLogin';
 
 export const ObsidianNavbar = () => {
@@ -56,7 +57,7 @@ export const ObsidianNavbar = () => {
               </div>
             </div>
             <button><FontAwesomeIcon icon={faCartShopping} /></button>
-            <button><FontAwesomeIcon icon={faHeart} /></button>
+            <Link to="/favoritos" className='fav'><FontAwesomeIcon icon={faHeart} /></Link>
             <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
           </div>
           <div className='burger'>
