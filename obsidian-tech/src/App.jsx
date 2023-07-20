@@ -8,9 +8,10 @@ import RecContraseñaPage from './page/RecContraseñaPage';
 import NosotrosPage from './page/NosotrosPage';
 import Error404Page from './page/Error404Page';
 import DetalleProductoPage from './page/DetalleProductoPage';
-
+import RegistroPage from './page/RegistroPage';
 import { ObsidianNavbar } from './components/navegacion/ObsidianNavbar';
 import { DataContext } from './context/DataContext';
+
 
 function App() {
   return (

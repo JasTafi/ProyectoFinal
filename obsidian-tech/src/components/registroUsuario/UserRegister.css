@@ -1,0 +1,62 @@
+.containerRegisterGral {
+    background-color: #000;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+.containerForm {
+    background-color: #fff;
+    width: 100vw;
+    height: 450px;
+    display: grid;
+    place-items: center;
+}
+.containerForm form {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 500px;
+    height: 380px;
+    padding: 25px;
+    box-shadow: 0 3px 5px rgba(0 , 0, 0, 0.5);
+}
+.containerForm .boxTitleRegister {
+    display: flex;
+    width: 100%;
+    color: #7c7c7c;
+    padding-top: 10px;
+}
+.containerForm .boxInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+}
+.containerForm form .campo {
+    background-color: transparent;
+    border: 1px solid #a8a8a8;
+    border-radius: 0 15px;
+    color: #6D717A;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+}
+.containerForm form .campo:focus {
+    outline: none;
+}
+.containerForm .boxInput label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #7c7c7c;
+}
+.containerForm .btnInputReg {
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border: none;
+    border-radius: 0px 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 3px;
+    padding: 0.5rem 1rem;
+    width: 120px;
+}
