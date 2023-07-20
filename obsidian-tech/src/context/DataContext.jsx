@@ -7,12 +7,19 @@ export const DataProvider = createContext();
 export const DataContext = ({ children }) => {
 
   const [ userData, setUserData ] = useState(null);
+  const [ isLogged, setIsLogged ] = useState(false);
 
   const initiallValues = {
-    userData,
-    setUserData
+    data: {
+      userData,
+      setUserData
+    },
+    sesion: {
+      isLogged,
+      setIsLogged
+    }
   };
-
+  
   return (
     <DataProvider.Provider value={initiallValues}>
       {children}

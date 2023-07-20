@@ -15,9 +15,9 @@ import '../favoritos/Favoritos.css';
 
 const Favoritos = () => {
 	const [ fav, setFav ] = useState([])
-	const  { userData } = useContext(DataProvider);
+	const  { data: {userData }, sesion :{setIsLogged} } = useContext(DataProvider);
 	console.log("desde favoritos")
-	
+
 	useEffect(() => {
 		GetFavoriteProduct({
 			id: userData.user.id,
@@ -25,7 +25,8 @@ const Favoritos = () => {
 		})
 		.then(({favorite_producs
 		}) => {
-			setFav(favorite_producs)
+			setFav(favorite_producs),
+			setIsLogged(true)
 		})
 		.catch(err => console.log(err))
 	}, [])

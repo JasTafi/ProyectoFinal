@@ -6,7 +6,7 @@ import'../login/ModalLogin.css';
 import { DataProvider } from '../../context/DataContext';
 
 export default function ModalLogin() {
-  const { userData, setUserData } = useContext(DataProvider);
+  const { data: {setUserData} } = useContext(DataProvider);
 
   const [user, setUser] = useState({
     email: '',
