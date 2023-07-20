@@ -6,7 +6,8 @@ import'../login/ModalLogin.css';
 import { DataProvider } from '../../context/DataContext';
 
 export default function ModalLogin() {
-  const { setUserInfo, useInfo } = useContext(DataProvider)
+  const { userData, setUserData } = useContext(DataProvider);
+
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -22,14 +23,18 @@ export default function ModalLogin() {
       email: user.email,
       password: user.password,
     })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        console.log(res)
+        setUserData(res)
+      })
+      .catch((error) => console.log(error))
+      .finally(setShowModal(false))
   };
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-
+  
   return (
     <div>
       <button className='btn-login' onClick={toggleModal}>Iniciar Sesión</button>

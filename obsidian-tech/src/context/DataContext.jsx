@@ -1,17 +1,16 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
-
+//contexto
 export const DataProvider = createContext();
 
+//creo el proveedor
 export const DataContext = ({ children }) => {
-  const [userInfo, SetUserInfo] = useState({
-    isLogged: false,
-    user: null,
-  });
+
+  const [ userData, setUserData ] = useState(null);
 
   const initiallValues = {
-    userInfo,
-    SetUserInfo,
+    userData,
+    setUserData
   };
 
   return (
