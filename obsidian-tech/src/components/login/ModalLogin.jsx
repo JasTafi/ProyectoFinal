@@ -6,8 +6,8 @@ import'../login/ModalLogin.css';
 import { DataProvider } from '../../context/DataContext';
 
 export default function ModalLogin() {
-  const { data: {setUserData} } = useContext(DataProvider);
-
+  const { data: {setUserData}, sesion :{isLogged, setIsLogged} } = useContext(DataProvider);
+  
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -26,6 +26,7 @@ export default function ModalLogin() {
       .then((res) => {
         console.log(res)
         setUserData(res)
+        setIsLogged(true)
       })
       .catch((error) => console.log(error))
       .finally(setShowModal(false))
