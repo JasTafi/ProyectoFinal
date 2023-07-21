@@ -1,8 +1,10 @@
 .containerRegisterGral {
+    position: relative;
     background-color: #000;
     display: grid;
     place-items: center;
     height: 100vh;
+    padding-top: 4.5rem;
 }
 .containerForm {
     background-color: #fff;
@@ -32,7 +34,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 15px 0;
+    padding: 5px 0;
 }
 .containerForm form .campo {
     background-color: transparent;
@@ -59,4 +61,10 @@
     margin: 3px;
     padding: 0.5rem 1rem;
     width: 120px;
+}
+.alertaError {
+    display: flex;
+    color: red;
+    opacity: 1;
+    transition: all 0.2s;
 }
