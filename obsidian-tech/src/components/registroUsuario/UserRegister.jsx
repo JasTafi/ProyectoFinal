@@ -81,7 +81,7 @@ const UserRegister = () => {
       <div className='containerForm'>
 				<form>
 					<div className='boxTitleRegister'>
-						<h4>Escriba sus datos.</h4>
+						<h4>Registro de usuario.</h4>
 					</div>
 					<div className='boxInput'>
 						<label htmlFor="">Ingrese su email:</label>
