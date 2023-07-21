@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ModalAviso } from '../modalAviso/ModalAviso';
 
@@ -6,9 +6,13 @@ import { CreateUser } from '../../services/user_service';
 
 import '../registroUsuario/UserRegister.css';
 
-
 const UserRegister = () => {
+
+	//muestra modal de aviso de registro
 	const [ show, setShow ] = useState(false)
+	//muestra aviso de error en inputs
+	const [ showAlert, setShowAlert ] = useState(false)
+
 	const [user, setUser] = useState({
 		email:'',
 		password:'',
@@ -19,7 +23,7 @@ const UserRegister = () => {
 		emailError: '',
 		passwordError: '',
 	})
-
+	
 	function mostrarModal(){
 		setShow(true)
 		setTimeout(() => {
@@ -27,6 +31,12 @@ const UserRegister = () => {
 		}, 2000);
 	};
 
+	function mostrarAviso(){
+		setShowAlert(true)
+		setTimeout(() => {
+			setShowAlert(false)
+		}, 2000);
+	};
 	const validateEmail = (emailValue) => {
     // Expresión regular para validar el email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,6 +55,7 @@ const UserRegister = () => {
 				...userError,
 				emailError: "por favor ingresa un email válido"
 			})
+			mostrarAviso()
 			return 
 		}else{
 			setUserError({
@@ -58,6 +69,7 @@ const UserRegister = () => {
 				...userError,
 				passwordError: 'La contraseña debe tener al menos 6 caracteres.'
 			});
+			mostrarAviso();
       return;
     } else {
       setUserError({
@@ -71,9 +83,19 @@ const UserRegister = () => {
 			password: user.password,
 			urlFoto: user.photoUrl
 		})
-		.then(res => console.log(res))
+		.then(res => {
+			console.log(res)
+			setUser({
+				email:"",
+				password:"",
+				photoUrl:""
+			})
+		})
 		.catch(err => console.log(err))
-		.finally(mostrarModal())
+		.finally(() => {
+			mostrarModal();
+		})
+		
 	}
   return (
     <div className='containerRegisterGral'>
@@ -85,23 +107,23 @@ const UserRegister = () => {
 					</div>
 					<div className='boxInput'>
 						<label htmlFor="">Ingrese su email:</label>
-						<input className='campo' type="email" name='email' maxLength={30} onChange={(e)=> setUser({
+						<input className='campo' type="email" name='email' value={user.email} maxLength={30} onChange={(e)=> setUser({
 							...user,
 							email: e.target.value
 						})}/>
-						{userError.emailError && <div className='alertaError'>{userError.emailError}</div>}
+						<div className={ showAlert?'alertaError':'alertaError desactive'}>{userError.emailError}</div>
 					</div>
 					<div className='boxInput'>
 						<label htmlFor="">Ingrese su contraseña:</label>
-						<input className='campo' type="password" name='password' maxLength={20} onChange={(e)=> setUser({
+						<input className='campo' type="password" name='password' value={user.password} maxLength={20} onChange={(e)=> setUser({
 							...user,
 							password: e.target.value
 						})}/>
-						{userError.passwordError && <div className='alertaError'>{userError.passwordError}</div>}
+						<div className={ showAlert?'alertaError':'alertaError desactive'}>{userError.passwordError}</div>
 					</div>
 					<div className='boxInput'>
 						<label htmlFor="">Ingrese su foto:</label>
-						<input className='campo' type="text" name='photoUrl' onChange={(e)=> setUser({
+						<input className='campo' type="text" name='photoUrl' value={user.photoUrl} onChange={(e)=> setUser({
 							...user,
 							photoUrl: e.target.value
 						})}/>
