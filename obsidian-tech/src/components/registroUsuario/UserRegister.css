@@ -29,6 +29,7 @@
     width: 100%;
     color: #7c7c7c;
     padding-top: 10px;
+    border-bottom: 1px solid #bdbdbd;
 }
 .containerForm .boxInput {
     width: 100%;
@@ -72,4 +73,13 @@
     opacity: 0;
     transition: all 0.2s;
 }
-/* Media Query
+/* Media Query */
+@media (min-width: 320px) and (max-width: 425px) {
+	.containerForm {
+		height: 80vh;
+		padding: 0 5px;
+	}
+	.containerForm form {
+		width: 100%;
+	}
+}

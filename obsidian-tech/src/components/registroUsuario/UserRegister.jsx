@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
+import { Navigate } from 'react-router-dom';
+
 import { ModalAviso } from '../modalAviso/ModalAviso';
 
 import { CreateUser } from '../../services/user_service';
 
 import '../registroUsuario/UserRegister.css';
 
-const UserRegister = () => {
+
+const UserRegister = () => {//FALTA VALIDAR CAMPO DE IMAGEN
 
 	//muestra modal de aviso de registro
 	const [ show, setShow ] = useState(false)
 	//muestra aviso de error en inputs
 	const [ showAlert, setShowAlert ] = useState(false)
+	//para redireccionar 
+	const [ redirect, setRedirect ] = useState(false)
 
 	const [user, setUser] = useState({
 		email:'',
@@ -28,6 +33,7 @@ const UserRegister = () => {
 		setShow(true)
 		setTimeout(() => {
 			setShow(false)
+			setRedirect(true)
 		}, 2000);
 	};
 
@@ -131,6 +137,9 @@ const UserRegister = () => {
 					<input className='btnInputReg' type="submit" onClick={(e) => handleRegister(e)}/>
 				</form>
 			</div>
+		{
+			redirect && (<Navigate to={"/"}></Navigate>)
+		}
     </div>
   )
 }
