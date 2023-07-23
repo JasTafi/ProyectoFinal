@@ -1,0 +1,51 @@
+.divPadreAdministracion {
+    display: flex;
+    background: no-repeat center 100%/cover url(../../assets/bgGrilla.jpg);
+  }
+  
+  .divPadreInput {
+    margin-top: 2rem;
+    padding: 2rem;
+    display: flex;
+  }
+  
+  h3 {
+    color: white;
+  }
+  
+  .divPadreInput div p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: justify;
+  }
+  
+  hr { 
+    border: none; 
+    border-radius: 8rem;
+    height: 1.5rem; 
+    background: linear-gradient(to left, #7035C0, #0396FE);
+    margin: 3rem 0 3rem 0;
+  }
+  
+  .formInput {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .formInput input {
+    margin: 0.5rem;
+  }
+  
+  .formInput button {
+    border-radius: 0.5rem;
+    color: aliceblue;
+    font-size: 1.2rem;
+    height: 2rem; 
+    background: linear-gradient(to left, #7035C0, #0396FE);
+    margin: 2rem 0 3rem 0;
+  }

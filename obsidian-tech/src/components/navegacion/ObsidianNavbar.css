@@ -1,0 +1,173 @@
+.navBarContainer {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+    padding: 0 1rem;
+    width: 100%;
+    z-index: 99999;
+}
+.navBarContainer.scroll {
+    background-color: #000;
+    box-shadow: 0 0 10px rgba(250, 250, 250, 0.5);
+    transition: all 0.1s;
+}
+.navBarContainer h2 {
+    color: #fff;
+}
+.navBarContainer span {
+    color: #7035C0;
+}
+.halfContainer {
+    display: flex;
+    align-items: center;
+}
+.iconContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.iconContainer button {
+    margin-right: .6rem;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+}
+.iconContainer button:hover {
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+.loginContainer {
+    position: absolute;
+    left: -3rem;
+    background-color: #fff;
+    border: 1px solid #000;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: .5rem;
+}
+.loginContainer.active {
+    position: absolute;
+    top: 3.2rem;
+    height: 4.5rem;
+    opacity: 1;
+    transition: all 0.3s;
+}
+.linkStyle {
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    margin-right: .7rem;
+    position: relative;
+}
+.linkStyle:hover{
+    color: #fff;
+}
+.linkStyle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    height: 1px;
+    width: 0;
+    transition: 0.3s;
+}
+.linkStyle:hover::before{
+    width: 100%;
+}
+.burger button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    padding: .3rem 0;
+}
+@media (min-width: 769px) {
+    .burger {
+        display: none;
+    }
+}
+@media (max-width: 1000px) and (min-width: 770px) {
+  .navBarContainer h2, 
+  span {
+    font-size: .9rem;
+  }
+  .linkStyle {
+    font-size: .7rem;
+    margin-right: .4rem;
+  }
+  .iconContainer button{
+    font-size: .9rem;
+    margin-right: .4rem;
+  }
+}
+@media (max-width: 769px) {
+    .linksContainer {
+        position: absolute;
+        left: -400px;
+        margin: 0 auto;
+        text-align: center;
+        transition: all 0.3s;
+    }
+    .linksContainer.active{
+        width: 100%;
+        height: auto;
+        background-color: #fff;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 1;
+        transition: all 0.3s;
+    }
+    .linkStyle {
+        display: block;
+        color: #000;
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+    .linkStyle:hover {
+        color: #000;
+    }
+    .inputContainer {
+        position: absolute;
+        top: 0;
+        left: -400px;
+    }
+    .inputContainer.active{
+        width: 100%;
+        position: absolute;
+        top: 11.4rem;
+        left: 0;
+        background-color: #fff;
+        z-index: 1;
+        transition: all 0.3s;
+    }
+}
+@media (max-width: 375px){
+  .navBarContainer h2, 
+  span,
+  .iconContainer button {
+    font-size: 1.1rem;
+  }
+  .burger button{
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 321px){
+  .navBarContainer h2{
+    font-size: 0.9rem;
+  }
+  .iconContainer button{
+    margin-right: .4rem;
+  }
+}

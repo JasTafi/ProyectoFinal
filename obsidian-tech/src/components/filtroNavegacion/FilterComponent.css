@@ -1,0 +1,42 @@
+.navbar-form {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    padding: .5rem 0;
+    width: 100%;
+}
+.boxInput {
+    position: relative;
+}
+.search-button {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    border: none;
+    background-color: transparent;
+    color: #6D717A;
+    width: 40px;
+}
+.input-navbar {
+    background-color: transparent;
+    border: 1px solid #6D717A;
+    border-radius: 0 15px;
+    color: #6D717A;
+    font-size: 0.9rem;
+    padding: 7px 5px 7px 42px;
+    width: 300px;
+}
+.input-navbar:focus {
+    outline: none;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #6D717A;
+    border-radius: 5px;
+}
