@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 export const DataProvider = createContext();
 
 export const DataContext = ({ children }) => {
-  const [userInfo, SetUserInfo] = useState({
-    isLogged: false,
-    user: null,
-  });
+  const [userInfo, SetUserInfo] = useState({});
 
   const initiallValues = {
     userInfo,

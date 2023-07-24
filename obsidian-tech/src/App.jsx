@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
-import InicioPage from './page/Iniciopage';
+import InicioPage from './page/InicioPage';
 import AdministracionPage from './page/AdministracionPage';
 import RecContraseñaPage from './page/RecContraseñaPage';
 import NosotrosPage from './page/NosotrosPage';

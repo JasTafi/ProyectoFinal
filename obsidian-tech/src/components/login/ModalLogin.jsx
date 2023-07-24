@@ -6,12 +6,13 @@ import'../login/ModalLogin.css';
 import { DataProvider } from '../../context/DataContext';
 
 export default function ModalLogin() {
-  const { setUserInfo, useInfo } = useContext(DataProvider)
+  const { setUserInfo, userInfo } = useContext(DataProvider)
   const [user, setUser] = useState({
     email: '',
     password: '',
     allowsLocaStorage: false,
   });
+
   const [showModal, setShowModal] = useState(false);
 
   const handleLogin = (e) => {
@@ -22,7 +23,18 @@ export default function ModalLogin() {
       email: user.email,
       password: user.password,
     })
-      .then((res) => console.log(res))
+      .then(({ user, token }) => {
+        setUserInfo({
+          isLogged: true,
+          user: {
+            token,
+            id: user.id,
+            photoUrl: user.photoUrl,
+          },
+        })
+        console.log(userInfo);
+        console.log(user);  
+      })
       .catch((error) => console.log(error));
   };
 
@@ -66,7 +78,7 @@ export default function ModalLogin() {
               Mantenerme conectado
               <input 
                 type='checkbox'
-                name='checkbox'
+                label='Mantenerme Conectado'
                 onClick={(e) => setUser({
                   ...user,
                   allowsLocaStorage: e.target.checked,
