@@ -12,6 +12,7 @@ import FavoritosPage from './page/FavoritosPage';
 import { ObsidianNavbar } from './components/navegacion/ObsidianNavbar';
 import { DataContext } from './context/DataContext';
 import Footer from './components/footer/Footer';
+import { RutaProtejida } from './components/RutaProtejida/RutaProtejida';
 
 
 
@@ -26,7 +27,11 @@ function App() {
             <Route path='administracion' element={<AdministracionPage />} />
             <Route path='recContraseña' element={<RecContraseñaPage />} />
             <Route path='nosotros' element={<NosotrosPage />} />
-            <Route path='favoritos' element={<FavoritosPage />} />
+            <Route path='favoritos' element={
+              <RutaProtejida>
+                <FavoritosPage />
+              </RutaProtejida>
+            } />
             <Route path='*' element={<Error404Page />} />
           </Routes>
           <Footer/>
