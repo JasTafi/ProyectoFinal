@@ -134,15 +134,14 @@
 }
 .containerPictures {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     height: 50%;
-    width: 50%;
+    width: 60%;
 }
 .containerPictures .borderColorBox {/*bordes*/
     background: linear-gradient(to right, #6f35c091, #0395fe91);
     border-radius: 0px 15px;
-    height: 500px;
     width: 600px;
     padding: 2px;
 }
@@ -156,5 +155,41 @@
     padding: 15px;
 }
 .containerImg img {
-    width: auto;
+    width: 500px;
+}
+@media (min-width:320px) and (max-width:550px){
+    .containerProductDetail{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 4.5rem 0.9rem;
+    }
+    .containerDetail {
+        width: 100%;
+    }
+    .boxPrice1 .precio {
+        font-size: 1.3rem;
+    }
+		.boxBuyAndAdd {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+    .boxBuyAndAdd button {
+			margin: 0;
+			white-space: nowrap;
+      padding: 0.3rem 0.7rem;
+    }
+    .containerPictures {
+			justify-content: center;
+        margin: 2rem 0;
+        height: 100%;
+        width: 100%;
+    }
+    .containerPictures .borderColorBox {
+        width: 90.5vw;
+    }
+    .containerImg img {
+        width: 90vw;
+    }
 }

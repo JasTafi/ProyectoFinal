@@ -8,6 +8,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
 }
 .ventanaFav {
     width: 100%;
@@ -45,10 +48,10 @@
 .boxFav {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: #fff;
     padding: 10px;
 }
@@ -58,6 +61,9 @@
 }
 .containerCardFav {
     display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 .containerCardFav .cardBorderFav {
  /*fondo de tarjeta (define el color de los bordes)*/
@@ -124,4 +130,21 @@
 }
 .favEmpty {
     color: #000;
+}
+/*MediaQuery*/
+@media (min-width: 320px) and (max-width: 768px) {
+  .boxTitleFav {
+    width: auto;
+    padding: 20px;
+  }
+  .containerCardFav {
+    overflow: scroll;
+  }
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  .containerCardFav .cardBorderFav {
+    height: 420px;
+    width: 230px;
+  }
 }
