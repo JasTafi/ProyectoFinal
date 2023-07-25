@@ -1,10 +1,10 @@
 import React from 'react'
 import Favoritos from '../components/favoritos/Favoritos'
 
-const NosotrosPage = () => {
+const FavoritosPage = () => {
   return (
-    <div>NosotrosPage</div>
+    <Favoritos/>
   )
 }
 
-export default NosotrosPage
+export default FavoritosPage
