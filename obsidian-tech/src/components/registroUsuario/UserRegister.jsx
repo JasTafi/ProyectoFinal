@@ -44,7 +44,7 @@ const UserRegister = () => {//FALTA VALIDAR CAMPO DE IMAGEN
 		}, 2000);
 	};
 	const validateEmail = (emailValue) => {
-    // Expresión regular para validar el email
+    // Expresión regular para validar el email y otro comentario
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(emailValue);
   };
