@@ -17,7 +17,7 @@ const Favoritos = () => {
 	const [ fav, setFav ] = useState([])
 	const  { data: {userData} } = useContext(DataProvider);
 	
-	useEffect(() => {//comentario
+	useEffect(() => {
 		GetFavoriteProduct({
 			id: userData.user.id,
 			token:userData.token
