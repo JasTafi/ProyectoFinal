@@ -1,13 +1,32 @@
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
-import { CardProduct } from '../tarjetasDeProductos/CardProduct'
+import { CardProduct } from '../tarjetasDeProductos/CardProduct';
+
+import Loader from '../loader/Loader';
 
 import '../grillaDeProductos/ProductGrid.css';
 
 export const ProductGrid = () => {
-  
+
+  const [loading, setLoading] = useState(true);
+
+  function Loading(){
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
+  }
   return (
-    <div className='gridContainer'>
+    <>
+    {
+      loading && <Loader/>
+    }
+    {
+      Loading()
+    }
+    {
+      !loading && (<div className='gridContainer'>
       <div className='introContainer'>
         <div className='titleContainer'>
           <h3>Los Mejores Accesorios Para <span className='titleSpan'>Un Jugador Profesional</span>.</h3>
@@ -20,6 +39,8 @@ export const ProductGrid = () => {
         </div>
       </div>
       <CardProduct/>
-    </div>
+    </div>)
+    }
+    </>
   )
 }
