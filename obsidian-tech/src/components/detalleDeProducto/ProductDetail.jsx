@@ -77,7 +77,7 @@ const ProductDetail = () => {
 			<div className='containerPictures'>
 				<div className='borderColorBox'>
 					<div className='containerImg'>
-						<img src={data.urlImg} alt="" />
+						<img src={data.urlImg} alt={data.nombre} title={data.nombre}/>
 					</div>
 				</div>
 			</div>

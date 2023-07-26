@@ -158,10 +158,15 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    padding: 15px;
+    padding: 35px 0;
 }
 .containerImg img {
-    width: 500px;
+    width: 380px;
+		transition: all 0.3s;
+}
+.containerImg img:hover{
+	transform: scale(1.2);
+	filter: drop-shadow(0 0 1rem #7035C0);
 }
 @media (min-width:320px) and (max-width:550px){
     .containerProductDetail{
