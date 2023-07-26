@@ -76,7 +76,6 @@ async function DeleteFavoriteById({ id, productId, token }) {
   return await response.json();
 }
 
-<<<<<<< HEAD
 // Eliminar un producto de la lista de favoritos
 async function DeleteFavoriteById({ id, productId, token }) {
   const body = JSON.stringify({
@@ -93,6 +92,4 @@ async function DeleteFavoriteById({ id, productId, token }) {
   return await response.json();
 }
 
-=======
->>>>>>> origin/footer
 export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById };
