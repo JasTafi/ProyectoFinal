@@ -7,7 +7,7 @@ export const RutaProtejida = ({ children }) => {
   const { sesion } = useContext(DataProvider);
   const location = useLocation();
 
-  if(sesion.isLogged === false) {
+  if(sesion.isLogged === false || sesion.isLogged === null || sesion.isLogged === undefined) {
     alert("Inicia sesion")
     return <Navigate to='/' state={location}></Navigate>;
   }

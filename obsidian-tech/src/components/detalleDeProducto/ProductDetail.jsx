@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -10,11 +10,14 @@ import { getProductByIdFromDb } from '../../services/product_service';
 import { DataProvider } from '../../context/DataContext';
 
 import '../detalleDeProducto/ProductDetail.css';
-import { AddFavoriteProduct } from '../../services/user_service';
+
+import { addFavorites } from '../../functions/addFavorites';
 
 const ProductDetail = () => {
 
 	const { data:{ userData }} = useContext(DataProvider);
+	const { state } = useLocation();
+	
 	const {id} = useParams();
 	//para mostrar producto
 	const [data, setData] = useState([]);
@@ -41,15 +44,8 @@ const ProductDetail = () => {
 		.catch(error => console.log(error))
 	}, [])
 
-	  function addFavoritos(){
-    AddFavoriteProduct({
-      userId: userData.user.id,
-      productId: addFav,
-      token:userData.token
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  }
+	addFavorites(userData.user.id, addFav, userData.token);//añade producto a favoritos
+
   function verificarFav(id){
     if(addFav == id){
       alert("su producto ya esta en sus favoritos");
@@ -64,7 +60,7 @@ const ProductDetail = () => {
 					<div className='category'>{data.categoria}</div>
 					<button onClick={() => {
 						setAddFav(data._id);
-						addFavoritos();
+						addFavorites();
 						verificarFav(data._id)
 					}}><FontAwesomeIcon icon={faHeart} /></button>
 					<p>Agregar a lista de deseos.</p>

@@ -15,8 +15,6 @@ import '../tarjetasDeProductos/CardProduct.css'
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Navigate } from 'react-router-dom';
-
 
 export const CardProduct = () => {
   const user = {
@@ -25,7 +23,6 @@ export const CardProduct = () => {
   }
   const [dataApi, setDataApi] = useState([])//trae los productos 
   const [addFav, setAddFav] = useState()//agregar favoritos
-  const [ favAdded, setFavAdded ] =useState(false)
 
   function addFavoritos(){
     AddFavoriteProduct({

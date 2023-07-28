@@ -204,3 +204,31 @@
         width: 90vw;
     }
 }
+@media (min-width:551px) and (max-width:768px) {
+	.containerProductDetail{
+		display: flex;
+		padding: 4.5rem 1rem;
+		width: 100vw;
+}
+	.containerDetail {
+		width: 50%;
+		height: 100vh;
+	}
+	.containerDetail h2 {
+		font-size: 1.3rem;
+	}
+	.boxBuyAndAdd {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+	.containerPictures {
+		width: 50%;
+	}
+	.containerPictures .borderColorBox {
+		width: 45vw;
+	}
+	.containerImg img {
+		width: 44vw;
+}
+}
