@@ -42,10 +42,10 @@ export const ObsidianNavbar = () => {
       <div className={ scrolling ? 'navBarContainer scroll' : 'navBarContainer'}>
         <h2>Obsidian<span>-</span>Tech</h2>
         <div className={ clicked ? 'linksContainer active': 'linksContainer'}>
-          <NavLink className='linkStyle' to={'/'}>Home</NavLink>
-          <NavLink className='linkStyle' to={'/administracion'}>Administracion</NavLink>
-          <NavLink className='linkStyle' to={'/nosotros'}>Nosotros</NavLink>
-          <NavLink className='linkStyle' to={'/recContraseña'}>Recuperar Contraseña</NavLink>
+          <NavLink onClick={() => setClicked(false)} className='linkStyle' to={'/'}>Home</NavLink>
+          <NavLink onClick={() => setClicked(false)} className='linkStyle' to={'/administracion'}>Administracion</NavLink>
+          <NavLink onClick={() => setClicked(false)} className='linkStyle' to={'/nosotros'}>Nosotros</NavLink>
+          <NavLink onClick={() => setClicked(false)} className='linkStyle' to={'/recContraseña'}>Recuperar Contraseña</NavLink>
         </div>
         <div className='halfContainer'>
           <div className='iconContainer'>
@@ -65,7 +65,7 @@ export const ObsidianNavbar = () => {
           </div>
         </div>
         <div className={clicked ? 'inputContainer active':'inputContainer'}>
-          <FilterComponent/>
+          <FilterComponent setClicked={setClicked}/>
         </div>
         <div>
           <ModalLogin />

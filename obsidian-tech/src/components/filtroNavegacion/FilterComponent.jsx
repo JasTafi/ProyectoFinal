@@ -7,7 +7,8 @@ import '../filtroNavegacion/FilterComponent.css'
 import { ContainerResults } from '../ventanadaResultados/ContainerResults'
 import { getAllProductsFromDB } from '../../services/product_service'
 
-const FilterComponent = () => {
+const FilterComponent = ( {setClicked} ) => {
+
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
@@ -52,7 +53,7 @@ const FilterComponent = () => {
         placeholder='Buscar productos...'/>
         </div>
     </form>
-    <ContainerResults resultado = {resultado} show = {show} setShow={setShow} setFiltered={setFiltered}/>
+    <ContainerResults resultado = {resultado} show = {show} setShow={setShow} setFiltered={setFiltered} setClicked={setClicked}/>
     </>
   );
 };

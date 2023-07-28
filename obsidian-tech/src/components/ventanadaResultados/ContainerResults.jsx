@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../ventanadaResultados/ContainerResults.css'
 
-export const ContainerResults = ({resultado, show, setShow, setFiltered}) => {
+export const ContainerResults = ({resultado, show, setShow, setFiltered, setClicked}) => {
 
   return (
     <>
@@ -16,7 +16,8 @@ export const ContainerResults = ({resultado, show, setShow, setFiltered}) => {
                       <img className='imgDetalle' src={item.urlImg} />
                       <Link to={`/accesorio/${item._id}`} className='linkAccesorio' onClick={() => {
                         setShow(false);
-                        setFiltered("")
+                        setFiltered("");
+                        setClicked(false)
                       }}>
                       <div className='nombreYPrecio'>
                         <p>{item.nombre}</p>
