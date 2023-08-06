@@ -8,11 +8,13 @@
     padding: 0 1rem;
     width: 100%;
     z-index: 99999;
+    transition: all 0.2s ease-in-out;
 }
 .navBarContainer.scroll {
     background-color: #000;
     box-shadow: 0 0 10px rgba(250, 250, 250, 0.5);
-    transition: all 0.1s;
+    height: 5rem;
+    transition: all 0.2s ease-in-out;
 }
 .navBarContainer h2 {
     color: #fff;

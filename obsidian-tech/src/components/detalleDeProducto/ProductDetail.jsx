@@ -16,9 +16,12 @@ const ProductDetail = () => {
 	
 	const [data, setData] = useState([]);
 	const [num, setNum] = useState(1)
-
+	const stock = data.stock
+	
 	function sumar(){
-		setNum( num + 1)
+		if(num < stock){
+			setNum(num + 1)
+		}
 	}
 	function restar(){
 		if(num == 1){
@@ -36,7 +39,7 @@ const ProductDetail = () => {
   return (
     <div className='containerProductDetail'>
 			<div className='containerDetail'>
-				<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft}/>Inicio</Link>
+				<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft} className='icon'/>Inicio</Link>
 				<div className='boxCateogy'>
 					<div className='category'>{data.categoria}</div>
 					<button><FontAwesomeIcon icon={faHeart} /></button>
@@ -62,7 +65,7 @@ const ProductDetail = () => {
 						<div className='lbl'>
 							<button onClick={restar}>-</button>
 							<span className='num'>{num}</span>
-							<button onClick={sumar}>+</button>
+							<button onClick={sumar} disabled={num==stock}>+</button>
 						</div>
 					</div>
 				</div>
@@ -74,7 +77,7 @@ const ProductDetail = () => {
 			<div className='containerPictures'>
 				<div className='borderColorBox'>
 					<div className='containerImg'>
-						<img src={data.urlImg} alt="" />
+						<img src={data.urlImg} alt={data.nombre} title={data.nombre}/>
 					</div>
 				</div>
 			</div>

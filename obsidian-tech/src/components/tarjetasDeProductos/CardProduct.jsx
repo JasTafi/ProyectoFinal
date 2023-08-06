@@ -8,26 +8,40 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
 import { getAllProductsFromDB } from '../../services/product_service'
+import { AddFavoriteProduct } from '../../services/user_service';
 
 import '../tarjetasDeProductos/CardProduct.css'
 
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Navigate } from 'react-router-dom';
+
 
 export const CardProduct = () => {
-
-  const [dataApi, setDataApi] = useState([])
-  const [addFav, setAddFav] = useState(false)//boron addFav
-
-  function addFavoritos(e){
-    
-    if(e.target== e.target){
-      setAddFav(!addFav)
-    }
-    
+  const user = {
+    id:"64ab23f497e57fc315caf6fe",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkyOTkwODh9.ucKkgJ0tt03k3QPtS8-SBde6B50snlakS2NvV9vrxls"
   }
+  const [dataApi, setDataApi] = useState([])//trae los productos 
+  const [addFav, setAddFav] = useState()//agregar favoritos
+  const [ favAdded, setFavAdded ] =useState(false)
 
+  function addFavoritos(){
+    AddFavoriteProduct({
+      userId: user.id,
+      productId: addFav,
+      token: user.token
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+  function verificarFav(id){
+    if(addFav == id){
+      alert("su producto ya esta en sus favoritos");
+    }
+  }
+  
   useEffect(() => {
     getAllProductsFromDB()
     .then(({data}) => {
@@ -36,7 +50,6 @@ export const CardProduct = () => {
     .catch(error => console.log(error))
   }, [])
   
-
   return (
     <>
     <div className='swiperContainer'>
@@ -85,7 +98,11 @@ export const CardProduct = () => {
               <div className='cardContainer'>
                 <div className='cardHead'>
                   <div className='boxCategory'>{item.categoria}</div>
-                  <button className={addFav ? 'boxIcon active':'boxIcon'} onClick={addFavoritos}>
+                  <button className={'boxIcon'} onClick={() => {
+                    setAddFav(item._id)
+                    addFavoritos()
+                    verificarFav(item._id)
+                  }}>
                     <FontAwesomeIcon icon={faHeart}/>
                   </button>
                 </div>

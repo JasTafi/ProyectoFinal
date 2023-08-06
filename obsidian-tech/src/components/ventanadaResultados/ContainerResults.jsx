@@ -1,25 +1,23 @@
-import { useState } from 'react'
 
 import { Link } from 'react-router-dom';
 
 import '../ventanadaResultados/ContainerResults.css'
 
-export const ContainerResults = ({resultado, filtered}) => {
-
-  const showResults = resultado.length > 0 && filtered !== ''
+export const ContainerResults = ({resultado, show, setShow, setFiltered}) => {
 
   return (
     <>
-      {
-        showResults && (
-          <div className='containerShowResults'>
+      <div className={show ?'containerShowResults active': 'containerShowResults'}>
             <div className='containerResults'>
               {
-                resultado.map((item,index) => {
+                resultado.map((item) => {
                   return (
-                    <div className='cardResults'key={index}>
-                      <img src={item.urlImg} />
-                      <Link to={`/accesorio/${item._id}`} className='linkAccesorio'>
+                    <div className='cardResults'key={item._id}>
+                      <img className='imgDetalle' src={item.urlImg} />
+                      <Link to={`/accesorio/${item._id}`} className='linkAccesorio' onClick={() => {
+                        setShow(false);
+                        setFiltered("")
+                      }}>
                       <div className='nombreYPrecio'>
                         <p>{item.nombre}</p>
                         <p>${item.precio}</p>
@@ -32,8 +30,6 @@ export const ContainerResults = ({resultado, filtered}) => {
               <div className='btnGeneral'>{resultado.length} Resultados</div>
           </div>
         </div>
-        )
-      }
     </>
   )
 }
