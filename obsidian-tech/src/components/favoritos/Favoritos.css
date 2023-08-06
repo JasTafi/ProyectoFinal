@@ -129,6 +129,8 @@
     margin: 10px 3px;
 }
 .favEmpty {
+    width: 100%;
+    text-align: center;
     color: #000;
 }
 /*MediaQuery*/

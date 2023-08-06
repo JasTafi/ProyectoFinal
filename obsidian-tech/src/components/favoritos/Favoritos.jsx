@@ -43,7 +43,7 @@ const Favoritos = () => {
 								<h3>Favoritos {fav.length}</h3>
 								<div className='containerCardFav'>
 								{
-								(fav.length == 0 ? <h2 className='favEmpty'>No tienes productos agregados a favoritos!</h2> : <CardFavorites fav={fav} />)
+								(fav.length == 0 ? <div className='favEmpty'><h2>No tienes productos agregados a favoritos!</h2></div> : <CardFavorites fav={fav} />)
 								}
 								</div>
 								{
