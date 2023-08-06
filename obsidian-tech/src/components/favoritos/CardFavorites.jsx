@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { DeleteFavoriteById } from '../../services/user_service';
 
-import '../favoritos/Favoritos.css';
+
 import { DataProvider } from '../../context/DataContext';
 
-
+import '../favoritos/Favoritos.css';
 export const CardFavorites = ({fav}) => {
 
 	const { data: {userData} } = useContext(DataProvider);

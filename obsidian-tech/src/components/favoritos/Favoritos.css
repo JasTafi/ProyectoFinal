@@ -112,6 +112,14 @@
     justify-content: flex-end;
     height: 30%;
 }
+.cardBody .boxTitle {/* propiedad para el titulo de la tarjeta*/
+		width: 100%;
+}
+.cardBody .boxTitle h4 {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+}
 .cardFooterFav .boxPrice {
     display: flex;
     align-items: center;

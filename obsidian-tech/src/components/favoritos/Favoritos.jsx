@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import { Link } from 'react-router-dom';
 
+import Loader from '../loader/Loader';
+
 import { GetFavoriteProduct } from '../../services/user_service';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,12 +14,14 @@ import { DataProvider } from '../../context/DataContext';
 
 import '../favoritos/Favoritos.css';
 
-
 const Favoritos = () => {
+
+	const [loading, setLoading] = useState(false);
 	const [ fav, setFav ] = useState([])
 	const  { data: {userData} } = useContext(DataProvider);
 	
 	useEffect(() => {
+		setLoading(true)
 		GetFavoriteProduct({
 			id: userData.user.id,
 			token:userData.token
@@ -27,11 +31,18 @@ const Favoritos = () => {
 			setFav(favorite_producs)
 		})
 		.catch(err => console.log(err))
+		.finally(() => {
+			setTimeout(() => {
+				setLoading(false)
+			}, 2000);
+		})
 	}, [])
 	
 	const favoritos = fav.length > 0
   return (
-    <div className='containerGral'>
+		<div>
+			{
+				loading ? (<Loader/>) : (<div className='containerGral'>
         <div className='containerFav'>
 					<div className='ventanaFav'>
 							<div className='boxTitleFav'>
@@ -56,7 +67,9 @@ const Favoritos = () => {
 							</div>
 					</div>
 				</div>
-    </div>
+    </div>)
+			}
+		</div>
   )
 }
 
