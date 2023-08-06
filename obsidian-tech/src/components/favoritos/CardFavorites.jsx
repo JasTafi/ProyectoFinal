@@ -1,29 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { DeleteFavoriteById } from '../../services/user_service';
 
 import '../favoritos/Favoritos.css';
+import { DataProvider } from '../../context/DataContext';
 
 
 export const CardFavorites = ({fav}) => {
 
+	const { data: {userData} } = useContext(DataProvider);
 	const [ favDelete, setFavDelete ] = useState()
-	const usuario = {
-		id: "64ab23f497e57fc315caf6fe",
-		token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkxMjcxOTZ9.Yh0-nCN2dkt4n0k34QIHi1NcQfYYu77HY-E0h0ynQiE"
-	}
+	
+	// const usuario = {
+	// 	id: "64ab23f497e57fc315caf6fe",
+	// 	token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkxMjcxOTZ9.Yh0-nCN2dkt4n0k34QIHi1NcQfYYu77HY-E0h0ynQiE"
+	// }
 	// funcion para eliminar fav de la lista
-	function handleRemoveFav(id){
+	function handleRemoveFav(item_id){
 		
 		DeleteFavoriteById({
-			id: usuario.id,
-			productId: id,
-			token: usuario.token
+			id: userData.user.id,
+			productId: item_id,
+			token: userData.token
 		})
-		.then(res => console.log(res))
+		.then((res) => {
+			console.log(res + "producto borrado")
+		})
 		.catch(err => console.log(err))
-		location.reload();
+		
 	}
 
   return (
