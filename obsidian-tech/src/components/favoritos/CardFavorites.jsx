@@ -1,12 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { DeleteFavoriteById } from '../../services/user_service';
 
+import { Navigate } from 'react-router';
 
 import { DataProvider } from '../../context/DataContext';
+import { DeleteFavoriteById } from '../../services/user_service';
 
 import '../favoritos/Favoritos.css';
+
 export const CardFavorites = ({fav}) => {
 
 	const { data: {userData} } = useContext(DataProvider);
@@ -23,7 +26,6 @@ export const CardFavorites = ({fav}) => {
 			console.log(res + "producto borrado")
 		})
 		.catch(err => console.log(err))
-		
 	}
 
   return (
