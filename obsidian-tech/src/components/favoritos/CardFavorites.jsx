@@ -10,12 +10,7 @@ import { DataProvider } from '../../context/DataContext';
 export const CardFavorites = ({fav}) => {
 
 	const { data: {userData} } = useContext(DataProvider);
-	const [ favDelete, setFavDelete ] = useState()
-	
-	// const usuario = {
-	// 	id: "64ab23f497e57fc315caf6fe",
-	// 	token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkxMjcxOTZ9.Yh0-nCN2dkt4n0k34QIHi1NcQfYYu77HY-E0h0ynQiE"
-	// }
+
 	// funcion para eliminar fav de la lista
 	function handleRemoveFav(item_id){
 		
