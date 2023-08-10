@@ -1,119 +1,26 @@
-// import { useState, useContext } from 'react';
-
-// import  { Login } from '../../services/user_service';
-
-// import'../login/ModalLogin.css';
-// import { DataProvider } from '../../context/DataContext';
-
-// export default function ModalLogin() {
-//   const { setUserInfo, userInfo } = useContext(DataProvider)
-//   const [user, setUser] = useState({
-//     email: '',
-//     password: '',
-//     allowsLocaStorage: false,
-//   });
-
-//   const [showModal, setShowModal] = useState(false);
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-
-//     Login({
-//       email: user.email,
-//       password: user.password,
-//     })
-//       .then(({ user, token }) => {
-//         setUserInfo({
-//           isLogged: true,
-//           user: {
-//             token,
-//             id: user.id,
-//             photoUrl: user.photoUrl,
-//           },
-//         })
-//         console.log(userInfo);
-//         console.log(user);
-//       })
-//       .catch((error) => console.log(error));
-//   };
-
-//   const toggleModal = () => {
-//     setShowModal(!showModal);
-//   };
-
-//   return (
-//     <div>
-//       <button className='btn-login' onClick={toggleModal}>Iniciar Sesión</button>
-//       <div className={ showModal? 'modalContainer active': 'modalContainer'}>
-//         <div className='modalContent'>
-//           <button className='btnCerrar' onClick={toggleModal}>cerrar</button>
-//           <h3>Inicio de Sesión</h3>
-//           <form>
-//             <label>
-//               Ingresa tu mail:
-//               <input
-//                 type='email'
-//                 name='email'
-//                 onChange={(e) => setUser({
-//                   ...user,
-//                   email: e.target.value,
-//                   })
-//                 }
-//               />
-//             </label>
-//             <label>
-//               Contraseña:
-//               <input
-//                 type='password'
-//                 name='password'
-//                 onChange={(e) => setUser({
-//                   ...user,
-//                   password: e.target.value,
-//                   })
-//                 }
-//               />
-//             </label>
-//             <label>
-//               Mantenerme conectado
-//               <input
-//                 type='checkbox'
-//                 label='Mantenerme Conectado'
-//                 onClick={(e) => setUser({
-//                   ...user,
-//                   allowsLocaStorage: e.target.checked,
-//                 })}
-//               />
-//             </label>
-//             <button className='btnSesion' type='button' onClick={handleLogin}>
-//               Iniciar Sesión
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useState, useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 import "../login/ModalLogin.css";
 
-const ModalLogin = () => {
-  const [formEnviado, cambiarFormEnviado] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+import { Login } from "../../services/user_service";
+import { DataProvider } from "../../context/DataContext";
 
-  const alternarModal = () => {
+const ModalLogin = () => {
+  const [showModal, setShowModal] = useState(false);
+  const { setUserInfo, userInfo } = useContext(DataProvider);
+
+  const handleModal = () => {
     setShowModal(!showModal);
   };
-  
+
   return (
     <div>
-      <button className="btn-login" onClick={alternarModal}>
+      <button className="btn-login" onClick={handleModal}>
         Iniciar Sesión
       </button>
-      <div className={ showModal? 'modalContainer active': 'modalContainer'}>
+      <div className={showModal ? "modalContainer active" : "modalContainer"}>
         <div className="modalContent">
           <Formik
             initialValues={{
@@ -121,46 +28,46 @@ const ModalLogin = () => {
               password: "",
               allowsLocaStorage: false,
             }}
-            validate={(valores) => {
+            validate={(values) => {
               let errores = {};
 
-              //      Validación del mail
-              if (!valores.email) {
-                errores.email = "Por favor ingresa un correo electronico";
+              // Validacion del email
+              if (!values.email) {
+                errores.email = "Por favor ingrese un mail";
               } else if (
                 !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-                  valores.email
+                  values.email
                 )
               ) {
                 errores.email =
-                  "El correo solo puede contener letras, numeros, punto y giones";
-              }
-
-              //      Validación de la contraseña
-              if (!valores.password) {
-                errores.password =
-                  "La contrasea debe tener entre 8 y 15 caracteres, como minimo una mayuscula, una miniscula, un numero y un caracter especial";
-              } else if (
-                !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/.test(
-                  valores.contraseña
-                )
-              ) {
-                errores.password = "email o contraseá incorrecta";
+                  "El mail solo puede contener letras, numerospuntos guiones y caracteres speciales";
               }
 
               return errores;
             }}
-            onSubmit={(valores, { resetForm }) => {
-              resetForm();
-              console.log("Formulario enviado");
-              cambiarFormEnviado(true);
-              setTimeout(() => cambiarFormEnviado(false), 5000);
+            
+            onSubmit={(values) => {
+              Login(values)
+                .then(({ user, token }) => {
+                  setUserInfo({
+                    isLogged: true,
+                    user: {
+                      token,
+                      id: user.id,
+                      photoUrl: user.photoUrl,
+                      email: user.email,
+                    },
+                  });
+                  console.log(userInfo);
+                })
+                .catch((error) => console.log('Error en la solicitud de inicio de sesión', error))
+                .finally(setShowModal(false))
             }}
           >
             {({ errors }) => (
               <Form>
                 <div>
-                  <label htmlFor="email">Ingresa tu mail</label>
+                  <label htmlFor="email">Correo electronico</label>
                   <Field type="email" id="email" name="email" />
                   <ErrorMessage
                     name="email"
@@ -170,19 +77,29 @@ const ModalLogin = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email">Contraseña</label>
+                  <label htmlFor="password">Ingresa tu contraseña</label>
                   <Field type="password" id="password" name="password" />
                   <ErrorMessage
-                    name="contraseña"
+                    name="password"
                     component={() => (
-                      <div className="error">{errors.contraseña}</div>
+                      <div className="error">{errors.password}</div>
                     )}
                   />
                 </div>
-                <button type="submit">Enviar</button>
-                {formEnviado && (
-                  <p className="exito">Formulario enviado con exito</p>
-                )}
+                <div>
+                  <label htmlFor="allowsLocaStorage">
+                    Mantenerme conectado
+                  </label>
+                  <Field
+                    type="checkbox"
+                    id="allowsLocaStorage"
+                    name="allowsLocaStorage"
+                  />
+                </div>
+                <NavLink to={'/registro'} onClick={() => setShowModal(false)}>Registro</NavLink>
+                <NavLink to={'/recContraseña'} onClick={() => setShowModal(false)}>Olvidaste tu Contraseña?</NavLink>
+                <button 
+                type="submit">Enviar</button>
               </Form>
             )}
           </Formik>

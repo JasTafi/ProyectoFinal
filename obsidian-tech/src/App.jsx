@@ -16,8 +16,6 @@ import Footer from './components/footer/Footer';
 import { RutaProtejida } from './components/RutaProtejida/RutaProtejida';
 
 
-
-
 function App() {
   return (
     <DataContext>
