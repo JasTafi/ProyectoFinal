@@ -60,3 +60,13 @@
   margin-right: 20px;
   padding: 0.3rem 1.2rem;
 }
+
+.error {
+  color: #f80202;
+  font-size: 0.8rem;
+}
+
+.exito {
+  color: #05a705;
+  font-size: 0.8rem;
+}

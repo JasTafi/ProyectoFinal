@@ -1,90 +1,118 @@
-import { useState, useContext } from 'react';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useState, useContext } from "react";
+import { NavLink } from "react-router-dom";
 
-import  { Login } from '../../services/user_service';
+import "../login/ModalLogin.css";
 
-import'../login/ModalLogin.css';
-import { DataProvider } from '../../context/DataContext';
+import { Login } from "../../services/user_service";
+import { DataProvider } from "../../context/DataContext";
 
-export default function ModalLogin() {
-  const { data: {setUserData}, sesion :{isLogged, setIsLogged} } = useContext(DataProvider);
-  
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-    allowsLocaStorage: false,
-  });
+const ModalLogin = () => {
   const [showModal, setShowModal] = useState(false);
+  const { setUserInfo } = useContext(DataProvider);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    Login({
-      email: user.email,
-      password: user.password,
-    })
-      .then((res) => {
-        console.log(res)
-        setUserData(res)
-        setIsLogged(true)
-      })
-      .catch((error) => console.log(error))
-      .finally(setShowModal(false))
-  };
-
-  const toggleModal = () => {
+  const handleModal = () => {
     setShowModal(!showModal);
   };
-  
+
   return (
     <div>
-      <button className='btn-login' onClick={toggleModal}>Iniciar Sesión</button>
-      <div className={ showModal? 'modalContainer active': 'modalContainer'}>
-        <div className='modalContent'>
-          <button className='btnCerrar' onClick={toggleModal}>cerrar</button>
-          <h3>Inicio de Sesión</h3>
-          <form>
-            <label>
-              Ingresa tu mail:
-              <input
-                type='email'
-                name='email'
-                onChange={(e) => setUser({
-                  ...user,
-                  email: e.target.value,
-                  })
-                }
-              />
-            </label>
-            <label>
-              Contraseña:
-              <input
-                type='password'
-                name='password'
-                onChange={(e) => setUser({
-                  ...user,
-                  password: e.target.value,
-                  })
-                }
-              />
-            </label>
-            <label>
-              Mantenerme conectado
-              <input 
-                type='checkbox'
-                name='checkbox'
-                onClick={(e) => setUser({
-                  ...user,
-                  allowsLocaStorage: e.target.checked,
-                })}
-              />
-            </label>
-            <button className='btnSesion' type='button' onClick={handleLogin}>
-              Iniciar Sesión
-            </button>
-          </form>
+      <button className="btn-login" onClick={handleModal}>
+        Iniciar Sesión
+      </button>
+      <div className={showModal ? "modalContainer active" : "modalContainer"}>
+        <div className="modalContent">
+          <Formik
+            initialValues={{
+              email: "",
+              password: "",
+              allowsLocaStorage: false,
+            }}
+            validate={(values) => {
+              let errores = {};
+
+              // Validacion del email
+              if (!values.email) {
+                errores.email = "Por favor ingrese un mail";
+              } else if (
+                !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                  values.email
+                )
+              ) {
+                errores.email =
+                  "El mail solo puede contener letras, numerospuntos guiones y caracteres speciales";
+              }
+
+              return errores;
+            }}
+            onSubmit={(values) => {
+              Login(values)
+                .then(({ user, token }) => {
+                  setUserInfo({
+                    isLogged: true,
+                    user: {
+                      token,
+                      id: user.id,
+                      photoUrl: user.photoUrl,
+                      email: user.email,
+                      allowsLocaStorage: values.allowsLocaStorage,
+                    },
+                  });
+                })
+                .catch((error) =>
+                  console.log(
+                    "Error en la solicitud de inicio de sesión",
+                    error
+                  )
+                )
+                .finally(setShowModal(false));
+            }}
+          >
+            {({ errors }) => (
+              <Form>
+                <div>
+                  <label htmlFor="email">Correo electronico</label>
+                  <Field type="email" id="email" name="email" />
+                  <ErrorMessage
+                    name="email"
+                    component={() => (
+                      <div className="error">{errors.email}</div>
+                    )}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Ingresa tu contraseña</label>
+                  <Field type="password" id="password" name="password" />
+                  <ErrorMessage
+                    name="password"
+                    component={() => (
+                      <div className="error">{errors.password}</div>
+                    )}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="allowsLocaStorage">
+                    Mantenerme conectado
+                    <Field type="checkbox" name="allowsLocaStorage" />
+                  </label>
+                </div>
+                <NavLink to={"/registro"} onClick={() => setShowModal(false)}>
+                  Registro
+                </NavLink>
+                <NavLink
+                  to={"/recContraseña"}
+                  onClick={() => setShowModal(false)}
+                >
+                  Olvidaste tu Contraseña?
+                </NavLink>
+                <button type="submit">Enviar</button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ModalLogin;

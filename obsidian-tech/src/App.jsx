@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
-import InicioPage from './page/Iniciopage';
+import InicioPage from './page/InicioPage';
 import AdministracionPage from './page/AdministracionPage';
 import RecContraseñaPage from './page/RecContraseñaPage';
 import NosotrosPage from './page/NosotrosPage';
@@ -14,8 +14,6 @@ import { ObsidianNavbar } from './components/navegacion/ObsidianNavbar';
 import { DataContext } from './context/DataContext';
 import Footer from './components/footer/Footer';
 import { RutaProtejida } from './components/RutaProtejida/RutaProtejida';
-
-
 
 
 function App() {

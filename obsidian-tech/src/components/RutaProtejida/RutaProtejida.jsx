@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { DataProvider } from "../../context/DataContext";
 import { useLocation } from "react-router-dom";

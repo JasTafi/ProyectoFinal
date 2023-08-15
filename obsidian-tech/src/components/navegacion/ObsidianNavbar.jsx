@@ -7,7 +7,7 @@ import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fort
 
 import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
-import Favoritos from '../favoritos/Favoritos';
+//import Favoritos from '../favoritos/Favoritos';
 import ModalLogin from '../login/ModalLogin';
 
 export const ObsidianNavbar = () => {

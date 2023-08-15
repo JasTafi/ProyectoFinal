@@ -61,21 +61,8 @@ async function GetFavoriteProduct({ id, token}) {
   return results
   
 }
-async function DeleteFavoriteById({ id, productId, token }) {
-  const body = JSON.stringify({
-    productId,
-  });
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/favorites/${id}`, {
-    method: 'PUT',
-    headers: {
-      'content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: body,
-  });
-  return await response.json();
-}
 
+//  Borrar un producto por id de la lista de favoritos
 // Eliminar un producto de la lista de favoritos
 async function DeleteFavoriteById({ id, productId, token }) {
   const body = JSON.stringify({

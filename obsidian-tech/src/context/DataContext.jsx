@@ -1,23 +1,32 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+
 //contexto
 export const DataProvider = createContext();
+
+const initialUserInfo = {
+  user: null,
+  islogged: false
+}
 
 //creo el proveedor
 export const DataContext = ({ children }) => {
 
-  const [ userData, setUserData ] = useState(null);
-  const [ isLogged, setIsLogged ] = useState(false);
+  //const [ userData, setUserData ] = useState(null);
+  //const [ isLogged, setIsLogged ] = useState(false);
+  const [userInfo, setUserInfo] = useState(initialUserInfo);
 
   const initiallValues = {
-    data: {
-      userData,
-      setUserData
-    },
-    sesion: {
-      isLogged,
-      setIsLogged
-    }
+    userInfo,
+    setUserInfo,
+    // data: {
+    //   userData,
+    //   setUserData,
+    // },
+    // sesion: {
+    //   isLogged,
+    //   setIsLogged,
+    // }
   };
   
   return (

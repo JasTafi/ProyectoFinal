@@ -1,147 +1,105 @@
-import React, { useEffect, useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import { Navigate } from 'react-router-dom';
-
-import { ModalAviso } from '../modalAviso/ModalAviso';
-
-import { CreateUser } from '../../services/user_service';
+import { CreateUser } from "../../services/user_service";
 
 import '../registroUsuario/UserRegister.css';
 
-
-const UserRegister = () => {//FALTA VALIDAR CAMPO DE IMAGEN
-
-	//muestra modal de aviso de registro
-	const [ show, setShow ] = useState(false)
-	//muestra aviso de error en inputs
-	const [ showAlert, setShowAlert ] = useState(false)
-	//para redireccionar 
-	const [ redirect, setRedirect ] = useState(false)
-
-	const [user, setUser] = useState({
-		email:'',
-		password:'',
-		photoUrl:''
-	});
-	//para validar usuario
-	const [userError, setUserError] = useState({
-		emailError: '',
-		passwordError: '',
-	})
-	
-	function mostrarModal(){
-		setShow(true)
-		setTimeout(() => {
-			setShow(false)
-			setRedirect(true)
-		}, 2000);
-	};
-
-	function mostrarAviso(){
-		setShowAlert(true)
-		setTimeout(() => {
-			setShowAlert(false)
-		}, 2000);
-	};
-	const validateEmail = (emailValue) => {
-    // Expresión regular para validar el email y otro comentario
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(emailValue);
-  };
-	const validatePassword = (passwordValue) => {
-		return passwordValue.length >= 6;
-	};
-
-	function handleRegister(e){
-		e.preventDefault();
-		e.stopPropagation()
-
-		if(!validateEmail(user.email)){
-			setUserError({
-				...userError,
-				emailError: "por favor ingresa un email válido"
-			})
-			mostrarAviso()
-			return 
-		}else{
-			setUserError({
-				...userError,
-				emailError:"",
-			})
-		};
-
-		if (!validatePassword(user.password)) {
-      setUserError({
-				...userError,
-				passwordError: 'La contraseña debe tener al menos 6 caracteres.'
-			});
-			mostrarAviso();
-      return;
-    } else {
-      setUserError({
-				...userError,
-				passwordError:""
-			});
-    }
-
-		CreateUser({
-			email: user.email,
-			password: user.password,
-			urlFoto: user.photoUrl
-		})
-		.then(res => {
-			console.log(res)
-			setUser({
-				email:"",
-				password:"",
-				photoUrl:""
-			})
-		})
-		.catch(err => console.log(err))
-		.finally(() => {
-			mostrarModal();
-		})
-		
-	}
+const UserRegister = () => {
   return (
-    <div className='containerRegisterGral'>
-			<ModalAviso show={show}/>
-      <div className='containerForm'>
-				<form>
-					<div className='boxTitleRegister'>
-						<h4>Registro de usuario.</h4>
-					</div>
-					<div className='boxInput'>
-						<label htmlFor="">Ingrese su email:</label>
-						<input className='campo' type="email" name='email' value={user.email} maxLength={30} onChange={(e)=> setUser({
-							...user,
-							email: e.target.value
-						})}/>
-						<div className={ showAlert?'alertaError':'alertaError desactive'}>{userError.emailError}</div>
-					</div>
-					<div className='boxInput'>
-						<label htmlFor="">Ingrese su contraseña:</label>
-						<input className='campo' type="password" name='password' value={user.password} maxLength={20} onChange={(e)=> setUser({
-							...user,
-							password: e.target.value
-						})}/>
-						<div className={ showAlert?'alertaError':'alertaError desactive'}>{userError.passwordError}</div>
-					</div>
-					<div className='boxInput'>
-						<label htmlFor="">Ingrese su foto:</label>
-						<input className='campo' type="text" name='photoUrl' value={user.photoUrl} onChange={(e)=> setUser({
-							...user,
-							photoUrl: e.target.value
-						})}/>
-					</div>
-					<input className='btnInputReg' type="submit" onClick={(e) => handleRegister(e)}/>
-				</form>
-			</div>
-		{
-			redirect && (<Navigate to={"/"}></Navigate>)
-		}
-    </div>
-  )
-}
+    <Formik
+      initialValues={{
+        email: "",
+        password: "",
+        repeatPassword: "",
+        urlPhoto: "",
+      }}
+      validate={(values) => {
+        let errors = {};
+        
+        // Validación input email
+        if(!values.email) {
+          errors.email = 'Por favor ingrese una direccion de mail';
+        } else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)) {
+          errors.email = 'El mail solo puede contener letras, numerospuntos guiones y caracteres speciales';
+        }
 
-export default UserRegister
+        //Validación input password
+        if(!values.password) {
+          errors.password = 'Por favor ingrese una contraseña'
+        } else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(values.password)) {
+          errors.password = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número';
+        }
+
+        return errors
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        if(values.password !== values.repeatPassword) {
+          console.log('Las contraseñas no coinciden');
+          setSubmitting(false);
+          return;
+        }
+        CreateUser({
+          email: values.email,
+          password: values.password,
+        })
+        .then(Response => {
+          console.log('Usuario creado:', Response);
+          // Realizar acciones adicionales despues de crear el usuario
+        })
+        .catch(error => {
+          console.log('Error al crear el usuario:', error);
+        })
+        .finally(() =>{
+          setSubmitting(false);
+        });
+      }}
+    >
+      {({ isSubmitting, isValid, errors }) => (
+        <div className='containerRegisterGral'>
+          <div className='containerForm'>
+            <Form>
+              <div className='boxTitleRegister'>
+                <h4>Registro de usuario.</h4>
+              </div>
+              <div className='boxInput'>
+                <label htmlFor='email'>Ingrese su email</label>
+                <Field className='campo' type="email" name="email" />
+                <ErrorMessage 
+                  name='email' 
+                  component={() => (
+                    <div className='error'>{errors.email}</div>
+                  )}
+                />
+              </div>
+              <div className="boxInput">
+                <label htmlFor="password">Ingrese su contraseña</label>
+                <Field className='campo' type="password" name="password" />
+                <ErrorMessage 
+                  name='password' 
+                  component={() => (
+                    <div className='error'>{errors.password}</div>
+                  )} 
+                />
+              </div>
+              <div className="boxInput">
+                <label htmlFor="repeatPassword">Repita su contraseña</label>
+                <Field
+                  className='campo'
+                  type="password"
+                  id="repeatPassword"
+                  name="repeatPassword"
+                />
+                <ErrorMessage name="repeatPassword" component="div" />
+              </div>
+              <button className='btnInputReg' type="submit" disabled={isSubmitting || !isValid}>
+                Crear Usuario
+              </button>
+            </Form>
+          </div>
+        </div>
+      )}
+    </Formik>
+  );
+};
+
+export default UserRegister;
