@@ -9,7 +9,7 @@ import { DataProvider } from "../../context/DataContext";
 
 const ModalLogin = () => {
   const [showModal, setShowModal] = useState(false);
-  const { setUserInfo, userInfo } = useContext(DataProvider);
+  const { setUserInfo } = useContext(DataProvider);
 
   const handleModal = () => {
     setShowModal(!showModal);
@@ -45,7 +45,6 @@ const ModalLogin = () => {
 
               return errores;
             }}
-            
             onSubmit={(values) => {
               Login(values)
                 .then(({ user, token }) => {
@@ -56,12 +55,17 @@ const ModalLogin = () => {
                       id: user.id,
                       photoUrl: user.photoUrl,
                       email: user.email,
+                      allowsLocaStorage: values.allowsLocaStorage,
                     },
                   });
-                  console.log(userInfo);
                 })
-                .catch((error) => console.log('Error en la solicitud de inicio de sesión', error))
-                .finally(setShowModal(false))
+                .catch((error) =>
+                  console.log(
+                    "Error en la solicitud de inicio de sesión",
+                    error
+                  )
+                )
+                .finally(setShowModal(false));
             }}
           >
             {({ errors }) => (
@@ -89,17 +93,19 @@ const ModalLogin = () => {
                 <div>
                   <label htmlFor="allowsLocaStorage">
                     Mantenerme conectado
+                    <Field type="checkbox" name="allowsLocaStorage" />
                   </label>
-                  <Field
-                    type="checkbox"
-                    id="allowsLocaStorage"
-                    name="allowsLocaStorage"
-                  />
                 </div>
-                <NavLink to={'/registro'} onClick={() => setShowModal(false)}>Registro</NavLink>
-                <NavLink to={'/recContraseña'} onClick={() => setShowModal(false)}>Olvidaste tu Contraseña?</NavLink>
-                <button 
-                type="submit">Enviar</button>
+                <NavLink to={"/registro"} onClick={() => setShowModal(false)}>
+                  Registro
+                </NavLink>
+                <NavLink
+                  to={"/recContraseña"}
+                  onClick={() => setShowModal(false)}
+                >
+                  Olvidaste tu Contraseña?
+                </NavLink>
+                <button type="submit">Enviar</button>
               </Form>
             )}
           </Formik>
