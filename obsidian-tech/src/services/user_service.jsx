@@ -61,8 +61,6 @@ async function GetFavoriteProduct({ id, token}) {
   return results
   
 }
-
-//  Borrar un producto por id de la lista de favoritos
 // Eliminar un producto de la lista de favoritos
 async function DeleteFavoriteById({ id, productId, token }) {
   const body = JSON.stringify({
