@@ -15,16 +15,16 @@ import { DataProvider } from '../../context/DataContext';
 import '../favoritos/Favoritos.css';
 
 const Favoritos = () => {
-
+	const [ productDeleted, setProductDeleted ] = useState(false)
 	const [loading, setLoading] = useState(false);
 	const [ fav, setFav ] = useState([])
-	const  { data: {userData} } = useContext(DataProvider);
+	const  { userInfo: {user} }  = useContext(DataProvider);
 	
 	useEffect(() => {
 		setLoading(true)
 		GetFavoriteProduct({
-			id: userData.user.id,
-			token:userData.token
+			id: user.id,
+			token:user.token
 		})
 		.then(({favorite_producs
 		}) => {
@@ -34,9 +34,10 @@ const Favoritos = () => {
 		.finally(() => {
 			setTimeout(() => {
 				setLoading(false)
-			}, 2000);
+			}, 2000),
+			setProductDeleted(false)
 		})
-	}, [])
+	}, [productDeleted])
 	
 	const favoritos = fav.length > 0
   return (
@@ -54,7 +55,7 @@ const Favoritos = () => {
 								<h3>Favoritos {fav.length}</h3>
 								<div className='containerCardFav'>
 								{
-								(fav.length == 0 ? <div className='favEmpty'><h2>No tienes productos agregados a favoritos!</h2></div> : <CardFavorites fav={fav} setLoading= {setLoading} />)
+								(fav.length == 0 ? <div className='favEmpty'><h2>No tienes productos agregados a favoritos!</h2></div> : <CardFavorites fav={fav} setProductDeleted={setProductDeleted}/>)
 								}
 								</div>
 								{
