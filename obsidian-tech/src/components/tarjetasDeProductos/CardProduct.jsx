@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { DataProvider } from '../../context/DataContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -15,32 +16,27 @@ import '../tarjetasDeProductos/CardProduct.css'
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Navigate } from 'react-router-dom';
 
 
 export const CardProduct = () => {
-  const user = {
-    id:"64ab23f497e57fc315caf6fe",
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkyOTkwODh9.ucKkgJ0tt03k3QPtS8-SBde6B50snlakS2NvV9vrxls"
-  }
+  // const { userInfo: {user}, userInfo: {isLogged}} = useContext(DataProvider)
   const [dataApi, setDataApi] = useState([])//trae los productos 
   const [addFav, setAddFav] = useState()//agregar favoritos
-  const [ favAdded, setFavAdded ] =useState(false)
 
-  function addFavoritos(){
-    AddFavoriteProduct({
-      userId: user.id,
-      productId: addFav,
-      token: user.token
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  }
-  function verificarFav(id){
-    if(addFav == id){
-      alert("su producto ya esta en sus favoritos");
-    }
-  }
+  // function addFavoritos(){
+  //   AddFavoriteProduct({
+  //     userId: user.id,
+  //     productId: addFav,
+  //     token: user.token
+  //   })
+  //   .then(res => console.log(res))
+  //   .catch(err => console.log(err))
+  // }
+  // function verificarFav(id){
+  //   if(addFav == id){
+  //     alert("su producto ya esta en sus favoritos");
+  //   }
+  // }
   
   useEffect(() => {
     getAllProductsFromDB()
@@ -100,8 +96,8 @@ export const CardProduct = () => {
                   <div className='boxCategory'>{item.categoria}</div>
                   <button className={'boxIcon'} onClick={() => {
                     setAddFav(item._id)
-                    addFavoritos()
-                    verificarFav(item._id)
+                    // addFavoritos()
+                    // verificarFav(item._id)
                   }}>
                     <FontAwesomeIcon icon={faHeart}/>
                   </button>

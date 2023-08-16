@@ -1,7 +1,10 @@
 .swiperContainer {
     display: flex;
     justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(3px);
     width: 100%;
+    padding: 15px;
 }
 .mySwiper {
     height: 530px;

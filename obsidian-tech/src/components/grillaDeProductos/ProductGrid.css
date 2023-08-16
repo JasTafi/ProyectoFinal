@@ -50,6 +50,7 @@
     color: #6D717A;
     transition: all 0.2s;
 }
+
 @media (max-width:320px){
     .introContainer .titleContainer {
         width: 100vw;
