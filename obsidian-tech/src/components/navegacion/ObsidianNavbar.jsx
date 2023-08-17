@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import {useContext, useState} from 'react'
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Navigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +9,10 @@ import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
 //import Favoritos from '../favoritos/Favoritos';
 import ModalLogin from '../login/ModalLogin';
+import { DataProvider } from '../../context/DataContext';
 
 export const ObsidianNavbar = () => {
-
+  const { isLogged, showModal, setShowModal }  = useContext(DataProvider)
 //useState para menu burger
   const [clicked, setClicked] = useState(false)
 
@@ -33,7 +34,7 @@ export const ObsidianNavbar = () => {
   function openedUser(){
     setLogin(!login)
   }
-
+ 
   window.addEventListener("scroll",changeBackG);
 
   return (
@@ -68,7 +69,7 @@ export const ObsidianNavbar = () => {
           <FilterComponent/>
         </div>
         <div>
-          <ModalLogin />
+          <ModalLogin/>
         </div>
       </div>
     </div>

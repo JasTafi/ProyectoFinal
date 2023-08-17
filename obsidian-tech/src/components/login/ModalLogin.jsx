@@ -7,14 +7,15 @@ import "../login/ModalLogin.css";
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 
+
 const ModalLogin = () => {
-  const [showModal, setShowModal] = useState(false);
-  const { setUserInfo } = useContext(DataProvider);
+  
+  const { setUserInfo, showModal, setShowModal } = useContext(DataProvider);
 
   const handleModal = () => {
     setShowModal(!showModal);
   };
-
+  
   return (
     <div>
       <button className="btn-login" onClick={handleModal}>

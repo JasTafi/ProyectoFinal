@@ -6,27 +6,20 @@ export const DataProvider = createContext();
 
 const initialUserInfo = {
   user: null,
-  islogged: false
+  isLogged: false
 }
 
 //creo el proveedor
 export const DataContext = ({ children }) => {
-
-  //const [ userData, setUserData ] = useState(null);
-  //const [ isLogged, setIsLogged ] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
+
 
   const initiallValues = {
     userInfo,
     setUserInfo,
-    // data: {
-    //   userData,
-    //   setUserData,
-    // },
-    // sesion: {
-    //   isLogged,
-    //   setIsLogged,
-    // }
+    showModal,
+    setShowModal
   };
   
   return (

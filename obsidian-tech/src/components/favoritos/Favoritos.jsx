@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Loader from '../loader/Loader';
 
@@ -19,7 +19,7 @@ const Favoritos = () => {
 	const [loading, setLoading] = useState(false);
 	const [ fav, setFav ] = useState([])
 	const  { userInfo: {user} }  = useContext(DataProvider);
-	
+
 	useEffect(() => {
 		setLoading(true)
 		GetFavoriteProduct({
