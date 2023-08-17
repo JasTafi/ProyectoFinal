@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 .introContainer {
     display: flex;
