@@ -1,89 +1,9 @@
 .gridContainer {
     padding-top: 4.5rem;
-    background: no-repeat center 100%/cover url(../../assets/bgGrilla.jpg);
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 100%;
-}
-.introContainer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem 2rem;
-    height: auto;
-    width: 100%;
-}
-.introContainer .titleContainer {
-    width: 40%;
-}
-.introContainer .titleContainer p {
-    color: #6D717A;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-align: justify;
-}
-.titleContainer .titleSpan {
-    background: linear-gradient(to left, #7035C0, #0396FE);
-    font-weight: 700;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;/* tira una advertencia */
-}
-.buttonLinkContainer {
-    display: flex;
-    justify-content: flex-end;
-}
-.titleContainer .button {
-    border: 1px solid transparent;
-    background: linear-gradient(to right, #7035C0, #0396FE);
-    border-radius: 0px 10px;
-    color: #fff;
-    font-size: 0.9rem;
-    padding: 0.3rem 0.9rem;
-    transition: all 0.2s;
-    text-decoration: none;
-}
-.titleContainer .button:hover {
-    background: transparent;
-    border: 1px solid #6D717A;
-    color: #6D717A;
-    transition: all 0.2s;
-}
-
-@media (max-width:320px){
-    .introContainer .titleContainer {
-        width: 100vw;
-    }
-    .introContainer .titleContainer p {
-        color: #fff;
-        font-size: 1rem;
-    }
-}
-@media (min-width: 321px) and (max-width: 375px) {
-    .introContainer .titleContainer {
-        width: 100vw;
-    }
-    .introContainer .titleContainer p {
-        color: #fff;
-        font-size: 1rem;
-    }
-}
-@media (min-width: 376px) and (max-width: 425px) {
-    .introContainer .titleContainer {
-        width: 100vw;
-    }
-    .introContainer .titleContainer p {
-        color: #fff;
-        font-size: 1rem;
-    }
-}
-@media (min-width: 426px) and (max-width: 768px) {
-    .introContainer .titleContainer {
-        width: 55vw;
-    }
-    .introContainer .titleContainer p {
-        color: #fff;
-        font-size: 1rem;
-    }
 }
