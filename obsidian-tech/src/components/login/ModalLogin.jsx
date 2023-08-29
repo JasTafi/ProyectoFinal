@@ -2,11 +2,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import "../login/ModalLogin.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 
+import "../login/ModalLogin.css";
 const ModalLogin = () => {
   const [showModal, setShowModal] = useState(false);
   const { setUserInfo } = useContext(DataProvider);
@@ -18,7 +20,7 @@ const ModalLogin = () => {
   return (
     <div>
       <button className="btn-login" onClick={handleModal}>
-        Iniciar Sesión
+      <FontAwesomeIcon icon={faUser} />
       </button>
       <div className={showModal ? "modalContainer active" : "modalContainer"}>
         <div className="modalContent">

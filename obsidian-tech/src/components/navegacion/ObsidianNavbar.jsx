@@ -50,11 +50,7 @@ export const ObsidianNavbar = () => {
         <div className='halfContainer'>
           <div className='iconContainer'>
             <div className='userContainer'>
-              <button onClick={openedUser}><FontAwesomeIcon icon={faUser} /></button>
-              <div className={ login ? 'loginContainer active' : 'loginContainer'}>
-                <h6>Login</h6>
-                <Link to={"/registro"} onClick={openedUser}>Registro </Link>
-              </div>
+            <ModalLogin />
             </div>
             <button><FontAwesomeIcon icon={faCartShopping} /></button>
             <Link to="/favoritos" className='fav'><FontAwesomeIcon icon={faHeart} /></Link>
@@ -66,9 +62,6 @@ export const ObsidianNavbar = () => {
         </div>
         <div className={clicked ? 'inputContainer active':'inputContainer'}>
           <FilterComponent/>
-        </div>
-        <div>
-          <ModalLogin />
         </div>
       </div>
     </div>
