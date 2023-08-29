@@ -3,8 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { CreateUser } from "../../services/user_service";
 
 import '../registroUsuario/UserRegister.css';
+import { useState } from "react";
 
 const UserRegister = () => {
+  const [ registered, setRegisterd] = useState(false)
+  const [ message, setMessage] = useState('')
   return (
     <Formik
       initialValues={{
@@ -35,6 +38,7 @@ const UserRegister = () => {
       onSubmit={(values, { setSubmitting }) => {
         if(values.password !== values.repeatPassword) {
           console.log('Las contraseñas no coinciden');
+          //mostrar un aviso cuando las contraseñas no coinciden
           setSubmitting(false);
           return;
         }
@@ -44,18 +48,27 @@ const UserRegister = () => {
         })
         .then(Response => {
           console.log('Usuario creado:', Response);
+          setRegisterd(true);
+          setMessage("Usuario creado")
           // Realizar acciones adicionales despues de crear el usuario
         })
         .catch(error => {
           console.log('Error al crear el usuario:', error);
+          setMessage("Error al crear el usuario");
         })
         .finally(() =>{
           setSubmitting(false);
+          setTimeout(() => {
+            setRegisterd(false)
+          }, 1000);
         });
       }}
     >
       {({ isSubmitting, isValid, errors }) => (
         <div className='containerRegisterGral'>
+          <div className={ registered ? "alertRegister show" :"alertRegister"}>
+            <span>{message}</span>
+          </div>
           <div className='containerForm'>
             <Form>
               <div className='boxTitleRegister'>
