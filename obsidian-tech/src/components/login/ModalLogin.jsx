@@ -2,8 +2,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
@@ -18,9 +18,9 @@ const ModalLogin = () => {
   };
 
   return (
-    <div>
+    <>
       <button className="btn-login" onClick={handleModal}>
-      <FontAwesomeIcon icon={faUser} />
+        <FontAwesomeIcon icon={faUser} />
       </button>
       <div className={showModal ? "modalContainer active" : "modalContainer"}>
         <div className="modalContent">
@@ -72,6 +72,7 @@ const ModalLogin = () => {
           >
             {({ errors }) => (
               <Form>
+                <button className="btnCerrar" onClick={handleModal}>cerrar</button>
                 <div>
                   <label htmlFor="email">Correo electronico</label>
                   <Field type="email" id="email" name="email" />
@@ -93,9 +94,9 @@ const ModalLogin = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="allowsLocaStorage">
-                    Mantenerme conectado
-                    <Field type="checkbox" name="allowsLocaStorage" />
+                  <label className="labelCheck" htmlFor="allowsLocaStorage">
+                  Mantenerme conectado
+                    <Field type="checkbox" name="allowsLocaStorage"/>
                   </label>
                 </div>
                 <NavLink to={"/registro"} onClick={() => setShowModal(false)}>
@@ -107,13 +108,13 @@ const ModalLogin = () => {
                 >
                   Olvidaste tu Contraseña?
                 </NavLink>
-                <button type="submit">Enviar</button>
+                <button type="submit" className="btnSesionModal">Enviar</button>
               </Form>
             )}
           </Formik>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
