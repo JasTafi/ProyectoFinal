@@ -24,15 +24,31 @@ const dataList = () => {
       <ul>
         {dataApi.map((item) => (
           <li key={item.id}>
-            <p>Nombre: {item.nombre}</p>
-            <p>Categoría: {item.categoria}</p>
-            <p>Precio: {item.precio}</p>
-            <p>Stock: {item.stock}</p>
-            <p>Descripción: {item.descripcion}</p>
-            <div className='botonImagen'>
-            <p>Imagen:</p>
-            <a href={item.urlImg} target="_blank" rel="noopener noreferrer" className="image-link-button">Ver imagen</a>
+            <div className='divProducto'>
+              <h4>Nombre:</h4>
+              <p>{item.nombre}</p>
             </div>
+            <div className='divProducto'>
+              <h4>Categoría:</h4>
+              <p>{item.categoria}</p>
+            </div>
+            <div className='divProducto'>
+              <h4>Precio:</h4>
+              <p>${item.precio}</p>
+            </div>
+            <div className='divProducto'>
+              <h4>Stock:</h4>
+              <p>{item.stock} u.</p>
+            </div>
+            <div className='divProducto'>
+              <h4>Descripcion:</h4>
+              <p>{item.Descripcion}</p>
+            </div>
+            <div className='botonImagen'>
+              <h4>Imagen:</h4>
+              <a href={item.urlImg} target="_blank" rel="noopener noreferrer" className="image-link-button">Ver imagen</a>
+            </div>
+            <hr className='hrProducto' />
           </li>
         ))}
       </ul>
