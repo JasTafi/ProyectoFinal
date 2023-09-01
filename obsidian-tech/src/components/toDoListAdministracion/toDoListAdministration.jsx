@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import Accordion from 'react-bootstrap/Accordion';
 
 import { getAllProductsFromDB } from '../../services/api'
 
 import '../toDoListAdministracion/toDoListAdministration.css'
 
 const dataList = () => {
+
+  
 
   const [dataApi, setDataApi] = useState([])
 
@@ -15,7 +18,6 @@ const dataList = () => {
     })
     .catch(error => console.log(error))
   }, [])
-  
 
   return (
     <div className='divPadreDataList'>
@@ -23,7 +25,13 @@ const dataList = () => {
       <hr />
       <ul>
         {dataApi.map((item) => (
+    <Accordion className='accordion'  defaultActiveKey="0">
+      <Accordion.Item eventKey="1">
+        <Accordion.Header className='accordion'>{item.nombre}</Accordion.Header>
+        <Accordion.Body className='accordion'>
+        
           <li key={item.id}>
+            
             <div className='divProducto'>
               <h4>Nombre:</h4>
               <p>{item.nombre}</p>
@@ -48,11 +56,14 @@ const dataList = () => {
               <h4>Imagen:</h4>
               <a href={item.urlImg} target="_blank" rel="noopener noreferrer" className="image-link-button">Ver imagen</a>
             </div>
-            <hr className='hrProducto' />
           </li>
-        ))}
-      </ul>
-    </div>
+
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+            ))}
+            </ul>
+          </div>
   )
 }
 

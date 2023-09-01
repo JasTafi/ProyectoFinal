@@ -6,7 +6,6 @@
   
   .divPadreDataList li p {
     align-items: center;
-    color: white;
     font-size: 1rem;
     font-weight: 700;
     text-align: justify;
@@ -21,7 +20,6 @@
   }
   
   .divProducto {
-    color: white;
     display: flex;
     align-items: baseline;
     margin-right: 1rem;
@@ -29,7 +27,6 @@
 
   h4 {
     margin-right: 1rem;
-    color: white;
   }
 
   .botonImagen {
@@ -50,10 +47,7 @@
     margin-left: 1rem;
   }
 
-  .hrProducto { 
-    border: none; 
-    border-radius: 8rem;
-    height: 1rem; 
-    background: linear-gradient(to left, #7035C0, #0396FE);
-    margin: 3rem 0 3rem 0;
+  .accordion {
+    margin-top: 1rem;
+    width: 70rem;
   }
