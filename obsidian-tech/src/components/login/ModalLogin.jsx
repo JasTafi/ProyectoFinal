@@ -1,19 +1,43 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "../login/ModalLogin.css";
 
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
+import { BtnGoogleLogin } from "../services_login/BtnGoogleLogin";
+import { KEYS } from "../../config/local_storage_constant";
+import { Get, Set } from "../../services/local_stoge_service";
 
 const ModalLogin = () => {
-  const [showModal, setShowModal] = useState(false);
-  const { setUserInfo } = useContext(DataProvider);
+  //const [showModal, setShowModal] = useState(false);
+  const { setUserInfo, setShowModal, showModal } = useContext(DataProvider);
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+    allowsLocaStorage: false,
+  });
 
   const handleModal = () => {
     setShowModal(!showModal);
   };
+
+  useEffect(() => {
+    const response = Get(KEYS.USER);
+
+    if(response) {
+      setUserInfo({
+        isLogged: true,
+        user: response,
+      });
+      setUser({
+        isLogged: true,
+        user: response,
+      });
+    }
+    console.log(user)
+  }, []);
 
   return (
     <div>
@@ -51,12 +75,18 @@ const ModalLogin = () => {
                   setUserInfo({
                     isLogged: true,
                     user: {
-                      token,
+                      token: user.token,
                       id: user.id,
                       photoUrl: user.photoUrl,
                       email: user.email,
                       allowsLocaStorage: values.allowsLocaStorage,
                     },
+                  });
+                  Set(KEYS.USER, {
+                    token,
+                    id: user.id,
+                    photoUrl: user.photoUrl,
+                    email: user.email,
                   });
                 })
                 .catch((error) =>
@@ -109,6 +139,11 @@ const ModalLogin = () => {
               </Form>
             )}
           </Formik>
+          <div>
+            <BtnGoogleLogin />
+          </div>
+          <div>
+          </div>
         </div>
       </div>
     </div>

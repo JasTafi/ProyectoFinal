@@ -1,8 +1,8 @@
-import React from 'react'
+//import React from 'react'
 
 const AdministracionPage = () => {
   return (
-    <div>AdministracionPage</div>
+    <div>Administración</div> 
   )
 }
 

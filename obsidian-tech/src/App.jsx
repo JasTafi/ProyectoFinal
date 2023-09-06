@@ -24,15 +24,11 @@ function App() {
           <Routes>
             <Route path='/' element={<InicioPage />} />
             <Route path='/accesorio/:id' element={<DetalleProductoPage/>}/>
-            <Route path='administracion' element={<AdministracionPage />} />
+            <Route path='/administracion' element={<AdministracionPage />} />
             <Route path='/registro' element={<RegistroPage />} />
             <Route path='recContraseña' element={<RecContraseñaPage />} />
             <Route path='nosotros' element={<NosotrosPage />} />
-            <Route path='favoritos' element={
-              <RutaProtejida>
-                <FavoritosPage />
-              </RutaProtejida>
-            } />
+            <Route path='favoritos' element={<RutaProtejida><FavoritosPage /></RutaProtejida>} />
             <Route path='*' element={<Error404Page />} />
           </Routes>
           <Footer/>

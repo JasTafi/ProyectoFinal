@@ -6,7 +6,7 @@ export const DataProvider = createContext();
 
 const initialUserInfo = {
   user: null,
-  islogged: false
+  islogged: false,
 }
 
 //creo el proveedor
@@ -15,10 +15,13 @@ export const DataContext = ({ children }) => {
   //const [ userData, setUserData ] = useState(null);
   //const [ isLogged, setIsLogged ] = useState(false);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
+  const [showModal, setShowModal] = useState(false);
 
   const initiallValues = {
     userInfo,
     setUserInfo,
+    showModal,
+    setShowModal
     // data: {
     //   userData,
     //   setUserData,

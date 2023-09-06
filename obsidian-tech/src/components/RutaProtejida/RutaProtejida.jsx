@@ -3,14 +3,14 @@ import { Navigate } from "react-router-dom";
 import { DataProvider } from "../../context/DataContext";
 import { useLocation } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 export const RutaProtejida = ({ children }) => {
-  const { sesion } = useContext(DataProvider);
+  const { user, isLogged } = useContext(DataProvider);
   const location = useLocation();
 
-  if(sesion.isLogged === false) {
-    alert("Inicia sesion")
-    return <Navigate to='/' state={location}></Navigate>;
-  }
+  if(user === undefined || user === null || isLogged === false) {
+    return <Navigate to='/modalLogin' state={location} />;
+  } 
 
   return children;
 };

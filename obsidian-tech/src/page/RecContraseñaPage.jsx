@@ -1,8 +1,8 @@
-import React from 'react'
+import FormEmailVerification from "../components/formEmailVerification/FormEmailVerification"
 
 const RecContraseñaPage = () => {
   return (
-    <div>RecContraseñaPage</div>
+    <FormEmailVerification />
   )
 }
 

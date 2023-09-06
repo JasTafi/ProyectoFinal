@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-import { Navigate } from 'react-router';
+//import { Navigate } from 'react-router';
 
 import { DataProvider } from '../../context/DataContext';
 import { DeleteFavoriteById } from '../../services/user_service';
 
 import '../favoritos/Favoritos.css';
 
-export const CardFavorites = ({fav}) => {
+export const CardFavorites = ({ fav }) => {
 
 	const { data: {userData} } = useContext(DataProvider);
 
