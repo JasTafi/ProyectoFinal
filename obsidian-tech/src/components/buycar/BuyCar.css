@@ -1,9 +1,38 @@
 .bodyCarModal {
-    border: 1px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 125px;
 }
 .bodyCarModal img {
-    width: 150px;
+    width: 30%;
+}
+.bodyCarModalprice {
+    width: 70%;
+}
+.bodyCarModalprice h5 {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.btnOutlineGrey {
+    background: transparent;
+    border: 1px solid #6D717A;
+    border-radius: 0px 10px;
+    color: #6D717A;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    transition: all 0.2s;
+}
+.btnOutlineGrey:hover {
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border: 1px solid transparent;
+    color: #fff;
+}
+.btnGradient {
+    border: none;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border-radius: 0px 10px;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    transition: all 0.2s;
 }

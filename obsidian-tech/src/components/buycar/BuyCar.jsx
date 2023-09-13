@@ -5,27 +5,42 @@ import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "../buycar/BuyCar.css";
-import { GetCarProducts } from "../../services/user_service";
+import { DeleteCarProduct, GetCarProducts } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 
 export const BuyCar = () => {
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState([]);
+  //para manejar el estado del useEffect de getCarProduct
+  const [productDeleted, setProductDeleted] = useState(false);
   const { userInfo } = useContext(DataProvider);
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
-    GetCarProducts({
-      id: userInfo.user.id,
-      token: userInfo.user.token,
-    })
-      .then(({car_products}) => {
-        setProduct(car_products)
+    if (userInfo.islogged) {
+      GetCarProducts({
+        id: userInfo.user.id,
+        token: userInfo.user.token,
       })
-      .catch((err) => console.log(err))
+        .then(({ car_products }) => {
+          setProduct(car_products);
+          console.log(car_products);
+        })
+        .catch((err) => console.log(err))
+        .finally(setShow(true));
+    }
     setShow(true);
   };
-    
+  function deleteProduct(productId) {
+    DeleteCarProduct({
+      id: userInfo.user.id,
+      productId: productId,
+      token: userInfo.user.token,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className="containerModalCar">
       <button onClick={handleShow}>
@@ -37,23 +52,39 @@ export const BuyCar = () => {
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          { !userInfo.islogged ? (
-            <div><p>debes iniciar sesion para agregar productos al carrito</p></div>
-          ): ( product.map((item, index) => {
-            return (
-              <div className="bodyCarModal" key={index}>
-                <img src={item.urlImg} alt="" />
-                <div className="bodyCarModalprice">
-                  <h5>Nombre Producto</h5>
-                  <p>precio: {item.precio}</p>
+          {!userInfo.islogged ? (
+            <div>
+              <p>debes iniciar sesion para agregar productos al carrito</p>
+            </div>
+          ) : (product.length == null || product.length == 0) ? (
+            <div>No hay productos agregados al carrito</div>
+          ) : (
+            product.map((item, index) => {
+              return (
+                <div className="bodyCarModal" key={index}>
+                  <img src={item.urlImg} alt="" />
+                  <div className="bodyCarModalprice">
+                    <h5>{item.nombre}</h5>
+                    <p>precio: ${item.precio}</p>
+                    <button
+                      className="btnOutlineGrey"
+                      onClick={deleteProduct(item._id)}
+                    >
+                      Eliminar
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          }))}
+              );
+            })
+          )}
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={handleClose}>cerrar</button>
-          <button onClick={handleClose}>comprar!</button>
+          <button className="btnOutlineGrey" onClick={handleClose}>
+            cerrar
+          </button>
+          <button className="btnGradient" onClick={handleClose}>
+            comprar!
+          </button>
         </Modal.Footer>
       </Modal>
     </div>
