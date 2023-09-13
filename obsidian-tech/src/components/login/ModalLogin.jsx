@@ -51,7 +51,7 @@ const ModalLogin = () => {
               Login(values)
                 .then(({ user, token }) => {
                   setUserInfo({
-                    isLogged: true,
+                    islogged: true,
                     user: {
                       token,
                       id: user.id,

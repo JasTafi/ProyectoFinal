@@ -11,7 +11,6 @@ import { DataProvider } from "../../context/DataContext";
 export const BuyCar = () => {
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState([]);
-  const [productDeleted, setProductDeleted] = useState(false)
   const { userInfo } = useContext(DataProvider);
 
   const handleClose = () => setShow(false);
@@ -38,8 +37,8 @@ export const BuyCar = () => {
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {(product.length == 0) ? (
-            <div>no hay productos agregados</div>
+          { !userInfo.islogged ? (
+            <div><p>debes iniciar sesion para agregar productos al carrito</p></div>
           ): ( product.map((item, index) => {
             return (
               <div className="bodyCarModal" key={index}>
