@@ -9,6 +9,7 @@ import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
 //import Favoritos from '../favoritos/Favoritos';
 import ModalLogin from '../login/ModalLogin';
+import { BuyCar } from '../buycar/BuyCar';
 
 export const ObsidianNavbar = () => {
 
@@ -52,7 +53,8 @@ export const ObsidianNavbar = () => {
             <div className='userContainer'>
             <ModalLogin />
             </div>
-            <button><FontAwesomeIcon icon={faCartShopping} /></button>
+            
+            <BuyCar/>
             <Link to="/favoritos" className='fav'><FontAwesomeIcon icon={faHeart} /></Link>
             <button><FontAwesomeIcon icon={faCircleQuestion} /></button>
           </div>

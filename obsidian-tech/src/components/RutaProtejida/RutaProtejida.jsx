@@ -4,10 +4,10 @@ import { DataProvider } from "../../context/DataContext";
 import { useLocation } from "react-router-dom";
 
 export const RutaProtejida = ({ children }) => {
-  const { userInfo: {isLogged} } = useContext(DataProvider);
+  const { userInfo } = useContext(DataProvider);
   const location = useLocation();
 
-  if(isLogged === false) {
+  if( userInfo.islogged === false) {
     alert("Inicia sesion")
     return <Navigate to='/' state={location}></Navigate>;
   }

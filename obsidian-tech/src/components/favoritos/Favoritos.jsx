@@ -1,76 +1,89 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import Loader from '../loader/Loader';
+import Loader from "../loader/Loader";
 
-import { GetFavoriteProduct } from '../../services/user_service';
+import { GetFavoriteProduct } from "../../services/user_service";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { CardFavorites } from './CardFavorites';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { CardFavorites } from "./CardFavorites";
 
-import { DataProvider } from '../../context/DataContext';
+import { DataProvider } from "../../context/DataContext";
 
-import '../favoritos/Favoritos.css';
+import "../favoritos/Favoritos.css";
 
 const Favoritos = () => {
+  const [loading, setLoading] = useState(false);
+  const [fav, setFav] = useState([]);
+  const {
+    userInfo
+  } = useContext(DataProvider);
 
-	const [loading, setLoading] = useState(false);
-	const [ fav, setFav ] = useState([])
-	const  { data: {userData} } = useContext(DataProvider);
-	
-	useEffect(() => {
-		setLoading(true)
-		GetFavoriteProduct({
-			id: userData.user.id,
-			token:userData.token
-		})
-		.then(({favorite_producs
-		}) => {
-			setFav(favorite_producs)
-		})
-		.catch(err => console.log(err))
-		.finally(() => {
-			setTimeout(() => {
-				setLoading(false)
-			}, 2000);
-		})
-	}, [])
-	
-	const favoritos = fav.length > 0
+  useEffect(() => {
+    setLoading(true);
+    GetFavoriteProduct({
+      id: userInfo.user.id,
+      token: userInfo.user.token,
+    })
+      .then(({ favorite_producs }) => {
+        setFav(favorite_producs);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+      });
+  }, []);
+
+  const favoritos = fav.length > 0;
   return (
-		<div>
-			{
-				loading ? (<Loader/>) : (<div className='containerGral'>
-        <div className='containerFav'>
-					<div className='ventanaFav'>
-							<div className='boxTitleFav'>
-							<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft} className='icon'/>Inicio</Link>
-								<h2>Lista de Favoritos</h2>
-								<p>Aquí podras ver todos los productos que hayas seleccionado, así como también quitarlos si encuentras uno mejor!.</p>
-							</div>
-							<div className='boxFav'>
-								<h3>Favoritos {fav.length}</h3>
-								<div className='containerCardFav'>
-								{
-								(fav.length == 0 ? <div className='favEmpty'><h2>No tienes productos agregados a favoritos!</h2></div> : <CardFavorites fav={fav} setLoading= {setLoading} />)
-								}
-								</div>
-								{
-								favoritos && (
-									<div className='buttonsFav'>
-										<button className='buttonCartFav'> Seguir comprando </button>
-									</div>
-									)
-								}
-							</div>
-					</div>
-				</div>
-    </div>)
-			}
-		</div>
-  )
-}
+    <div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="containerGral">
+          <div className="containerFav">
+            <div className="ventanaFav">
+              <div className="boxTitleFav">
+                <Link to={"/"} className="linkBack">
+                  <FontAwesomeIcon icon={faArrowLeft} className="icon" />
+                  Inicio
+                </Link>
+                <h2>Lista de Favoritos</h2>
+                <p>
+                  Aquí podras ver todos los productos que hayas seleccionado,
+                  así como también quitarlos si encuentras uno mejor!.
+                </p>
+              </div>
+              <div className="boxFav">
+                <h3>Favoritos {fav.length}</h3>
+                <div className="containerCardFav">
+                  {fav.length == 0 ? (
+                    <div className="favEmpty">
+                      <h2>No tienes productos agregados a favoritos!</h2>
+                    </div>
+                  ) : (
+                    <CardFavorites fav={fav} setLoading={setLoading} />
+                  )}
+                </div>
+                {favoritos && (
+                  <div className="buttonsFav">
+                    <button className="buttonCartFav">
+                      {" "}
+                      Seguir comprando{" "}
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default Favoritos
+export default Favoritos;

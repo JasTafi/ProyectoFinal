@@ -1,0 +1,9 @@
+.bodyCarModal {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bodyCarModal img {
+    width: 150px;
+}

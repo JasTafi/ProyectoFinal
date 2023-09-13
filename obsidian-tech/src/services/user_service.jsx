@@ -76,5 +76,47 @@ async function DeleteFavoriteById({ id, productId, token }) {
   });
   return await response.json();
 }
+// agregar un producto al carrito 
+async function AddCarProduct({userId, productId, token}){
+  const body = JSON.stringify({
+    userId,
+    productId,
+  });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: body,
+  });
+  return await response.json();
+};
 
-export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById };
+//Mostrar productos del carrito
+async function GetCarProducts({id, token}){
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const results = await response.json()
+  return results
+};
+
+//Borrar un producto del carrito 
+async function DeleteCarProduct({id, productId, token}){
+  const body = JSON.stringify({
+    productId,
+  });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: body,
+  });
+  return await response.json();
+}
+export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct};
