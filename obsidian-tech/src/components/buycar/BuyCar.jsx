@@ -12,11 +12,26 @@ export const BuyCar = () => {
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState([]);
   //para manejar el estado del useEffect de getCarProduct
-  const [productDeleted, setProductDeleted] = useState(false);
+  const { producto, setProducto} =  useContext(DataProvider)
   const { userInfo } = useContext(DataProvider);
-
+  
   const handleClose = () => setShow(false);
   const handleShow = () => {
+    setShow(true);
+  };
+  function handleRemoveProduct(productId) {
+    DeleteCarProduct({
+      id: userInfo.user.id,
+      productId: productId,
+      token: userInfo.user.token,
+    })
+      .then((res) =>{
+        console.log(res),
+        setProducto(true)
+      })
+      .catch((err) => console.log(err));
+  }
+  useEffect(() => {
     if (userInfo.islogged) {
       GetCarProducts({
         id: userInfo.user.id,
@@ -24,23 +39,12 @@ export const BuyCar = () => {
       })
         .then(({ car_products }) => {
           setProduct(car_products);
-          console.log(car_products);
         })
         .catch((err) => console.log(err))
-        .finally(setShow(true));
+        .finally(setProducto(false))
     }
-    setShow(true);
-  };
-  function deleteProduct(productId) {
-    DeleteCarProduct({
-      id: userInfo.user.id,
-      productId: productId,
-      token: userInfo.user.token,
-    })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
-
+  }, [producto])
+  
   return (
     <div className="containerModalCar">
       <button onClick={handleShow}>
@@ -56,7 +60,7 @@ export const BuyCar = () => {
             <div>
               <p>debes iniciar sesion para agregar productos al carrito</p>
             </div>
-          ) : (product.length == null || product.length == 0) ? (
+          ) : product.length == 0 ? (
             <div>No hay productos agregados al carrito</div>
           ) : (
             product.map((item, index) => {
@@ -68,7 +72,9 @@ export const BuyCar = () => {
                     <p>precio: ${item.precio}</p>
                     <button
                       className="btnOutlineGrey"
-                      onClick={deleteProduct(item._id)}
+                      onClick={() => {
+                        handleRemoveProduct(item._id)
+                      }}
                     >
                       Eliminar
                     </button>

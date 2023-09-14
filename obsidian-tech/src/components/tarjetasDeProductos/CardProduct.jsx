@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { DataProvider } from '../../context/DataContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,7 +9,7 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
 import { getAllProductsFromDB } from '../../services/product_service'
-import { AddFavoriteProduct } from '../../services/user_service';
+import { AddCarProduct, AddFavoriteProduct } from '../../services/user_service';
 
 import '../tarjetasDeProductos/CardProduct.css'
 
@@ -19,33 +19,45 @@ import "swiper/css/navigation";
 
 
 export const CardProduct = () => {
-  // const { userInfo: {user}, userInfo: {isLogged}} = useContext(DataProvider)
+  
+  const { userInfo } = useContext(DataProvider)
+  const { setProducto } = useContext(DataProvider)
   const [dataApi, setDataApi] = useState([])//trae los productos 
-  const [addFav, setAddFav] = useState()//agregar favoritos
-
-  // function addFavoritos(){
-  //   AddFavoriteProduct({
-  //     userId: user.id,
-  //     productId: addFav,
-  //     token: user.token
-  //   })
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err))
-  // }
-  // function verificarFav(id){
-  //   if(addFav == id){
-  //     alert("su producto ya esta en sus favoritos");
-  //   }
-  // }
+  
   
   useEffect(() => {
     getAllProductsFromDB()
     .then(({data}) => {
       setDataApi(data)
+
     })
     .catch(error => console.log(error))
   }, [])
-  
+  function handleAddFavorites(id){
+   if(userInfo.islogged == true){
+    AddFavoriteProduct({
+      id: userInfo.user.id,
+      productId: id,
+      token: userInfo.user.token
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+   }else{
+    alert("debes iniciar sesion para agregar a favoritos")
+   }
+  }
+
+  function handleAddCar(id) {
+    AddCarProduct({
+      userId: userInfo.user.id,
+      productId: id,
+      token: userInfo.user.token,
+    })
+      .then((res) => {
+        setProducto(true), console.log(res);
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
     <div className='swiperContainer'>
@@ -95,9 +107,8 @@ export const CardProduct = () => {
                 <div className='cardHead'>
                   <div className='boxCategory'>{item.categoria}</div>
                   <button className={'boxIcon'} onClick={() => {
-                    setAddFav(item._id)
-                    // addFavoritos()
-                    // verificarFav(item._id)
+                    
+                    handleAddFavorites(item._id)
                   }}>
                     <FontAwesomeIcon icon={faHeart}/>
                   </button>
@@ -121,7 +132,7 @@ export const CardProduct = () => {
                   </div>
                   <div className='boxPrice'>
                       <p>$ {item.precio}</p>
-                      <button> Add to Cart </button>
+                      <button onClick={()=> {handleAddCar(item._id)}}> Add to Cart </button>
                   </div>
                 </div>
               </div>

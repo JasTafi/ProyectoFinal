@@ -1,36 +1,29 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-//contexto
+//contexto a consumir
 export const DataProvider = createContext();
 
 const initialUserInfo = {
   user: null,
-  islogged: false
+  islogged: false,
 }
 
-//creo el proveedor
+//creo el proveedor  (estos son los DATOS a consumir)
 export const DataContext = ({ children }) => {
 
-  //const [ userData, setUserData ] = useState(null);
-  //const [ isLogged, setIsLogged ] = useState(false);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
+  const [ producto, setProducto ] = useState(false) //para manejar el carrito de compras
 
   const initiallValues = {
     userInfo,
     setUserInfo,
-    // data: {
-    //   userData,
-    //   setUserData,
-    // },
-    // sesion: {
-    //   isLogged,
-    //   setIsLogged,
-    // }
+    producto,
+    setProducto
   };
   
   return (
-    <DataProvider.Provider value={initiallValues}>
+    <DataProvider.Provider value={initiallValues} >
       {children}
     </DataProvider.Provider>
   );
