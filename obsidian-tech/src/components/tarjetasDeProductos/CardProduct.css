@@ -7,9 +7,10 @@
     padding: 15px;
 }
 .mySwiper {
-    height: 530px;
+    height: 540px;
     width: 100%;
 }
+
 .cardBorder { /*fondo de tarjeta (define el color de los bordes)*/
     border: none;
     background: linear-gradient(to right, #6f35c091, #0395fe91);

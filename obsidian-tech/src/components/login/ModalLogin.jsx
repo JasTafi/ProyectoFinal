@@ -11,8 +11,7 @@ import { DataProvider } from "../../context/DataContext";
 import "../login/ModalLogin.css";
 const ModalLogin = () => {
   const [showModal, setShowModal] = useState(false);
-  const { setUserInfo } = useContext(DataProvider);
-
+  const { setUserInfo, setProducto } = useContext(DataProvider);
   const handleModal = () => {
     setShowModal(!showModal);
   };
@@ -59,7 +58,8 @@ const ModalLogin = () => {
                       email: user.email,
                       allowsLocaStorage: values.allowsLocaStorage,
                     },
-                  });
+                  }),
+                  setProducto(true)
                 })
                 .catch((error) =>
                   console.log(

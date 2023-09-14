@@ -21,7 +21,6 @@ const FilterComponent = () => {
       }
     })
     setResultado(resultadoBusqueda)
-    setShow(true)
   }
 
   const handleChange = (e) => {
