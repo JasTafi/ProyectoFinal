@@ -16,9 +16,7 @@ export const BuyCar = () => {
   const { userInfo } = useContext(DataProvider);
   
   const handleClose = () => setShow(false);
-  const handleShow = () => {
-    setShow(true);
-  };
+  const handleShow = () => setShow(true);
   function handleRemoveProduct(productId) {
     DeleteCarProduct({
       id: userInfo.user.id,
@@ -47,6 +45,7 @@ export const BuyCar = () => {
   
   return (
     <div className="containerModalCar">
+      <div className="circleCount">{product.length || "0"}</div>
       <button onClick={handleShow}>
         <FontAwesomeIcon icon={faCartShopping} />
       </button>

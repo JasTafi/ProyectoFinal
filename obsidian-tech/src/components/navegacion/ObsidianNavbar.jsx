@@ -53,7 +53,6 @@ export const ObsidianNavbar = () => {
             <div className='userContainer'>
             <ModalLogin />
             </div>
-            
             <BuyCar/>
             <Link to="/favoritos" className='fav'><FontAwesomeIcon icon={faHeart} /></Link>
             <button><FontAwesomeIcon icon={faCircleQuestion} /></button>

@@ -72,8 +72,7 @@ const Favoritos = () => {
                 {favoritos && (
                   <div className="buttonsFav">
                     <button className="buttonCartFav">
-                      {" "}
-                      Seguir comprando{" "}
+                     seguir comprando
                     </button>
                   </div>
                 )}

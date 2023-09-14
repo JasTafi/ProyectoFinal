@@ -45,7 +45,7 @@ const ProductDetail = () => {
       token: userInfo.user.token,
     })
       .then((res) => {
-        setProducto(true), console.log(res);
+        setProducto(true);
       })
       .catch((err) => console.log(err));
   }

@@ -5,9 +5,11 @@
     justify-content: center;
     width: 100%;
     opacity: 0;
+    overflow: hidden;
     transition: all 0.3s;
 }
 .containerShowResults.active {
+    overflow: visible;
     opacity: 1;
     transition: all 0.3s;
 }

@@ -29,19 +29,19 @@ export const CardProduct = () => {
     getAllProductsFromDB()
     .then(({data}) => {
       setDataApi(data)
-
     })
     .catch(error => console.log(error))
   }, [])
+
   function handleAddFavorites(id){
    if(userInfo.islogged == true){
-    AddFavoriteProduct({
-      id: userInfo.user.id,
-      productId: id,
-      token: userInfo.user.token
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+   AddFavoriteProduct({
+    userId: userInfo.user.id,
+    productId: id,
+    token: userInfo.user.token
+   })
+   .then(res => console.log(res))
+   .catch(err => console.log(err))
    }else{
     alert("debes iniciar sesion para agregar a favoritos")
    }
@@ -54,7 +54,7 @@ export const CardProduct = () => {
       token: userInfo.user.token,
     })
       .then((res) => {
-        setProducto(true), console.log(res);
+        setProducto(true);
       })
       .catch((err) => console.log(err));
   }
@@ -107,7 +107,6 @@ export const CardProduct = () => {
                 <div className='cardHead'>
                   <div className='boxCategory'>{item.categoria}</div>
                   <button className={'boxIcon'} onClick={() => {
-                    
                     handleAddFavorites(item._id)
                   }}>
                     <FontAwesomeIcon icon={faHeart}/>

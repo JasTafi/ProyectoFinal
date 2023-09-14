@@ -4,8 +4,22 @@
     align-items: center;
     height: 125px;
 }
+.circleCount{
+    position: absolute;
+    top: -10px;
+    left: 40%;
+    background-color: #0396FE;
+    border-radius: 30%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 20px;
+    font-size: 0.9rem;
+}
 .bodyCarModal img {
-    width: 30%;
+    width: 25%;
 }
 .bodyCarModalprice {
     width: 70%;
