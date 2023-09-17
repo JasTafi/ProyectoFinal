@@ -11,9 +11,9 @@ const initialUserInfo = {
 
 //creo el proveedor  (estos son los DATOS a consumir)
 export const DataContext = ({ children }) => {
-
   const [userInfo, setUserInfo] = useState(initialUserInfo);
   const [ producto, setProducto ] = useState(false) //para manejar el carrito de compras
+
 
   const initiallValues = {
     userInfo,
