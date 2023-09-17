@@ -68,7 +68,7 @@ const ProductDetail = () => {
           <p>TYPE: {data.categoria}</p>
           <p>Stock: {data.stock}</p>
         </div>
-        <h6>Descripcion del producto: {data.descripcion}</h6>
+        <h6>Descripcion del producto: {data.Descripcion}</h6>
         <div className="boxInputSelect">
           <label htmlFor="color">Color:</label>
           <select name="" id="color">

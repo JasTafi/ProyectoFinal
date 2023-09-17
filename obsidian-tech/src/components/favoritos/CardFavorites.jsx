@@ -6,12 +6,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Navigate } from 'react-router';
 
 import { DataProvider } from "../../context/DataContext";
-import { DeleteFavoriteById } from "../../services/user_service";
+import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";
 
 import "../favoritos/Favoritos.css";
 
-export const CardFavorites = ({ fav }) => {
+export const CardFavorites = ({ fav, setUpload }) => {
   const { userInfo } = useContext(DataProvider);
+  const { setProducto } = useContext(DataProvider);
 
   // funcion para eliminar fav de la lista
   function handleRemoveFav(item_id) {
@@ -22,10 +23,21 @@ export const CardFavorites = ({ fav }) => {
     })
       .then((res) => {
         console.log(res + "producto borrado");
+        setUpload(true)
       })
       .catch((err) => console.log(err));
   }
-
+  function handleAddCar(id) {
+    AddCarProduct({
+      userId: userInfo.user.id,
+      productId: id,
+      token: userInfo.user.token,
+    })
+      .then((res) => {
+        setProducto(true);
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       {fav.map((item, index) => {
@@ -57,6 +69,9 @@ export const CardFavorites = ({ fav }) => {
                 <div className="boxPrice">
                   <p>$ {item.precio}</p>
                 </div>
+                <button className="buttonCartFav"  onClick={() => {
+                            handleAddCar(item._id);
+                          }}>Agregar al carrito</button>
               </div>
             </div>
           </div>

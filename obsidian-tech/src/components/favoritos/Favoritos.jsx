@@ -20,6 +20,7 @@ const Favoritos = () => {
   const {
     userInfo
   } = useContext(DataProvider);
+  const [ upload, setUpload ] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -35,40 +36,55 @@ const Favoritos = () => {
         setTimeout(() => {
           setLoading(false);
         }, 2000);
+        setUpload(false)
       });
-  }, []);
+  }, [upload]);
 
   const favoritos = fav.length > 0;
   return (
-		<div>
-			{
-				loading ? (<Loader/>) : (<div className='containerGral'>
-        <div className='containerFav'>
-					<div className='ventanaFav'>
-							<div className='boxTitleFav'>
-							<Link to={'/'} className='linkBack'><FontAwesomeIcon icon={faArrowLeft} className='icon'/>Inicio</Link>
-								<h2>Lista de Favoritos</h2>
-								<p>Aquí podras ver todos los productos que hayas seleccionado, así como también quitarlos si encuentras uno mejor!.</p>
-							</div>
-							<div className='boxFav'>
-								<h3>Favoritos {fav.length}</h3>
-								<div className='containerCardFav'>
-								{
-								(fav.length == 0 ? <div className='favEmpty'><h2>No tienes productos agregados a favoritos!</h2></div> : <CardFavorites fav={fav} setLoading= {setLoading} />)
-								}
-								</div>
-								{
-								favoritos && (
-									<div className='buttonsFav'>
-										<button className='buttonCartFav'> Seguir comprando </button>
-									</div>
-									)
-								}
-							</div>
-					</div>
-				</div>
-    </div>)
-			}
-		</div>
-  )
-}
+    <div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="containerGral">
+          <div className="containerFav">
+            <div className="ventanaFav">
+              <div className="boxTitleFav">
+                <Link to={"/"} className="linkBack">
+                  <FontAwesomeIcon icon={faArrowLeft} className="icon" />
+                  Inicio
+                </Link>
+                <h2>Lista de Favoritos</h2>
+                <p>
+                  Aquí podras ver todos los productos que hayas seleccionado,
+                  así como también quitarlos si encuentras uno mejor!.
+                </p>
+              </div>
+              <div className="boxFav">
+                <h3>Favoritos {fav.length}</h3>
+                <div className="containerCardFav">
+                  {fav.length == 0 ? (
+                    <div className="favEmpty">
+                      <h2>No tienes productos agregados a favoritos!</h2>
+                    </div>
+                  ) : (
+                    <CardFavorites fav={fav} setLoading={setLoading} setUpload={setUpload}/>
+                  )}
+                </div>
+                {favoritos && (
+                  <div className="buttonsFav">
+                    <button className="buttonCartFav">
+                     seguir comprando
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Favoritos;

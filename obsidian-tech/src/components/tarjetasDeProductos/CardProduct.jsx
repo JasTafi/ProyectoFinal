@@ -16,6 +16,7 @@ import "../tarjetasDeProductos/CardProduct.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Link } from "react-router-dom";
 
 export const CardProduct = () => {
   const { userInfo } = useContext(DataProvider);
@@ -118,7 +119,9 @@ export const CardProduct = () => {
                         <p>TYPE: {item.categoria}</p>
                       </div>
                       <div className="boxImage">
-                        <img src={item.urlImg} />
+                        <Link to={`/accesorio/${item._id}`}>
+                        <img src={item.urlImg} title={item.nombre}/>
+                        </Link>
                       </div>
                     </div>
                     <div className="cardFooter">
