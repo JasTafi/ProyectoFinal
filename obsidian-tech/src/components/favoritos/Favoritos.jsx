@@ -20,6 +20,7 @@ const Favoritos = () => {
   const {
     userInfo
   } = useContext(DataProvider);
+  const [ upload, setUpload ] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -35,8 +36,9 @@ const Favoritos = () => {
         setTimeout(() => {
           setLoading(false);
         }, 2000);
+        setUpload(false)
       });
-  }, []);
+  }, [upload]);
 
   const favoritos = fav.length > 0;
   return (
@@ -66,7 +68,7 @@ const Favoritos = () => {
                       <h2>No tienes productos agregados a favoritos!</h2>
                     </div>
                   ) : (
-                    <CardFavorites fav={fav} setLoading={setLoading} />
+                    <CardFavorites fav={fav} setLoading={setLoading} setUpload={setUpload}/>
                   )}
                 </div>
                 {favoritos && (
