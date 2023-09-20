@@ -1,10 +1,7 @@
-import React from 'react'
-import { ProductGrid } from '../components/grillaDeProductos/ProductGrid'
+import { HomeApp } from '../components/inicio/HomeApp'
 
-const InicioPage = () => {
+export default function InicioPage() {
   return (
-    <ProductGrid/>
+    <HomeApp/>
   )
 }
-
-export default InicioPage

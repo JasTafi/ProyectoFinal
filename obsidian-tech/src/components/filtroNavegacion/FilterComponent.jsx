@@ -1,17 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import '../filtroNavegacion/FilterComponent.css'
 import { ContainerResults } from '../ventanadaResultados/ContainerResults'
-import { getAllProductsFromDB } from '../../services/api'
+import { getAllProductsFromDB } from '../../services/product_service'
 
-const FilterComponent = ({show}) => {
-
+const FilterComponent = () => {
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
+  //para mostrar ventana de resultados
+  // const [ show, setShow] = useState(false);
 
   const filtrado = (valorDelInput) => {
     const resultadoBusqueda = dataApi.filter((item) => {
@@ -21,6 +22,7 @@ const FilterComponent = ({show}) => {
     })
     setResultado(resultadoBusqueda)
   }
+
   const handleChange = (e) => {
     e.preventDefault()
     const inputValue = e.target.value
@@ -30,29 +32,28 @@ const FilterComponent = ({show}) => {
 
   useEffect(() => {
     getAllProductsFromDB()
-    .then(({data}) => {
-      setDataApi(data)
+    .then(({ data }) => {
+      setDataApi(data);
     })
-    .catch(error => console.log(error))
-  }, [])
+    .catch(error => console.log(error));
+  }, []);
 
-  
   return (
     <>
-    <form className={show ? 'invisible' : 'navbar-form'}>
+    <form className='navbar-form'>
         <div className='boxInput'>
         <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
         onChange={handleChange}
         value={filtered}
         type="text" 
-        maxLength={25}
+        maxLength={30}
         placeholder='Buscar productos...'/>
         </div>
     </form>
-    <ContainerResults resultado = {resultado} filtered = {filtered}/>
+    <ContainerResults resultado = {resultado} filtered={filtered} setFiltered={setFiltered}/>
     </>
-  )
-}
+  );
+};
 
 export default FilterComponent

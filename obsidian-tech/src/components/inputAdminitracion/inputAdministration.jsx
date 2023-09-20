@@ -122,7 +122,7 @@ const InputComponent = () => {
                   <label htmlFor="Imagen">Imagen</label>
                   <Field
                     type="text" 
-                    id="imagen" 
+                    id="urlImg" 
                     name="imagen" 
                   />
                   <ErrorMessage name="imagen" component={() => (<div className="error">{errors.imagen}</div>)} />
