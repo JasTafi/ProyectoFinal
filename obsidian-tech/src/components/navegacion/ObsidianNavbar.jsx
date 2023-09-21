@@ -12,7 +12,7 @@ import ModalLogin from '../login/ModalLogin';
 import { BuyCar } from '../buycar/BuyCar';
 
 export const ObsidianNavbar = () => {
-  const { isLogged, showModal, setShowModal }  = useContext(DataProvider)
+ 
 //useState para menu burger
   const [clicked, setClicked] = useState(false)
 
