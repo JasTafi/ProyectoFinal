@@ -1,4 +1,3 @@
-import React from 'react'
 import UserRegister from '../components/registroUsuario/UserRegister'
 
 const RegistroPage = () => {

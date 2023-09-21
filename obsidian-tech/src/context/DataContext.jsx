@@ -12,24 +12,17 @@ const initialUserInfo = {
 //creo el proveedor
 export const DataContext = ({ children }) => {
 
-  //const [ userData, setUserData ] = useState(null);
-  //const [ isLogged, setIsLogged ] = useState(false);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
   const [showModal, setShowModal] = useState(false);
+  const [producto, setProducto] = useState(false)
 
   const initiallValues = {
     userInfo,
     setUserInfo,
     showModal,
-    setShowModal
-    // data: {
-    //   userData,
-    //   setUserData,
-    // },
-    // sesion: {
-    //   isLogged,
-    //   setIsLogged,
-    // }
+    setShowModal,
+    producto,
+    setProducto
   };
   
   return (

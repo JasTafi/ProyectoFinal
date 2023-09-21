@@ -19,40 +19,42 @@ const ChangePassword = () => {
           errors.newPassword =
             "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número";
         }
+        return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        if(values.newPassword !== values.confirmPassword) {
+        if (values.newPassword !== values.confirmPassword) {
           console.log("Las contraseñas no coinciden");
           setSubmitting(false);
           return;
         }
-
-        
       }}
     >
       {({ isSubmitting, isValid, errors }) => (
-        <div className="contain-password">
+        <div className="containerRegisterGral">
           <Form>
-            <div>
-              <label htmlFor="string">Ingresa tu nueva contraseña</label>
-              <Field type="string" name="newPassword" />
-              <ErrorMessage
-                name="password"
-                component={() => <div className="error">{errors.password}</div>}
-              />
+            <div className="contain-password">
+              <div className="contain-input">
+                <label htmlFor="string">Ingresa tu nueva contraseña</label>
+                <Field type="string" name="newPassword" />
+                <ErrorMessage
+                  name="newPassword"
+                  component={() => (
+                    <div className="error">{errors.newPassword}</div>
+                  )}
+                />
+              </div>
+              <div className="contain-input">
+                <label htmlFor="string">Ingresa de nuevo tu contraseña</label>
+                <Field type="string" name="confirmPassword" />
+              </div>
+              <button
+                className="btnInputReg"
+                type="submit"
+                disabled={isSubmitting || !isValid}
+              >
+                Enviar
+              </button>
             </div>
-            <div>
-              <label htmlFor="string">Ingresa de nuevo tu contraseña</label>
-              <Field type="string" name="confirmPassword" />
-              <ErrorMessage />
-            </div>
-            <button
-              className="btnInputReg"
-              type="submit"
-              disabled={isSubmitting || !isValid}
-            >
-              Enviar
-            </button>
           </Form>
         </div>
       )}

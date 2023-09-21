@@ -1,9 +1,12 @@
-import FormEmailVerification from "../components/formEmailVerification/FormEmailVerification"
+import FormEmailVerification from "../components/formEmailVerification/FormEmailVerification";
+//import ChangePassword from "../components/changePassword/ChangePassword";
 
 const RecContraseñaPage = () => {
   return (
-    <FormEmailVerification />
-  )
-}
+    <div>
+      <FormEmailVerification />
+    </div>
+  );
+};
 
-export default RecContraseñaPage
+export default RecContraseñaPage;

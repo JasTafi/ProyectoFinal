@@ -1,10 +1,17 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 import { CreateUser } from "../../services/user_service";
 
 import '../registroUsuario/UserRegister.css';
+import { DataProvider } from "../../context/DataContext";
 
 const UserRegister = () => {
+
+  const navigate = useNavigate();
+  const { setShowModal } = useContext(DataProvider);
+
   return (
     <Formik
       initialValues={{
@@ -44,6 +51,8 @@ const UserRegister = () => {
         })
         .then(Response => {
           console.log('Usuario creado:', Response);
+          navigate("/");
+          setShowModal(true);
           // Realizar acciones adicionales despues de crear el usuario
         })
         .catch(error => {

@@ -3,7 +3,6 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import jwt_decode from 'jwt-decode';
 
 import { CONSTANTS } from "../../config/services-constant";
-import BtnFacebookLogin from "./BtnFacebookLogin";
 
 export const BtnGoogleLogin = () => {
   return (
@@ -18,7 +17,6 @@ export const BtnGoogleLogin = () => {
           console.log("Login Failed");
         }}
       />;
-      <BtnFacebookLogin />
     </GoogleOAuthProvider>
   );
 };

@@ -1,5 +1,5 @@
 .containerRegisterGral {
-  padding-top: 4.5rem;
+  padding: 0.1rem;
   background: no-repeat center 100%/cover url(../../assets/bgGrilla.jpg);
   color: #fff;
   display: flex;
@@ -10,7 +10,7 @@
   height: auto;
 }
 
-.contain-email {
+.contain-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -21,5 +21,5 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 1rem;
+  margin: 0.5rem;
 }

@@ -89,6 +89,19 @@ async function EmailVerification({ email }) {
   return await response.json();
 }
 
+// Cambiar la contraseña de un usuario por el mail
+async function ModifyPassword({ email, password }) {
+  const body = JSON.stringify({ email, password });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/password/modify`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: body,
+  });
+  return await response.json()
+} 
+
 export {
   CreateUser,
   Login,
@@ -96,4 +109,5 @@ export {
   GetFavoriteProduct,
   DeleteFavoriteById,
   EmailVerification,
+  ModifyPassword,
 };

@@ -14,9 +14,9 @@ const ModalLogin = () => {
   //const [showModal, setShowModal] = useState(false);
   const { setUserInfo, setShowModal, showModal } = useContext(DataProvider);
   const [user, setUser] = useState({
-    email: '',
-    password: '',
-    allowsLocaStorage: false,
+    // email: '',
+    // password: '',
+    // allowsLocaStorage: false,
   });
 
   const handleModal = () => {
@@ -36,7 +36,6 @@ const ModalLogin = () => {
         user: response,
       });
     }
-    console.log(user)
   }, []);
 
   return (
