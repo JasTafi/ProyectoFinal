@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-import { Navigate } from "react-router";
+import { Navigate } from 'react-router';
 
 import { DataProvider } from "../../context/DataContext";
 import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";

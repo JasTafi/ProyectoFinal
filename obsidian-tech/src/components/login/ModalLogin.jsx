@@ -8,6 +8,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 
+
 import "../login/ModalLogin.css";
 const ModalLogin = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,7 +16,7 @@ const ModalLogin = () => {
   const handleModal = () => {
     setShowModal(!showModal);
   };
-
+  
   return (
     <>
       <button className="btn-login" onClick={handleModal}>

@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import {useContext, useState} from 'react'
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Navigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ import ModalLogin from '../login/ModalLogin';
 import { BuyCar } from '../buycar/BuyCar';
 
 export const ObsidianNavbar = () => {
-
+ 
 //useState para menu burger
   const [clicked, setClicked] = useState(false)
 
@@ -58,6 +58,9 @@ export const ObsidianNavbar = () => {
         </div>
         <div className={clicked ? 'inputContainer active':'inputContainer'}>
           <FilterComponent/>
+        </div>
+        <div>
+          <ModalLogin />
         </div>
       </div>
     </div>
