@@ -3,7 +3,7 @@ import {useState} from 'react'
 import { Link, NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCartShopping, faCircleQuestion, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faHeart, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import '../navegacion/ObsidianNavbar.css'
 import FilterComponent from '../filtroNavegacion/FilterComponent';
@@ -19,8 +19,6 @@ export const ObsidianNavbar = () => {
   function clickear(){
     setClicked(!clicked)
   }
-//useState para boton user
-  const [login, setLogin] = useState(false)
 //para cambiar de color el navbar
   const [scrolling, setSCrolling] = useState(false)
 
@@ -30,9 +28,6 @@ export const ObsidianNavbar = () => {
     }else{
       setSCrolling(false);
     }
-  }
-  function openedUser(){
-    setLogin(!login)
   }
 
   window.addEventListener("scroll",changeBackG);

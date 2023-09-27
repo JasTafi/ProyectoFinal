@@ -13,11 +13,14 @@ const initialUserInfo = {
 export const DataContext = ({ children }) => {
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
+  const [ showModal, setShowModal] = useState(false);
   const [ producto, setProducto ] = useState(false) //para manejar el carrito de compras
 
   const initiallValues = {
     userInfo,
     setUserInfo,
+    showModal,
+    setShowModal,
     producto,
     setProducto
   };
