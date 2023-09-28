@@ -1,17 +1,19 @@
-import React from 'react'
+import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 
 import Example from '../modalAdministration/modalAdministration';
 
+import '../categoryAccordion/CategoryAccordion.css';
+
 const CategoryAccordion = ({ category, products }) => {
-  const categoryProducts = products.filter(item => item.categoria === category);
+  const categoryProducts = products.filter((item) => item.categoria === category);
 
   return (
     <div className="category-container">
       <h4>{category}</h4>
       <Accordion className="accordion1">
-        {categoryProducts.map(item => (
-          <Accordion.Item key={item.id} eventKey={item.id}>
+        {categoryProducts.map((item, index) => (
+          <Accordion.Item key={item.id} eventKey={index.toString()}>
             <Accordion.Header className="accordion">{item.nombre}</Accordion.Header>
             <Accordion.Body className="accordion">
               <div className="divProductoMaster">
@@ -20,8 +22,8 @@ const CategoryAccordion = ({ category, products }) => {
                   <p>{item.nombre}</p>
                 </div>
                 <div className="buttonEdit">
-                  <Example />
-                </div>
+  <Example item={item} />
+</div>
               </div>
               <div className="divProducto">
                 <h4>Categoría:</h4>
