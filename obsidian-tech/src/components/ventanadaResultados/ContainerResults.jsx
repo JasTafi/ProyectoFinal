@@ -24,7 +24,7 @@ export const ContainerResults = ({ resultado, filtered, setFiltered }) => {
                 >
                   <div className="nombreYPrecio">
                     <p>{item.nombre}</p>
-                    <p>${item.precio}</p>
+                    <p className="precio">${item.precio}</p>
                   </div>
                 </Link>
               </div>
