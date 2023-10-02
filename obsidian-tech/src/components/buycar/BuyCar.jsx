@@ -24,7 +24,6 @@ export const BuyCar = () => {
       token: userInfo.user.token,
     })
       .then((res) =>{
-        console.log(res),
         setProducto(true)
       })
       .catch((err) => console.log(err));
@@ -50,7 +49,7 @@ export const BuyCar = () => {
         <FontAwesomeIcon icon={faCartShopping} />
       </button>
 
-      <Modal className="my-5" show={show} onHide={handleClose}>
+      <Modal className="containerModalBuyCar" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>

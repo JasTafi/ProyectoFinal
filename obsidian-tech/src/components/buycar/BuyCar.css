@@ -1,3 +1,6 @@
+.containerModalBuyCar {
+    margin-top: 5rem !important;
+}
 .bodyCarModal {
     display: flex;
     justify-content: space-around;
