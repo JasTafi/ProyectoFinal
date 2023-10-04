@@ -60,6 +60,7 @@ async function GetFavoriteProduct({ id, token }) {
   const results = await response.json();
   return results;
 }
+
 // Eliminar un producto de la lista de favoritos
 async function DeleteFavoriteById({ id, productId, token }) {
   const body = JSON.stringify({
@@ -76,7 +77,60 @@ async function DeleteFavoriteById({ id, productId, token }) {
   return await response.json();
 }
 
-// Verificar si un email esta en base de datos
+// agregar un producto al carrito
+async function AddCarProduct({ userId, productId, token }) {
+  const body = JSON.stringify({
+    userId,
+    productId,
+  });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: body,
+  });
+  return await response.json();
+}
+
+//Mostrar productos del carrito
+async function GetCarProducts({ id, token }) {
+  try {
+    const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if(!response.ok) {
+      throw new Error(`Error al obtener productos del carrito: ${response.status}`);
+    }
+  
+    const results = await response.json();
+    return results;
+  } catch (error) {
+    console.error("Error en GetCarProducts:", error);
+    throw error; //Re-lanza el error paraque pueda ser manejado en el componente que llama a esta funcion.
+  }
+} 
+
+//Borrar un producto del carrito
+async function DeleteCarProduct({ id, productId, token }) {
+  const body = JSON.stringify({
+    productId,
+  });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: body,
+  });
+  return await response.json();
+}
+
+// Verificar si un email esta en base de datos, crea un token y lo envia por mail al usuario
 async function EmailVerification({ email }) {
   const body = JSON.stringify({ email });
   const response = await fetch(`${Puerto.URL_LOCAL}/user/email/verification`, {
@@ -99,8 +153,14 @@ async function ModifyPassword({ email, password }) {
     },
     body: body,
   });
-  return await response.json()
-} 
+  return await response.json();
+}
+
+// Muetra un usuario por email
+async function GetUserByEmail(email) {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/byEmail/${email}`);
+  return await response.json();
+}
 
 export {
   CreateUser,
@@ -110,4 +170,8 @@ export {
   DeleteFavoriteById,
   EmailVerification,
   ModifyPassword,
+  DeleteCarProduct,
+  GetCarProducts,
+  AddCarProduct,
+  GetUserByEmail
 };

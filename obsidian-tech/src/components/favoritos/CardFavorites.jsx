@@ -21,7 +21,7 @@ export const CardFavorites = ({ fav, setUpload }) => {
     })
       .then((res) => {
         console.log(res + "producto borrado");
-        setUpload(true);
+        setUpload(true)
       })
       .catch((err) => console.log(err));
   }
@@ -67,14 +67,9 @@ export const CardFavorites = ({ fav, setUpload }) => {
                 <div className="boxPrice">
                   <p>$ {item.precio}</p>
                 </div>
-                <button
-                  className="buttonCartFav"
-                  onClick={() => {
-                    handleAddCar(item._id);
-                  }}
-                >
-                  Agregar al carrito
-                </button>
+                <button className="buttonCartFav"  onClick={() => {
+                            handleAddCar(item._id);
+                          }}>Agregar al carrito</button>
               </div>
             </div>
           </div>

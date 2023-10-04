@@ -1,15 +1,11 @@
 import { useEffect, useState, useContext } from "react";
-
 import { Link } from "react-router-dom";
-
-import Loader from "../loader/Loader";
-
-import { GetFavoriteProduct } from "../../services/user_service";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { CardFavorites } from "./CardFavorites";
 
+import Loader from "../loader/Loader";
+import { GetFavoriteProduct } from "../../services/user_service";
+import { CardFavorites } from "./CardFavorites";
 import { DataProvider } from "../../context/DataContext";
 
 import "../favoritos/Favoritos.css";
@@ -26,8 +22,10 @@ const Favoritos = () => {
       id: userInfo.user.id,
       token: userInfo.user.token,
     })
-      .then(({ favorite_producs }) => {
-        setFav(favorite_producs);
+      //.then(({ favorite_producs }) => {
+      .then((response) => {
+        console.log("response from GetFavoriteProduct:", response);  
+        setFav(response.favorite_producs);
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -38,7 +36,7 @@ const Favoritos = () => {
       });
   }, [upload]);
 
-  const favoritos = fav.length > 0;
+  const favoritos = Array.isArray(fav) && fav.length > 0;
   return (
     <div>
       {loading ? (
@@ -61,7 +59,7 @@ const Favoritos = () => {
               <div className="boxFav">
                 <h3>Favoritos {fav.length}</h3>
                 <div className="containerCardFav">
-                  {fav.length == 0 ? (
+                  {fav.length === 0 ? (
                     <div className="favEmpty">
                       <h2>No tienes productos agregados a favoritos!</h2>
                     </div>

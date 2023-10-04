@@ -1,10 +1,7 @@
-//import { useContext } from 'react'
-import { ProductGrid } from '../components/grillaDeProductos/ProductGrid'
-//import { DataProvider } from '../context/DataContext'
+import { HomeApp } from '../components/inicio/HomeApp'
 
 export default function InicioPage() {
-  //const { userInfo } = useContext(DataProvider);
   return (
-    <ProductGrid/>
+    <HomeApp/>
   )
 }

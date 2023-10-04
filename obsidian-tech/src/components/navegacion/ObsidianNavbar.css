@@ -9,6 +9,7 @@
     width: 100%;
     z-index: 99999;
     transition: all 0.2s ease-in-out;
+    backdrop-filter: blur(25px);
 }
 .navBarContainer.scroll {
     background-color: #000;

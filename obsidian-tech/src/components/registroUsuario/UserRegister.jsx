@@ -4,8 +4,10 @@ import { useContext } from "react";
 
 import { CreateUser } from "../../services/user_service";
 
-import '../registroUsuario/UserRegister.css';
 import { DataProvider } from "../../context/DataContext";
+import { Notification } from "../../services/tostifyNot";
+
+import '../registroUsuario/UserRegister.css';
 
 const UserRegister = () => {
 
@@ -41,7 +43,7 @@ const UserRegister = () => {
       }}
       onSubmit={(values, { setSubmitting }) => {
         if(values.password !== values.repeatPassword) {
-          console.log('Las contraseñas no coinciden');
+          Notification({ message: "No se pudo crear el usuario, verifique que las contraseñas sean iguales", type: "error" });
           setSubmitting(false);
           return;
         }
@@ -50,9 +52,10 @@ const UserRegister = () => {
           password: values.password,
         })
         .then(Response => {
-          console.log('Usuario creado:', Response);
           navigate("/");
           setShowModal(true);
+          const userEmail = Response.data_added?.email || "usuario"; //Si no hay email, usa "usuario" como valor por defecto
+          Notification({ message: `Usuario creado con éxito ${userEmail}`, type: "success" });
           // Realizar acciones adicionales despues de crear el usuario
         })
         .catch(error => {

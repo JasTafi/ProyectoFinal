@@ -1,39 +1,43 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { EmailVerification, ModifyPassword } from "../../services/user_service";
+import {
+  EmailVerification,
+  GetUserByEmail,
+  ModifyPassword,
+} from "../../services/user_service";
 
 import "./FormEmailVerification.css";
 
 const FormEmailVerification = () => {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
-  //const [provisionalToken, setProvisionalToken] = useState("");
+  //const [provisionalToken, setProvisionalToken] = useState(""); // Agrega el estado para almacenar el token provisional
 
-  //const handleEmailSubmit = (values, { temporaryToken }) => {
-  const handleEmailSubmit = (values, { setFieldValue }) => {
+  const handleEmailSubmit = (values) => {
     setEmail(values.email);
-    EmailVerification(values)
-      .then((response) => {
-        if (response.ok) {
-          setStep(2); //ir al siguiente paso
-        } else {
-          alert("Correo no registrado");
-        }
-        console.log({
-          ok: true,
-          message: "Solicitud de verificacion de correo exitosa",
+    GetUserByEmail(values)
+    .then(({ temporaryToken }) => {
+      if (temporaryToken) {
+        setStep(2);
+      }
+      EmailVerification(values)
+        .then((response) => {
+          if (response.ok) {
+            //setProvisionalToken(response.tempToken); // Almacena el token en el estado del componente
+            //console.log(provisionalToken);
+            setStep(2); //ir al siguiente paso
+          } else {
+            alert("Correo no registrado");
+          }
+          console.log({
+            ok: true,
+            message: "Solicitud de verificacion de correo exitosa",
+          });
+        })
+        .catch((error) => {
+          console.error("Error en la petisión de verificación de correo:", error);
         });
-        //setProvisionalToken(response.tempToken); // Establece provisionalToken
-        setFieldValue("provisionalToken", response.tempToken); // Agrega este setFieldValue para asegurarte de que Formik tenga el valor actualizado
-      })
-      .catch((error) => {
-        console.error("Error en la petisión de verificación de correo:", error);
-        // return resizeBy.status(400).json({
-        //   ok: false,
-        //   message: "Error en la petición de verificación de correo",
-        //   error: error.message,
-        // });
-      });
+    });
   };
 
   return (
@@ -67,7 +71,7 @@ const FormEmailVerification = () => {
                 <div className="contain-form">
                   <div className="contain-input">
                     <label htmlFor="email">Ingresa tu mail</label>
-                    <Field type="email" name="email" />
+                    <Field type="email" id="email" name="email" />
                     <ErrorMessage
                       name="email"
                       component={() => (
@@ -94,11 +98,14 @@ const FormEmailVerification = () => {
             validateToken: "",
           }}
           onSubmit={(values) => {
-            if (values.provisionalToken !== values.validateToken) {
-              console.error("Token invalido o expirado");
-            } else {
-              setStep(3);
-            }
+            GetUserByEmail(email)
+            .then(({ temporaryToken }) => {
+              if(values.validateToken === temporaryToken) {
+                setStep(3);
+              } else {
+                console.error("Los token no coinciden");
+              }
+            })
           }}
         >
           {({ isSubmitting, isValid }) => (
@@ -106,10 +113,14 @@ const FormEmailVerification = () => {
               <Form>
                 <div className="contain-form">
                   <div className="contain-input">
-                    <label htmlFor="token">
+                    <label htmlFor="validateToken">
                       Paga el token recibido por correo electrónico
                     </label>
-                    <Field type="string" name="token" />
+                    <Field
+                      type="password"
+                      id="validateToken"
+                      name="validateToken"
+                    />
                   </div>
                   <button
                     className="btnInputReg"
@@ -144,31 +155,43 @@ const FormEmailVerification = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            if (values.newPassword !== values.confirmPassword) {
-              console.log("Las contraseñas no coinciden");
-              setSubmitting(false);
-            } else {
-              ModifyPassword({ email, password: values.newPassword })
-                .then((response) => {
-                  console.log(response);
-                })
-                .catch((error) => {
-                  console.error(
-                    "Error en la petición de modificación de contraseña:",
-                    error
-                  );
-                });
+          onSubmit={(values) => {
+            const pass = values.newPassword
+            if(values.newPassword === values.confirmPassword) {
+              ModifyPassword({ email, pass })
             }
           }}
+          // onSubmit={(values, { setSubmitting }) => {
+          //   if (values.newPassword !== values.confirmPassword) {
+          //     console.log("Las contraseñas no coinciden");
+          //     setSubmitting(false);
+          //   } else {
+          //     ModifyPassword({ email, password: values.newPassword })
+          //       .then((response) => {
+          //         console.log(response);
+          //       })
+          //       .catch((error) => {
+          //         console.error(
+          //           "Error en la petición de modificación de contraseña:",
+          //           error
+          //         );
+          //       });
+          //   }
+          // }}
         >
           {({ isSubmitting, isValid, errors }) => (
             <div>
               <Form>
                 <div className="contain-form">
                   <div className="contain-input">
-                    <label htmlFor="string">Ingresa tu nueva contraseña</label>
-                    <Field type="string" name="newPassword" />
+                    <label htmlFor="newPassword">
+                      Ingresa tu nueva contraseña
+                    </label>
+                    <Field
+                      type="password"
+                      id="newPassword"
+                      name="newPassword"
+                    />
                     <ErrorMessage
                       name="newPassword"
                       component={() => (
@@ -177,10 +200,14 @@ const FormEmailVerification = () => {
                     />
                   </div>
                   <div className="contain-input">
-                    <label htmlFor="string">
+                    <label htmlFor="confirmPassword">
                       Ingresa de nuevo tu contraseña
                     </label>
-                    <Field type="string" name="confirmPassword" />
+                    <Field
+                      type="password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                    />
                   </div>
                   <button
                     className="btnInputReg"

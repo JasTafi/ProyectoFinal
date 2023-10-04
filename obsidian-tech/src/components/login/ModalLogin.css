@@ -1,15 +1,17 @@
 .modalContainer {
-  position: absolute;
-  top: -400px;
-  right: 35%;
-  background-color: #000;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-  width: 350px;
-  height: 350px;
-  transition: all 0.5s;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.3s;
 }
 .modalContainer.active {
-  top: 150px;
+  display: grid;
+  place-content: center;
+  position: fixed;
+  top: 60px;
+  left: 0;
   transition: all 0.5s;
 }
 .modalContent {
@@ -18,13 +20,33 @@
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  height: 100%;
-  width: 100%;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px 1px rgba(190, 186, 186, 0.5);
+  height:30rem;
+  width: 20rem;
 }
+
+.btnCerrar {
+  margin-top: 1rem;
+}
+
+.labelCheck {
+  text-align: center;
+}
+
+.containerModalInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
 .modalContainer .btnCerrar {
   position: relative;
   left: 40%;
-  border: none;
+  border: 1px solid #6D717A;
+  color: #6D717A;
   font-size: 0.8rem;
 }
 .modalContent h3 {
@@ -42,6 +64,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .modalContent form input {
   background-color: transparent;
   border: 1px solid #6D717A;
@@ -51,13 +74,14 @@
   padding: 7px 5px 7px 42px;
   width: 250px;
 }
-.btnSesion {
+
+.btnSesionModal {
   cursor: pointer;
   border: 1px solid transparent;
   background: linear-gradient(to right, #7035C0, #0396FE);
   border-radius: 0px 10px;
   color: #fff;
-  margin-right: 20px;
+  font-size: 1rem !important;
   padding: 0.3rem 1.2rem;
 }
 

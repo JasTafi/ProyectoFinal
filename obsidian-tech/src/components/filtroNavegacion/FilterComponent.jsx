@@ -12,7 +12,7 @@ const FilterComponent = () => {
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
   //para mostrar ventana de resultados
-  const [ show, setShow] = useState(false);
+  // const [ show, setShow] = useState(false);
 
   const filtrado = (valorDelInput) => {
     const resultadoBusqueda = dataApi.filter((item) => {
@@ -21,7 +21,6 @@ const FilterComponent = () => {
       }
     })
     setResultado(resultadoBusqueda)
-    setShow(true)
   }
 
   const handleChange = (e) => {
@@ -52,7 +51,7 @@ const FilterComponent = () => {
         placeholder='Buscar productos...'/>
         </div>
     </form>
-    <ContainerResults resultado = {resultado} show = {show} setShow={setShow} setFiltered={setFiltered}/>
+    <ContainerResults resultado = {resultado} filtered={filtered} setFiltered={setFiltered}/>
     </>
   );
 };

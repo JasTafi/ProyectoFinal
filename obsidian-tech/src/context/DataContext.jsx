@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-//contexto
+//contexto a consumir
 export const DataProvider = createContext();
 
 const initialUserInfo = {
@@ -9,7 +9,7 @@ const initialUserInfo = {
   islogged: false,
 }
 
-//creo el proveedor
+//creo el proveedor  (estos son los DATOS a consumir)
 export const DataContext = ({ children }) => {
 
   const [userInfo, setUserInfo] = useState(initialUserInfo);
@@ -26,7 +26,7 @@ export const DataContext = ({ children }) => {
   };
   
   return (
-    <DataProvider.Provider value={initiallValues}>
+    <DataProvider.Provider value={initiallValues} >
       {children}
     </DataProvider.Provider>
   );

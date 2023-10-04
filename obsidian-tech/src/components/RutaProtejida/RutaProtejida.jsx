@@ -5,12 +5,13 @@ import { useLocation } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export const RutaProtejida = ({ children }) => {
-  const { user, isLogged } = useContext(DataProvider);
+  const { userInfo } = useContext(DataProvider);
   const location = useLocation();
 
-  if(user === undefined || user === null || isLogged === false) {
-    return <Navigate to='/modalLogin' state={location} />;
-  } 
+  if( userInfo.islogged === false) {
+    alert("Inicia sesion")
+    return <Navigate to='/' state={location}></Navigate>;
+  }
 
   return children;
 };

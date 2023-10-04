@@ -1,8 +1,12 @@
 function Get(key) {
   const res = localStorage.getItem(key);
 
-  if (res) {
-    return JSON.parse(res);
+  try {
+    if (typeof res === 'string' && res !== 'undefined' && res !== null) {
+      return JSON.parse(res);
+    }
+  } catch (error) {
+    console.error("Error parsing JSON:", error);
   }
 
   return null;
