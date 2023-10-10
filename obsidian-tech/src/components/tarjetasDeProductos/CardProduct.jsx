@@ -91,8 +91,12 @@ export const CardProduct = () => {
             },
             "@1.50": {
               slidesPerView: 4.5,
-              spaceBetween: 40,
+              spaceBetween: 30,
             },
+            "@2.50": {
+              slidesPerView: 5.5,
+              spaceBetween:30
+            }
           }}
           modules={[Pagination, Navigation]}
           className="mySwiper"
