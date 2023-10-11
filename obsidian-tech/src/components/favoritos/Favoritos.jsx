@@ -17,10 +17,8 @@ import "../favoritos/Favoritos.css";
 const Favoritos = () => {
   const [loading, setLoading] = useState(false);
   const [fav, setFav] = useState([]);
-  const {
-    userInfo
-  } = useContext(DataProvider);
-  const [ upload, setUpload ] = useState(false);
+  const { userInfo } = useContext(DataProvider);
+  const [upload, setUpload] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -36,7 +34,7 @@ const Favoritos = () => {
         setTimeout(() => {
           setLoading(false);
         }, 2000);
-        setUpload(false)
+        setUpload(false);
       });
   }, [upload]);
 
@@ -68,14 +66,16 @@ const Favoritos = () => {
                       <h2>No tienes productos agregados a favoritos!</h2>
                     </div>
                   ) : (
-                    <CardFavorites fav={fav} setLoading={setLoading} setUpload={setUpload}/>
+                    <CardFavorites
+                      fav={fav}
+                      setLoading={setLoading}
+                      setUpload={setUpload}
+                    />
                   )}
                 </div>
                 {favoritos && (
                   <div className="buttonsFav">
-                    <button className="buttonCartFav">
-                     seguir comprando
-                    </button>
+                    <Link to={"/"} className="buttonCartFav">seguir comprando</Link>
                   </div>
                 )}
               </div>

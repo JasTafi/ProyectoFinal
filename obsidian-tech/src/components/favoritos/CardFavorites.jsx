@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
-import { Navigate } from 'react-router';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { DataProvider } from "../../context/DataContext";
 import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";
@@ -23,7 +21,7 @@ export const CardFavorites = ({ fav, setUpload }) => {
     })
       .then((res) => {
         console.log(res + "producto borrado");
-        setUpload(true)
+        setUpload(true);
       })
       .catch((err) => console.log(err));
   }
@@ -69,9 +67,14 @@ export const CardFavorites = ({ fav, setUpload }) => {
                 <div className="boxPrice">
                   <p>$ {item.precio}</p>
                 </div>
-                <button className="buttonCartFav"  onClick={() => {
-                            handleAddCar(item._id);
-                          }}>Agregar al carrito</button>
+                <button
+                  className="buttonCartFav"
+                  onClick={() => {
+                    handleAddCar(item._id);
+                  }}
+                >
+                  Agregar al carrito
+                </button>
               </div>
             </div>
           </div>
