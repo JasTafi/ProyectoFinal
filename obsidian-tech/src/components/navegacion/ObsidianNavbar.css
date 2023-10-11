@@ -84,7 +84,7 @@
         display: none;
     }
 }
-@media (max-width: 1000px) and (min-width: 770px) {
+@media (max-width: 769px) {
   .navBarContainer h2, 
   span {
     font-size: .9rem;
@@ -98,7 +98,10 @@
     margin-right: .4rem;
   }
 }
-@media (max-width: 769px) {
+@media (max-width: 768px) {
+    .navBarContainer {
+        background-color: #000;
+    }
     .linksContainer {
         position: absolute;
         top: 4rem;
@@ -110,7 +113,7 @@
     .linksContainer.active{
         width: 100%;
         height: auto;
-        background-color: #fff;
+        background-color: #111;
         position: absolute;
         top: 4rem;
         left: 0;
@@ -121,7 +124,7 @@
     }
     .linkStyle {
         display: block;
-        color: #000;
+        color: #fff;
         font-size: 1.2rem;
         margin: .5rem 0;
     }
@@ -138,7 +141,7 @@
         position: absolute;
         top: 13.4rem;
         left: 0;
-        background-color: #fff;
+        background-color: #111;
         z-index: 1;
         transition: all 0.3s;
     }

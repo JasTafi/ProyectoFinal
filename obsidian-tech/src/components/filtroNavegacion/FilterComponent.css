@@ -40,3 +40,9 @@
     background-color: #6D717A;
     border-radius: 5px;
 }
+@media( 320px <= width <= 768px){
+    .navbar-form {
+        background-color: #111;
+        padding: 0;
+    }
+}

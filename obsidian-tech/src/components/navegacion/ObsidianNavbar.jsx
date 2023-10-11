@@ -57,7 +57,7 @@ export const ObsidianNavbar = () => {
           </div>
         </div>
         <div className={clicked ? 'inputContainer active':'inputContainer'}>
-          <FilterComponent/>
+          <FilterComponent setClicked={setClicked}/>
         </div>
       </div>
     </div>
