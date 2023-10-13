@@ -170,6 +170,9 @@
   transform: scale(1.1);
   filter: drop-shadow(0 0 1rem #7035c0);
 }
+.iconHeart {
+  color: red;
+}
 @media (320px <= width <= 425px) {
   .containerProductDetail {
     display: flex;
