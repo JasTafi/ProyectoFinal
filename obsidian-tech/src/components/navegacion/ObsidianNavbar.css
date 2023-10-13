@@ -87,14 +87,13 @@
 @media (max-width: 769px) {
   .navBarContainer h2, 
   span {
-    font-size: .9rem;
+    font-size: 1.1rem;
   }
   .linkStyle {
     font-size: .7rem;
     margin-right: .4rem;
   }
   .iconContainer button{
-    font-size: .9rem;
     margin-right: .4rem;
   }
 }
