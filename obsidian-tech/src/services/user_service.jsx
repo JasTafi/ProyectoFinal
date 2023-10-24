@@ -119,4 +119,28 @@ async function DeleteCarProduct({id, productId, token}){
   });
   return await response.json();
 }
-export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct};
+//Agregar orden de compra
+async function AddPurchaseOrder({userId, productId, token, nombres, apellidos, departamento, calle, numero, localidad, provincia}) {
+  const body = JSON.stringify({
+    userId,
+    productId,
+    token,
+    nombres,
+    apellidos,
+    departamento,
+    calle,
+    numero,
+    localidad,
+    provincia
+  });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: body,
+  });
+  return await response.json();
+}
+export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, AddPurchaseOrder};

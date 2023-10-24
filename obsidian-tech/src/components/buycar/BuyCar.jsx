@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import {Link} from 'react-router-dom'
 import Modal from "react-bootstrap/Modal";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -86,9 +86,9 @@ export const BuyCar = () => {
           <button className="btnOutlineGrey" onClick={handleClose}>
             cerrar
           </button>
-          <button className="btnGradient" onClick={handleClose}>
+          <Link to={"/compra"}className="btnGradient" onClick={handleClose}>
             comprar!
-          </button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </div>
