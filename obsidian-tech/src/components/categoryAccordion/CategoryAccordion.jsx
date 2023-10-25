@@ -1,8 +1,6 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-
 import Example from '../modalAdministration/modalAdministration';
-
 import '../categoryAccordion/CategoryAccordion.css';
 
 const CategoryAccordion = ({ category, products }) => {
@@ -22,8 +20,8 @@ const CategoryAccordion = ({ category, products }) => {
                   <p>{item.nombre}</p>
                 </div>
                 <div className="buttonEdit">
-  <Example item={item} />
-</div>
+                  <Example item={item} />
+                </div>
               </div>
               <div className="divProducto">
                 <h4>Categoría:</h4>
@@ -47,7 +45,7 @@ const CategoryAccordion = ({ category, products }) => {
                   Ver imagen
                 </a>
               </div>
-            </Accordion.Body>
+              </Accordion.Body>
           </Accordion.Item>
         ))}
       </Accordion>
