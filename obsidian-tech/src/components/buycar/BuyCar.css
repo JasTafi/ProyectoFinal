@@ -1,5 +1,16 @@
+.buttonCar {
+    background-color: transparent;
+    color: hsl(0, 0%, 100%);
+}
+.buttonCar:hover {
+    color: hsl(265, 57%, 48%);
+    transition: color .3s;
+}
 .containerModalBuyCar {
-    margin-top: 5rem !important;
+    margin-top: 5rem;
+}
+.containerModalCar {
+    position:relative;
 }
 .bodyCarModal {
     display: flex;
@@ -10,7 +21,7 @@
 .circleCount{
     position: absolute;
     top: -10px;
-    left: 40%;
+    left: 20px;
     background-color: #0396FE;
     border-radius: 30%;
     color: #fff;

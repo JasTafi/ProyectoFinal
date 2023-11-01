@@ -45,7 +45,7 @@ export const BuyCar = () => {
   return (
     <div className="containerModalCar">
       <div className="circleCount">{product.length || "0"}</div>
-      <button onClick={handleShow}>
+      <button onClick={handleShow} className="buttonCar">
         <FontAwesomeIcon icon={faCartShopping} />
       </button>
 
