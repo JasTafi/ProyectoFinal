@@ -40,3 +40,13 @@
   background-color: #6d717a;
   border-radius: 5px;
 }
+@media screen and (max-width:320px) {
+  .input-navbar {
+    width: 50%;
+  }
+}
+@media screen and (max-width:576px) {
+  .input-navbar {
+    width: 65%;
+  }
+}
