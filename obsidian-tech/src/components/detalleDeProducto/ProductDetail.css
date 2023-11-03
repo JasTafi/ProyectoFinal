@@ -1,206 +1,252 @@
 .containerProductDetail {
-    background-color: #000;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    padding: 4.5rem;
+  background-color: #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 4.5rem;
 }
 .containerDetail {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    height: 80vh;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 80vh;
+  width: 40%;
 }
 .containerDetail .linkBack {
-    text-decoration: none;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    width: 60px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  width: 60px;
+  margin-bottom: 8px;
 }
 .containerDetail h2 {
-    color: #fff;
-    font-weight: 700;
+  color: #fff;
+  font-weight: 700;
 }
 .containerDetail h6 {
-    color: #6D717A;
+  color: #6d717a;
 }
 .boxCateogy {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: auto;
 }
 .boxCateogy .category {
-    background: linear-gradient(to left, #7035C0, #0396FE);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 0.9rem;
-    margin-right: 5px;
-    padding: 0 7px;
+  background: linear-gradient(to left, #7035c0, #0396fe);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-right: 5px;
+  padding: 0 7px;
 }
 .boxCateogy button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    margin: 0 5px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  margin: 0 5px;
 }
 .containerDetail .linkBack .icon {
-    border: 1px solid #fff;
-    border-radius: 50%;
-    padding: 10px;
-    margin-right: 10px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10px;
 }
 .boxCateogy p {
-    color: #fff;
-    font-size: 0.9rem;
-    margin: 5px 0;
+  color: #fff;
+  font-size: 0.9rem;
+  margin: 5px 0;
 }
 .boxDetail {
-    display: flex;
-    color: #6D717A;
-    font-size: 0.9rem;
-    width: auto;
+  display: flex;
+  color: #6d717a;
+  font-size: 0.9rem;
+  width: auto;
 }
-.boxDetail p{
-    margin-right: 10px;
+.boxDetail p {
+  margin-right: 10px;
 }
 .boxInputSelect {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #fff;
 }
 .boxInputSelect label {
-    font-size: 0.8rem;
-    margin-bottom: 5px;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
 }
 .boxInputSelect select {
-    background: transparent;
-    border: 1px solid #6D717A;
-    border-radius: 0px 15px;
-    color: #6D717A;
-    padding: 8px;
-    width: 100%;
+  background: transparent;
+  border: 1px solid #6d717a;
+  border-radius: 0px 15px;
+  color: #6d717a;
+  padding: 8px;
+  width: 100%;
 }
 .boxPrice1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.boxPrice1 .precio {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.boxPrice1 .boxQuantity {
+  display: flex;
+  color: #6d717a;
+}
+.boxQuantity p {
+  margin-right: 10px;
+}
+.boxQuantity .lbl {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #6d717a;
+  border-radius: 0px 10px;
+  height: 30px;
+  width: 100px;
+}
+.boxQuantity .lbl button {
+  background-color: transparent;
+  border: none;
+  color: #6d717a;
+  font-size: 1.2rem;
+}
+.boxBuyAndAdd button {
+  border: 1px solid transparent;
+  background: linear-gradient(to right, #7035c0, #0396fe);
+  border-radius: 0px 10px;
+  color: #fff;
+  margin-right: 20px;
+  padding: 0.3rem 1.2rem;
+  transition: all 0.2s;
+}
+.boxBuyAndAdd button:hover {
+  background: transparent;
+  border: 1px solid #6d717a;
+  color: #6d717a;
+  transition: all 0.2s;
+}
+.containerPictures {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50%;
+  width: 60%;
+}
+.containerPictures .borderColorBox {
+  /*bordes*/
+  background: linear-gradient(to right, #6f35c091, #0395fe91);
+  border-radius: 0px 15px;
+  width: 600px;
+  padding: 2px;
+}
+.borderColorBox .containerImg {
+  background-color: #000;
+  border-radius: 0px 15px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 35px 0;
+}
+.containerImg img {
+  width: 380px;
+  transition: all 0.3s;
+}
+.containerImg img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 1rem #7035c0);
+}
+.iconHeart {
+  color: red;
+}
+@media (320px <= width <= 425px) {
+  .containerProductDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4.5rem 0.9rem 0;
+  }
+  .containerDetail {
+    width: 100%;
+    height: 100%;
+  }
+  .boxPrice1 {
+    padding: 1rem 0;
+  }
+  .boxPrice1 .precio {
+    font-size: 1.3rem;
+  }
+  .boxBuyAndAdd {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .boxBuyAndAdd button {
+    margin: 0;
+    white-space: nowrap;
+    padding: 0.3rem 0.7rem;
+  }
+  .containerPictures {
+    justify-content: center;
+    margin: 2rem 0;
+    height: 100%;
+    width: 100%;
+  }
+  .containerPictures .borderColorBox {
+    width: 90.5vw;
+  }
+  .containerImg img {
+    width: 90vw;
+  }
+}
+@media (426px <= width <= 768px) {
+  .containerProductDetail {
+    padding: 4.5rem 2.5rem;
+    height: 100%;
+  }
+  .containerDetail {
+    height: 100%;
+    width: 50vw;
+  }
+  .boxPrice1 {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+  }
+  .boxQuantity {
+    padding: 12px 0;
+  }
+  .boxBuyAndAdd {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-}
-.boxPrice1 .precio {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
-}
-.boxPrice1 .boxQuantity {
-    display: flex;
-    color: #6D717A;
-}
-.boxQuantity p {
-    margin-right: 10px;
-}
-.boxQuantity .lbl {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid #6D717A;
-    border-radius: 0px 10px;
-    height: 30px;
-    width: 100px;
-}
-.boxQuantity .lbl button {
-    background-color: transparent;
-    border: none;
-    color: #6D717A;
-    font-size: 1.2rem;
-}
-.boxBuyAndAdd button {
-    border: 1px solid transparent;
-    background: linear-gradient(to right, #7035C0, #0396FE);
-    border-radius: 0px 10px;
-    color: #fff;
-    margin-right: 20px;
-    padding: 0.3rem 1.2rem;
-    transition: all 0.2s;
-}
-.boxBuyAndAdd button:hover {
-    background: transparent;
-    border: 1px solid #6D717A;
-    color: #6D717A;
-    transition: all 0.2s;
-}
-.containerPictures {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 50%;
-    width: 60%;
-}
-.containerPictures .borderColorBox {/*bordes*/
-    background: linear-gradient(to right, #6f35c091, #0395fe91);
-    border-radius: 0px 15px;
-    width: 600px;
-    padding: 2px;
-}
-.borderColorBox .containerImg {
-    background-color: #000;
-    border-radius: 0px 15px;
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    padding: 35px 0;
-}
-.containerImg img {
-    width: 380px;
-		transition: all 0.3s;
-}
-.containerImg img:hover{
-	transform: scale(1.2);
-	filter: drop-shadow(0 0 1rem #7035C0);
-}
-@media (min-width:320px) and (max-width:550px){
-    .containerProductDetail{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 4.5rem 0.9rem;
-    }
-    .containerDetail {
-        width: 100%;
-    }
-    .boxPrice1 .precio {
-        font-size: 1.3rem;
-    }
-		.boxBuyAndAdd {
-			display: flex;
-			justify-content: space-between;
-			width: 100%;
-		}
-    .boxBuyAndAdd button {
-			margin: 0;
-			white-space: nowrap;
-      padding: 0.3rem 0.7rem;
-    }
-    .containerPictures {
-			justify-content: center;
-        margin: 2rem 0;
-        height: 100%;
-        width: 100%;
-    }
-    .containerPictures .borderColorBox {
-        width: 90.5vw;
-    }
-    .containerImg img {
-        width: 90vw;
-    }
+  }
+  .boxBuyAndAdd button {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+  }
+  .containerPictures {
+    width: 50%;
+  }
+  .containerPictures .borderColorBox {
+    width: 95%;
+  }
+  .containerImg img {
+    width: 95%;
+  }
 }

@@ -3,11 +3,10 @@ import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
-
 
 import "../login/ModalLogin.css";
 const ModalLogin = () => {
@@ -16,13 +15,13 @@ const ModalLogin = () => {
   const handleModal = () => {
     setShowModal(!showModal);
   };
-  
+
   return (
     <>
       <button className="btn-login" onClick={handleModal}>
         <FontAwesomeIcon icon={faUser} />
       </button>
-      <div className={showModal ? "modalContainer active" : "modalContainer"}>
+      <section className={showModal ? "sectionLogin active" : "sectionLogin"}>
         <div className="modalContent">
           <Formik
             initialValues={{
@@ -60,7 +59,7 @@ const ModalLogin = () => {
                       allowsLocaStorage: values.allowsLocaStorage,
                     },
                   }),
-                  setProducto(true)
+                    setProducto(true);
                 })
                 .catch((error) =>
                   console.log(
@@ -72,9 +71,13 @@ const ModalLogin = () => {
             }}
           >
             {({ errors }) => (
-              <Form>
-                <button className="btnCerrar" onClick={handleModal}>cerrar</button>
-                <div>
+              <Form className="formLogin">
+                <div className="boxButton">
+                  <button className="btnCerrar" onClick={handleModal}>
+                    <FontAwesomeIcon icon={faXmark} />
+                  </button>
+                </div>
+                <div className="boxLabel">
                   <label htmlFor="email">Correo electronico</label>
                   <Field type="email" id="email" name="email" />
                   <ErrorMessage
@@ -84,7 +87,7 @@ const ModalLogin = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="boxLabel">
                   <label htmlFor="password">Ingresa tu contraseña</label>
                   <Field type="password" id="password" name="password" />
                   <ErrorMessage
@@ -94,27 +97,29 @@ const ModalLogin = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="boxLabel checkbox">
                   <label className="labelCheck" htmlFor="allowsLocaStorage">
-                  Mantenerme conectado
-                    <Field type="checkbox" name="allowsLocaStorage"/>
+                    Mantenerme conectado
+                    <Field type="checkbox" name="allowsLocaStorage" />
                   </label>
                 </div>
-                <NavLink to={"/registro"} onClick={() => setShowModal(false)}>
+                <NavLink to={"/registro"} className={"formLinks"} onClick={() => setShowModal(false)}>
                   Registro
                 </NavLink>
                 <NavLink
-                  to={"/recContraseña"}
+                  to={"/recContraseña"} className={"formLinks"}
                   onClick={() => setShowModal(false)}
                 >
                   Olvidaste tu Contraseña?
                 </NavLink>
-                <button type="submit" className="btnSesionModal">Enviar</button>
+                <button type="submit" className="btnSesionModal">
+                  Enviar
+                </button>
               </Form>
             )}
           </Formik>
         </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import {Link} from 'react-router-dom'
 import Modal from "react-bootstrap/Modal";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,7 +24,6 @@ export const BuyCar = () => {
       token: userInfo.user.token,
     })
       .then((res) =>{
-        console.log(res),
         setProducto(true)
       })
       .catch((err) => console.log(err));
@@ -46,11 +45,11 @@ export const BuyCar = () => {
   return (
     <div className="containerModalCar">
       <div className="circleCount">{product.length || "0"}</div>
-      <button onClick={handleShow}>
+      <button onClick={handleShow} className="buttonCar">
         <FontAwesomeIcon icon={faCartShopping} />
       </button>
 
-      <Modal className="my-5" show={show} onHide={handleClose}>
+      <Modal className="containerModalBuyCar" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
@@ -87,9 +86,9 @@ export const BuyCar = () => {
           <button className="btnOutlineGrey" onClick={handleClose}>
             cerrar
           </button>
-          <button className="btnGradient" onClick={handleClose}>
+          <Link to={"/compra"}className="btnGradient" onClick={handleClose}>
             comprar!
-          </button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </div>

@@ -60,39 +60,43 @@ export const CardProduct = () => {
     <>
       <div className="swiperContainer">
         <Swiper
-          slidesPerView={4}
-          spaceBetween={20}
+          slidesPerView={5}
+          spaceBetween={10}
           navigation={true}
+          loop={true}
           pagination={{
             dynamicBullets: true,
             clickable: true,
           }}
           breakpoints={{
             320: {
-              slidesPerView: 1,
+              slidesPerView: 1.1,
               spaceBetween: 10,
             },
-            375: {
-              slidesPerView: 1.2,
-              spaceBetween: 20,
+            425: {
+              slidesPerView:1.3,
+              spaceBetween:15
             },
-            "@0.75": {
-              slidesPerView: 1.4,
-              spaceBetween: 20,
+            576: {
+              slidesPerView: 2,
+              spaceBetween: 10
             },
-            "@1.00": {
-              slidesPerView: 2.5,
-              spaceBetween: 40,
+            640: {
+              slidesPerView: 2.2,
+              spaceBetween: 10
             },
-            "@1.25": {
-              //768
-              slidesPerView: 2.6,
-              spaceBetween: 30,
+            768: {
+              slidesPerView: 2.9,
+              spaceBetween: 10
             },
-            "@1.50": {
-              slidesPerView: 4.5,
-              spaceBetween: 40,
+            1024: {
+              slidesPerView: 4.2,
+              spaceBetween: 10
             },
+            1440: {
+              slidesPerView: 5,
+              spaceBetween: 10
+            }
           }}
           modules={[Pagination, Navigation]}
           className="mySwiper"

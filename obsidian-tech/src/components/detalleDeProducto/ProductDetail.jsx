@@ -8,7 +8,7 @@ import { faArrowLeft, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { getProductByIdFromDb } from "../../services/product_service";
 
-import { AddCarProduct } from "../../services/user_service";
+import { AddCarProduct, AddFavoriteProduct } from "../../services/user_service";
 import "../detalleDeProducto/ProductDetail.css";
 
 const ProductDetail = () => {
@@ -17,6 +17,7 @@ const ProductDetail = () => {
   const { setProducto } = useContext(DataProvider);
   const [data, setData] = useState([]);
   const [num, setNum] = useState(1);
+  const [addedFav, setAddedFav] = useState(false)
 
   const stock = data.stock;
 
@@ -37,7 +38,19 @@ const ProductDetail = () => {
       .then((res) => setData(res))
       .catch((error) => console.log(error));
   }, []);
-
+  function handleAddFavorites() {
+    if (userInfo.islogged == true) {
+      AddFavoriteProduct({
+        userId: userInfo.user.id,
+        productId: id,
+        token: userInfo.user.token,
+      })
+        .then((res) => setAddedFav(true))
+        .catch((err) => console.log(err));
+    } else {
+      alert("debes iniciar sesion para agregar a favoritos");
+    }
+  }
   function handleAddCar() {
     AddCarProduct({
       userId: userInfo.user.id,
@@ -58,8 +71,8 @@ const ProductDetail = () => {
         </Link>
         <div className="boxCateogy">
           <div className="category">{data.categoria}</div>
-          <button>
-            <FontAwesomeIcon icon={faHeart} />
+          <button onClick={handleAddFavorites}>
+            <FontAwesomeIcon icon={faHeart} className={addedFav ? "iconHeart" : ""}/>
           </button>
           <p>Agregar a lista de deseos.</p>
         </div>

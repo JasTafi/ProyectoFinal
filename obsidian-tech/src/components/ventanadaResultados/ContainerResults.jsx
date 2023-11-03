@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 
 import "../ventanadaResultados/ContainerResults.css";
 
-export const ContainerResults = ({ resultado, filtered, setFiltered }) => {
+export const ContainerResults = ({ resultado, filtered, setFiltered, setClicked }) => {
   return (
     <>
       <div
         className={
-          filtered.length > 0 ? "containerShowResults active" : "containerShowResults"
+          filtered.length > 0
+            ? "containerShowResults active"
+            : "containerShowResults"
         }
       >
         <div className="containerResults">
@@ -19,12 +21,13 @@ export const ContainerResults = ({ resultado, filtered, setFiltered }) => {
                   to={`/accesorio/${item._id}`}
                   className="linkAccesorio"
                   onClick={() => {
-                    setFiltered("");
+                    setFiltered(""),
+                    setClicked(false)
                   }}
                 >
                   <div className="nombreYPrecio">
                     <p>{item.nombre}</p>
-                    <p>${item.precio}</p>
+                    <p className="precio">${item.precio}</p>
                   </div>
                 </Link>
               </div>

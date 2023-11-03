@@ -105,7 +105,7 @@
     transition: all 0.3s ease;
 }
 /* MediaQuery */
-@media (min-width: 320px) and (max-width: 425px) {
+@media (320px <= width <= 425px) {
     .bestProduct {
         padding: 10px;
     }
@@ -134,7 +134,7 @@
         width: 270px;
     }
 }
-@media (min-width: 426px) and (max-width: 768px){
+@media (426px <= width <= 768px){
     .bestProduct {
         flex-direction: row;
         flex-wrap: wrap;
