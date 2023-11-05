@@ -9,6 +9,7 @@
     width: 100%;
     z-index: 99999;
     transition: all 0.2s ease-in-out;
+    backdrop-filter: blur(25px);
 }
 .navBarContainer.scroll {
     background-color: #000;
@@ -43,23 +44,6 @@
 }
 .iconContainer button:hover {
     box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);
-}
-.loginContainer {
-    position: absolute;
-    left: -3rem;
-    background-color: #fff;
-    border: 1px solid #000;
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding: .5rem;
-}
-.loginContainer.active {
-    position: absolute;
-    top: 3.2rem;
-    height: 4.5rem;
-    opacity: 1;
-    transition: all 0.3s;
 }
 .linkStyle {
     background-color: transparent;
@@ -100,23 +84,26 @@
         display: none;
     }
 }
-@media (max-width: 1000px) and (min-width: 770px) {
+@media (max-width: 769px) {
   .navBarContainer h2, 
   span {
-    font-size: .9rem;
+    font-size: 1.1rem;
   }
   .linkStyle {
     font-size: .7rem;
     margin-right: .4rem;
   }
   .iconContainer button{
-    font-size: .9rem;
     margin-right: .4rem;
   }
 }
-@media (max-width: 769px) {
+@media (max-width: 768px) {
+    .navBarContainer {
+        background-color: #000;
+    }
     .linksContainer {
         position: absolute;
+        top: 4rem;
         left: -400px;
         margin: 0 auto;
         text-align: center;
@@ -125,7 +112,7 @@
     .linksContainer.active{
         width: 100%;
         height: auto;
-        background-color: #fff;
+        background-color: #111;
         position: absolute;
         top: 4rem;
         left: 0;
@@ -136,7 +123,7 @@
     }
     .linkStyle {
         display: block;
-        color: #000;
+        color: #fff;
         font-size: 1.2rem;
         margin: .5rem 0;
     }
@@ -151,9 +138,9 @@
     .inputContainer.active{
         width: 100%;
         position: absolute;
-        top: 11.4rem;
+        top: 13.4rem;
         left: 0;
-        background-color: #fff;
+        background-color: #111;
         z-index: 1;
         transition: all 0.3s;
     }

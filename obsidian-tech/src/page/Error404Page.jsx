@@ -1,8 +1,9 @@
 import React from 'react'
+import Page404 from '../components/error404/error404'
 
 const Error404Page = () => {
   return (
-    <div>Error404Page</div>
+    <Page404 />
   )
 }
 

@@ -1,0 +1,55 @@
+.containerModalBuyCar {
+    margin-top: 5rem !important;
+}
+.bodyCarModal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 125px;
+}
+.circleCount{
+    position: absolute;
+    top: -10px;
+    left: 40%;
+    background-color: #0396FE;
+    border-radius: 30%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 20px;
+    font-size: 0.9rem;
+}
+.bodyCarModal img {
+    width: 25%;
+}
+.bodyCarModalprice {
+    width: 70%;
+}
+.bodyCarModalprice h5 {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.btnOutlineGrey {
+    background: transparent;
+    border: 1px solid #6D717A;
+    border-radius: 0px 10px;
+    color: #6D717A;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    transition: all 0.2s;
+}
+.btnOutlineGrey:hover {
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border: 1px solid transparent;
+    color: #fff;
+}
+.btnGradient {
+    border: none;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border-radius: 0px 10px;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    transition: all 0.2s;
+}

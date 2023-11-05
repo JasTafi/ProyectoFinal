@@ -7,10 +7,12 @@ import '../filtroNavegacion/FilterComponent.css'
 import { ContainerResults } from '../ventanadaResultados/ContainerResults'
 import { getAllProductsFromDB } from '../../services/product_service'
 
-const FilterComponent = () => {
+const FilterComponent = ({setClicked}) => {
   const [dataApi, setDataApi] = useState([])
   const [filtered, setFiltered] = useState('')
   const [resultado, setResultado] = useState([])
+  //para mostrar ventana de resultados
+  // const [ show, setShow] = useState(false);
 
   const filtrado = (valorDelInput) => {
     const resultadoBusqueda = dataApi.filter((item) => {
@@ -20,6 +22,7 @@ const FilterComponent = () => {
     })
     setResultado(resultadoBusqueda)
   }
+
   const handleChange = (e) => {
     e.preventDefault()
     const inputValue = e.target.value
@@ -39,16 +42,19 @@ const FilterComponent = () => {
     <>
     <form className='navbar-form'>
         <div className='boxInput'>
-        <button className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+        <button type='submit' className='search-button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
         <input className='input-navbar' 
         onChange={handleChange}
+        id='filtro'
+        name='filtro'
         value={filtered}
         type="text" 
-        maxLength={25}
+        maxLength={30}
         placeholder='Buscar productos...'/>
+        <label htmlFor="filtro"></label>
         </div>
     </form>
-    <ContainerResults resultado = {resultado} filtered = {filtered}/>
+    <ContainerResults resultado = {resultado} filtered={filtered} setFiltered={setFiltered} setClicked={setClicked}/>
     </>
   );
 };
