@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { DataProvider } from "../../context/DataContext";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -10,13 +11,13 @@ import { Navigation } from "swiper";
 
 import { getAllProductsFromDB } from "../../services/product_service";
 import { AddCarProduct, AddFavoriteProduct } from "../../services/user_service";
+import { Notification } from "../../services/tostifyNot";
 
 import "../tarjetasDeProductos/CardProduct.css";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Link } from "react-router-dom";
 
 export const CardProduct = () => {
   const { userInfo } = useContext(DataProvider);
@@ -37,11 +38,17 @@ export const CardProduct = () => {
         userId: userInfo.user.id,
         productId: id,
         token: userInfo.user.token,
+        
       })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          Notification({ message: "Producto agregado a favoritos", type: "success" });
+        })
+        .catch((err) => {
+          console.log(err);
+          Notification({ message: "No se pudo agragar el producto a favoritos", type: "error" });
+        });
     } else {
-      alert("debes iniciar sesion para agregar a favoritos");
+      Notification({ message: "Debes iniciar sesion para agregar a favoritos", type: "error" });
     }
   }
 
@@ -53,8 +60,12 @@ export const CardProduct = () => {
     })
       .then((res) => {
         setProducto(true);
+        Notification({ message: "Producto agregado al carrito", type: "success" });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        Notification({ message: "No se pudo agragar el producto al carrito", type: "error" });
+      });
   }
   return (
     <>

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 
 import { CreateUser } from "../../services/user_service";
 import Loader from "../loader/Loader";
+import { Notification } from "../../services/tostifyNot";
 
 import '../registroUsuario/UserRegister.css';
 
@@ -11,10 +13,12 @@ const UserRegister = () => {
   const [ loading, setLoading ] = useState(true)
   const [ registered, setRegisterd] = useState(false)
   const [ message, setMessage] = useState('')
+  const navigate = useNavigate();
 
   setTimeout(() => {
     setLoading(false);
   }, 1500);
+
   return (
     <>
     {
@@ -32,7 +36,7 @@ const UserRegister = () => {
           if(!values.email) {
             errors.email = 'Por favor ingrese una direccion de mail';
           } else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)) {
-            errors.email = 'El mail solo puede contener letras, numerospuntos guiones y caracteres speciales';
+            errors.email = 'Esa no es una direccion de email valida';
           }
   
           //Validación input password
@@ -47,6 +51,7 @@ const UserRegister = () => {
         onSubmit={(values, { setSubmitting }) => {
           if(values.password !== values.repeatPassword) {
             console.log('Las contraseñas no coinciden');
+            Notification({ message: "Tus contraseñas no coincide", type: "error" });
             //mostrar un aviso cuando las contraseñas no coinciden
             setSubmitting(false);
             return;
@@ -56,14 +61,17 @@ const UserRegister = () => {
             password: values.password,
           })
           .then(Response => {
-            console.log('Usuario creado:', Response);
+            //console.log('Usuario creado:', Response);
             setRegisterd(true);
             setMessage("Usuario creado")
+            Notification({ message: "Usuario creado con exito, ahora debes iniciar sesión" , type: "success" });
+            navigate("/");
             // Realizar acciones adicionales despues de crear el usuario
           })
           .catch(error => {
             console.log('Error al crear el usuario:', error);
             setMessage("Error al crear el usuario");
+            Notification({ message: "Error al crear el usuario", type: "error" });
           })
           .finally(() =>{
             setSubmitting(false);

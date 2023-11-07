@@ -20,6 +20,10 @@
 .modalContent {
   display: grid;
   place-content: center;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  transition: all 0.5s;
   background-color: #111111bb;
   backdrop-filter: blur(20px);
   border-radius: 0.5rem;
@@ -33,6 +37,37 @@
   width: 100%;
   display: flex;
   align-items: center;
+  padding: 10px 0;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px 1px rgba(190, 186, 186, 0.5);
+  height:30rem;
+  width: 20rem;
+}
+
+.btnCerrar {
+  margin-top: 1rem;
+}
+
+.labelCheck {
+  text-align: center;
+}
+
+.containerModalInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.modalContainer .btnCerrar {
+  position: relative;
+  left: 40%;
+  border: 1px solid #6D717A;
+  color: #6D717A;
+  font-size: 0.8rem;
+}
+.modalContent h3 {
   justify-content: flex-end;
 }
 .btnCerrar {

@@ -4,9 +4,11 @@ import Modal from "react-bootstrap/Modal";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import "../buycar/BuyCar.css";
 import { DeleteCarProduct, GetCarProducts } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
+import { Notification } from "../../services/tostifyNot";
+
+import "../buycar/BuyCar.css";
 
 export const BuyCar = () => {
   const [show, setShow] = useState(false);
@@ -25,6 +27,7 @@ export const BuyCar = () => {
     })
       .then((res) =>{
         setProducto(true)
+        Notification({ message: 'Producto eliminado', type: 'success' });
       })
       .catch((err) => console.log(err));
   }

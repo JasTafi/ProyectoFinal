@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,6 @@ import { GetFavoriteProduct } from "../../services/user_service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { CardFavorites } from "./CardFavorites";
-
 import { DataProvider } from "../../context/DataContext";
 
 import "../favoritos/Favoritos.css";

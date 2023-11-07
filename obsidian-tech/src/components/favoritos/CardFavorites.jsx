@@ -7,6 +7,7 @@ import { DataProvider } from "../../context/DataContext";
 import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";
 
 import "../favoritos/Favoritos.css";
+import { Notification } from "../../services/tostifyNot";
 
 export const CardFavorites = ({ fav, setUpload }) => {
   const { userInfo } = useContext(DataProvider);
@@ -20,7 +21,7 @@ export const CardFavorites = ({ fav, setUpload }) => {
       token: userInfo.user.token,
     })
       .then((res) => {
-        console.log(res + "producto borrado");
+        Notification({ message: 'Producto Borrado', type: 'success' });
         setUpload(true);
       })
       .catch((err) => console.log(err));
