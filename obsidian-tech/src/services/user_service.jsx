@@ -76,14 +76,9 @@ async function DeleteFavoriteById({ id, productId, token }) {
   });
   return await response.json();
 }
-<<<<<<< HEAD
-// agregar un producto al carrito
-async function AddCarProduct({ userId, productId, token }) {
-=======
 
 // agregar un producto al carrito 
 async function AddCarProduct({userId, productId, token}){
->>>>>>> origin/recuperoContraseña
   const body = JSON.stringify({
     userId,
     productId,
@@ -91,9 +86,6 @@ async function AddCarProduct({userId, productId, token}){
   const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar`, {
     method: "POST",
     headers: {
-<<<<<<< HEAD
-      "Content-Type": "application/json",
-=======
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
@@ -122,7 +114,6 @@ async function DeleteCarProduct({id, productId, token}){
     method: 'PUT',
     headers: {
       'content-Type': 'application/json',
->>>>>>> origin/recuperoContraseña
       Authorization: `Bearer ${token}`,
     },
     body: body,
@@ -130,31 +121,35 @@ async function DeleteCarProduct({id, productId, token}){
   return await response.json();
 }
 
-<<<<<<< HEAD
-//Mostrar productos del carrito
-async function GetCarProducts({ id, token }) {
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
+// Verificar si un email esta en base de datos, crea un token y lo envia por mail al usuario
+async function EmailVerification({ email }) {
+  const body = JSON.stringify({ email });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/email/verification`, {
+    method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const results = await response.json();
-  return results;
-}
-
-//Borrar un producto del carrito
-async function DeleteCarProduct({ id, productId, token }) {
-  const body = JSON.stringify({
-    productId,
-  });
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
-    method: "PUT",
-    headers: {
-      "content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
     body: body,
   });
+  return await response.json();
+}
+
+// Cambiar la contraseña de un usuario por el mail
+async function ModifyPassword({ email, password }) {
+  const body = JSON.stringify({ email, password });
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/password/modify`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: body,
+  });
+  return await response.json();
+}
+
+// Busca un usuario por su email
+async function GetUserByEmail(email) {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/byEmail/${email}`);
   return await response.json();
 }
 //Agregar orden de compra
@@ -186,52 +181,9 @@ async function AddPurchaseOrder({
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-=======
-// Verificar si un email esta en base de datos, crea un token y lo envia por mail al usuario
-async function EmailVerification({ email }) {
-  const body = JSON.stringify({ email });
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/email/verification`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
->>>>>>> origin/recuperoContraseña
     },
     body: body,
   });
   return await response.json();
 }
-<<<<<<< HEAD
-export {
-  CreateUser,
-  Login,
-  AddFavoriteProduct,
-  GetFavoriteProduct,
-  DeleteFavoriteById,
-  AddCarProduct,
-  GetCarProducts,
-  DeleteCarProduct,
-  AddPurchaseOrder,
-};
-=======
-
-// Cambiar la contraseña de un usuario por el mail
-async function ModifyPassword({ email, password }) {
-  const body = JSON.stringify({ email, password });
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/password/modify`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: body,
-  });
-  return await response.json();
-}
-
-// Busca un usuario por su email
-async function GetUserByEmail(email) {
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/byEmail/${email}`);
-  return await response.json();
-}
-
-export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, EmailVerification, ModifyPassword, GetUserByEmail};
->>>>>>> origin/recuperoContraseña
+export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, EmailVerification, ModifyPassword, GetUserByEmail, AddPurchaseOrder};
