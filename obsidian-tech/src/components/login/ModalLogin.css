@@ -1,6 +1,7 @@
 .btn-login {
   background-color: transparent;
   color: hsl(0, 0%, 100%);
+  border: none;
 }
 .btn-login:hover {
   color: hsl(265, 57%, 48%);
