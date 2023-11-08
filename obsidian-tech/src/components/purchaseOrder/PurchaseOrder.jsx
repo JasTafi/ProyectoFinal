@@ -119,8 +119,8 @@ export const PurchaseOrder = () => {
               </form>
             </div>
             <div className="payment-content">
-              <h3 className="section-subtitle">Metodo de Pago</h3>
-              <form action="">
+              <h4>Metodo de Pago</h4>
+              <form action="" className="payment-form">
                 <input type="number" name="" id="" placeholder="numero de tarjeta"/>
                 <input type="text" name="" id="" placeholder="fecha de expiracion(MM/YY)"/>
                 <input type="text" name="" id="" placeholder="codigo de seguridad"/>

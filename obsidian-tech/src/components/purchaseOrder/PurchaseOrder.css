@@ -61,7 +61,7 @@
 .data-content h4 {
   margin-top: 1rem;
 }
-.purchase-form {
+.purchase-form{
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
@@ -92,4 +92,17 @@
 .box-adress, .box-name {
   display: grid;
   row-gap: .5rem;
+}
+/* Payment content*/
+.payment-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr);
+  row-gap: .5rem;
+}
+.payment-form input {
+  border: none;
+  outline: none;
+  border-radius: .3rem;
+  padding: .7rem;
 }
