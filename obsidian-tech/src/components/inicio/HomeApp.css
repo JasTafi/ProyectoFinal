@@ -1,0 +1,122 @@
+.homeGralContainer {
+    padding-top: 4.5rem;
+    background: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.circleBg{
+    position: absolute;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(#0385fe, #0120ad);
+}
+.circleBg.one {
+    top: 1%;
+    left: 20%;
+    width: 150px;
+    height: 150px;
+}
+.circleBg.two {
+    top: 2%;
+    right: 5%;
+}
+.circleBg.three {
+    bottom: 5%;
+    left: 50%;
+}
+.homeContainer {
+    backdrop-filter: blur(25px);
+}
+.introContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 2rem;
+    height: auto;
+    width: 100%;
+}
+.introContainer .titleContainer {
+    width: 40%;
+}
+.introContainer .titleContainer p {
+    color: #6D717A;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: justify;
+}
+.titleContainer .titleSpan {
+    background: linear-gradient(to left, #7035C0, #0396FE);
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;/* tira una advertencia */
+}
+.buttonLinkContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+.titleContainer .button {
+    border: 1px solid transparent;
+    background: linear-gradient(to right, #7035C0, #0396FE);
+    border-radius: 0px 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.9rem;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+.titleContainer .button:hover {
+    background: transparent;
+    border: 1px solid #6D717A;
+    color: #6D717A;
+    transition: all 0.2s;
+}
+
+@media (max-width:320px){
+    .circleBg.three, .circleBg.two {
+        display: none;
+    }
+    .introContainer .titleContainer {
+        width: 100vw;
+    }
+    .introContainer .titleContainer p {
+        color: #fff;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 321px) and (max-width: 375px) {
+    .circleBg.three, .circleBg.two {
+        display: none;
+    }
+    .introContainer .titleContainer {
+        width: 100vw;
+    }
+    .introContainer .titleContainer p {
+        color: #fff;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 376px) and (max-width: 425px) {
+    .circleBg.two {
+        display: none;
+    }
+    .introContainer .titleContainer {
+        width: 100vw;
+    }
+    .introContainer .titleContainer p {
+        color: #fff;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+    .introContainer .titleContainer {
+        width: 55vw;
+    }
+    .introContainer .titleContainer p {
+        color: #fff;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,98 @@
+.containerRegisterGral {
+  position: relative;
+  background-color: #000;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  padding-top: 4.5rem;
+}
+.alertRegister {
+  border-left: 2px solid #7035c0;
+  position: absolute;
+  top: 12%;
+  background-color: #111;
+  border-radius: 10px;
+  color: #fff;
+  display: grid;
+  place-content: center;
+  opacity: 0;
+  height: 70px;
+  width: 250px;
+}
+.alertRegister.show {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+.containerForm {
+  background-color: #fff;
+  width: 100%;
+  height: 450px;
+  display: grid;
+  place-items: center;
+}
+.containerForm form {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 500px;
+  height: 380px;
+  padding: 25px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+.containerForm .boxTitleRegister {
+  display: flex;
+  width: 100%;
+  color: #7c7c7c;
+  padding-top: 10px;
+  border-bottom: 1px solid #bdbdbd;
+}
+.containerForm .boxInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+}
+.containerForm form .campo {
+  background-color: transparent;
+  border: 1px solid #a8a8a8;
+  border-radius: 0 15px;
+  color: #6d717a;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+}
+.containerForm form .campo:focus {
+  outline: none;
+}
+.containerForm .boxInput label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #7c7c7c;
+}
+.containerForm .btnInputReg {
+  background: linear-gradient(to right, #7035c0, #0396fe);
+  border: none;
+  border-radius: 0px 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 3px;
+  padding: 0.5rem 1rem;
+  width: 130px;
+  cursor: pointer;
+}
+.error {
+  color: #f80202;
+  font-size: 0.8rem;
+}
+/* Media Query */
+@media (min-width: 320px) and (max-width: 425px) {
+  .containerForm {
+    height: 80vh;
+    padding: 0 5px;
+  }
+  .containerForm form {
+    width: 100%;
+  }
+}
+

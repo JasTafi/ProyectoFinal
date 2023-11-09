@@ -1,8 +1,10 @@
-import React from 'react'
+import RecoveryPassword from "../components/recoveryPassword/RecoveryPassword"
 
 const RecContraseñaPage = () => {
   return (
-    <div>RecContraseñaPage</div>
+    <div>
+      <RecoveryPassword />
+    </div>
   )
 }
 

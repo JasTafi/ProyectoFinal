@@ -1,66 +1,86 @@
-import React, { useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { DeleteFavoriteById } from '../../services/user_service';
+import React, { useContext, useEffect, useState } from "react";
 
-import '../favoritos/Favoritos.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
+import { DataProvider } from "../../context/DataContext";
+import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";
 
-export const CardFavorites = ({fav}) => {
+import "../favoritos/Favoritos.css";
+import { Notification } from "../../services/tostifyNot";
 
-	const [ favDelete, setFavDelete ] = useState()
-	const usuario = {
-		id: "64ab23f497e57fc315caf6fe",
-		token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2ODkxMjcxOTZ9.Yh0-nCN2dkt4n0k34QIHi1NcQfYYu77HY-E0h0ynQiE"
-	}
-	// funcion para eliminar fav de la lista
-	function handleRemoveFav(id){
-		
-		DeleteFavoriteById({
-			id: usuario.id,
-			productId: id,
-			token: usuario.token
-		})
-		.then(res => console.log(res))
-		.catch(err => console.log(err))
-		location.reload();
-	}
+export const CardFavorites = ({ fav, setUpload }) => {
+  const { userInfo } = useContext(DataProvider);
+  const { setProducto } = useContext(DataProvider);
 
+  // funcion para eliminar fav de la lista
+  function handleRemoveFav(item_id) {
+    DeleteFavoriteById({
+      id: userInfo.user.id,
+      productId: item_id,
+      token: userInfo.user.token,
+    })
+      .then((res) => {
+        Notification({ message: 'Producto Borrado', type: 'success' });
+        setUpload(true);
+      })
+      .catch((err) => console.log(err));
+  }
+  function handleAddCar(id) {
+    AddCarProduct({
+      userId: userInfo.user.id,
+      productId: id,
+      token: userInfo.user.token,
+    })
+      .then((res) => {
+        setProducto(true);
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
-		{
-			fav.map((item, index) => {
-				return(
-						<div className='cardBorderFav' key={index}>
-								<div className='cardContainerFav'>
-										<div className='cardHeadFav'>
-												<div className='boxCategory'>{item.categoria}</div>
-												<button className={'boxIcon'} onClick={() => {
-													handleRemoveFav(item._id)
-													}}
-													title='Eliminar Favorito'>
-														<FontAwesomeIcon icon={faHeart}/>
-												</button>
-										</div>
-										<div className='cardBody'>
-												<div className='boxTitle'>
-														<h4>{item.nombre}</h4>
-														<p>TYPE: {item.categoria}</p>
-												</div>
-												<div className='boxImage'>
-														<img src={item.urlImg} />
-												</div>
-										</div>
-										<div className='cardFooterFav'>
-												<div className='boxPrice'>
-																<p>$ {item.precio}</p>
-												</div>
-										</div>
-								</div>
-						</div>									
-				)
-				})	
-		}
-		</>
-  )
-}
+      {fav.map((item, index) => {
+        return (
+          <div className="cardBorderFav" key={index}>
+            <div className="cardContainerFav">
+              <div className="cardHeadFav">
+                <div className="boxCategory">{item.categoria}</div>
+                <button
+                  className={"boxIcon"}
+                  onClick={() => {
+                    handleRemoveFav(item._id);
+                  }}
+                  title="Eliminar Favorito"
+                >
+                  <FontAwesomeIcon icon={faHeart} />
+                </button>
+              </div>
+              <div className="cardBody">
+                <div className="boxTitle">
+                  <h4>{item.nombre}</h4>
+                  <p>TYPE: {item.categoria}</p>
+                </div>
+                <div className="boxImage">
+                  <img src={item.urlImg} />
+                </div>
+              </div>
+              <div className="cardFooterFav">
+                <div className="boxPrice">
+                  <p>$ {item.precio}</p>
+                </div>
+                <button
+                  className="buttonCartFav"
+                  onClick={() => {
+                    handleAddCar(item._id);
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+};

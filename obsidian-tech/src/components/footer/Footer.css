@@ -23,25 +23,26 @@
 .containerFooter {
     position: absolute;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(45px);
     color: #fff;
-}
-.containerLogFooter p {
-    padding: 0 15px;
+    padding: 0 20px;
 }
 .containerFooter .containerLogFooter, .containerLinksFooter, .containerSocialFooter {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 33%;
+    width: 33.3%;
     height: 100%;
-}/*faltan dar algunos estilos*/
+}
+.containerFooter .containerLogFooter {
+    padding: 0 15px;
+}
 .containerFooter .containerLinksFooter ul, 
 .containerSocialFooter ul {
     display: flex;
@@ -70,4 +71,31 @@
 .containerFooter .containerLinksFooter ul .linksFoot:hover::before,
 .containerSocialFooter ul .linksFoot:hover::before{
     width: 100%;
+}
+/*Media Query*/
+@media (min-width: 320px) and (max-width: 425px) {
+    .containerGralFooter {
+        height: 650px;
+    }
+    .circulo.izq {
+        display: none;
+    }
+    .containerFooter {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .containerFooter .containerLogFooter, .containerLinksFooter, .containerSocialFooter {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .containerFooter .containerLinksFooter ul, 
+    .containerSocialFooter ul {
+        align-items: flex-start;
+        padding: 0 15px;
+    }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+  .containerFooter {
+    font-size: 0.8rem;
+  }
 }
