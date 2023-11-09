@@ -121,14 +121,51 @@ export const PurchaseOrder = () => {
             <div className="payment-content">
               <h4>Metodo de Pago</h4>
               <form action="" className="payment-form">
-                <input type="number" name="" id="" placeholder="numero de tarjeta"/>
-                <input type="text" name="" id="" placeholder="fecha de expiracion(MM/YY)"/>
-                <input type="text" name="" id="" placeholder="codigo de seguridad"/>
-                <input type="text" name="" id="" placeholder="nombre del titular"/>
+                <input
+                  type="number"
+                  name=""
+                  id=""
+                  placeholder="numero de tarjeta"
+                />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="fecha de expiracion(MM/YY)"
+                />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="codigo de seguridad"
+                />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="nombre del titular"
+                />
               </form>
             </div>
+            <button type="submit" className="btn-submit">
+              comprar
+            </button>
           </div>
-          <div className="purchase-sale"></div>
+          <div className="purchase-sale">
+            <div className="sale-content">
+              <h2 className="section-title">Productos a comprar</h2>
+              <div className="card-container">
+                <div className="card-product">
+                  <img src="https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/keyboards/multi-keyboard-k380/gallery/k380-lavender-gallery-1-us.png?v=1" alt="" />
+                  <div className="box-card-product">
+                    <h6>name-product</h6>
+                    <span>cantidad: 0</span>
+                  </div>
+                  <span>10000</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
