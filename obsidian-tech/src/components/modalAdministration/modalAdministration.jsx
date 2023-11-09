@@ -148,6 +148,8 @@ function Example({ item }) {
             Guardar cambios
           </Button>
           
+
+          
           <ButtonEdit id={selectedItem.id} updatedData={ stock } handleClose={handleClose} />
           <ButtonDelete id={selectedItem.id} handleClose={handleClose} />
 
