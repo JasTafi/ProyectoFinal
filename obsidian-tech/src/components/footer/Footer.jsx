@@ -30,7 +30,7 @@ const Footer = () => {
                     <Link className='linksFoot' to={"https://www.youtube.com/"}>youtube</Link>
 										<Link className='linksFoot' to={"https://www.instagram.com/"}>instagram</Link>
 										<Link className='linksFoot' to={"https://www.facebook.com/"}>facebook</Link>
-										<Link className='linksFoot' to={"https://twitter.com/"}>twitter</Link>
+										<Link className='linksFoot' to={"error404"}>twitter</Link>
                 </ul>
             </div>
         </div>

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
 import { getAllProductsFromDB } from '../../services/api';
-
 import '../toDoListAdministracion/toDoListAdministration.css';
-
 import CategoryAccordion from '../categoryAccordion/CategoryAccordion';
 
 const dataList = () => {
@@ -17,7 +14,6 @@ const dataList = () => {
       .catch(error => console.log(error));
   }, []);
 
-  // Obtener la lista de categorías únicas
   const uniqueCategories = [...new Set(dataApi.map(item => item.categoria))];
 
   return (
@@ -30,6 +26,5 @@ const dataList = () => {
     </div>
   );
 };
-
 
 export default dataList;

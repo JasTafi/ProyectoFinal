@@ -1,10 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
 import '../inputAdminitracion/inputAdministration.css';
+import { AddProductos } from '../../services/product_service';
 
 const InputComponent = () => {
-	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+  const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+
+  const handleSubmit = async (valores, { resetForm }) => {
+    try {
+      // Llamada a la función para agregar productos
+      await AddProductos(valores);
+      console.log('Producto agregado con éxito');
+      resetForm(); // Reiniciar el formulario después de enviar con éxito
+      cambiarFormularioEnviado(true);
+      setTimeout(() => cambiarFormularioEnviado(false), 3000);
+    } catch (error) {
+      console.error('Error al agregar el producto:', error);
+      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
+    }
+  };
+  
 	return (
 		<>
 			<Formik
@@ -14,7 +29,7 @@ const InputComponent = () => {
           precio: '',
           stock: '',
           descripcion: '',
-          imagen: ''
+          urlImg: ''
 				}}
 				validate={(valores) => {
 					let errores = {};
@@ -53,19 +68,13 @@ const InputComponent = () => {
           }
 
           // Validacion imagen
-					if(!valores.imagen){
-						errores.imagen = 'Por favor ingresa la imagen del producto'
+					if(!valores.urlImg){
+						errores.urlImg = 'Por favor ingresa la imagen del producto'
           }
 
 					return errores;
 				}}
-				onSubmit={(valores, {resetForm}) => {
-					resetForm();
-					console.log('Formulario enviado');
-					cambiarFormularioEnviado(true);
-					setTimeout(() => cambiarFormularioEnviado(false), 3000);
-				}}
-			>
+        onSubmit={handleSubmit}			>
 				{( {errors} ) => (
           <div className='divPadreInput'>
           <div className='divHijoInput'>
@@ -123,9 +132,9 @@ const InputComponent = () => {
                   <Field
                     type="text" 
                     id="urlImg" 
-                    name="imagen" 
+                    name="urlImg" 
                   />
-                  <ErrorMessage name="imagen" component={() => (<div className="error">{errors.imagen}</div>)} />
+                  <ErrorMessage name="urlImg" component={() => (<div className="error">{errors.urlImg}</div>)} />
                 </div>
 
                 <button type="submit">Enviar</button>

@@ -4,30 +4,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { getAllProductsFromDB } from '../../services/api';
 import '../modalAdministration/modalAdministration.css';
+import ButtonEdit from './buttonEdit';
+import ButtonDelete from './buttonDelete';
 
 function Example({ item }) {
   const [show, setShow] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(item); // Inicializar selectedItem con el valor de item
-
+  const [selectedItem, setSelectedItem] = useState(item);
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-  const [setDataApi] = useState([]);
-
-  useEffect(() => {
-    // Quitar la lógica de apertura de modal aquí
-  }, []); // Eliminar la dependencia
-
-  useEffect(() => {
-    getAllProductsFromDB()
-      .then(({ data }) => {
-        setDataApi(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   const handleShow = () => {
     setShow(true);
+    setSelectedItem(item); // Actualiza el estado selectedItem con el producto seleccionado
   };
-
   const handleClose = () => setShow(false);
 
   return (
@@ -95,6 +83,8 @@ function Example({ item }) {
               return errores;
             }}
             onSubmit={(valores, { resetForm }) => {
+              // Llama a la función handleActualizarProducto con los valores del formulario.
+              handleActualizarProducto(valores);
               resetForm();
               console.log('Formulario enviado');
               cambiarFormularioEnviado(true);
@@ -146,21 +136,27 @@ function Example({ item }) {
             )}
           </Formik>
         )}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Cancelar cambios
-        </Button>
-        <Button variant="danger" onClick={handleClose}>
-          Borrar producto
-        </Button>
-        <Button variant="primary" type="submit" onClick={handleClose}>
-          Guardar cambios
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </>
-);
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar cambios
+          </Button>
+          <Button variant="danger" onClick={handleClose}>
+            Borrar producto
+          </Button>
+          <Button variant="primary" type="submit" onClick={handleClose}>
+            Guardar cambios
+          </Button>
+          
+
+          
+          <ButtonEdit id={selectedItem.id} updatedData={ stock } handleClose={handleClose} />
+          <ButtonDelete id={selectedItem.id} handleClose={handleClose} />
+
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
 export default Example;
