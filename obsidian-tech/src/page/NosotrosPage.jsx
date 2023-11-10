@@ -1,8 +1,8 @@
 import React from 'react'
-
+import {PurchaseOrder} from '../components/purchaseOrder/PurchaseOrder.jsx'
 const NosotrosPage = () => {
   return (
-    <div>NosotrosPage</div>
+    <PurchaseOrder/>
   )
 }
 

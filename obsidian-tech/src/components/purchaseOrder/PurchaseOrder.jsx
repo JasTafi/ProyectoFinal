@@ -27,17 +27,17 @@ export const PurchaseOrder = () => {
       return console.log(error);
     }
   }
-  useEffect(() => {
-    GetCarProducts({
-      id: userInfo.user.id,
-      token: userInfo.user.token,
-    })
-      .then(({ car_products }) => {
-        setProductCar(car_products);
-        iterarId(car_products);
-      })
-      .catch((err) => console.log(err));
-  }, [producto]);
+  // useEffect(() => {
+  //   GetCarProducts({
+  //     id: userInfo.user.id,
+  //     token: userInfo.user.token,
+  //   })
+  //     .then(({ car_products }) => {
+  //       setProductCar(car_products);
+  //       iterarId(car_products);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [producto]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -46,157 +46,128 @@ export const PurchaseOrder = () => {
       [name]: value,
     });
   }
- 
-  function handleSubmit(e) {
-    e.preventDefault();
-    AddPurchaseOrder({
-      userId: userInfo.user.id,
-      productId: productBuy,
-      token: userInfo.user.token,
-      nombre: {
-        nombres: formData.nombres,
-        apellidos: formData.apellidos,
-      },
-      direccion: {
-        departamento: formData.departamento,
-        calle: formData.calle,
-        numero: formData.numero,
-        localidad: formData.localidad,
-        provincia: formData.provincia,
-      },
-    })
-      .then((res) => {
-        console.log(res),
-        setFormData({
-          nombres:'',
-          apellidos:'',
-          departamento:'',
-          calle:'',
-          numero:'',
-          provincia:'',
-          localidad:''
-        })
-      })
-      .catch((err) => console.log(err))
-  }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   AddPurchaseOrder({
+  //     userId: userInfo.user.id,
+  //     productId: productBuy,
+  //     token: userInfo.user.token,
+  //     nombre: {
+  //       nombres: formData.nombres,
+  //       apellidos: formData.apellidos,
+  //     },
+  //     direccion: {
+  //       departamento: formData.departamento,
+  //       calle: formData.calle,
+  //       numero: formData.numero,
+  //       localidad: formData.localidad,
+  //       provincia: formData.provincia,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       console.log(res),
+  //       setFormData({
+  //         nombres:'',
+  //         apellidos:'',
+  //         departamento:'',
+  //         calle:'',
+  //         numero:'',
+  //         provincia:'',
+  //         localidad:''
+  //       })
+  //     })
+  //     .catch((err) => console.log(err))
+  // }
   return (
     <>
-      <div className="purchaseContainer section">
-        <section className="purchaseOrderData grid">
-          <div className="accountData">
-            <span className="spanAccount">Cuenta</span>
-            <span className="emailAdress">{userInfo.user.email}</span>
-          </div>
-          <div className="dataPurchaseContainer">
-            <h3>Entrega</h3>
-            <form onSubmit={handleSubmit} className="formPurchaseOrder">
-              <div className="boxName">
-                <div className="inputName">
-                  <label htmlFor="nombres"></label>
-                  <input
-                    type="text"
-                    name="nombres"
-                    id="nombres"
-                    value={formData.nombres}
-                    onChange={handleChange}
-                    placeholder="nombre/s:"
-                  />
-                </div>
-                <div className="inputLastName">
-                  <label htmlFor="apellidos"></label>
-                  <input
-                    type="text"
-                    name="apellidos"
-                    id="apellidos"
-                    value={formData.apellidos}
-                    onChange={handleChange}
-                    placeholder="Apellido/s:"
-                  />
-                </div>
+      <section className="purchase section">
+        <div className="purchase-container container grid">
+          <div className="purchase-data">
+            <div className="data-content">
+              <h2 className="section-title">Orden de compra</h2>
+              <h3 className="section-subtitle">
+                Por favor complete los siguientes datos
+              </h3>
+              <div className="box-mail">
+                <h5>Cuenta:</h5>
+                <span>email@prueba.com</span>
               </div>
-              <div className="checkBoxApartment">
-                <label htmlFor="apartment">vivo en departamento</label>
-                <input type="checkbox" name="apartment" id="apartment" />
-              </div>
-              <div className="boxApartment">
-                <label htmlFor="departamento"></label>
+              <h4>Entrega</h4>
+              <form action="" className="purchase-form">
+                <div className="box-select">
+                  <label htmlFor="">Pais</label>
+                  <select name="" id="">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Uruguay">Uruguay</option>
+                  </select>
+                  <input type="text" name="" id="" placeholder="Provincia" />
+                  <input type="text" name="" id="" placeholder="Localidad" />
+                </div>
+                <div className="box-adress">
+                  <input type="text" name="" id="" placeholder="Calle" />
+                  <input type="text" name="" id="" placeholder="Número" />
+                </div>
+                <div className="box-name">
+                  <input type="text" name="" id="" placeholder="Nombre/s:" />
+                  <input type="text" name="" id="" placeholder="Apellido/s:" />
+                </div>
+              </form>
+            </div>
+            <div className="payment-content">
+              <h4>Metodo de Pago</h4>
+              <form action="" className="payment-form">
+                <input
+                  type="number"
+                  name=""
+                  id=""
+                  placeholder="numero de tarjeta"
+                />
                 <input
                   type="text"
-                  name="departamento"
-                  id="departamento"
-                  value={formData.departamento}
-                  onChange={handleChange}
-                  placeholder="Departamento"
+                  name=""
+                  id=""
+                  placeholder="fecha de expiracion(MM/YY)"
                 />
-              </div>
-              <div className="boxAdress">
-                <div className="inputStreet">
-                  <label htmlFor="calle"></label>
-                  <input
-                    type="text"
-                    name="calle"
-                    id="calle"
-                    value={formData.calle}
-                    onChange={handleChange}
-                    placeholder="Calle"
-                  />
-                </div>
-                <div className="inputNumber">
-                  <label htmlFor="numero"></label>
-                  <input
-                    type="text"
-                    name="numero"
-                    id="numero"
-                    value={formData.numero}
-                    onChange={handleChange}
-                    placeholder="Número"
-                  />
-                </div>
-              </div>
-              <div className="boxState">
-                <div className="inputState">
-                  <label htmlFor="provincia"></label>
-                  <input
-                    type="text"
-                    name="provincia"
-                    id="provincia"
-                    value={formData.provincia}
-                    onChange={handleChange}
-                    placeholder="Provincia"
-                  />
-                </div>
-                <div className="inputCity">
-                  <label htmlFor="localidad"></label>
-                  <input
-                    type="text"
-                    name="localidad"
-                    id="localidad"
-                    value={formData.localidad}
-                    onChange={handleChange}
-                    placeholder="Localidad"
-                  />
-                </div>
-              </div>
-              <button type="submit" className="buttonForm">enviar</button>
-            </form>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="codigo de seguridad"
+                />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="nombre del titular"
+                />
+              </form>
+            </div>
+            <button type="submit" className="btn-submit">
+              comprar
+            </button>
           </div>
-        </section>
-        <section className="productToBuy grid">
-          <div className="cardProductContainer">
-            {productCar.map((item, index) => {
-              return (
-                <div className="cardProductSale" key={index}>
-                  <img src={item.urlImg} alt="" />
-                  <div className="nameProductSale">
-                    <span>{item.nombre}</span>
+          <div className="purchase-sale">
+            <div className="sale-content">
+              <h2 className="section-title">Productos a comprar</h2>
+              <div className="card-container">
+                <div className="card-product">
+                  <img src="https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/keyboards/multi-keyboard-k380/gallery/k380-lavender-gallery-1-us.png?v=1" alt="" />
+                  <div className="box-card-product">
+                    <h6>name-product</h6>
+                    <span>cantidad: 0</span>
                   </div>
-                  <span className="priceProductSale">$ {item.precio}</span>
+                  <span>10000</span>
                 </div>
-              );
-            })}
+              </div>
+            </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 };

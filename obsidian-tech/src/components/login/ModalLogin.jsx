@@ -150,7 +150,7 @@ const ModalLogin = () => {
               </Form>
             )}
           </Formik>
-          <div>
+          <div className="btn-google-login">
             <BtnGoogleLogin />
           </div>
         </div>

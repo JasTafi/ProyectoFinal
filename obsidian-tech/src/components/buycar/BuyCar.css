@@ -1,6 +1,7 @@
 .buttonCar {
     background-color: transparent;
     color: hsl(0, 0%, 100%);
+    border: none;
 }
 .buttonCar:hover {
     color: hsl(265, 57%, 48%);
