@@ -13,7 +13,7 @@ import { BuyCar } from "../buycar/BuyCar";
 
 export const ObsidianNavbar = () => {
   //useState para menu burger
-  const [clicked, setClicked] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   function clickear() {
     setClicked(!clicked);

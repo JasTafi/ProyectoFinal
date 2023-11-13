@@ -10,7 +10,7 @@ export const PurchaseOrder = () => {
   const [formData, setFormData] = useState({
     nombres: "",
     apellidos: "",
-    departamento: "",
+    departamento: "-",
     calle: "",
     numero: "",
     provincia: "",
@@ -27,17 +27,17 @@ export const PurchaseOrder = () => {
       return console.log(error);
     }
   }
-  // useEffect(() => {
-  //   GetCarProducts({
-  //     id: userInfo.user.id,
-  //     token: userInfo.user.token,
-  //   })
-  //     .then(({ car_products }) => {
-  //       setProductCar(car_products);
-  //       iterarId(car_products);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [producto]);
+  useEffect(() => {
+    GetCarProducts({
+      id: userInfo.user.id,
+      token: userInfo.user.token,
+    })
+      .then(({ car_products }) => {
+        setProductCar(car_products);
+        iterarId(car_products);
+      })
+      .catch((err) => console.log(err));
+  }, [producto]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -47,38 +47,38 @@ export const PurchaseOrder = () => {
     });
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   AddPurchaseOrder({
-  //     userId: userInfo.user.id,
-  //     productId: productBuy,
-  //     token: userInfo.user.token,
-  //     nombre: {
-  //       nombres: formData.nombres,
-  //       apellidos: formData.apellidos,
-  //     },
-  //     direccion: {
-  //       departamento: formData.departamento,
-  //       calle: formData.calle,
-  //       numero: formData.numero,
-  //       localidad: formData.localidad,
-  //       provincia: formData.provincia,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       console.log(res),
-  //       setFormData({
-  //         nombres:'',
-  //         apellidos:'',
-  //         departamento:'',
-  //         calle:'',
-  //         numero:'',
-  //         provincia:'',
-  //         localidad:''
-  //       })
-  //     })
-  //     .catch((err) => console.log(err))
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    AddPurchaseOrder({
+      userId: userInfo.user.id,
+      productId: productBuy,
+      token: userInfo.user.token,
+      nombre: {
+        nombres: formData.nombres,
+        apellidos: formData.apellidos,
+      },
+      direccion: {
+        departamento: formData.departamento,
+        calle: formData.calle,
+        numero: formData.numero,
+        localidad: formData.localidad,
+        provincia: formData.provincia,
+      },
+    })
+      .then((res) => {
+        console.log(res),
+          setFormData({
+            nombres: "",
+            apellidos: "",
+            departamento: "",
+            calle: "",
+            numero: "",
+            provincia: "",
+            localidad: "",
+          });
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       <section className="purchase section">
@@ -91,7 +91,7 @@ export const PurchaseOrder = () => {
               </h3>
               <div className="box-mail">
                 <h5>Cuenta:</h5>
-                <span>email@prueba.com</span>
+                <span>{userInfo.user.email}</span>
               </div>
               <h4>Entrega</h4>
               <form action="" className="purchase-form">
@@ -105,16 +105,65 @@ export const PurchaseOrder = () => {
                     <option value="Paraguay">Paraguay</option>
                     <option value="Uruguay">Uruguay</option>
                   </select>
-                  <input type="text" name="" id="" placeholder="Provincia" />
-                  <input type="text" name="" id="" placeholder="Localidad" />
+                  <input
+                    type="text"
+                    name="provincia"
+                    id=""
+                    placeholder="Provincia"
+                    value={formData.provincia}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="localidad"
+                    id=""
+                    placeholder="Localidad"
+                    value={formData.localidad}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="departamento"
+                    placeholder="Departamento"
+                    value={formData.departamento}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="box-adress">
-                  <input type="text" name="" id="" placeholder="Calle" />
-                  <input type="text" name="" id="" placeholder="Número" />
+                  <input
+                    type="text"
+                    name="calle"
+                    id=""
+                    placeholder="Calle"
+                    value={formData.calle}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="numero"
+                    id=""
+                    placeholder="Número"
+                    value={formData.numero}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="box-name">
-                  <input type="text" name="" id="" placeholder="Nombre/s:" />
-                  <input type="text" name="" id="" placeholder="Apellido/s:" />
+                  <input
+                    type="text"
+                    name="nombres"
+                    value={formData.nombres}
+                    onChange={handleChange}
+                    id=""
+                    placeholder="Nombre/s:"
+                  />
+                  <input
+                    type="text"
+                    name="apellidos"
+                    value={formData.apellidos}
+                    onChange={handleChange}
+                    id=""
+                    placeholder="Apellido/s:"
+                  />
                 </div>
               </form>
             </div>
@@ -147,7 +196,7 @@ export const PurchaseOrder = () => {
                 />
               </form>
             </div>
-            <button type="submit" className="btn-submit">
+            <button type="submit" className="btn-submit" onClick={handleSubmit}>
               comprar
             </button>
           </div>
@@ -155,14 +204,18 @@ export const PurchaseOrder = () => {
             <div className="sale-content">
               <h2 className="section-title">Productos a comprar</h2>
               <div className="card-container">
-                <div className="card-product">
-                  <img src="https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/keyboards/multi-keyboard-k380/gallery/k380-lavender-gallery-1-us.png?v=1" alt="" />
-                  <div className="box-card-product">
-                    <h6>name-product</h6>
-                    <span>cantidad: 0</span>
-                  </div>
-                  <span>10000</span>
-                </div>
+                {productCar.map((producto, index) => {
+                  return (
+                    <div className="card-product" key={index}>
+                      <img src={producto.urlImg} alt="" />
+                      <div className="box-card-product">
+                        <h6>{producto.nombre}</h6>
+                        <span>cantidad: 0</span>
+                      </div>
+                      <span>$ {producto.precio}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

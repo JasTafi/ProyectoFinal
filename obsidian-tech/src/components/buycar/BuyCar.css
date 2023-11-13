@@ -64,4 +64,8 @@
     color: #fff;
     padding: 0.3rem 0.8rem;
     transition: all 0.2s;
+    text-decoration: none;
+}
+.btnGradient:hover {
+    color:#fff;
 }

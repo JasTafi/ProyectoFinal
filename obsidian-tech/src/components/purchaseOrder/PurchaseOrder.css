@@ -143,9 +143,11 @@ select {
 }
 .card-product {
   font-size: 0.9rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1rem;
+  place-items: center;
   align-items: center;
-  justify-content: space-between;
   padding: 0.4rem;
   margin-bottom: 0.5rem;
   color: var(--color-text);
@@ -159,8 +161,19 @@ select {
   font-weight: 700;
 }
 @media screen and (max-width:320px) {
+  .card-container {
+    margin: .5rem 0;
+  }
   .card-product img {
     width: 100px;
+  }
+  .box-card-product h6{
+    font-size: .8rem;
+  }
+}
+@media screen and (min-width: 375px) {
+  .box-card-product h6{
+    font-size: .8rem;
   }
 }
 @media screen and (min-width: 425px) {
@@ -186,7 +199,10 @@ select {
     place-items: center;
   }
   .card-product {
-    width: 380px;
+    width: 420px;
     padding-inline-end: 1rem;
+  }
+  .box-card-product h6{
+    font-size: .9rem;
   }
 }
