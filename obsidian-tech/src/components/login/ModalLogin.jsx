@@ -12,14 +12,17 @@ import { Notification } from "../../services/tostifyNot";
 import { BtnGoogleLogin } from "../signupGoogle/BtnGoogleLogin";
 
 import "../login/ModalLogin.css";
+import { Logout } from "../logout/Logout";
 
 const ModalLogin = () => {
-  const { setUserInfo, setProducto, setShowModal, showModal } = useContext(DataProvider);
+  const { userInfo, setUserInfo, setProducto, setShowModal, showModal } = useContext(DataProvider);
   const [user, setUser] = useState({});
 //mostrar contraseña
   const [showPsw, setShowPsw] = useState(false);
   const handleModal = () => {
-    formikRef.current.resetForm(); // Resetea el formulario utilizando la referencia
+    if(!userInfo.islogged){
+      formikRef.current.resetForm(); // Resetea el formulario utilizando la referencia
+    }
     setShowModal(!showModal);
   };
 
@@ -46,120 +49,124 @@ const ModalLogin = () => {
         <FontAwesomeIcon icon={faUser} />
       </button>
       <section className={showModal ? "sectionLogin active" : "sectionLogin"}>
-        <div className="modalContent">
-          <Formik
-            innerRef={formikRef} // Asigna la referencia al componente Formik
-            initialValues={{
-              email: "",
-              password: "",
-              allowsLocaStorage: false,
-            }}
-            validate={(values) => {
-              let errores = {};
+      {
+        userInfo.islogged ? (<div className="modalContent">
+          <Logout setShowModal={setShowModal}/>
+        </div>) : (<div className="modalContent">
+        <Formik
+          innerRef={formikRef} // Asigna la referencia al componente Formik
+          initialValues={{
+            email: "",
+            password: "",
+            allowsLocaStorage: false,
+          }}
+          validate={(values) => {
+            let errores = {};
 
-              // Validacion del email
-              if (!values.email) {
-                errores.email = "Por favor ingrese un mail";
-              } else if (
-                !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-                  values.email
-                )
-              ) {
-                errores.email =
-                  "El mail solo puede contener letras, numerospuntos guiones y caracteres speciales";
-              }
+            // Validacion del email
+            if (!values.email) {
+              errores.email = "Por favor ingrese un mail";
+            } else if (
+              !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                values.email
+              )
+            ) {
+              errores.email =
+                "El mail solo puede contener letras, numerospuntos guiones y caracteres speciales";
+            }
 
-              return errores;
-            }}
-            onSubmit={(values) => {
-              Login(values)
-                .then(({ user, token }) => {
-                  setUserInfo({
-                    islogged: true,
-                    user: {
-                      token,  
-                      id: user.id,
-                      photoUrl: user.photoUrl,
-                      email: user.email,
-                      allowsLocaStorage: values.allowsLocaStorage,
-                    },
-                  }),
-
-                  Set(KEYS.user, {
-                    token: token,
+            return errores;
+          }}
+          onSubmit={(values) => {
+            Login(values)
+              .then(({ user, token }) => {
+                setUserInfo({
+                  islogged: true,
+                  user: {
+                    token,  
                     id: user.id,
                     photoUrl: user.photoUrl,
                     email: user.email,
-                  });
+                    allowsLocaStorage: values.allowsLocaStorage,
+                  },
+                }),
 
-                  setProducto(true)
+                Set(KEYS.user, {
+                  token: token,
+                  id: user.id,
+                  photoUrl: user.photoUrl,
+                  email: user.email,
+                });
 
-                  Notification({ message: "Inicio de sesión exitoso", type: "success" });
+                setProducto(true)
 
-                })
-                .catch((error) => {
-                  console.error("Error en la solicitud de inicio de sesión", error);
-                  Notification({ message: "Error en el inicio de sesión", type: "error" });
-                })
-                .finally(setShowModal(false));
-            }}
-          >
-            {({ errors }) => (
-              <Form className="formLogin">
-                <div className="boxButton">
-                  <button className="btnCerrar" onClick={handleModal}>
-                    <FontAwesomeIcon icon={faXmark} />
-                  </button>
-                </div>
-                <div className="boxLabel">
-                  <label htmlFor="email">Correo electronico</label>
-                  <Field type="email" id="email" name="email" />
-                  <ErrorMessage
-                    name="email"
-                    component={() => (
-                      <div className="error">{errors.email}</div>
-                    )}
-                  />
-                </div>
-                <div className="boxLabel">
-                  <label htmlFor="password">Ingresa tu contraseña</label>
-                  <span onClick={() => {
-                    setShowPsw(!showPsw)}} className={showPsw ? "show-psw active" :"show-psw"}><FontAwesomeIcon icon={faEye} /></span>
-                  <span onClick={() => {
-                    setShowPsw(!showPsw)}} className={showPsw ? "hidden-psw active" :"hidden-psw"}><FontAwesomeIcon icon={faEyeSlash} /></span>
-                  <Field type={showPsw ? "text" : "password"} id="password" name="password" />
-                  <ErrorMessage
-                    name="password"
-                    component={() => (
-                      <div className="error">{errors.password}</div>
-                    )}
-                  />
-                </div>
-                <div className="boxLabel checkbox">
-                  <label className="labelCheck" htmlFor="allowsLocaStorage">
-                    Mantenerme conectado
-                    <Field type="checkbox" name="allowsLocaStorage" />
-                  </label>
-                </div>
-                <NavLink to={"/registro"} className={"formLinks"} onClick={() => setShowModal(false)}>
-                  Registro
-                </NavLink>
-                <NavLink
-                  to={"/recContraseña"} className={"formLinks"}
-                  onClick={() => setShowModal(false)}
-                >
-                  Olvidaste tu Contraseña?
-                </NavLink>
-                <button type="submit" className="btnSesionModal">
-                  Enviar
+                Notification({ message: "Inicio de sesión exitoso", type: "success" });
+
+              })
+              .catch((error) => {
+                console.error("Error en la solicitud de inicio de sesión", error);
+                Notification({ message: "Error en el inicio de sesión", type: "error" });
+              })
+              .finally(setShowModal(false));
+          }}
+        >
+          {({ errors }) => (
+            <Form className="formLogin">
+              <div className="boxButton">
+                <button className="btnCerrar" onClick={handleModal}>
+                  <FontAwesomeIcon icon={faXmark} />
                 </button>
-              </Form>
-            )}
-          </Formik>
-          <div className="btn-google-login">
-            <BtnGoogleLogin />
-          </div>
+              </div>
+              <div className="boxLabel">
+                <label htmlFor="email">Correo electronico</label>
+                <Field type="email" id="email" name="email" />
+                <ErrorMessage
+                  name="email"
+                  component={() => (
+                    <div className="error">{errors.email}</div>
+                  )}
+                />
+              </div>
+              <div className="boxLabel">
+                <label htmlFor="password">Ingresa tu contraseña</label>
+                <span onClick={() => {
+                  setShowPsw(!showPsw)}} className={showPsw ? "show-psw active" :"show-psw"}><FontAwesomeIcon icon={faEye} /></span>
+                <span onClick={() => {
+                  setShowPsw(!showPsw)}} className={showPsw ? "hidden-psw active" :"hidden-psw"}><FontAwesomeIcon icon={faEyeSlash} /></span>
+                <Field type={showPsw ? "text" : "password"} id="password" name="password" />
+                <ErrorMessage
+                  name="password"
+                  component={() => (
+                    <div className="error">{errors.password}</div>
+                  )}
+                />
+              </div>
+              <div className="boxLabel checkbox">
+                <label className="labelCheck" htmlFor="allowsLocaStorage">
+                  Mantenerme conectado
+                  <Field type="checkbox" name="allowsLocaStorage" />
+                </label>
+              </div>
+              <NavLink to={"/registro"} className={"formLinks"} onClick={() => setShowModal(false)}>
+                Registro
+              </NavLink>
+              <NavLink
+                to={"/recContraseña"} className={"formLinks"}
+                onClick={() => setShowModal(false)}
+              >
+                Olvidaste tu Contraseña?
+              </NavLink>
+              <button type="submit" className="btnSesionModal">
+                Enviar
+              </button>
+            </Form>
+          )}
+        </Formik>
+        <div className="btn-google-login">
+          <BtnGoogleLogin />
         </div>
+      </div>) 
+      }
       </section>
     </>
   );

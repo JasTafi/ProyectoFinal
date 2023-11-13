@@ -1,8 +1,9 @@
 import React from 'react'
+import { Logout } from '../components/logout/Logout'
 
 const NosotrosPage = () => {
   return (
-   <div>Nosotros Page</div>
+   <Logout/>
   )
 }
 
