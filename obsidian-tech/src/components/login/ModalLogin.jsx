@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useContext, useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faXmark, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 import { Login } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
@@ -16,6 +16,8 @@ import "../login/ModalLogin.css";
 const ModalLogin = () => {
   const { setUserInfo, setProducto, setShowModal, showModal } = useContext(DataProvider);
   const [user, setUser] = useState({});
+//mostrar contraseña
+  const [showPsw, setShowPsw] = useState(false);
   const handleModal = () => {
     formikRef.current.resetForm(); // Resetea el formulario utilizando la referencia
     setShowModal(!showModal);
@@ -121,7 +123,11 @@ const ModalLogin = () => {
                 </div>
                 <div className="boxLabel">
                   <label htmlFor="password">Ingresa tu contraseña</label>
-                  <Field type="password" id="password" name="password" />
+                  <span onClick={() => {
+                    setShowPsw(!showPsw)}} className={showPsw ? "show-psw active" :"show-psw"}><FontAwesomeIcon icon={faEye} /></span>
+                  <span onClick={() => {
+                    setShowPsw(!showPsw)}} className={showPsw ? "hidden-psw active" :"hidden-psw"}><FontAwesomeIcon icon={faEyeSlash} /></span>
+                  <Field type={showPsw ? "text" : "password"} id="password" name="password" />
                   <ErrorMessage
                     name="password"
                     component={() => (
