@@ -1,160 +1,156 @@
 /* Seccion Best Product */
 .bgBProduct {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
 }
 .circleBlue {
-    position: absolute;
-    background: radial-gradient(#0385fe, #0120ad);
-    border: none;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    top: 15%;
-    right: 25%;
+  position: absolute;
+  background: radial-gradient(#0385fe, #0120ad);
+  border: none;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  top: 15%;
+  right: 25%;
 }
 .bestProduct {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: transparent;
-    backdrop-filter: blur(40px);
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-}
-.boxImgBP1 {
-    width: 30%;
-    position: relative;
-    left: -10%;
-}
-.boxImgBP1 img {
-    width: 550px;
-}
-.boxImgBP2 img {
-    width: 450px;
+  display: grid;
+  position: relative;
+  background-color: transparent;
+  backdrop-filter: blur(40px);
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
 }
 .bestProductHead {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 15px 30px;
-    width: 100%;
-    height: 30%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  width: 100%;
+  height: 30%;
 }
-.bestProductTitle, .bestProductSubt, .boxBtnBP {
-    width: 30%;
-}
-.bestProductTitle h2{
-    width: 80%;
+.bestProductTitle {
+  align-self: flex-start;
+  text-align: initial;
 }
 .bestProductSubt {
-    font-size: 0.8rem;
-    color: #6D717A;
-    font-weight: 700;
+  font-size: 0.8rem;
+  color: #6d717a;
+  font-weight: 700;
 }
 .boxBtnBP {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .boxBtnBP .btnBestProduct {
-    width: 60%;
+  width: 60%;
 }
 .bestProductBody {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.5rem;
 }
 .borderCardBestProd {
-    width: 300px;
-    height: 350px;
-    background: linear-gradient(to right, #6f35c0b2, #0395fe91);
-    border-radius: 0px 15px;
-    padding: 2px;
+  width: 300px;
+  height: 350px;
+  background: linear-gradient(to right, #6f35c0b2, #0395fe91);
+  border-radius: 0px 15px;
+  padding: 2px;
 }
 .bestProductDespriction {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 0px 15px;
-    padding: 1rem 1.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0px 15px;
+  padding: 1rem 1.5rem;
 }
 .bestProductDespriction h4 {
-    font-weight: 700;
+  font-weight: 700;
 }
 .bestProductDespriction p {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 .btnBestProduct {
-    border: 2px solid #6D717A;
-    color: #6D717A;
-    border-radius: 0px 10px;
-    background: transparent;
-    padding: 5px 15px;
-    transition: all 0.3s ease;
+  border: 2px solid #6d717a;
+  color: #6d717a;
+  border-radius: 0px 10px;
+  background: transparent;
+  padding: 5px 15px;
+  transition: all 0.3s;
 }
 .btnBestProduct:hover {
-    background: linear-gradient(to right, #7035C0, #0396FE);
-    color: #fff;
-    transition: all 0.3s ease;
+  background: linear-gradient(to right, #7035c0, #0396fe);
+  color: #fff;
+  transition: all 0.3s;
 }
 /* MediaQuery */
-@media (320px <= width <= 425px) {
-    .bestProduct {
-        padding: 10px;
-    }
-    .bestProductHead {
-        flex-direction: column;
-        height: auto;
-    }
-    .bestProductTitle, .bestProductSubt, .boxBtnBP {
-        width: 100%;
-        margin: 10px 0;
-    }
-    .bestProductTitle h2{
-        width: 100%;
-    }
-    .boxBtnBP .btnBestProduct {
-        width: 90%;
-    }
-    .boxImgBP1 {
-        display: none;
-    }
-    .bestProductBody {
-        flex-direction: column;
-        height: 100vh;
-    }
-    .boxImgBP2 img {
-        width: 270px;
-    }
+@media screen and (min-width: 320px) {
+  .bestProduct {
+    place-content: center;
+  }
+  .bestProductHead {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+  }
+  .bestProductSubt {
+    color: #fff;
+  }
+  .bestProductBody {
+    grid-template-columns: 1fr;
+  }
+  .borderCardBestProd {
+    width: 280px;
+    height: auto;
+  }
+  .boxImgBP1,
+  .boxImgBP2 {
+    width: 300px;
+  }
+  .boxImgBP1 {
+    display: none;
+  }
 }
-@media (426px <= width <= 768px){
-    .bestProduct {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .boxImgBP1 {
-        position: static;
-    }
-    .boxImgBP1 img{
-        width: 350px;
-    }
-    .boxImgBP2 {
-        display: none;
-    }
-    .bestProductSubt {
-        display: none;
-    }
-    .bestProductTitle, .bestProductSubt, .boxBtnBP {
-        width: 40%;
-    }
-    .boxBtnBP .btnBestProduct {
-        width: 100%;
-    }
+@media screen and (min-width: 768px) {
+  .bestProductHead {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .btnBestProduct {
+    font-size: .9rem;
+  }
+  .bestProductBody {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .boxImgBP1,
+  .boxImgBP2 {
+    width: 350px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .bestProductBody {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .boxImgBP1 {
+    display: block;
+  }
+  .boxImgBP1,
+  .boxImgBP2 {
+    width: 420px;
+  }
+  .bestProductSubt {
+    color: #6d717a;
+  }
+  .btnBestProduct {
+    font-size: 1rem;
+  }
 }

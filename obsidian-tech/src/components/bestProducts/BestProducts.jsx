@@ -11,9 +11,7 @@ export const BestProducts = () => {
       <div className="circleBlue"></div>
       <section className="bestProduct">
         <div className="bestProductHead">
-          <div className="bestProductTitle">
-            <h2>Los mejores productos para juegos profesionales</h2>
-          </div>
+        <h2 className="bestProductTitle">Los mejores productos para juegos profesionales</h2>
           <div className="bestProductSubt">
             <p>
               Un hardware más potente no solo mejora sus experiencias en los
@@ -29,13 +27,12 @@ export const BestProducts = () => {
           </div>
         </div>
         <div className="bestProductBody">
-          <div className="boxImgBP1">
-            <img
+        <img
+            className="boxImgBP1"
               src="src/assets/bestProduct-gabinete.png"
               alt="Gabinete ITX"
               title="Gabinete ITX"
             />
-          </div>
           <div className="borderCardBestProd">
             <div className="bestProductDespriction">
               <h4>PC de escritorio</h4>
@@ -50,13 +47,11 @@ export const BestProducts = () => {
               <button className="btnBestProduct">ver más</button>
             </div>
           </div>
-          <div className="boxImgBP2">
-            <img
+          <img className="boxImgBP2"
               src="src/assets/bestProduct-cpu.png"
               alt="CPU ITX"
               title="CPU ITX"
             />
-          </div>
         </div>
       </section>
     </div>
