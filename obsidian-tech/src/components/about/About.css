@@ -53,6 +53,9 @@
         grid-template-columns: repeat(2, 1fr);
         column-gap: 1.5rem;
     }
+    .about-card {
+        width: 300px;
+    }
 }
 @media screen and (min-width: 1024px) {
     .about-card-container {
