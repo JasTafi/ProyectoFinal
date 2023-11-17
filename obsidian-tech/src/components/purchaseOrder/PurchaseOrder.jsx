@@ -2,10 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { AddPurchaseOrder, GetCarProducts } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 import Loader from '../loader/Loader.jsx';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { DeleteCarProduct } from "../../services/user_service";
+import { Notification } from "../../services/tostifyNot";
+
 
 import "../purchaseOrder/PurchaseOrder.css";
 export const PurchaseOrder = () => {
-  const { userInfo, producto } = useContext(DataProvider);
+  const { userInfo, producto, setProducto } = useContext(DataProvider);
   //estado para manejar Loader
   const [ loading, setLoading] = useState(false);
   //estado para manejar GetCarProducts
@@ -47,7 +52,8 @@ export const PurchaseOrder = () => {
       .finally(() => {
         setTimeout(() => {
           setLoading(false);
-        }, 2000);
+        }, 2000),
+        setProducto(false)
       })
   }, [producto]);
 
@@ -57,6 +63,18 @@ export const PurchaseOrder = () => {
       ...formData,
       [name]: value,
     });
+  }
+  function handleRemoveProduct(productId) {
+    DeleteCarProduct({
+      id: userInfo.user.id,
+      productId: productId,
+      token: userInfo.user.token,
+    })
+      .then((res) =>{
+        setProducto(true)
+        Notification({ message: 'Producto eliminado', type: 'success' });
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleSubmit(e) {
@@ -227,6 +245,9 @@ export const PurchaseOrder = () => {
                       <span>cantidad: 0</span>
                     </div>
                     <span>$ {producto.precio}</span>
+                    <FontAwesomeIcon icon={faTrash} className="btn-delete" onClick={() => {
+                      handleRemoveProduct(producto._id)
+                    }}/>
                   </div>
                 );
               })}
