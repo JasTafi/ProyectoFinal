@@ -61,7 +61,7 @@ export const CardFavorites = ({ fav, setUpload }) => {
                   <p>TYPE: {item.categoria}</p>
                 </div>
                 <div className="boxImage">
-                  <img src={item.urlImg} />
+                  <img src={item.urlImg} title={item.nombre}/>
                 </div>
               </div>
               <div className="cardFooterFav">

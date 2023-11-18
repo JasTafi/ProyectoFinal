@@ -135,13 +135,18 @@
     background: linear-gradient(to right, #7035C0, #0396FE);
     border-radius: 0px 10px;
     color: #fff;
-    padding: 4px 12px;
+    padding: .4rem .6rem;
     transition: all 0.2s;
     text-decoration: none;
 }
+.buttonCartFav:hover {
+    color: #fff;
+}
 .favEmpty {
     width: 100%;
-    text-align: center;
+    height: 20vh;
+    display: grid;
+    place-content: center;
     color: #000;
 }
 /*MediaQuery*/
