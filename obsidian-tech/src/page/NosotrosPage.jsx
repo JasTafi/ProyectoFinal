@@ -1,9 +1,9 @@
 import React from 'react'
-import Favoritos from '../components/favoritos/Favoritos'
+import { Logout } from '../components/logout/Logout'
 
 const NosotrosPage = () => {
   return (
-    <div>NosotrosPage</div>
+   <Logout/>
   )
 }
 

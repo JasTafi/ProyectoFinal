@@ -1,62 +1,338 @@
-.modalContainer {
-  position: absolute;
-  top: -400px;
-  right: 35%;
-  background-color: #000;
-  border-radius: 10px;
-  width: 350px;
-  height: 350px;
-  transition: all 0.5s;
+.btn-login {
+  background-color: transparent;
+  color: hsl(0, 0%, 100%);
+  border: none;
 }
-.modalContainer.active {
-  top: 150px;
-  transition: all 0.5s;
+.btn-login:hover {
+  color: hsl(265, 57%, 48%);
+  transition: color 0.3s;
+}
+.sectionLogin {
+  position: absolute;
+  top: -1000%;
+  left: calc(50% - 160px);
+  width: 100%;
+  height: 100%;
+  transition: top 0.4s;
+}
+.sectionLogin.active {
+  top: 10rem;
 }
 .modalContent {
+  display: grid;
+  place-content: center;
+  background-color: #111111bb;
+  backdrop-filter: blur(20px);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(250, 250, 250, 0.5);
+  color: #fff;
+  font-size: 0.9rem;
+  height: 390px;
+  width: 300px;
+}
+.boxButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btnCerrar {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.formLogin {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 10px 0;
   height: 100%;
   width: 100%;
 }
+.formLinks {
+  text-decoration: none;
+  align-self: flex-start;
+  padding-inline: 0.5rem;
+  margin-block: 0.25rem;
+}
+.formLinks:hover {
+  color: #fff;
+}
+.boxLabel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.checkbox label {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.formLogin input {
+  background-color: transparent;
+  border: 1px solid #6d717a;
+  border-radius: 0 15px;
+  color: #6d717a;
+  font-size: 0.9rem;
+  padding: 7px 5px 7px 42px;
+  width: 100%;
+  margin: 0.3rem 0;
+}
+.btnSesionModal {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: linear-gradient(to right, #7035c0, #0396fe);
+  border-radius: 0px 10px;
+  color: #fff;
+  font-size: 1rem !important;
+  margin: .7rem 0;
+  padding: .3rem 1.2rem;
+}
+.btn-google-login {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding-block: .2rem .3rem;
+}
+.show-psw, .hidden-psw {
+  position: absolute;
+  right: -.6rem;
+  bottom: .6rem;
+  width: 45px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+.show-psw.active {
+  display: none;
+}
+.hidden-psw {
+  display: none;
+}
+.hidden-psw.active {
+  display: block;
+}
+.error {
+  color: #f80202;
+  font-size: 0.8rem;
+}
+
+.exito {
+  color: #05a705;
+  font-size: 0.8rem;
+}
+@media screen and (max-width: 320px) {
+  .sectionLogin.active {
+    top: 7rem;
+    left: -3.3rem;
+    z-index: 1;
+  }
+  .modalContent {
+    background-color: #111;
+    width: 300px;
+    padding: 0.2rem;
+  }
+  .boxLabel {
+    width: 90%;
+  }
+}
+@media screen and ( 321px < width <= 425px ) {
+  .sectionLogin {
+    left:-2rem;
+  }
+  .sectionLogin.active {
+    top: 7rem;
+    left: -2rem;
+    z-index: 1;
+  }
+  .modalContent {
+    background-color: #111;
+  }
+}
+@media screen and (426px < width <= 768px) {
+  .sectionLogin {
+    left:-7rem;
+  }
+  .sectionLogin.active {
+    top: 7rem;
+    left: -7rem;
+    z-index: 1;
+  }
+  .modalContent {
+    background-color: #111;
+    width: 300px;
+    padding: 0.2rem;
+  }
+  .boxLabel {
+    width: 90%;
+  }
+}
+/* .btn-login {
+  background-color: transparent;
+  color: hsl(0, 0%, 100%);
+}
+.btn-login:hover {
+  color: hsl(265, 57%, 48%);
+  transition: color 0.3s;
+}
+.sectionLogin {
+  position: absolute;
+  top: -1000%;
+  left: calc(50% - 160px);
+  width: 100%;
+  height: 100%;
+  transition: top 0.4s;
+}
+.sectionLogin.active {
+  top: 10rem;
+}
+.modalContent {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  transition: all 0.5s;
+  background-color: #111111bb;
+  backdrop-filter: blur(20px);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(250, 250, 250, 0.5);
+  color: #fff;
+  font-size: 0.9rem;
+  height: 330px;
+  width: 300px;
+}
+.boxButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px 1px rgba(190, 186, 186, 0.5);
+  height:30rem;
+  width: 20rem;
+}
+
+.btnCerrar {
+  margin-top: 1rem;
+}
+
+.labelCheck {
+  text-align: center;
+}
+
+.containerModalInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
 .modalContainer .btnCerrar {
   position: relative;
   left: 40%;
-  border: none;
+  border: 1px solid #6D717A;
+  color: #6D717A;
   font-size: 0.8rem;
 }
 .modalContent h3 {
-  color: #fff;
-  padding-top: 15px;
+  justify-content: flex-end;
 }
-.modalContent form {
+.btnCerrar {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.formLogin {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
-.modalContent form label {
+.formLinks {
+  text-decoration: none;
+  align-self: flex-start;
+  padding-inline: 0.5rem;
+  margin-block: 0.25rem;
+}
+.formLinks:hover {
+  color: #fff;
+}
+.boxLabel {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
-.modalContent form input {
+.checkbox label {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.formLogin input {
   background-color: transparent;
-  border: 1px solid #6D717A;
+  border: 1px solid #6d717a;
   border-radius: 0 15px;
-  color: #6D717A;
+  color: #6d717a;
   font-size: 0.9rem;
   padding: 7px 5px 7px 42px;
-  width: 250px;
+  width: 100%;
+  margin: 0.3rem 0;
 }
-.btnSesion {
+
+.btnSesionModal {
   cursor: pointer;
   border: 1px solid transparent;
-  background: linear-gradient(to right, #7035C0, #0396FE);
+  background: linear-gradient(to right, #7035c0, #0396fe);
   border-radius: 0px 10px;
   color: #fff;
-  margin-right: 20px;
+  font-size: 1rem !important;
+  margin: 0.5rem 0 0;
   padding: 0.3rem 1.2rem;
 }
+
+.error {
+  color: #f80202;
+  font-size: 0.8rem;
+}
+
+.exito {
+  color: #05a705;
+  font-size: 0.8rem;
+}
+@media screen and (320px <= width <= 767px) {
+  .sectionLogin.active {
+    top: 7rem;
+    left: -2rem;
+    z-index: 1;
+  }
+  .modalContent {
+    background-color: #111;
+    width: 95%;
+    padding: 0.2rem;
+  }
+  .boxLabel {
+    width: 90%;
+  }
+}
+@media screen and (768px <= width <= 1023px) {
+  .sectionLogin.active {
+    top: 7rem;
+    left: calc(-50% + 100px);
+    z-index: 1;
+  }
+  .modalContent {
+    background-color: #111;
+    height: 330px;
+    width: 300px;
+  }
+} */
