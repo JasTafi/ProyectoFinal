@@ -8,10 +8,13 @@ import { DeleteCarProduct } from "../../services/user_service";
 import { Notification } from "../../services/tostifyNot";
 
 import "../purchaseOrder/PurchaseOrder.css";
+import { ModalPurchase } from "../modalPurchaseConfirm/ModalPurchase.jsx";
 export const PurchaseOrder = () => {
   const { userInfo, producto, setProducto } = useContext(DataProvider);
   //estado para manejar Loader
   const [loading, setLoading] = useState(false);
+  //estado para manejar modalPurchase
+  const [showModalPurchase , setShowModalPurchase] = useState(false);
   //estado para manejar GetCarProducts
   const [productCar, setProductCar] = useState([]);
   //estado para iterar id de car_products
@@ -104,7 +107,8 @@ export const PurchaseOrder = () => {
             numero: "",
             provincia: "",
             localidad: "",
-          });
+          }),
+          setShowModalPurchase(true);
       })
       .catch((err) => console.log(err));
   }
@@ -115,6 +119,7 @@ export const PurchaseOrder = () => {
       ) : (
         <section className="purchase section">
           <div className="purchase-container container grid">
+          <ModalPurchase showModalPurchase={showModalPurchase} setShowModalPurchase={setShowModalPurchase}/>
             <div className="purchase-data">
               <div className="data-content">
                 <h2 className="section-title">Orden de compra</h2>
@@ -141,6 +146,7 @@ export const PurchaseOrder = () => {
                       type="text"
                       name="provincia"
                       id=""
+                      maxLength={40}
                       placeholder="Provincia"
                       value={formData.provincia}
                       onChange={handleChange}
@@ -150,6 +156,7 @@ export const PurchaseOrder = () => {
                       name="localidad"
                       id=""
                       placeholder="Localidad"
+                      maxLength={40}
                       value={formData.localidad}
                       onChange={handleChange}
                     />
@@ -157,6 +164,7 @@ export const PurchaseOrder = () => {
                     <input
                       type="text"
                       name="departamento"
+                      maxLength={40}
                       placeholder="Ejemplo: 1 A"
                       value={formData.departamento}
                       onChange={handleChange}
@@ -167,6 +175,7 @@ export const PurchaseOrder = () => {
                       type="text"
                       name="calle"
                       id=""
+                      maxLength={40}
                       placeholder="Calle"
                       value={formData.calle}
                       onChange={handleChange}
@@ -175,6 +184,7 @@ export const PurchaseOrder = () => {
                       type="text"
                       name="numero"
                       id=""
+                      maxLength={10}
                       placeholder="Número"
                       value={formData.numero}
                       onChange={handleChange}
@@ -187,11 +197,13 @@ export const PurchaseOrder = () => {
                       value={formData.nombres}
                       onChange={handleChange}
                       id=""
+                      maxLength={40}
                       placeholder="Nombre/s:"
                     />
                     <input
                       type="text"
                       name="apellidos"
+                      maxLength={40}
                       value={formData.apellidos}
                       onChange={handleChange}
                       id=""
@@ -207,24 +219,28 @@ export const PurchaseOrder = () => {
                     type="number"
                     name=""
                     id=""
+                    maxLength={16}
                     placeholder="numero de tarjeta"
                   />
                   <input
                     type="text"
                     name=""
                     id=""
+                    maxLength={5}
                     placeholder="fecha de expiracion(MM/YY)"
                   />
                   <input
                     type="text"
                     name=""
                     id=""
+                    maxLength={3}
                     placeholder="codigo de seguridad"
                   />
                   <input
                     type="text"
                     name=""
                     id=""
+                    maxLength={50}
                     placeholder="nombre del titular"
                   />
                 </form>
@@ -250,7 +266,7 @@ export const PurchaseOrder = () => {
                           <img src={producto.urlImg} alt="" />
                           <div className="box-card-product">
                             <h6>{producto.nombre}</h6>
-                            <span>cantidad: 0</span>
+                            <span>cantidad: 1</span>
                           </div>
                           <span>$ {producto.precio}</span>
                           <FontAwesomeIcon

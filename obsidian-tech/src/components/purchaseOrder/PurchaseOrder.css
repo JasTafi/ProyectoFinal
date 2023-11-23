@@ -31,6 +31,7 @@
 /* Data-Container */
 .purchase {
   background-color: var(--color-body);
+  position: relative;
 }
 .purchase-container {
   padding-top: 2rem;
