@@ -111,7 +111,7 @@ const ProductDetail = () => {
         
       <article className="containerPictures">
         <div className="borderColorBox">
-          <div className="containerImg">
+          <div className="container-img">
             <img src={data.urlImg} alt={data.nombre} title={data.nombre} />
           </div>
         </div>
