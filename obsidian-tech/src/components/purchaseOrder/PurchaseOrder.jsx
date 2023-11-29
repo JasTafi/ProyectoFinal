@@ -14,7 +14,7 @@ export const PurchaseOrder = () => {
   //estado para manejar Loader
   const [loading, setLoading] = useState(false);
   //estado para manejar modalPurchase
-  const [showModalPurchase , setShowModalPurchase] = useState(false);
+  const [showModalPurchase, setShowModalPurchase] = useState(false);
   //estado para manejar GetCarProducts
   const [productCar, setProductCar] = useState([]);
   //estado para iterar id de car_products
@@ -59,6 +59,48 @@ export const PurchaseOrder = () => {
       });
   }, [producto]);
 
+  //validaciones
+  function validateForm() {
+    if(productBuy.length == 0){
+      Notification({
+        message: "Por favor agrega productos al carrito para realizar la compra",
+        type: "error",
+      });
+      return false
+    }
+    if (
+      formData.nombres.trim() === "" ||
+      formData.apellidos.trim() === "" ||
+      formData.provincia.trim() === "" ||
+      formData.localidad.trim() === "" ||
+      formData.calle.trim() === "" ||
+      formData.numero.trim() === ""
+    ) {
+      Notification({
+        message: "Por favor completa todos los campos obligatorios",
+        type: "error",
+      });
+      return false;
+    }
+    const nameRegex = /^[a-zA-Z\s]*$/; // Acepta solo letras y espacios
+    if (
+      !nameRegex.test(formData.nombres) ||
+      !nameRegex.test(formData.apellidos)
+    ) {
+      Notification({
+        message:
+          "Los nombres y apellidos no deben contener caracteres especiales",
+        type: "error",
+      });
+      return false;
+    }
+    const numberRegex = /^\d+$/; // Acepta solo dígitos
+    if (!numberRegex.test(formData.numero)) {
+      Notification({ message: 'El campo de número solo debe contener dígitos', type: 'error' });
+      return false;
+    }
+    return true;
+  }
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData({
@@ -81,6 +123,11 @@ export const PurchaseOrder = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     AddPurchaseOrder({
       userId: userInfo.user.id,
       productId: productBuy,
@@ -112,6 +159,7 @@ export const PurchaseOrder = () => {
       })
       .catch((err) => console.log(err));
   }
+
   return (
     <>
       {loading ? (
@@ -119,7 +167,10 @@ export const PurchaseOrder = () => {
       ) : (
         <section className="purchase section">
           <div className="purchase-container container grid">
-          <ModalPurchase showModalPurchase={showModalPurchase} setShowModalPurchase={setShowModalPurchase}/>
+            <ModalPurchase
+              showModalPurchase={showModalPurchase}
+              setShowModalPurchase={setShowModalPurchase}
+            />
             <div className="purchase-data">
               <div className="data-content">
                 <h2 className="section-title">Orden de compra</h2>
@@ -258,7 +309,9 @@ export const PurchaseOrder = () => {
                 <h2 className="section-title">Productos a comprar</h2>
                 <div className="card-container">
                   {productCar.length == 0 ? (
-                    <h2 className="section-title">No hay productos agregados al carrito!</h2>
+                    <h2 className="section-title">
+                      No hay productos agregados al carrito!
+                    </h2>
                   ) : (
                     productCar.map((producto, index) => {
                       return (
