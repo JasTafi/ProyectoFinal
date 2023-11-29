@@ -91,11 +91,12 @@ const ModalLogin = () => {
                   },
                 }),
 
-                Set(KEYS.user, {
+                Set(KEYS.USER, {
                   token: token,
                   id: user.id,
                   photoUrl: user.photoUrl,
                   email: user.email,
+                  allowsLocaStorage: values.allowsLocaStorage,
                 });
 
                 setProducto(true)
