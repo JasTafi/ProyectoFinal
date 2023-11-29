@@ -52,17 +52,17 @@ export const BuyCar = () => {
         <FontAwesomeIcon icon={faCartShopping} />
       </button>
 
-      <Modal className="containerModalBuyCar" show={show} onHide={handleClose}>
+      <Modal className="containerModalBuyCar" scrollable={true} show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modalBodyBuyCar">
           {!userInfo.islogged ? (
             <div>
-              <p>debes iniciar sesion para agregar productos al carrito</p>
+              <p className="warningMessage">Debes iniciar sesion para agregar productos al carrito</p>
             </div>
           ) : product.length == 0 ? (
-            <div>No hay productos agregados al carrito</div>
+            <div className="warningMessage">No hay productos agregados al carrito</div>
           ) : (
             product.map((item, index) => {
               return (
@@ -89,7 +89,7 @@ export const BuyCar = () => {
           <button className="btnOutlineGrey" onClick={handleClose}>
             cerrar
           </button>
-          <Link to={"/compra"}className="btnGradient" onClick={handleClose}>
+          <Link to={"/compra"}className={product.length == 0 ? "btnGradient hiddenBtn" : "btnGradient"} onClick={handleClose}>
             comprar!
           </Link>
         </Modal.Footer>

@@ -63,15 +63,6 @@ export const ObsidianNavbar = () => {
                   Nosotros
                 </NavLink>
               </li>
-              <li className="navItem">
-                <NavLink
-                  onClick={clickear}
-                  className="navLink"
-                  to={"/recContraseña"}
-                >
-                  Recuperar Contraseña
-                </NavLink>
-              </li>
               <li className="navItem btnSize">
                 <ModalLogin />
               </li>

@@ -63,8 +63,9 @@ const ProductDetail = () => {
       .catch((err) => console.log(err));
   }
   return (
-    <div className="containerProductDetail">
-      <div className="containerDetail">
+    <section className="section-product-detail section">
+      <div className="product-detail-container container grid">
+        <article className="product-detail-content">
         <Link to={"/"} className="linkBack">
           <FontAwesomeIcon icon={faArrowLeft} className="icon" />
           Inicio
@@ -76,12 +77,12 @@ const ProductDetail = () => {
           </button>
           <p>Agregar a lista de deseos.</p>
         </div>
-        <h2>{data.nombre}</h2>
+        <h2 className="product-title">{data.nombre}</h2>
         <div className="boxDetail">
           <p>TYPE: {data.categoria}</p>
           <p>Stock: {data.stock}</p>
         </div>
-        <h6>Descripcion del producto: {data.Descripcion}</h6>
+        <p className="product-description">Descripcion del producto: {data.Descripcion}</p>
         <div className="boxInputSelect">
           <label htmlFor="color">Color:</label>
           <select name="" id="color">
@@ -106,15 +107,17 @@ const ProductDetail = () => {
           <button onClick={handleAddCar}>Agregar al carrito</button>
           <button>Comprar ya!</button>
         </div>
-      </div>
-      <div className="containerPictures">
+        </article>
+        
+      <article className="containerPictures">
         <div className="borderColorBox">
           <div className="containerImg">
             <img src={data.urlImg} alt={data.nombre} title={data.nombre} />
           </div>
         </div>
+      </article>
       </div>
-    </div>
+    </section>
   );
 };
 
