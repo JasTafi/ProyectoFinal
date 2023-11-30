@@ -19,9 +19,7 @@ export const Logout = () => {
 
     //Borro la informacion en localStorage
     localStorage.removeItem("user");
-    //actualiza carrito de compra y favoritos
-    setProducto(false);
-    console.log("true")
+
     //Cierro el modal login
     setShowModal(false);
 
