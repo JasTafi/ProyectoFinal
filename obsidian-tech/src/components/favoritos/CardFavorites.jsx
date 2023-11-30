@@ -33,7 +33,8 @@ export const CardFavorites = ({ fav, setUpload }) => {
       token: userInfo.user.token,
     })
       .then((res) => {
-        setProducto(true);
+        setProducto(true),
+        Notification({ message: 'Producto agregado al carrito', type: 'success' });
       })
       .catch((err) => console.log(err));
   }
