@@ -15,7 +15,7 @@ async function getProductByIdFromDb(id) {
 }
 
 //         Crear un producto nuevo
-async function AddProductos({ nombre, categoria, precio, stock, descripcion, urlImg }) {
+async function AddProductos({ nombre, categoria, precio, stock, descripcion, urlImg, token }) {
 
   const body = JSON.stringify({
     nombre,
