@@ -43,7 +43,9 @@ const ProductDetail = () => {
 
   useEffect(() => {
     getProductByIdFromDb(id)
-      .then((res) => setData(res))
+      .then((res) => {
+        setData(res)
+      })
       .catch((error) => console.log(error))
       .finally(() => {
         setProducto(false);

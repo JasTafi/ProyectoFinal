@@ -44,8 +44,10 @@ export const BuyCar = () => {
         .finally(() => {
           setProducto(false)
         })
+    }else{
+      setProduct([])
     }
-  }, [producto])
+  }, [userInfo.islogged,producto])
   
   return (
     <div className="containerModalCar">

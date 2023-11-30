@@ -70,7 +70,7 @@ export const ObsidianNavbar = () => {
                 <BuyCar />
               </li>
               <li className="navItem btnSize">
-                <Link to="/favoritos" className="navLink">
+                <Link to="/favoritos" onClick={clickear} className="navLink">
                   <FontAwesomeIcon icon={faHeart} />
                 </Link>
               </li>

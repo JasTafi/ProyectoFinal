@@ -17,7 +17,6 @@ const Favoritos = () => {
   const [loading, setLoading] = useState(false);
   const [fav, setFav] = useState([]);
   const { userInfo, producto, setProducto } = useContext(DataProvider);
-  const [upload, setUpload] = useState(false);
 
   useEffect(() => {
     setLoading(true);
