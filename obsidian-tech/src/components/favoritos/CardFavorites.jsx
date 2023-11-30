@@ -9,9 +9,8 @@ import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";
 import "../favoritos/Favoritos.css";
 import { Notification } from "../../services/tostifyNot";
 
-export const CardFavorites = ({ fav, setUpload }) => {
-  const { userInfo } = useContext(DataProvider);
-  const { setProducto } = useContext(DataProvider);
+export const CardFavorites = ({ fav }) => {
+  const { userInfo, setProducto } = useContext(DataProvider);
 
   // funcion para eliminar fav de la lista
   function handleRemoveFav(item_id) {
@@ -22,9 +21,9 @@ export const CardFavorites = ({ fav, setUpload }) => {
     })
       .then((res) => {
         Notification({ message: 'Producto Borrado', type: 'success' });
-        setUpload(true);
+        setProducto(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   }
   function handleAddCar(id) {
     AddCarProduct({
@@ -36,7 +35,7 @@ export const CardFavorites = ({ fav, setUpload }) => {
         setProducto(true),
         Notification({ message: 'Producto agregado al carrito', type: 'success' });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   }
   return (
     <>

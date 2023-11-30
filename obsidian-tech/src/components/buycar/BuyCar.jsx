@@ -14,8 +14,8 @@ export const BuyCar = () => {
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState([]);
   //para manejar el estado del useEffect de getCarProduct
-  const { producto, setProducto} =  useContext(DataProvider)
-  const { userInfo } = useContext(DataProvider);
+  const { userInfo ,producto, setProducto} =  useContext(DataProvider)
+
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,7 +41,9 @@ export const BuyCar = () => {
           setProduct(car_products);
         })
         .catch((err) => console.log(err))
-        .finally(setProducto(false))
+        .finally(() => {
+          setProducto(false)
+        })
     }
   }, [producto])
   

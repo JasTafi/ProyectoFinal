@@ -9,7 +9,7 @@ import "../logout/Logout.css";
 
 export const Logout = () => {
 
-  const { userInfo, setUserInfo, setShowModal } = useContext(DataProvider)
+  const { userInfo, setUserInfo, setShowModal, setProducto } = useContext(DataProvider)
 
   const handleLogout = () => {
     setUserInfo({
@@ -19,7 +19,9 @@ export const Logout = () => {
 
     //Borro la informacion en localStorage
     localStorage.removeItem("user");
-
+    //actualiza carrito de compra y favoritos
+    setProducto(false);
+    console.log("true")
     //Cierro el modal login
     setShowModal(false);
 
