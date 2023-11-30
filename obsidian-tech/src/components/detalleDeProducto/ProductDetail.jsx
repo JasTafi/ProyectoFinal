@@ -13,8 +13,7 @@ import "../detalleDeProducto/ProductDetail.css";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const { userInfo } = useContext(DataProvider);
-  const { setProducto } = useContext(DataProvider);
+  const { userInfo, producto ,setProducto } = useContext(DataProvider);
   const [data, setData] = useState([]);
   const [num, setNum] = useState(1);
   const [addedFav, setAddedFav] = useState(false)
@@ -36,8 +35,11 @@ const ProductDetail = () => {
   useEffect(() => {
     getProductByIdFromDb(id)
       .then((res) => setData(res))
-      .catch((error) => console.log(error));
-  }, []);
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setProducto(false)
+      })
+  }, [producto]);//datacontext para ver si renderiza el producto al hacer click en containerResults
   function handleAddFavorites() {
     if (userInfo.islogged == true) {
       AddFavoriteProduct({
