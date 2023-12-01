@@ -1,6 +1,7 @@
 .divPadreAdministracion {
-  display: flex;
-  background: no-repeat center 100%/cover url(../../assets/bgGrilla.jpg);
+  display: grid;
+  padding: 1rem;
+  background-color: #111;
 }
 
 .divPadreInput {
@@ -39,7 +40,6 @@ hr {
   background: linear-gradient(to left, #7035C0, #0396FE);
   margin: 3rem 0 3rem 0;
 }
-
 
 .formulario label {
   margin: 0.5rem;

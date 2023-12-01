@@ -40,7 +40,6 @@ async function AddProductos({ nombre, categoria, precio, stock, descripcion, url
 //         Modificar un producto
 async function UpdateProducto(id, { nombre, categoria, precio, stock, descripcion, urlImg }) {
 
-
   const body = JSON.stringify({
     nombre,
     categoria,

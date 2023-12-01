@@ -66,7 +66,6 @@ const Favoritos = () => {
                   ) : (
                     <CardFavorites
                       fav={fav}
-                      setLoading={setLoading}
                     />
                   )}
                 </div>

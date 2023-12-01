@@ -9,10 +9,9 @@ export const RutaProtejida = ({ children }) => {
   const { userInfo } = useContext(DataProvider);
   const location = useLocation();
 
-  if( userInfo.islogged === false) {
+  if( !userInfo.islogged ) {
     Notification({ message: 'Debes iniciar sesion para acceder', type: 'error' });
     return <Navigate to='/' state={location}></Navigate>;
   }
-
   return children;
 };
