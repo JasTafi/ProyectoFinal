@@ -35,8 +35,7 @@ const Favoritos = () => {
         setProducto(false)
       });
   }, [producto]);
-
-  const favoritos = fav.length > 0;
+ const favoritos = fav.length > 0
   return (
     <div>
       {loading ? (
@@ -69,7 +68,7 @@ const Favoritos = () => {
                     />
                   )}
                 </div>
-                {favoritos && (
+                {favoritos.length > 0 && (
                   <div className="buttonsFav">
                     <Link to={"/"} className="buttonCartFav">seguir comprando</Link>
                   </div>

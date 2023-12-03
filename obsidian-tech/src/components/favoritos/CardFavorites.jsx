@@ -6,12 +6,12 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { DataProvider } from "../../context/DataContext";
 import { AddCarProduct, DeleteFavoriteById } from "../../services/user_service";
 
-import "../favoritos/Favoritos.css";
 import { Notification } from "../../services/tostifyNot";
+import "../favoritos/Favoritos.css";
 
 export const CardFavorites = ({ fav }) => {
   const { userInfo, setProducto } = useContext(DataProvider);
-
+ 
   // funcion para eliminar fav de la lista
   function handleRemoveFav(item_id) {
     DeleteFavoriteById({
@@ -35,7 +35,10 @@ export const CardFavorites = ({ fav }) => {
         setProducto(true),
         Notification({ message: 'Producto agregado al carrito', type: 'success' });
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        Notification({ message: 'Error al agregar producto', type: 'error' });
+        console.log(err)
+      })
   }
   return (
     <>
