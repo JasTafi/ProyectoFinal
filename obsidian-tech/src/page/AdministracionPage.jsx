@@ -1,13 +1,9 @@
 import React from 'react'
-import InputComponent from '../components/inputAdminitracion/inputAdministration';
-import DataList from '../components/toDoListAdministracion/toDoListAdministration';
+import { Administracion } from '../components/administracion/Administracion'
 
 const AdministracionPage = () => {
   return (
-    <div className='divPadreAdministracion'>
-      <InputComponent />
-      <DataList />
-    </div>
+   <Administracion/>
   )
 }
 

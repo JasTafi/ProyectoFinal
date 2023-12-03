@@ -48,6 +48,7 @@ const FilterComponent = ({ setClicked }) => {
           className="input-navbar"
           onChange={handleChange}
           value={filtered}
+          id="filtro"
           type="text"
           maxLength={30}
           placeholder="Buscar productos..."

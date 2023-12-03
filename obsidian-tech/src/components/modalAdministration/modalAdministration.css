@@ -1,27 +1,69 @@
-.divPadreAdministracion {
-  display: flex;
-}
-
-.divPadreInputModal {
-  display: flex;
-  color: black;
-}
-
-.error {
-  color: red;
-}
-
-.divPadreInputModal div p {
+.modal-form-admin {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: black;
-  text-align: justify;
+  width: 100%;
+  row-gap: 1rem;
 }
-
-.formularioModal label {
-  margin: 0.5rem;
-  color: black;
-  display: flex !important; 
-  flex-direction: column !important;
+.box-input-admin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+}
+.box-input-admin label {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.modal-input-admin {
+  padding: .2rem;
+  border: 1px solid #5c5c5c;
+  border-radius: .3rem;
+  outline: none;
+}
+.btn-modal-save {
+  align-self: center;
+  border: none;
+  border-radius: .3rem;
+  background-color: rgb(47, 204, 47);
+  color: #fff;
+  padding: .4rem .6rem;
+}
+.confirmation-alert {
+  background-color: #fff;
+  border: 1px solid #111;
+  border-radius: .2rem;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  padding: 1rem 2rem;
+  opacity: 0;
+}
+.alert-show{
+  opacity: 1;
+  top: 40%;
+  transition: all .3s;
+}
+.box-btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.btn-confirm {
+  padding: .2rem .6rem;
+  border-radius: .2rem;
+  background-color: greenyellow;
+}
+.btn-reject {
+  padding: .2rem .3rem;
+  border-radius: .2rem;
+  background-color: red;
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .modal-form-admin {
+    padding-inline: 2rem;
+  }
 }

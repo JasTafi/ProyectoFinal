@@ -1,29 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { getAllProductsFromDB } from '../../services/api';
-import '../toDoListAdministracion/toDoListAdministration.css';
-import CategoryAccordion from '../categoryAccordion/CategoryAccordion';
+import React, { useEffect, useState, useContext} from "react";
+
+import { DataProvider } from "../../context/DataContext";
+
+import { getAllProductsFromDB } from "../../services/api";
+import CategoryAccordion from "../categoryAccordion/CategoryAccordion";
+
+import "../toDoListAdministracion/toDoListAdministration.css";
 
 const dataList = () => {
   const [dataApi, setDataApi] = useState([]);
+  const { producto, setProducto } = useContext(DataProvider);
 
   useEffect(() => {
     getAllProductsFromDB()
       .then(({ data }) => {
         setDataApi(data);
       })
-      .catch(error => console.log(error));
-  }, []);
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setProducto(false)
+      })
+  }, [producto]);
 
-  const uniqueCategories = [...new Set(dataApi.map(item => item.categoria))];
+  const uniqueCategories = [...new Set(dataApi.map((item) => item.categoria))];
 
   return (
-    <div className="divPadreDataList">
-      <h3>LISTA DE PRODUCTOS</h3>
-      <hr />
-      {uniqueCategories.map(category => (
-        <CategoryAccordion key={category} category={category} products={dataApi} />
-      ))}
-    </div>
+    <section className="toDoListSection section">
+        <h3 className="section-title">LISTA DE PRODUCTOS</h3>
+        <hr />
+      <div className="toDoList-container container grid">
+        {uniqueCategories.map((category) => (
+          <CategoryAccordion
+            key={category}
+            category={category}
+            products={dataApi}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 

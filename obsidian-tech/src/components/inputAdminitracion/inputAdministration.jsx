@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { AddProductos } from "../../services/product_service";
@@ -8,27 +8,13 @@ import { DataProvider } from "../../context/DataContext";
 
 const InputComponent = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-  const { userInfo } = useContext(DataProvider);
-
-  // const handleSubmit = async (valores, { resetForm }) => {
-  //   try {
-  //     // Llamada a la función para agregar productos
-  //     await AddProductos(valores);
-  //     console.log('Producto agregado con éxito');
-  //     resetForm(); // Reiniciar el formulario después de enviar con éxito
-  //     cambiarFormularioEnviado(true);
-  //     setTimeout(() => cambiarFormularioEnviado(false), 3000);
-  //   } catch (error) {
-  //     console.error('Error al agregar el producto:', error);
-  //     // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
-  //   }
-  // };
+  const { userInfo, setProducto } = useContext(DataProvider);
 
   return (
     <>
-     <Formik
+      <Formik
         initialValues={{
-          nombre: "",
+          nombrePro: "",
           categoria: "",
           precio: "",
           stock: "",
@@ -39,38 +25,40 @@ const InputComponent = () => {
           let errores = {};
 
           // Validacion nombre
-          if (!valores.nombre) {
-            errores.nombre = "Por favor ingresa el nombre del producto";
-          } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)) {
-            errores.nombre = "El nombre solo puede contener letras y espacios";
+          if (!valores.nombrePro) {
+            errores.nombrePro = "Por favor ingresa el nombre del producto";
+          } else if (/^[\w\s]{5,40}$/.test(valores.nombrePro)) {
+            errores.nombrePro =
+              "El nombre debe contener entre 5 y 40 caracteres y el unico simbolo que acepta es _";
           }
 
           // Validacion categoria
           if (!valores.categoria) {
             errores.categoria = "Por favor ingresa la categoria del producto";
-          } else if (!/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/.test(valores.categoria)) {
+          } else if (!/^[a-zA-Z\s]{4,15}$/.test(valores.categoria)) {
             errores.categoria =
-              "El nombre de categoria solo puede contener letras";
+              "Categoria solo puede contener letras y entre 4 y 15 caracteres";
           }
 
           // Validacion precio
           if (!valores.precio) {
             errores.precio = "Por favor ingresa el precio del producto";
-          } else if (!/^[0-9]+[.]+[0-9]+$/.test(valores.precio)) {
-            errores.precio = "El precio solo puede contener numeros y punto";
+          } else if (!/^\d{1,6}(\.\d{2})?$/.test(valores.precio)) {
+            errores.precio = "El precio acepta numeros y punto como separador decimal";
           }
 
           // Validacion stock
           if (!valores.stock) {
             errores.stock = "Por favor ingresa el stock del producto";
-          } else if (!/^[0-9]+$/.test(valores.stock)) {
-            errores.stock = "El nombre solo puede contener numeros";
+          } else if (!/^[1-9]\d{0,3}$/.test(valores.stock)) {
+            errores.stock = "El stock solo puede contener numeros enteros";
           }
 
           // Validacion descripcion
           if (!valores.descripcion) {
-            errores.descripcion =
-              "Por favor ingresa la descripcion del producto";
+            errores.descripcion = "Por favor ingresa la descripcion del producto";
+          } else if (/^.{5,80}$/.test(valores.descripcion)) {
+            errores.descripcion = "La descripción debe contener entre 5 y 80 caracteres"
           }
 
           // Validacion imagen
@@ -82,16 +70,17 @@ const InputComponent = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           AddProductos({
-            nombre: valores.nombre,
+            nombre: valores.nombrePro,
             categoria: valores.categoria,
             precio: valores.precio,
             stock: valores.stock,
-            descripcion: valores.escripcion,
+            Descripcion: valores.descripcion,
             urlImg: valores.urlImg,
             token: userInfo.user.token,
           })
             .then((Response) => {
               console.log("Producto creado con exito:", Response);
+              setProducto(true);
               resetForm();
             })
             .catch((error) => {
@@ -100,25 +89,25 @@ const InputComponent = () => {
         }}
       >
         {({ errors }) => (
-          <div className="divPadreInput">
-            <div className="divHijoInput">
-              <h3>AGREGAR PRODUCTO</h3>
+          <section className="inputAdmin-section section">
+            <div className="inputAdmin-container container">
+              <h3 className="section-title">AGREGAR PRODUCTO</h3>
               <hr></hr>
               <p>Ingrese los productos a la lista de stock</p>
-              <Form className="formulario">
-                <div>
-                  <label htmlFor="nombre">Nombre</label>
-                  <Field type="text" id="nombre" name="nombre" />
+              <Form className="adminForm">
+                <div className="box-input-admin">
+                  <label htmlFor="nombrePro">Nombre</label>
+                  <Field className="input-field" type="text" id="nombrePro" name="nombrePro" />
                   <ErrorMessage
-                    name="nombre"
+                    name="nombrePro"
                     component={() => (
-                      <div className="error">{errors.nombre}</div>
+                      <div className="error">{errors.nombrePro}</div>
                     )}
                   />
                 </div>
-                <div>
-                  <label htmlFor="Categoria">Categoria</label>
-                  <Field type="text" id="categoria" name="categoria" />
+                <div className="box-input-admin">
+                  <label htmlFor="categoria">Categoria</label>
+                  <Field className="input-field" type="text" id="categoria" name="categoria" />
                   <ErrorMessage
                     name="categoria"
                     component={() => (
@@ -126,9 +115,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
-                  <label htmlFor="Precio">Precio</label>
-                  <Field type="text" id="precio" name="precio" />
+                <div className="box-input-admin">
+                  <label htmlFor="precio">Precio</label>
+                  <Field className="input-field" type="text" id="precio" name="precio" />
                   <ErrorMessage
                     name="precio"
                     component={() => (
@@ -136,9 +125,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
-                  <label htmlFor="Stock">Stock</label>
-                  <Field type="text" id="stock" name="stock" />
+                <div className="box-input-admin">
+                  <label htmlFor="stock">Stock</label>
+                  <Field className="input-field" type="text" id="stock" name="stock" />
                   <ErrorMessage
                     name="stock"
                     component={() => (
@@ -146,9 +135,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="box-input-admin">
                   <label htmlFor="descripcion">Descripcion</label>
-                  <Field id="descripcion" name="descripcion" as="textarea" />
+                  <Field className="input-field" as="textarea" id="descripcion" name="descripcion" />
                   <ErrorMessage
                     name="descripcion"
                     component={() => (
@@ -156,9 +145,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
-                  <label htmlFor="Imagen">Imagen</label>
-                  <Field type="text" id="urlImg" name="urlImg" />
+                <div className="box-input-admin">
+                  <label htmlFor="urlImg">Imagen</label>
+                  <Field className="input-field" type="text" id="urlImg" name="urlImg" />
                   <ErrorMessage
                     name="urlImg"
                     component={() => (
@@ -167,13 +156,13 @@ const InputComponent = () => {
                   />
                 </div>
 
-                <button type="submit">Enviar</button>
+                <button type="submit">Cargar producto</button>
                 {formularioEnviado && (
                   <p className="enviado">Formulario enviado con exito!</p>
                 )}
               </Form>
             </div>
-          </div>
+          </section>
         )}
       </Formik>
     </>
