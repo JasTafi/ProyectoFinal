@@ -44,6 +44,9 @@ ul {
   color: var(--title-color);
   cursor: pointer;
 }
+.hiddenLink {
+  display: none;
+}
 @media screen and (max-width:1023px) {
   .navMenu {
     position: fixed;
