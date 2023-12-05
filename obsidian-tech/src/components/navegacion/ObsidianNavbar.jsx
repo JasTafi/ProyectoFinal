@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 
@@ -33,7 +33,15 @@ export const ObsidianNavbar = () => {
     }
   }
 
-  window.addEventListener("scroll", changeBackG);
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackG);
+
+    // Desuscribirse cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("scroll", changeBackG);
+    };
+  }, []);
+  // window.addEventListener("scroll", changeBackG);
 
   return (
     <>

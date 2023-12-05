@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext} from "react";
 
 import { DataProvider } from "../../context/DataContext";
 
-import { getAllProductsFromDB } from "../../services/api";
+import { getAllProductsFromDB } from "../../services/product_service";
 import CategoryAccordion from "../categoryAccordion/CategoryAccordion";
 
 import "../toDoListAdministracion/toDoListAdministration.css";

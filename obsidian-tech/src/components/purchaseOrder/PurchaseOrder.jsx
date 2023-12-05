@@ -130,7 +130,7 @@ export const PurchaseOrder = () => {
 
     AddPurchaseOrder({
       userId: userInfo.user.id,
-      productId: productBuy,
+      products: productBuy,
       token: userInfo.user.token,
       nombre: {
         nombres: formData.nombres,

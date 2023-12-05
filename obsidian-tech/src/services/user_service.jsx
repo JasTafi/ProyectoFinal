@@ -152,17 +152,22 @@ async function GetUserByEmail(email) {
   const response = await fetch(`${Puerto.URL_LOCAL}/user/byEmail/${email}`);
   return await response.json();
 }
+//Trae la lista de pedidos
+async function GetAllPedidos(){
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido`);
+  return await response.json();
+}
 //Agregar orden de compra
 async function AddPurchaseOrder({
   userId,
-  productId,
+  products,
   token,
   nombre: { nombres, apellidos },
   direccion: { departamento, calle, numero, localidad, provincia },
 }) {
   const body = JSON.stringify({
     userId,
-    productId,
+    products,
     token,
     nombre: {
       nombres,
@@ -186,4 +191,4 @@ async function AddPurchaseOrder({
   });
   return await response.json();
 }
-export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, EmailVerification, ModifyPassword, GetUserByEmail, AddPurchaseOrder};
+export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, EmailVerification, ModifyPassword, GetUserByEmail, GetAllPedidos, AddPurchaseOrder};
