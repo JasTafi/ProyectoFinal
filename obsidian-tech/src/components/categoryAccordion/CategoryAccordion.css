@@ -1,3 +1,19 @@
-.category-container {
-    margin-top: 1rem;
+.accordionBody {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.5rem;
+  padding-inline: 1rem;
+  height: 40vh;
+  overflow-y: auto;
+}
+.accordionBody p {
+    font-weight: 600;
+}
+.image-link-button {
+    text-decoration: none;
+}
+.buttonEdit {
+    display: flex;
+    justify-content: center;
+    margin-top: .5rem;
 }

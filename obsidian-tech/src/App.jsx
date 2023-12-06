@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import InicioPage from "./page/InicioPage";
 import AdministracionPage from "./page/AdministracionPage";
@@ -14,7 +14,7 @@ import { DataContext } from "./context/DataContext";
 import Footer from "./components/footer/Footer";
 import { RutaProtejida } from "./components/RutaProtejida/RutaProtejida";
 import { PurchasePage } from "./page/PurchasePage";
-import './App.css';
+import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -29,14 +29,7 @@ function App() {
           <Route path="/registro" element={<RegistroPage />} />
           <Route path="recContraseña" element={<RecContraseñaPage />} />
           <Route path="nosotros" element={<NosotrosPage />} />
-          <Route
-            path="favoritos"
-            element={
-              <RutaProtejida>
-                <FavoritosPage />
-              </RutaProtejida>
-            }
-          />
+          <Route path="favoritos" element={<FavoritosPage />} />
           <Route
             path="/compra"
             element={
@@ -47,7 +40,7 @@ function App() {
           />
           <Route path="*" element={<Error404Page />} />
         </Routes>
-          <ToastContainer />
+        <ToastContainer />
         <Footer />
       </BrowserRouter>
     </DataContext>

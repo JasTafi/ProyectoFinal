@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
-import { Link, NavLink, Navigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -10,8 +10,12 @@ import FilterComponent from "../filtroNavegacion/FilterComponent";
 //import Favoritos from '../favoritos/Favoritos';
 import ModalLogin from "../login/ModalLogin";
 import { BuyCar } from "../buycar/BuyCar";
+import { DataProvider } from "../../context/DataContext";
 
 export const ObsidianNavbar = () => {
+  const {userInfo} = useContext(DataProvider)
+
+
   //useState para menu burger
   const [clicked, setClicked] = useState(false);
 
@@ -29,7 +33,15 @@ export const ObsidianNavbar = () => {
     }
   }
 
-  window.addEventListener("scroll", changeBackG);
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackG);
+
+    // Desuscribirse cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("scroll", changeBackG);
+    };
+  }, []);
+  // window.addEventListener("scroll", changeBackG);
 
   return (
     <>
@@ -48,7 +60,7 @@ export const ObsidianNavbar = () => {
               <li className="navItem">
                 <NavLink
                   onClick={clickear}
-                  className="navLink"
+                  className={!userInfo.islogged ? "hiddenLink": (userInfo.islogged && userInfo.user.administrador) ? "navLink" : "hiddenLink"}
                   to={"/administracion"}
                 >
                   Administracion
@@ -63,15 +75,6 @@ export const ObsidianNavbar = () => {
                   Nosotros
                 </NavLink>
               </li>
-              <li className="navItem">
-                <NavLink
-                  onClick={clickear}
-                  className="navLink"
-                  to={"/recContraseña"}
-                >
-                  Recuperar Contraseña
-                </NavLink>
-              </li>
               <li className="navItem btnSize">
                 <ModalLogin />
               </li>
@@ -79,7 +82,7 @@ export const ObsidianNavbar = () => {
                 <BuyCar />
               </li>
               <li className="navItem btnSize">
-                <Link to="/favoritos" className="navLink">
+                <Link to="/favoritos" onClick={clickear} className="navLink">
                   <FontAwesomeIcon icon={faHeart} />
                 </Link>
               </li>

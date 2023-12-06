@@ -14,8 +14,8 @@ export const BuyCar = () => {
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState([]);
   //para manejar el estado del useEffect de getCarProduct
-  const { producto, setProducto} =  useContext(DataProvider)
-  const { userInfo } = useContext(DataProvider);
+  const { userInfo ,producto, setProducto} =  useContext(DataProvider)
+
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,9 +41,13 @@ export const BuyCar = () => {
           setProduct(car_products);
         })
         .catch((err) => console.log(err))
-        .finally(setProducto(false))
+        .finally(() => {
+          setProducto(false)
+        })
+    }else{
+      setProduct([])
     }
-  }, [producto])
+  }, [userInfo.islogged,producto])
   
   return (
     <div className="containerModalCar">
@@ -52,17 +56,17 @@ export const BuyCar = () => {
         <FontAwesomeIcon icon={faCartShopping} />
       </button>
 
-      <Modal className="containerModalBuyCar" show={show} onHide={handleClose}>
+      <Modal className="containerModalBuyCar" scrollable={true} show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modalBodyBuyCar">
           {!userInfo.islogged ? (
             <div>
-              <p>debes iniciar sesion para agregar productos al carrito</p>
+              <p className="warningMessage">Debes iniciar sesion para agregar productos al carrito</p>
             </div>
           ) : product.length == 0 ? (
-            <div>No hay productos agregados al carrito</div>
+            <div className="warningMessage">No hay productos agregados al carrito</div>
           ) : (
             product.map((item, index) => {
               return (
@@ -89,7 +93,7 @@ export const BuyCar = () => {
           <button className="btnOutlineGrey" onClick={handleClose}>
             cerrar
           </button>
-          <Link to={"/compra"}className="btnGradient" onClick={handleClose}>
+          <Link to={"/compra"}className={product.length == 0 ? "btnGradient hiddenBtn" : "btnGradient"} onClick={handleClose}>
             comprar!
           </Link>
         </Modal.Footer>

@@ -1,55 +1,55 @@
-import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
-import Example from '../modalAdministration/modalAdministration';
-import '../categoryAccordion/CategoryAccordion.css';
+import React from "react";
+import Accordion from "react-bootstrap/Accordion";
+import Example from "../modalAdministration/modalAdministration";
+import "../categoryAccordion/CategoryAccordion.css";
 
 const CategoryAccordion = ({ category, products }) => {
-  const categoryProducts = products.filter((item) => item.categoria === category);
+  const categoryProducts = products.filter(
+    (item) => item.categoria === category
+  );
 
   return (
-    <div className="category-container">
-      <h4>{category}</h4>
-      <Accordion className="accordion1">
+    <>
+      <h4 className="section-subtitle">{category}</h4>
+      <Accordion className="accordion-container">
         {categoryProducts.map((item, index) => (
-          <Accordion.Item key={item.id} eventKey={index.toString()}>
-            <Accordion.Header className="accordion">{item.nombre}</Accordion.Header>
-            <Accordion.Body className="accordion">
-              <div className="divProductoMaster">
-                <div className="divProducto">
-                  <h4>Nombre:</h4>
-                  <p>{item.nombre}</p>
-                </div>
+          <Accordion.Item key={item._id} eventKey={index.toString()}>
+            <Accordion.Header>{item.nombre}</Accordion.Header>
+            <Accordion.Body className="px-0 w-100">
+              <div className="accordionBody">
+                <h5>Nombre:</h5>
+                <p>{item.nombre}</p>
+
+                <h5>Categoría:</h5>
+                <p>{item.categoria}</p>
+
+                <h5>Precio:</h5>
+                <p>${item.precio}</p>
+
+                <h5>Stock:</h5>
+                <p>{item.stock} u.</p>
+
+                <h5>Descripcion:</h5>
+                <p>{item.Descripcion}</p>
+
+                <h5>Imagen:</h5>
+                <a
+                  href={item.urlImg}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="image-link-button"
+                >
+                  Ver imagen
+                </a>
                 <div className="buttonEdit">
                   <Example item={item} />
                 </div>
               </div>
-              <div className="divProducto">
-                <h4>Categoría:</h4>
-                <p>{item.categoria}</p>
-              </div>
-              <div className="divProducto">
-                <h4>Precio:</h4>
-                <p>${item.precio}</p>
-              </div>
-              <div className="divProducto">
-                <h4>Stock:</h4>
-                <p>{item.stock} u.</p>
-              </div>
-              <div className="divProducto">
-                <h4>Descripcion:</h4>
-                <p>{item.Descripcion}</p>
-              </div>
-              <div className="botonImagen">
-                <h4>Imagen:</h4>
-                <a href={item.urlImg} target="_blank" rel="noopener noreferrer" className="image-link-button">
-                  Ver imagen
-                </a>
-              </div>
-              </Accordion.Body>
+            </Accordion.Body>
           </Accordion.Item>
         ))}
       </Accordion>
-    </div>
+    </>
   );
 };
 

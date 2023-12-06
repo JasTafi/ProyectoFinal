@@ -16,8 +16,7 @@ import "../favoritos/Favoritos.css";
 const Favoritos = () => {
   const [loading, setLoading] = useState(false);
   const [fav, setFav] = useState([]);
-  const { userInfo } = useContext(DataProvider);
-  const [upload, setUpload] = useState(false);
+  const { userInfo, producto, setProducto } = useContext(DataProvider);
 
   useEffect(() => {
     setLoading(true);
@@ -26,18 +25,17 @@ const Favoritos = () => {
       token: userInfo.user.token,
     })
       .then(({ favorite_producs }) => {
-        setFav(favorite_producs);
+        setFav(favorite_producs)
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setTimeout(() => {
           setLoading(false);
-        }, 2000);
-        setUpload(false);
+        }, 2000),
+        setProducto(false)
       });
-  }, [upload]);
-
-  const favoritos = fav.length > 0;
+  }, [producto]);
+ const favoritos = fav.length > 0
   return (
     <div>
       {loading ? (
@@ -67,12 +65,10 @@ const Favoritos = () => {
                   ) : (
                     <CardFavorites
                       fav={fav}
-                      setLoading={setLoading}
-                      setUpload={setUpload}
                     />
                   )}
                 </div>
-                {favoritos && (
+                {favoritos.length > 0 && (
                   <div className="buttonsFav">
                     <Link to={"/"} className="buttonCartFav">seguir comprando</Link>
                   </div>

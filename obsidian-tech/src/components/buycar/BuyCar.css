@@ -13,6 +13,9 @@
 .containerModalCar {
     position:relative;
 }
+.modalBodyBuyCar {
+    max-height: 40vh;
+}
 .bodyCarModal {
     display: flex;
     justify-content: space-around;
@@ -68,4 +71,12 @@
 }
 .btnGradient:hover {
     color:#fff;
+}
+.btnGradient.hiddenBtn {
+    display: none;
+}
+.warningMessage {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
 }

@@ -166,6 +166,7 @@ select {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  cursor: pointer;
 }
 @media screen and (max-width:320px) {
   .card-container {

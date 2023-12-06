@@ -1,9 +1,12 @@
 import React from 'react'
 import Favoritos from '../components/favoritos/Favoritos'
+import { RutaProtejida } from '../components/RutaProtejida/RutaProtejida'
 
 const FavoritosPage = () => {
   return (
-    <Favoritos/>
+    <RutaProtejida>
+      <Favoritos/>
+    </RutaProtejida>
   )
 }
 

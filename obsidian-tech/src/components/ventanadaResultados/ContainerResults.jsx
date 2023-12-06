@@ -1,8 +1,12 @@
+import {  useContext } from "react";
+import { DataProvider } from "../../context/DataContext";
+
 import { Link } from "react-router-dom";
 
 import "../ventanadaResultados/ContainerResults.css";
 
 export const ContainerResults = ({ resultado, filtered, setFiltered, setClicked }) => {
+  const { setProducto } = useContext(DataProvider)
   return (
     <>
       <div
@@ -22,7 +26,8 @@ export const ContainerResults = ({ resultado, filtered, setFiltered, setClicked 
                   className="linkAccesorio"
                   onClick={() => {
                     setFiltered(""),
-                    setClicked(false)
+                    setClicked(false),
+                    setProducto(true)
                   }}
                 >
                   <div className="nombreYPrecio">

@@ -1,64 +1,13 @@
-  .divPadreDataList {
-    margin-top: 2rem;
-    padding: 2rem;
-    align-items: center;
-    color: white;
-  }
-  
-  ul {
-    list-style: none;
-  }
-
-  .divPadreDataList li p {
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 700;
-    text-align: justify;
-  }
-  
-  hr { 
-    border: none; 
-    border-radius: 8rem;
-    height: 1.5rem; 
-    background: linear-gradient(to left, #7035C0, #0396FE);
-    margin: 3rem 0 3rem 0;
-  }
-  
-  .divProducto {
-    display: flex;
-    align-items: baseline;
-    margin-right: 1rem;
-  }
-
-  .divProductoMaster {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  h4 {
-    margin-right: 1rem;
-  }
-
-  .botonImagen {
-    display: flex;
-    align-items: baseline;
-  }
-
-  .image-link-button {
-    display: inline-block;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    color: aliceblue;
-    font-size: 1rem;
-    background: linear-gradient(to left, #7035C0, #0396FE);
-    margin-left: 1rem;
-  }
-
-  .accordion1 {
-    margin-top: 1rem;
-    padding: 0;
-    width: 70rem;
-  }
+.toDoListSection {
+    padding-inline: .5rem;
+}
+.toDoList-container {
+    row-gap: 1rem;
+    height: 100vh;
+    overflow-y: scroll;
+}
+@media screen and (min-width:1024px) {
+    .toDoListSection {
+        padding-inline: 1.5rem;
+    }
+}
