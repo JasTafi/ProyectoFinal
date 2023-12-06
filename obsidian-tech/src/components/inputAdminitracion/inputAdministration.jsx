@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import '../inputAdminitracion/inputAdministration.css';
+
 import { AddProductos } from '../../services/product_service';
+
+import '../inputAdminitracion/inputAdministration.css';
+import { DataProvider } from "../../context/DataContext";
 
 const InputComponent = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+  const { userInfo } = useContext(DataProvider);
 
-  const handleSubmit = async (valores, { resetForm }) => {
-    try {
-      // Llamada a la función para agregar productos
-      await AddProductos(valores);
-      console.log('Producto agregado con éxito');
-      resetForm(); // Reiniciar el formulario después de enviar con éxito
-      cambiarFormularioEnviado(true);
-      setTimeout(() => cambiarFormularioEnviado(false), 3000);
-    } catch (error) {
-      console.error('Error al agregar el producto:', error);
-      // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
-    }
-  };
+  // const handleSubmit = async (valores, { resetForm }) => {
+  //   try {
+  //     // Llamada a la función para agregar productos
+  //     await AddProductos(valores);
+  //     console.log('Producto agregado con éxito');
+  //     resetForm(); // Reiniciar el formulario después de enviar con éxito
+  //     cambiarFormularioEnviado(true);
+  //     setTimeout(() => cambiarFormularioEnviado(false), 3000);
+  //   } catch (error) {
+  //     console.error('Error al agregar el producto:', error);
+  //     // Manejar errores, por ejemplo, mostrar un mensaje de error al usuario
+  //   }
+  // };
   
 	return (
 		<>
@@ -74,7 +78,25 @@ const InputComponent = () => {
 
 					return errores;
 				}}
-        onSubmit={handleSubmit}			>
+        onSubmit={(valores, { resetForm }) => {
+          AddProductos({
+            nombre: valores.nombre,
+            categoria: valores.categoria,
+            precio: valores.precio,
+            stock: valores.stock,
+            descripcion: valores.descripcion,
+            urlImg: valores.urlImg,
+            token: userInfo.user.token
+          })
+          .then(Response => {
+            console.log('Producto creado con exito:', Response)
+            resetForm();
+          })
+          .catch(error => {
+            console.error('Error al crear el producto:', error);
+          })
+        }}			
+      >
 				{( {errors} ) => (
           <div className='divPadreInput'>
           <div className='divHijoInput'>

@@ -11,7 +11,7 @@ const CategoryAccordion = ({ category, products }) => {
       <h4>{category}</h4>
       <Accordion className="accordion1">
         {categoryProducts.map((item, index) => (
-          <Accordion.Item key={item.id} eventKey={index.toString()}>
+          <Accordion.Item key={item._id} eventKey={index.toString()}>
             <Accordion.Header className="accordion">{item.nombre}</Accordion.Header>
             <Accordion.Body className="accordion">
               <div className="divProductoMaster">
