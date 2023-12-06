@@ -1,7 +1,5 @@
 import { Puerto } from '../config/server_constant'
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGFiMjNmNDk3ZTU3ZmMzMTVjYWY2ZmUiLCJpYXQiOjE2OTEwMjUzMzl9.nf77viZXdNtQqBIc4lYbpiVuYxBLm7wBbnXmQDcuZuM";
-
 //         Muestra todos los productos
 async function getAllProductsFromDB() {
   const response = await fetch(`${Puerto.URL_LOCAL}/accesorio`)
@@ -15,14 +13,14 @@ async function getProductByIdFromDb(id) {
 }
 
 //         Crear un producto nuevo
-async function AddProductos({ nombre, categoria, precio, stock, descripcion, urlImg, token }) {
+async function AddProductos({ nombre, categoria, precio, stock, Descripcion, urlImg, token }) {
 
   const body = JSON.stringify({
     nombre,
     categoria,
     precio,
     stock,
-    descripcion,
+    Descripcion,
     urlImg  
   });
 
@@ -38,7 +36,7 @@ async function AddProductos({ nombre, categoria, precio, stock, descripcion, url
 }
 
 //         Modificar un producto
-async function UpdateProducto(id, { nombre, categoria, precio, stock, descripcion, urlImg }) {
+async function UpdateProducto(id, { nombre, categoria, precio, stock, Descripcion, urlImg, token }) {
 
 
   const body = JSON.stringify({
@@ -46,10 +44,10 @@ async function UpdateProducto(id, { nombre, categoria, precio, stock, descripcio
     categoria,
     precio,
     stock,
-    descripcion,
+    Descripcion,
     urlImg
   });
-  const response = await fetch(`${Puerto.URL_LOCAL}/api/accesorio/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/accesorio/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
