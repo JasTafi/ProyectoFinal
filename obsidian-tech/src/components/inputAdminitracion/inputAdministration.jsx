@@ -8,7 +8,7 @@ import { DataProvider } from "../../context/DataContext";
 
 const InputComponent = () => {
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-  const { userInfo } = useContext(DataProvider);
+  const { userInfo, setProducto } = useContext(DataProvider);
 
   return (
     <>
@@ -80,6 +80,7 @@ const InputComponent = () => {
           })
             .then((Response) => {
               console.log("Producto creado con exito:", Response);
+              setProducto(true);
               resetForm();
             })
             .catch((error) => {
@@ -88,15 +89,15 @@ const InputComponent = () => {
         }}
       >
         {({ errors }) => (
-          <div className="divPadreInput">
-            <div className="divHijoInput">
-              <h3>AGREGAR PRODUCTO</h3>
+          <section className="inputAdmin-section section">
+            <div className="inputAdmin-container container">
+              <h3 className="section-title">AGREGAR PRODUCTO</h3>
               <hr></hr>
               <p>Ingrese los productos a la lista de stock</p>
-              <Form className="formulario">
-                <div>
+              <Form className="adminForm">
+                <div className="box-input-admin">
                   <label htmlFor="nombrePro">Nombre</label>
-                  <Field type="text" id="nombrePro" name="nombrePro" />
+                  <Field className="input-field" type="text" id="nombrePro" name="nombrePro" />
                   <ErrorMessage
                     name="nombrePro"
                     component={() => (
@@ -104,9 +105,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="box-input-admin">
                   <label htmlFor="categoria">Categoria</label>
-                  <Field type="text" id="categoria" name="categoria" />
+                  <Field className="input-field" type="text" id="categoria" name="categoria" />
                   <ErrorMessage
                     name="categoria"
                     component={() => (
@@ -114,9 +115,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="box-input-admin">
                   <label htmlFor="precio">Precio</label>
-                  <Field type="text" id="precio" name="precio" />
+                  <Field className="input-field" type="text" id="precio" name="precio" />
                   <ErrorMessage
                     name="precio"
                     component={() => (
@@ -124,9 +125,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="box-input-admin">
                   <label htmlFor="stock">Stock</label>
-                  <Field type="text" id="stock" name="stock" />
+                  <Field className="input-field" type="text" id="stock" name="stock" />
                   <ErrorMessage
                     name="stock"
                     component={() => (
@@ -134,9 +135,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="box-input-admin">
                   <label htmlFor="descripcion">Descripcion</label>
-                  <Field as="textarea" id="descripcion" name="descripcion" />
+                  <Field className="input-field" as="textarea" id="descripcion" name="descripcion" />
                   <ErrorMessage
                     name="descripcion"
                     component={() => (
@@ -144,9 +145,9 @@ const InputComponent = () => {
                     )}
                   />
                 </div>
-                <div>
+                <div className="box-input-admin">
                   <label htmlFor="urlImg">Imagen</label>
-                  <Field type="text" id="urlImg" name="urlImg" />
+                  <Field className="input-field" type="text" id="urlImg" name="urlImg" />
                   <ErrorMessage
                     name="urlImg"
                     component={() => (
@@ -155,13 +156,13 @@ const InputComponent = () => {
                   />
                 </div>
 
-                <button type="submit">Enviar</button>
+                <button type="submit">Cargar producto</button>
                 {formularioEnviado && (
                   <p className="enviado">Formulario enviado con exito!</p>
                 )}
               </Form>
             </div>
-          </div>
+          </section>
         )}
       </Formik>
     </>

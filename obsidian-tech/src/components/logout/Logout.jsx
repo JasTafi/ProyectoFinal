@@ -9,7 +9,7 @@ import "../logout/Logout.css";
 
 export const Logout = () => {
 
-  const { userInfo, setUserInfo, setShowModal } = useContext(DataProvider)
+  const { userInfo, setUserInfo, setShowModal, setProducto } = useContext(DataProvider)
 
   const handleLogout = () => {
     setUserInfo({

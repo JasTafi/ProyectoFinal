@@ -10,9 +10,10 @@ import { Notification } from "../../services/tostifyNot";
 
 function Example({ item }) {
   const [show, setShow] = useState(false);
+  const [ showConfirm, setShowConfirm] = useState(false)//manejo modal de confirmacion
   const [selectedItem, setSelectedItem] = useState(item);
   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
-  const { userInfo } = useContext(DataProvider);
+  const { userInfo, setProducto } = useContext(DataProvider);
 
   function handleDelete() {
     if (!selectedItem || !selectedItem._id) {
@@ -33,6 +34,7 @@ function Example({ item }) {
             type: "success",
           });
           setShow(false);
+          setProducto(true);
         }
       })
       .catch((error) => {
@@ -58,6 +60,15 @@ function Example({ item }) {
           <Modal.Title>Modificar producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <div className={showConfirm ? "confirmation-alert alert-show" : "confirmation-alert"}>
+            <h5>Desea borrar el producto?</h5>
+            <div className="box-btns ">
+              <button className="btn-confirm" onClick={handleDelete}>si</button>
+              <button className="btn-reject" onClick={() => {
+                setShowConfirm(false)
+              }}>no</button>
+            </div>
+          </div>
           {selectedItem && (
             <Formik
               initialValues={{
@@ -74,7 +85,7 @@ function Example({ item }) {
                 // Validacion nombre
                 if (!valores.nombreMo) {
                   errores.nombreMo = "Por favor ingresa el nombre del producto";
-                } else if (!/^[\w\s]{5,40}$/.test(valores.nombreMo)) {
+                } else if (/^[\w\s]{5,40}$/.test(valores.nombreMo)) {
                   errores.nombreMo =
                     "El nombre debe contener entre 5 y 40 caracteres y el unico simbolo que acepta es _";
                 }
@@ -108,7 +119,7 @@ function Example({ item }) {
                 if (!valores.descripcionMo) {
                   errores.descripcionMo =
                     "Por favor ingresa la descripcion del producto";
-                } else if (!/^.{5,80}$/.test(valores.descripcionMo)) {
+                } else if (/^.{5,80}$/.test(valores.descripcionMo)) {
                   errores.descripcionMo =
                     "La descripción debe contener entre 5 y 80 caracteres";
                 }
@@ -144,6 +155,7 @@ function Example({ item }) {
                         type: "success",
                       });
                       setShow(false);
+                      setProducto(true);
                     }
                   })
                   .catch((error) => {
@@ -159,96 +171,116 @@ function Example({ item }) {
               }}
             >
               {({ errors, isSubmitting }) => (
-                <div className="divPadreInputModal">
-                  <div className="divHijoInput">
-                    <Form className="formularioModal">
-                      <div>
-                        <label htmlFor="nombreMo">Nombre</label>
-                        <Field
-                          type="text"
-                          id="nombreMo"
-                          name="nombreMo"
-                          placeholder=""
-                        />
-                        <ErrorMessage
-                          name="nombreMo"
-                          component={() => (
-                            <div className="error">{errors.nombreMo}</div>
-                          )}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="categoriaMo">Categoria</label>
-                        <Field
-                          type="text"
-                          id="categoriaMo"
-                          name="categoriaMo"
-                        />
-                        <ErrorMessage
-                          name="categoriaMo"
-                          component={() => (
-                            <div className="error">{errors.categoriaMo}</div>
-                          )}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="precioMo">Precio</label>
-                        <Field type="text" id="precioMo" name="precioMo" />
-                        <ErrorMessage
-                          name="precioMo"
-                          component={() => (
-                            <div className="error">{errors.precioMo}</div>
-                          )}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="stockMo">Stock</label>
-                        <Field type="text" id="stockMo" name="stockMo" />
-                        <ErrorMessage
-                          name="stockMo"
-                          component={() => (
-                            <div className="error">{errors.stockMo}</div>
-                          )}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="descripcionMo">Descripcion</label>
-                        <Field
-                          id="descripcionMo"
-                          name="descripcionMo"
-                          as="textarea"
-                        />
-                        <ErrorMessage
-                          name="descripcionMo"
-                          component={() => (
-                            <div className="error">{errors.descripcionMo}</div>
-                          )}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="imagenMo">Imagen</label>
-                        <Field type="text" id="imagenMo" name="imagenMo" />
-                        <ErrorMessage
-                          name="imagenMo"
-                          component={() => (
-                            <div className="error">{errors.imagenMo}</div>
-                          )}
-                        />
-                      </div>
-                      <div>
-                        <button type="submit" disabled={isSubmitting}>
-                            Guardar Cambios
-                        </button>
-                      </div>
-                    </Form>
+                <Form className="modal-form-admin">
+                  <div className="box-input-admin">
+                    <label htmlFor="nombreMo">Nombre</label>
+                    <Field
+                      className="modal-input-admin"
+                      type="text"
+                      id="nombreMo"
+                      name="nombreMo"
+                      placeholder=""
+                    />
+                    <ErrorMessage
+                      name="nombreMo"
+                      component={() => (
+                        <div className="error">{errors.nombreMo}</div>
+                      )}
+                    />
                   </div>
-                </div>
+                  <div className="box-input-admin">
+                    <label htmlFor="categoriaMo">Categoria</label>
+                    <Field
+                      className="modal-input-admin"
+                      type="text"
+                      id="categoriaMo"
+                      name="categoriaMo"
+                    />
+                    <ErrorMessage
+                      name="categoriaMo"
+                      component={() => (
+                        <div className="error">{errors.categoriaMo}</div>
+                      )}
+                    />
+                  </div>
+                  <div className="box-input-admin">
+                    <label htmlFor="precioMo">Precio</label>
+                    <Field
+                      className="modal-input-admin"
+                      type="text"
+                      id="precioMo"
+                      name="precioMo"
+                    />
+                    <ErrorMessage
+                      name="precioMo"
+                      component={() => (
+                        <div className="error">{errors.precioMo}</div>
+                      )}
+                    />
+                  </div>
+                  <div className="box-input-admin">
+                    <label htmlFor="stockMo">Stock</label>
+                    <Field
+                      className="modal-input-admin"
+                      type="text"
+                      id="stockMo"
+                      name="stockMo"
+                    />
+                    <ErrorMessage
+                      name="stockMo"
+                      component={() => (
+                        <div className="error">{errors.stockMo}</div>
+                      )}
+                    />
+                  </div>
+                  <div className="box-input-admin">
+                    <label htmlFor="descripcionMo">Descripcion</label>
+                    <Field
+                      className="modal-input-admin"
+                      id="descripcionMo"
+                      name="descripcionMo"
+                      as="textarea"
+                    />
+                    <ErrorMessage
+                      name="descripcionMo"
+                      component={() => (
+                        <div className="error">{errors.descripcionMo}</div>
+                      )}
+                    />
+                  </div>
+                  <div className="box-input-admin">
+                    <label htmlFor="imagenMo">Imagen</label>
+                    <Field
+                      className="modal-input-admin"
+                      type="text"
+                      id="imagenMo"
+                      name="imagenMo"
+                    />
+                    <ErrorMessage
+                      name="imagenMo"
+                      component={() => (
+                        <div className="error">{errors.imagenMo}</div>
+                      )}
+                    />
+                  </div>
+                  <div className="box-input-admin">
+                    <button
+                      className="btn-modal-save"
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      Guardar Cambios
+                    </button>
+                  </div>
+                </Form>
               )}
             </Formik>
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleDelete}>
+          <Button variant="danger" onClick={() => {
+            setShowConfirm(true)
+          }}>
             Borrar producto
           </Button>
         </Modal.Footer>

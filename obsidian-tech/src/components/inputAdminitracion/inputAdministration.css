@@ -1,58 +1,53 @@
-.divPadreAdministracion {
+.adminForm {
   display: flex;
-  background: no-repeat center 100%/cover url(../../assets/bgGrilla.jpg);
+  flex-direction: column;
+  width: 100%;
+  row-gap: 1rem;
 }
-
-.divPadreInput {
-  margin-top: 2rem;
-  padding: 2rem;
+.box-input-admin {
   display: flex;
-  color: white;
+  flex-direction: column;
+  row-gap: .5rem;
 }
-
-h3 {
-  color: white;
+.input-field {
+  border: none;
+  border-radius: .3rem;
+  padding: .5rem;
+  outline: none;
 }
-
+.adminForm button {
+  align-self: center;
+  font-size: 1.1rem;
+  padding: .2rem .6rem;
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid #5c5c5c;
+  border-radius: .2rem;
+  color: #fff;
+}
+.adminForm button:hover {
+  background-color: #00c000;
+  transition: all .3s;
+}
 .error {
   color: red;
 }
-
 .enviado {
   color: green !important;
 }
-
-.divPadreInput div p {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-align: justify;
-}
-
 hr { 
   border: none; 
   border-radius: 8rem;
-  height: 1.5rem; 
+  height: .5rem; 
   background: linear-gradient(to left, #7035C0, #0396FE);
-  margin: 3rem 0 3rem 0;
 }
-
-
-.formulario label {
-  margin: 0.5rem;
-  color: white;
-  display: flex !important; 
-  flex-direction: column !important;
+@media screen and (max-width: 320px) {
+  .inputAdmin-section {
+    padding-inline: .5rem;
+  }
 }
-
-.formulario button {
-  border-radius: 0.5rem;
-  color: aliceblue;
-  font-size: 1.2rem;
-  height: 2rem; 
-  background: linear-gradient(to left, #7035C0, #0396FE);
-  margin: 2rem 0 3rem 0;
+@media screen and (min-width: 375px) {
+  .inputAdmin-section {
+    padding-inline: 1rem;
+  }
 }
