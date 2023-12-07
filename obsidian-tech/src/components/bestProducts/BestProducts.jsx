@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 
 import "../bestProducts/BestProducts.css";
+import { Link } from "react-router-dom";
 
 export const BestProducts = () => {
   return (
@@ -11,7 +12,9 @@ export const BestProducts = () => {
       <div className="circleBlue"></div>
       <section className="bestProduct">
         <div className="bestProductHead">
-        <h2 className="bestProductTitle">Los mejores productos para juegos profesionales</h2>
+          <h2 className="bestProductTitle">
+            Los mejores productos para juegos profesionales
+          </h2>
           <div className="bestProductSubt">
             <p>
               Un hardware más potente no solo mejora sus experiencias en los
@@ -21,18 +24,18 @@ export const BestProducts = () => {
             </p>
           </div>
           <div className="boxBtnBP">
-            <button className="btnBestProduct">
+            <Link to={"/"} className="btnBestProduct">
               ver productos <FontAwesomeIcon icon={faGamepad} />
-            </button>
+            </Link>
           </div>
         </div>
         <div className="bestProductBody">
-        <img
+          <img
             className="boxImgBP1"
-              src="src/assets/bestProduct-gabinete.png"
-              alt="Gabinete ITX"
-              title="Gabinete ITX"
-            />
+            src="src/assets/bestProduct-gabinete.png"
+            alt="Gabinete ITX"
+            title="Gabinete ITX"
+          />
           <div className="borderCardBestProd">
             <div className="bestProductDespriction">
               <h4>PC de escritorio</h4>
@@ -47,11 +50,12 @@ export const BestProducts = () => {
               <button className="btnBestProduct">ver más</button>
             </div>
           </div>
-          <img className="boxImgBP2"
-              src="src/assets/bestProduct-cpu.png"
-              alt="CPU ITX"
-              title="CPU ITX"
-            />
+          <img
+            className="boxImgBP2"
+            src="src/assets/bestProduct-cpu.png"
+            alt="CPU ITX"
+            title="CPU ITX"
+          />
         </div>
       </section>
     </div>
