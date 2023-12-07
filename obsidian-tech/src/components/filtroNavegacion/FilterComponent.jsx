@@ -45,7 +45,7 @@ const FilterComponent = ({ setClicked }) => {
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
         <input
-          className="input-navbar"
+          className="input-navbar-filter"
           onChange={handleChange}
           value={filtered}
           id="filtro"
