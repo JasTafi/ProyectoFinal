@@ -17,7 +17,7 @@ export const ContainerResults = ({ resultado, filtered, setFiltered, setClicked 
         }
       >
         <div className="containerResults">
-          {resultado.map((item) => {
+          {resultado.length !== 0 ? (resultado.map((item) => {
             return (
               <div className="cardResults" key={item._id}>
                 <img className="imgDetalle" src={item.urlImg} />
@@ -37,7 +37,9 @@ export const ContainerResults = ({ resultado, filtered, setFiltered, setClicked 
                 </Link>
               </div>
             );
-          })}
+          })): (
+            <div className="cardResults"><span>No se encontró el producto</span></div>
+          )}
           <div className="btnGeneral">{resultado.length} Resultados</div>
         </div>
       </div>

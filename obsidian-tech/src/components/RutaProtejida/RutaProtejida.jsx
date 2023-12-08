@@ -9,9 +9,21 @@ export const RutaProtejida = ({ children }) => {
   const { userInfo } = useContext(DataProvider);
   const location = useLocation();
 
-  if( !userInfo.islogged ) {
+  if( userInfo.islogged ) {
+    return children;
+  }else{
     Notification({ message: 'Debes iniciar sesion para acceder', type: 'error' });
     return <Navigate to='/' state={location}></Navigate>;
   }
-  return children;
 };
+
+//para proteger Administracion
+export const ProtectedAdm = ({children}) => {
+  const {userInfo} = useContext(DataProvider);
+  if(userInfo.islogged && userInfo.user.administrador){
+    return children;
+  }else{
+    Notification({message: 'usuario no autorizado', type: 'error'});
+    return <Navigate to={'/'}/>
+  }
+}

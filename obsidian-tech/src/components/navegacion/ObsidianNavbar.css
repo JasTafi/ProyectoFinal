@@ -100,10 +100,6 @@ ul {
   z-index: -1;
 }
 @media screen and (max-width:320px){
-  .navFilter {
-    width: 150px;
-    margin-inline: .5rem .5rem;
-  }
   .containerNav {
     margin-inline: 1rem;
   }

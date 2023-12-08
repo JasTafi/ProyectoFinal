@@ -60,15 +60,6 @@ export const ObsidianNavbar = () => {
               <li className="navItem">
                 <NavLink
                   onClick={clickear}
-                  className={!userInfo.islogged ? "hiddenLink": (userInfo.islogged && userInfo.user.administrador) ? "navLink" : "hiddenLink"}
-                  to={"/administracion"}
-                >
-                  Administracion
-                </NavLink>
-              </li>
-              <li className="navItem">
-                <NavLink
-                  onClick={clickear}
                   className="navLink"
                   to={"/nosotros"}
                 >
@@ -85,6 +76,15 @@ export const ObsidianNavbar = () => {
                 <Link to="/favoritos" onClick={clickear} className="navLink">
                   <FontAwesomeIcon icon={faHeart} />
                 </Link>
+              </li>
+              <li className="navItem">
+                <NavLink
+                  onClick={clickear}
+                  className={!userInfo.islogged ? "hiddenLink": (userInfo.islogged && userInfo.user.administrador) ? "navLink" : "hiddenLink"}
+                  to={"/administracion"}
+                >
+                  Administracion
+                </NavLink>
               </li>
             </ul>
             <div className="navClose">
