@@ -1,5 +1,5 @@
 .containerGralFooter {
-    height: 40vh;
+    height: 50vh;
     width: 100%;
     background-color: #000;
     position: relative;
@@ -32,7 +32,7 @@
     color: #fff;
     padding: 0 20px;
 }
-.containerFooter .containerLogFooter, .containerLinksFooter, .containerSocialFooter {
+.containerFooter .containerLogFooter, .containerLinksFooter,.containerContactos, .containerSocialFooter {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,16 +41,16 @@
     height: 100%;
 }
 .containerFooter .containerLogFooter {
-    padding: 0 15px;
+    padding: 2rem 15px;
 }
-.containerFooter .containerLinksFooter ul, 
+.containerFooter .containerLinksFooter ul,.containerContactos ul, 
 .containerSocialFooter ul {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
-.containerFooter .containerLinksFooter ul .linksFoot,
+.containerFooter .containerLinksFooter ul .linksFoot,.containerContactos ul,
 .containerSocialFooter ul .linksFoot {
     position: relative;
     text-decoration: none;
@@ -58,6 +58,7 @@
     padding: 5px 0;
 }
 .containerFooter .containerLinksFooter ul .linksFoot::before,
+.containerContactos ul .linksFoot::before,
 .containerSocialFooter ul .linksFoot::before {
     content: '';
     position: absolute;
@@ -69,6 +70,7 @@
     transition: 0.3s;
 }
 .containerFooter .containerLinksFooter ul .linksFoot:hover::before,
+.containerContactos ul .linksFoot:hover::before,
 .containerSocialFooter ul .linksFoot:hover::before{
     width: 100%;
 }
@@ -84,11 +86,11 @@
         flex-direction: column;
         padding: 10px;
     }
-    .containerFooter .containerLogFooter, .containerLinksFooter, .containerSocialFooter {
+    .containerFooter .containerLogFooter, .containerLinksFooter,.containerContactos,.containerSocialFooter {
         width: 100%;
         margin: 5px 0;
     }
-    .containerFooter .containerLinksFooter ul, 
+    .containerFooter .containerLinksFooter ul, .containerContactos,
     .containerSocialFooter ul {
         align-items: flex-start;
         padding: 0 15px;
@@ -99,3 +101,22 @@
     font-size: 0.8rem;
   }
 }
+.logoRolling {
+    background-color: #000;
+    font-size: 2rem;
+    border: 3px solid #fff;
+    color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    width: 45px;
+    height: 45px;
+}
+.linkRolling {
+    text-decoration: none;
+    color: white;
+  }
+.linkRolling:hover{
+    color: white;
+}
+  
