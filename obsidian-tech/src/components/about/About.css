@@ -31,7 +31,7 @@
     padding-block: 1.5rem;
 }
 .about-card:last-child {
-    background-color: red;
+    background-color: white;
 }
 .about-card {
     border: 2px solid transparent;

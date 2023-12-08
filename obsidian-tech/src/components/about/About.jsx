@@ -42,7 +42,7 @@ const About = () => {
                 </div>
                 <div className="about-card">
                   <img
-                    src="/src/assets/Rodrigo Aragon.jpg"
+                    src="/src/assets/rodrigo2.jpg"
                     alt=""
                   />
                   <h5>Rodrigo Aragón</h5>
@@ -87,13 +87,12 @@ const About = () => {
                 </div>
                 <div className="about-card">
                   <img
-                    src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg"
+                    src="/src/assets/Blas Stanciuc2.jpg"
                     alt=""
                   />
                   <h5>Blas Stanciuc</h5>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quis inventore debitis molestiae mollitia labore nostrum?
+                  Staff Engineer.(Mar del Plata - Buenos Aires)
                   </p>
                   <span>Full-Stack Developer</span>
                 </div>
@@ -103,7 +102,7 @@ const About = () => {
                     src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg"
                     alt=""
                   />
-                  <h5>Blas Stanciuc</h5>
+                  <h5>Ramiro Juarez</h5>
                   <p>
                     Staff Engineer.(Mar del Plata - Buenos Aires)
                    </p>
