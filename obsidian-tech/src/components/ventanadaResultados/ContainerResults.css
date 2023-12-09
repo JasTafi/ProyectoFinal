@@ -1,70 +1,71 @@
 .containerShowResults {
-    position: absolute;
-    width: 300px;
-height: 20rem;
-    top: 3.4rem;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.3s;
+  position: absolute;
+  width: 300px;
+  height: 20rem;
+  top: 3.4rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s;
 }
 .containerShowResults.active {
-    overflow: visible;
-    opacity: 1;
-    transition: all 0.3s;
+  overflow: visible;
+  opacity: 1;
+  transition: all 0.3s;
 }
 .containerShowResults .containerResults {
-    box-shadow: 0 0 5px rgba(250, 250, 250, 0.5);
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    row-gap: 1rem;
-    padding-top: 1rem;
-    height: 100%;
-    overflow-y: scroll;
-    width: 100%;
+  box-shadow: 0 0 5px rgba(250, 250, 250, 0.5);
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  row-gap: 1rem;
+  padding-top: 1rem;
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
 }
 .cardResults {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
 }
 .imgDetalle {
-    margin-right: 5px;
-    width: 80px;
+  margin-right: 5px;
+  width: 80px;
 }
 .cardResults .linkAccesorio {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 .nombreYPrecio {
-    font-weight: 700;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    width: 200px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  width: 200px;
 }
 .nombreYPrecio .precio {
-    font-size: .9rem;
+  font-size: 0.9rem;
 }
 .btnGeneral {
-    background: linear-gradient(to right, #7035C0, #0396FE);
-    border-radius: 0px 10px;
-    font-size: 0.9rem;
-    color: #fff;
-    margin: 3px;
-    padding: 0.5rem 1rem;
-    width: 120px;
+  background: linear-gradient(to right, #7035c0, #0396fe);
+  border-radius: 0px 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 3px;
+  padding: 0.5rem 1rem;
+  width: 120px;
 }
-@media screen and (max-width:320px){
-    .containerShowResults .containerResults {
-        right: -2.5rem;
-    }
+@media screen and (min-width: 320px) {
+  .containerShowResults {
+    right: 50%;
+    transform: translateX(38%);
+  }
 }

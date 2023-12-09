@@ -13,7 +13,7 @@ import { BuyCar } from "../buycar/BuyCar";
 import { DataProvider } from "../../context/DataContext";
 
 export const ObsidianNavbar = () => {
-  const {userInfo} = useContext(DataProvider)
+  const {userInfo: {user, islogged}} = useContext(DataProvider)
 
 
   //useState para menu burger
@@ -80,7 +80,7 @@ export const ObsidianNavbar = () => {
               <li className="navItem">
                 <NavLink
                   onClick={clickear}
-                  className={!userInfo.islogged ? "hiddenLink": (userInfo.islogged && userInfo.user.administrador) ? "navLink" : "hiddenLink"}
+                  className={!islogged ? "hiddenLink": (islogged && user.administrador) ? "navLink" : "hiddenLink"}
                   to={"/administracion"}
                 >
                   Administracion

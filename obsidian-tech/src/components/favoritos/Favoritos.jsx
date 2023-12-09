@@ -16,13 +16,13 @@ import "../favoritos/Favoritos.css";
 const Favoritos = () => {
   const [loading, setLoading] = useState(false);
   const [fav, setFav] = useState([]);
-  const { userInfo, producto, setProducto } = useContext(DataProvider);
+  const { userInfo: {user}, producto, setProducto } = useContext(DataProvider);
 
   useEffect(() => {
     setLoading(true);
     GetFavoriteProduct({
-      id: userInfo.user.id,
-      token: userInfo.user.token,
+      id: user.id,
+      token: user.token,
     })
       .then(({ favorite_producs }) => {
         setFav(favorite_producs)

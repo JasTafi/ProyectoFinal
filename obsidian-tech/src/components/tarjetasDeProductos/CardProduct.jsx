@@ -20,7 +20,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export const CardProduct = () => {
-  const { userInfo } = useContext(DataProvider);
+  const { userInfo: {user, islogged} } = useContext(DataProvider);
   const { setProducto } = useContext(DataProvider);
   const [dataApi, setDataApi] = useState([]); //trae los productos
 
@@ -33,11 +33,11 @@ export const CardProduct = () => {
   }, []);
 
   function handleAddFavorites(id) {
-    if (userInfo.islogged == true) {
+    if (islogged == true) {
       AddFavoriteProduct({
-        userId: userInfo.user.id,
+        userId: user.id,
         productId: id,
-        token: userInfo.user.token,
+        token: user.token,
         
       })
         .then((res) => {
@@ -54,9 +54,9 @@ export const CardProduct = () => {
 
   function handleAddCar(id) {
     AddCarProduct({
-      userId: userInfo.user.id,
+      userId: user.id,
       productId: id,
-      token: userInfo.user.token,
+      token: user.token,
     })
       .then((res) => {
         setProducto(true);
