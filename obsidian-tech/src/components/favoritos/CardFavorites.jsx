@@ -10,14 +10,14 @@ import { Notification } from "../../services/tostifyNot";
 import "../favoritos/Favoritos.css";
 
 export const CardFavorites = ({ fav }) => {
-  const { userInfo, setProducto } = useContext(DataProvider);
+  const { userInfo: {user} , setProducto } = useContext(DataProvider);
  
   // funcion para eliminar fav de la lista
   function handleRemoveFav(item_id) {
     DeleteFavoriteById({
-      id: userInfo.user.id,
+      id: user.id,
       productId: item_id,
-      token: userInfo.user.token,
+      token: user.token,
     })
       .then((res) => {
         Notification({ message: 'Producto Borrado', type: 'success' });
@@ -27,9 +27,9 @@ export const CardFavorites = ({ fav }) => {
   }
   function handleAddCar(id) {
     AddCarProduct({
-      userId: userInfo.user.id,
+      userId: user.id,
       productId: id,
-      token: userInfo.user.token,
+      token: user.token,
     })
       .then((res) => {
         setProducto(true),

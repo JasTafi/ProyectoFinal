@@ -1,7 +1,7 @@
 .containerShowResults {
   position: absolute;
   width: 300px;
-  height: 20rem;
+  height: 0;
   top: 3.4rem;
   right: 0;
   display: flex;
@@ -12,6 +12,7 @@
   transition: all 0.3s;
 }
 .containerShowResults.active {
+  height: 20rem;
   overflow: visible;
   opacity: 1;
   transition: all 0.3s;
