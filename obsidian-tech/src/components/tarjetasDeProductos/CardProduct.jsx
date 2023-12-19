@@ -12,6 +12,7 @@ import { Navigation } from "swiper";
 import { getAllProductsFromDB } from "../../services/product_service";
 import { AddCarProduct, AddFavoriteProduct } from "../../services/user_service";
 import { Notification } from "../../services/tostifyNot";
+import { useHandleAddFavorite } from "../../hooks/useHandleAddFavorite";
 
 import "../tarjetasDeProductos/CardProduct.css";
 
@@ -20,8 +21,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export const CardProduct = () => {
-  const { userInfo: {user, islogged} } = useContext(DataProvider);
-  const { setProducto } = useContext(DataProvider);
+  const { userInfo: {user, islogged}, setProducto } = useContext(DataProvider);
+  //custom hook para agregar favoritos
+  const handleAddFavorites = useHandleAddFavorite();
   const [dataApi, setDataApi] = useState([]); //trae los productos
 
   useEffect(() => {
@@ -31,26 +33,6 @@ export const CardProduct = () => {
       })
       .catch((error) => console.log(error));
   }, []);
-
-  function handleAddFavorites(id) {
-    if (islogged == true) {
-      AddFavoriteProduct({
-        userId: user.id,
-        productId: id,
-        token: user.token,
-        
-      })
-        .then((res) => {
-          Notification({ message: "Producto agregado a favoritos", type: "success" });
-        })
-        .catch((err) => {
-          console.log(err);
-          Notification({ message: "No se pudo agragar el producto a favoritos", type: "error" });
-        });
-    } else {
-      Notification({ message: "Debes iniciar sesion para agregar a favoritos", type: "error" });
-    }
-  }
 
   function handleAddCar(id) {
     AddCarProduct({

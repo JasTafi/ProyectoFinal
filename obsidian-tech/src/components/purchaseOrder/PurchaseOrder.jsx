@@ -19,7 +19,7 @@ export const PurchaseOrder = () => {
   }, 2000);
   //estado para manejar modalPurchase
   const [showModalPurchase, setShowModalPurchase] = useState(false);
-  //estado para manejar GetCarProducts
+  //custom hook para leer productos del carrito
   const {product} = useProductCar();
   //estado para iterar id de car_products
   const [productBuy, setProductBuy] = useState([]);
