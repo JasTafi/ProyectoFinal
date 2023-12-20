@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { DataProvider } from "../../context/DataContext";
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,9 +10,9 @@ import { Pagination } from "swiper";
 import { Navigation } from "swiper";
 
 import { getAllProductsFromDB } from "../../services/product_service";
-import { AddCarProduct, AddFavoriteProduct } from "../../services/user_service";
-import { Notification } from "../../services/tostifyNot";
+
 import { useHandleAddFavorite } from "../../hooks/useHandleAddFavorite";
+import { useHandleAddCar } from "../../hooks/useHandleAddCar";
 
 import "../tarjetasDeProductos/CardProduct.css";
 
@@ -21,9 +21,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export const CardProduct = () => {
-  const { userInfo: {user, islogged}, setProducto } = useContext(DataProvider);
+ 
   //custom hook para agregar favoritos
   const handleAddFavorites = useHandleAddFavorite();
+  //custom hook para agregar carrito
+  const handleAddCar = useHandleAddCar();
   const [dataApi, setDataApi] = useState([]); //trae los productos
 
   useEffect(() => {
@@ -34,21 +36,7 @@ export const CardProduct = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  function handleAddCar(id) {
-    AddCarProduct({
-      userId: user.id,
-      productId: id,
-      token: user.token,
-    })
-      .then((res) => {
-        setProducto(true);
-        Notification({ message: "Producto agregado al carrito", type: "success" });
-      })
-      .catch((err) => {
-        console.log(err);
-        Notification({ message: "No se pudo agragar el producto al carrito", type: "error" });
-      });
-  }
+
   return (
     <>
       <div className="swiperContainer">
