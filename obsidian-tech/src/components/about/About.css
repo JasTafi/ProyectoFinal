@@ -1,6 +1,3 @@
-svg {
-    color: #fff;
-}
 .about-container {
     padding-inline: 2rem;
     width: 100%;
@@ -48,6 +45,16 @@ svg {
 .about-card:hover {
     border: 2px solid #0396fe;
     transition: border .4s;
+}
+.about-social{
+    display: flex;
+    justify-content: space-around;
+    padding-top: .5rem;
+}
+.icono {
+    font-size: 25px;
+    text-decoration: none;
+    color: #fff;
 }
 @media screen and (max-width: 320px) {
     .about-container {

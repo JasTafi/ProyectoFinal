@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import {
+  faGithub,
+  faLinkedin,
+  faSquareInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 import Loader from "../loader/Loader";
 import "../about/About.css";
@@ -44,12 +48,42 @@ const About = () => {
                   <h5>Fernando Arroyo</h5>
                   <p>Founder CEO - (San Miguel de Tucumán - Tucumán)</p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
                 <div className="about-card">
                   <img src="/src/assets/rodrigo2.jpg" alt="" />
                   <h5>Rodrigo Aragón</h5>
                   <p>Founder CEO - (San Miguel de Tucumán - Tucumán)</p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
                 <div className="about-card">
                   <img src="/src/assets/Gaston Monteiro.jpg" alt="" />
@@ -58,24 +92,84 @@ const About = () => {
                     Director of Engineering: Platform & Technology (Tucumán)
                   </p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
                 <div className="about-card">
                   <img src="/src/assets/Jose Sanchez.jpg" alt="" />
                   <h5>José Sánchez</h5>
                   <p>Senior Engineer (Tafi Viejo - Tucumán)</p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
                 <div className="about-card">
                   <img src="/src/assets/Gonzalo_Velardez.jpg" alt="" />
                   <h5>Gonzalo Velardez</h5>
                   <p>Technical Customer Advocate. San Miguel de Tucuman</p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
                 <div className="about-card">
                   <img src="/src/assets/Blas Stanciuc2.jpg" alt="" />
                   <h5>Blas Stanciuc</h5>
                   <p>Staff Engineer.(Mar del Plata - Buenos Aires)</p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
 
                 <div className="about-card">
@@ -86,6 +180,21 @@ const About = () => {
                   <h5>Ramiro Juarez</h5>
                   <p>Staff Engineer.(Mar del Plata - Buenos Aires)</p>
                   <span>Full-Stack Developer</span>
+                  <div className="about-social">
+                    <a
+                      href="http://instagram.com/ferchoar23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                    </a>
+                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faGithub} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                      <FontAwesomeIcon className="icono" icon={faLinkedin} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
