@@ -71,16 +71,16 @@ const About = () => {
                   <span>Full-Stack Developer</span>
                   <div className="about-social">
                     <a
-                      href="http://instagram.com/ferchoar23"
+                      href="http://instagram.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/RoAragon1977" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/rodrigo-arag%C3%B3n-6a37a4285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
@@ -115,16 +115,16 @@ const About = () => {
                   <span>Full-Stack Developer</span>
                   <div className="about-social">
                     <a
-                      href="http://instagram.com/ferchoar23"
+                      href="https://www.instagram.com/jota_sanchez_?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/JasTafi" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/jos%C3%A9-sanchez-41321115?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
@@ -136,16 +136,16 @@ const About = () => {
                   <span>Full-Stack Developer</span>
                   <div className="about-social">
                     <a
-                      href="http://instagram.com/ferchoar23"
+                      href="https://www.instagram.com/gonzalodvelardez?igshid=ODA1NTc5OTg5Nw=="
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
@@ -157,16 +157,18 @@ const About = () => {
                   <span>Full-Stack Developer</span>
                   <div className="about-social">
                     <a
-                      href="http://instagram.com/ferchoar23"
+                      href="http://instagram.com/blasstanciuc"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/blassstanciuc
+" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/blas-stanciuc-40133611b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
@@ -182,16 +184,16 @@ const About = () => {
                   <span>Full-Stack Developer</span>
                   <div className="about-social">
                     <a
-                      href="http://instagram.com/ferchoar23"
+                      href="https://www.instagram.com/jrah.art/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/RamiroMJ" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
