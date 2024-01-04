@@ -24,7 +24,7 @@ const About = () => {
                 Transparencia por defecto, Mejorar Constantemente, Ser un hacedor sin ego, 
                 Mostrar gratitud, Elegir el optimismo. 
               </h4>
-                <h2 className="about-title">Conoce a los integrantes de nuestro equipo:</h2>
+                <h2 className="about-title">Nuestro equipo:</h2>
                 
                            
               <div className="about-card-container">
@@ -99,12 +99,12 @@ const About = () => {
 
                 <div className="about-card">
                   <img
-                    src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280.jpg"
+                    src="/src/assets/Ramiro Juarez.jpg"
                     alt=""
                   />
                   <h5>Ramiro Juarez</h5>
                   <p>
-                    Staff Engineer.(Mar del Plata - Buenos Aires)
+                    Staff Engineer.(Tucumán - Argentina)
                    </p>
                   <span>Full-Stack Developer</span>
                 </div>

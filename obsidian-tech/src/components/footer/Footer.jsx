@@ -13,16 +13,15 @@ const Footer = () => {
         <div className='containerFooter'>
             <div className='containerLogFooter'>
                 <h2>Obsidian-Tech</h2>
-                <p>Somos expertos en ventas de tecnología, nos dedicamos a proporcionar lo mejor para los proyectos de nuestros clientes. Activamente buscamos emprendedores interesados en unirse a nuestro proyecto. Contáctanos para más información.</p>
+                <p>Somos expertos en ventas de tecnología, nos dedicamos a proporcionar lo mejor para los proyectos de nuestros clientes. Activamente buscamos emprendedores interesados en unirse a nuestro proyecto. Contáctanos.</p>
 								<h6>Desarrollado por alumnos de la comisión 28i de:</h6>
                 
                 <div className="logoRolling">
                   <span>{'<'}{'>'}</span>
                 </div>
-
-                <a className='linkRolling' href="https://web.rollingcodeschool.com" target="_blank" rel="noopener noreferrer">
+                <ul className='linksFoot' href="https://web.rollingcodeschool.com" target="_blank" rel="noopener noreferrer">
                   RollingCode SCHOOL
-                </a>
+                </ul>
                 
                 {/* <div className="logoRolling">
                   <span>{'<'}{'>'}</span>
