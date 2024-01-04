@@ -1,6 +1,10 @@
 .about-container {
     padding-inline: 2rem;
     width: 100%;
+    color: #fff;
+}
+.bkg-dark {
+    background-color: #111;
 }
 .about-card img {
     width: 100%;
@@ -20,6 +24,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     margin-block: 1rem;
+    text-align: center;
 }
 .about-subtitle {
     font-size: 1.2rem;
@@ -30,19 +35,26 @@
     row-gap: 1.5rem;
     padding-block: 1.5rem;
 }
-.about-card:last-child {
-    background-color: white;
-}
 .about-card {
     border: 2px solid transparent;
     border-radius: .2rem;
-    box-shadow: 0 0 3px #242424;
+    box-shadow: 0 0 3px #494949;
     padding: 1rem;
     width: 320px;
 }
 .about-card:hover {
     border: 2px solid #0396fe;
     transition: border .4s;
+}
+.about-social{
+    display: flex;
+    justify-content: space-around;
+    padding-top: .5rem;
+}
+.icono {
+    font-size: 25px;
+    text-decoration: none;
+    color: #fff;
 }
 @media screen and (max-width: 320px) {
     .about-container {
@@ -51,6 +63,12 @@
     }
     .about-card {
         width: 290px;
+    }
+    .about-title{
+        font-size: 1.4rem;
+    }
+    .about-subtitle {
+        font-size: 1.1rem;
     }
 }
 @media screen and (min-width:768px) {

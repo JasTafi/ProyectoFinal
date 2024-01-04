@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AddPurchaseOrder, GetCarProducts } from "../../services/user_service";
+import { AddPurchaseOrder } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 import Loader from "../loader/Loader.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,14 +9,18 @@ import { Notification } from "../../services/tostifyNot";
 
 import "../purchaseOrder/PurchaseOrder.css";
 import { ModalPurchase } from "../modalPurchaseConfirm/ModalPurchase.jsx";
+import { useProductCar } from "../../hooks/useProductCar.jsx";
 export const PurchaseOrder = () => {
-  const { userInfo, producto, setProducto } = useContext(DataProvider);
+  const { userInfo, setProducto } = useContext(DataProvider);
   //estado para manejar Loader
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
   //estado para manejar modalPurchase
   const [showModalPurchase, setShowModalPurchase] = useState(false);
-  //estado para manejar GetCarProducts
-  const [productCar, setProductCar] = useState([]);
+  //custom hook para leer productos del carrito
+  const {product} = useProductCar();
   //estado para iterar id de car_products
   const [productBuy, setProductBuy] = useState([]);
   //estado para manejar handleSubmit
@@ -40,24 +44,6 @@ export const PurchaseOrder = () => {
       return console.log(error);
     }
   }
-  useEffect(() => {
-    setLoading(true);
-    GetCarProducts({
-      id: userInfo.user.id,
-      token: userInfo.user.token,
-    })
-      .then(({ car_products }) => {
-        setProductCar(car_products);
-        iterarId(car_products);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000),
-          setProducto(false);
-      });
-  }, [producto]);
 
   //validaciones
   function validateForm() {
@@ -308,12 +294,12 @@ export const PurchaseOrder = () => {
               <div className="sale-content">
                 <h2 className="section-title">Productos a comprar</h2>
                 <div className="card-container">
-                  {productCar.length == 0 ? (
+                  {product.length == 0 ? (
                     <h2 className="section-title">
                       No hay productos agregados al carrito!
                     </h2>
                   ) : (
-                    productCar.map((producto, index) => {
+                    product.map((producto, index) => {
                       return (
                         <div className="card-product" key={index}>
                           <img src={producto.urlImg} alt="" />

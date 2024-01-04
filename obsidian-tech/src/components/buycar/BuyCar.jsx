@@ -8,22 +8,23 @@ import { DeleteCarProduct, GetCarProducts } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 import { Notification } from "../../services/tostifyNot";
 
+import { useProductCar } from "../../hooks/useProductCar";
 import "../buycar/BuyCar.css";
 
 export const BuyCar = () => {
   const [show, setShow] = useState(false);
-  const [product, setProduct] = useState([]);
+  const { product } = useProductCar();
   //para manejar el estado del useEffect de getCarProduct
-  const { userInfo ,producto, setProducto} =  useContext(DataProvider)
+  const { userInfo: {user, islogged} ,producto, setProducto} =  useContext(DataProvider)
 
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   function handleRemoveProduct(productId) {
     DeleteCarProduct({
-      id: userInfo.user.id,
+      id: user.id,
       productId: productId,
-      token: userInfo.user.token,
+      token: user.token,
     })
       .then((res) =>{
         setProducto(true)
@@ -31,23 +32,6 @@ export const BuyCar = () => {
       })
       .catch((err) => console.log(err));
   }
-  useEffect(() => {
-    if (userInfo.islogged) {
-      GetCarProducts({
-        id: userInfo.user.id,
-        token: userInfo.user.token,
-      })
-        .then(({ car_products }) => {
-          setProduct(car_products);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setProducto(false)
-        })
-    }else{
-      setProduct([])
-    }
-  }, [userInfo.islogged,producto])
   
   return (
     <div className="containerModalCar">
@@ -61,7 +45,7 @@ export const BuyCar = () => {
           <Modal.Title>Carrito de Compras</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modalBodyBuyCar">
-          {!userInfo.islogged ? (
+          {!islogged ? (
             <div>
               <p className="warningMessage">Debes iniciar sesion para agregar productos al carrito</p>
             </div>

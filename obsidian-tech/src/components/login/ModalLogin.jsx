@@ -51,6 +51,7 @@ const ModalLogin = () => {
           photoUrl: user.photoUrl,
           email: user.email,
           allowsLocaStorage: allowsLocalStorage,
+          administrador: user.administrador
         });
       }
 
