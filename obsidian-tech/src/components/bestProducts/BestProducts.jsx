@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 
+import gabinete from '../../assets/bestProduct-gabinete.png';
+import cpu from '../../assets/bestProduct-cpu.png';
 import "../bestProducts/BestProducts.css";
-import { Link } from "react-router-dom";
 
 export const BestProducts = () => {
   return (
@@ -32,7 +34,7 @@ export const BestProducts = () => {
         <div className="bestProductBody">
           <img
             className="boxImgBP1"
-            src="src/assets/bestProduct-gabinete.png"
+            src={gabinete}
             alt="Gabinete ITX"
             title="Gabinete ITX"
           />
@@ -52,7 +54,7 @@ export const BestProducts = () => {
           </div>
           <img
             className="boxImgBP2"
-            src="src/assets/bestProduct-cpu.png"
+            src={cpu}
             alt="CPU ITX"
             title="CPU ITX"
           />
