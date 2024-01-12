@@ -11,8 +11,6 @@ import '../registroUsuario/UserRegister.css';
 const UserRegister = () => {
 
   const [ loading, setLoading ] = useState(true)
-  const [ registered, setRegisterd] = useState(false)
-  const [ message, setMessage] = useState('')
   const navigate = useNavigate();
 
   setTimeout(() => {
@@ -61,16 +59,12 @@ const UserRegister = () => {
             password: values.password,
           })
           .then(Response => {
-            //console.log('Usuario creado:', Response);
-            setRegisterd(true);
-            setMessage("Usuario creado")
             Notification({ message: "Usuario creado con exito, ahora debes iniciar sesión" , type: "success" });
             navigate("/");
             // Realizar acciones adicionales despues de crear el usuario
           })
           .catch(error => {
             console.log('Error al crear el usuario:', error);
-            setMessage("Error al crear el usuario");
             Notification({ message: "Error al crear el usuario", type: "error" });
           })
           .finally(() =>{
@@ -83,9 +77,6 @@ const UserRegister = () => {
       >
         {({ isSubmitting, isValid, errors }) => (
           <div className='containerRegisterGral'>
-            <div className={ registered ? "alertRegister show" :"alertRegister"}>
-              <span>{message}</span>
-            </div>
             <div className='containerForm'>
               <Form>
                 <div className='boxTitleRegister'>
