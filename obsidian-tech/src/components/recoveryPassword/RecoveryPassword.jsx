@@ -47,7 +47,12 @@ const RecoveryPassword = () => {
   };
 
   return (
-    <div className="containerRegisterGral">
+    <section className="containerRegisterGral">
+      <div className="contentRegister">
+        <h2>Por favor igresa tu email</h2>
+        <h4>Enviaremos un codigo al mismo, asi podes registrar tu nueva contraseña</h4>
+        <p>Segui los pasos a continuacion</p>
+      </div>
       {step === 1 && (
         <Formik
           initialValues={{
@@ -77,7 +82,7 @@ const RecoveryPassword = () => {
                 <div className="contain-form">
                   <div className="contain-input">
                     <label htmlFor="email">Ingresa tu mail</label>
-                    <Field type="email" id="email" name="email" />
+                    <Field className='input-recovery-pass' type="email" id="email" name="email" />
                     <ErrorMessage
                       name="email"
                       component={() => (
@@ -122,9 +127,9 @@ const RecoveryPassword = () => {
                 <div className="contain-form">
                   <div className="contain-input">
                     <label htmlFor="validateToken">
-                      Paga el token recibido por correo electrónico
+                      Pega el token recibido por correo electrónico
                     </label>
-                    <Field
+                    <Field className='input-recovery-pass'
                       type="password"
                       id="validateToken"
                       name="validateToken"
@@ -196,7 +201,7 @@ const RecoveryPassword = () => {
                     <label htmlFor="newPassword">
                       Ingresa tu nueva contraseña
                     </label>
-                    <Field
+                    <Field className='input-recovery-pass'
                       type="password"
                       id="newPassword"
                       name="newPassword"
@@ -212,7 +217,7 @@ const RecoveryPassword = () => {
                     <label htmlFor="confirmPassword">
                       Ingresa de nuevo tu contraseña
                     </label>
-                    <Field
+                    <Field className='input-recovery-pass'
                       type="password"
                       id="confirmPassword"
                       name="confirmPassword"
@@ -231,7 +236,7 @@ const RecoveryPassword = () => {
           )}
         </Formik>
       )}
-    </div>
+    </section>
   );
 };
 
