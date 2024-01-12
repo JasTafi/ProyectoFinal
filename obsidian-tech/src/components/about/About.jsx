@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-
+import blassStanciuc from '../../assets/Blas Stanciuc2.jpg';
+import fer from '../../assets/Fer-Arroyo.jpeg';
+import rodrigo from '../../assets/Rodrigo Aragon.jpg';
+import gaston from '../../assets/Gaston Monteiro.jpg';
+import jose from '../../assets/Jose Sanchez.jpg';
+import gonzalo from '../../assets/Gonzalo_Velardez.jpg';
+import ramiro from '../../assets/Ramiro Juarez.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -38,12 +44,11 @@ const About = () => {
                 Transparencia por defecto, Mejorar Constantemente, Ser un
                 hacedor sin ego, Mostrar gratitud, Elegir el optimismo.
               </h4>
-                <h2 className="about-title">Nuestro equipo:</h2>
-                
-                           
+              <h2 className="about-title">Nuestro equipo:</h2>
+
               <div className="about-card-container">
                 <div className="about-card">
-                  <img src="/src/assets/Fer-Arroyo.jpeg" alt="" />
+                  <img src={fer} alt="" />
                   <h5>Fernando Arroyo</h5>
                   <p>Founder CEO - (San Miguel de Tucumán - Tucumán)</p>
                   <span>Full-Stack Developer</span>
@@ -53,18 +58,29 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/fer3443"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/fer3443in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
                 </div>
                 <div className="about-card">
-                  <img src="/src/assets/rodrigo2.jpg" alt="" />
+                  <img src={rodrigo} alt="" />
                   <h5>Rodrigo Aragón</h5>
                   <p>Founder CEO - (San Miguel de Tucumán - Tucumán)</p>
                   <span>Full-Stack Developer</span>
@@ -74,18 +90,29 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/RoAragon1977" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/RoAragon1977"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/rodrigo-arag%C3%B3n-6a37a4285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/rodrigo-arag%C3%B3n-6a37a4285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
                 </div>
                 <div className="about-card">
-                  <img src="/src/assets/Gaston Monteiro.jpg" alt="" />
+                  <img src={gaston} alt="" />
                   <h5>Gastón Monteiro</h5>
                   <p>
                     Director of Engineering: Platform & Technology (Tucumán)
@@ -97,18 +124,29 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/fer3443" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/fer3443"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/fer3443in/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/fer3443in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
                 </div>
                 <div className="about-card">
-                  <img src="/src/assets/Jose Sanchez.jpg" alt="" />
+                  <img src={jose} alt="" />
                   <h5>José Sánchez</h5>
                   <p>Senior Engineer (Tafi Viejo - Tucumán)</p>
                   <span>Full-Stack Developer</span>
@@ -118,18 +156,29 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/JasTafi" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/JasTafi"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/jos%C3%A9-sanchez-41321115?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/jos%C3%A9-sanchez-41321115?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
                 </div>
                 <div className="about-card">
-                  <img src="/src/assets/Gonzalo_Velardez.jpg" alt="" />
+                  <img src={gonzalo} alt="" />
                   <h5>Gonzalo Velardez</h5>
                   <p>Technical Customer Advocate. San Miguel de Tucuman</p>
                   <span>Full-Stack Developer</span>
@@ -139,18 +188,29 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
                 </div>
                 <div className="about-card">
-                  <img src="/src/assets/Blas Stanciuc2.jpg" alt="" />
+                  <img src={blassStanciuc} alt="" />
                   <h5>Blas Stanciuc</h5>
                   <p>Staff Engineer.(Mar del Plata - Buenos Aires)</p>
                   <span>Full-Stack Developer</span>
@@ -160,28 +220,33 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/blassstanciuc
-" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/blassstanciuc
+"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/in/blas-stanciuc-40133611b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
-" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/blas-stanciuc-40133611b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
                 </div>
-
                 <div className="about-card">
-                  <img
-                    src="/src/assets/Ramiro Juarez.jpg"
-                    alt=""
-                  />
+                  <img src={ramiro} alt="" />
                   <h5>Ramiro Juarez</h5>
-                  <p>
-                    Staff Engineer.(Tucumán - Argentina)
-                   </p>
+                  <p>Staff Engineer.(Tucumán - Argentina)</p>
                   <span>Full-Stack Developer</span>
                   <div className="about-social">
                     <a
@@ -189,12 +254,23 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon className="icono" icon={faSquareInstagram} />
+                      <FontAwesomeIcon
+                        className="icono"
+                        icon={faSquareInstagram}
+                      />
                     </a>
-                    <a href="https://github.com/RamiroMJ" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://github.com/RamiroMJ"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faGithub} />
                     </a>
-                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FontAwesomeIcon className="icono" icon={faLinkedin} />
                     </a>
                   </div>
