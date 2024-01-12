@@ -26,7 +26,7 @@ export const BestProducts = () => {
             </p>
           </div>
           <div className="boxBtnBP">
-            <Link to={"/"} className="btnBestProduct">
+            <Link to={"*"} className="btnBestProduct">
               ver productos <FontAwesomeIcon icon={faGamepad} />
             </Link>
           </div>
@@ -49,7 +49,7 @@ export const BestProducts = () => {
                 operativo Windows 10 de 64 bits para mejorar la productividad y
                 la multitarea.
               </p>
-              <button className="btnBestProduct">ver más</button>
+              <Link to={'*'} className="btnBestProduct">ver más</Link>
             </div>
           </div>
           <img

@@ -1,6 +1,29 @@
 .sectionError {
   margin-top: 4.5rem;
-}
-.errorImg {
+  height: 70vh;
   width: 100%;
+  background-color: #111;
+}
+.containerErrorImg {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../src/assets/error.gif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 320px) {
+  .sectionError {
+    height: 40vh;
+  }
+}
+@media screen and (min-width: 375px){
+  .sectionError {
+    height: 55vh;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .sectionError {
+    height: 70vh;
+  }
 }
