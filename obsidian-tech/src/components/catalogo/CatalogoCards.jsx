@@ -8,9 +8,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../catalogo/Catalogo.css";
 import { useHandleAddFavorite } from "../../hooks/useHandleAddFavorite";
 import { useHandleAddCar } from "../../hooks/useHandleAddCar";
+import { FilterProducts } from "./FilterProducts";
 export default function CatalogoCards() {
-  const [produtc, setProduct] = useState([]);
-
+  const [product, setProduct] = useState([]);
   const handleAddFavorites = useHandleAddFavorite();
   const handleAddCar = useHandleAddCar();
 
@@ -18,17 +18,18 @@ export default function CatalogoCards() {
   const cargarTarjetas = () => {
     setVisibleProducts(visibleProducts + 4);
   };
-
+  
   useEffect(() => {
     getAllProductsFromDB()
       .then(({ data }) => setProduct(data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   }, []);
 
+  
   return (
     <>
       <div className="container-cards-catalogo">
-        {produtc.slice(0, visibleProducts).map((card, index) => {
+        {product.slice(0, visibleProducts).map((card, index) => {
           return (
             <div className="cardBorder" key={index}>
               <div className="cardContainer">
@@ -79,7 +80,7 @@ export default function CatalogoCards() {
           );
         })}
       </div>
-        {visibleProducts < produtc.length && (
+        {visibleProducts < product.length && (
          <div className="box-btn-catalogo">
             <button onClick={cargarTarjetas} className="btn-catalogo">mostrar más</button>
          </div>
