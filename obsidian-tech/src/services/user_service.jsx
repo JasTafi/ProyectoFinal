@@ -7,7 +7,7 @@ async function CreateUser({ email, password, urlFoto }) {
     password,
     photoUrl: urlFoto,
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/add`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/add`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -23,7 +23,7 @@ async function Login({ email, password }) {
     email,
     password,
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/login`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/login`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -39,7 +39,7 @@ async function AddFavoriteProduct({ userId, productId, token }) {
     userId,
     productId,
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/favorites`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/favorites`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -52,7 +52,7 @@ async function AddFavoriteProduct({ userId, productId, token }) {
 
 //          Mostrar lista de favoritos
 async function GetFavoriteProduct({ id, token }) {
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/favorites/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/favorites/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -66,7 +66,7 @@ async function DeleteFavoriteById({ id, productId, token }) {
   const body = JSON.stringify({
     productId,
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/favorites/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/favorites/${id}`, {
     method: "PUT",
     headers: {
       "content-Type": "application/json",
@@ -83,7 +83,7 @@ async function AddCarProduct({userId, productId, token}){
     userId,
     productId,
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/buyCar`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ async function AddCarProduct({userId, productId, token}){
 
 //Mostrar productos del carrito
 async function GetCarProducts({id, token}){
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/buyCar/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -110,7 +110,7 @@ async function DeleteCarProduct({id, productId, token}){
   const body = JSON.stringify({
     productId,
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/buyCar/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/buyCar/${id}`, {
     method: 'PUT',
     headers: {
       'content-Type': 'application/json',
@@ -124,7 +124,7 @@ async function DeleteCarProduct({id, productId, token}){
 // Verificar si un email esta en base de datos, crea un token y lo envia por mail al usuario
 async function EmailVerification({ email }) {
   const body = JSON.stringify({ email });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/email/verification`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/email/verification`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -137,7 +137,7 @@ async function EmailVerification({ email }) {
 // Cambiar la contraseña de un usuario por el mail
 async function ModifyPassword({ email, password }) {
   const body = JSON.stringify({ email, password });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/password/modify`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/password/modify`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -149,12 +149,12 @@ async function ModifyPassword({ email, password }) {
 
 // Busca un usuario por su email
 async function GetUserByEmail(email) {
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/byEmail/${email}`);
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/byEmail/${email}`);
   return await response.json();
 }
 //Trae la lista de pedidos
 async function GetAllPedidos(){
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/pedido`);
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido`);
   return await response.json();
 }
 //Agregar orden de compra
@@ -181,7 +181,7 @@ async function AddPurchaseOrder({
       provincia,
     },
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/user/pedido`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
