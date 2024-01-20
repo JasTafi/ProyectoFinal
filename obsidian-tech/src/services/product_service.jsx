@@ -2,13 +2,13 @@ import { Puerto } from '../config/server_constant'
 
 //         Muestra todos los productos
 async function getAllProductsFromDB() {
-  const response = await fetch(`${Puerto.URL_GLOBAL}/accesorio`)
+  const response = await fetch(`${Puerto.URL_LOCAL}/accesorio`)
   return await response.json()
 }
 
 //         Muestra un producto por su id
 async function getProductByIdFromDb(id) {
-  const response = await fetch(`${Puerto.URL_GLOBAL}/accesorio/${id}`)
+  const response = await fetch(`${Puerto.URL_LOCAL}/accesorio/${id}`)
   return await response.json();
 }
 
@@ -24,7 +24,7 @@ async function AddProductos({ nombre, categoria, precio, stock, Descripcion, url
     urlImg  
   });
 
-  const response = await fetch(`${Puerto.URL_GLOBAL}/accesorio`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/accesorio`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ async function UpdateProducto(id, { nombre, categoria, precio, stock, Descripcio
     Descripcion,
     urlImg
   });
-  const response = await fetch(`${Puerto.URL_GLOBAL}/accesorio/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/accesorio/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
@@ -59,7 +59,7 @@ async function UpdateProducto(id, { nombre, categoria, precio, stock, Descripcio
 
 //          Borrar un producto
 async function DeleteProducto({ id, token }) {
-  const response = await fetch(`${Puerto.URL_GLOBAL}/accesorio/${id}`, {
+  const response = await fetch(`${Puerto.URL_LOCAL}/accesorio/${id}`, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',

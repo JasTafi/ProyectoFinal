@@ -9,7 +9,6 @@ import { DataProvider } from "../../context/DataContext";
 import { KEYS } from "../../config/local_storage_constant";
 import { Get, Set } from "../../services/local_stoge_service";
 import { Notification } from "../../services/tostifyNot";
-import { BtnGoogleLogin } from "../signupGoogle/BtnGoogleLogin";
 import { Logout } from "../logout/Logout";
 
 import "../login/ModalLogin.css";
@@ -170,7 +169,6 @@ const ModalLogin = () => {
           )}
         </Formik>
         <div className="btn-google-login">
-          <BtnGoogleLogin />
         </div>
       </div>) 
       }
