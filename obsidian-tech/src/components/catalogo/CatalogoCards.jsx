@@ -5,12 +5,14 @@ import { getAllProductsFromDB } from "../../services/product_service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-import "../catalogo/Catalogo.css";
 import { useHandleAddFavorite } from "../../hooks/useHandleAddFavorite";
 import { useHandleAddCar } from "../../hooks/useHandleAddCar";
-import { FilterProducts } from "./FilterProducts";
-export default function CatalogoCards() {
+import { useFilterProducts } from "./useFilterProducts";
+
+import "../catalogo/Catalogo.css";
+export default function CatalogoCards({initialValues}) {
   const [product, setProduct] = useState([]);
+  const {filteredProducts, filters ,applyFilter} = useFilterProducts(product)
   const handleAddFavorites = useHandleAddFavorite();
   const handleAddCar = useHandleAddCar();
 
@@ -18,18 +20,20 @@ export default function CatalogoCards() {
   const cargarTarjetas = () => {
     setVisibleProducts(visibleProducts + 4);
   };
-  
+  const handleFilter = () => {
+    applyFilter(initialValues)
+  }
   useEffect(() => {
     getAllProductsFromDB()
-      .then(({ data }) => setProduct(data))
+      .then(({ data }) =>  setProduct(data))
       .catch((err) => console.log(err))
   }, []);
-
   
   return (
     <>
+      <button onClick={handleFilter} className="btn-catalogo-filter">filtrar</button>
       <div className="container-cards-catalogo">
-        {product.slice(0, visibleProducts).map((card, index) => {
+        {filteredProducts.slice(0, visibleProducts).map((card, index) => {
           return (
             <div className="cardBorder" key={index}>
               <div className="cardContainer">
@@ -70,8 +74,7 @@ export default function CatalogoCards() {
                         handleAddCar(card._id);
                       }}
                     >
-                      {" "}
-                      Add to Cart{" "}
+                    Add to car
                     </button>
                   </div>
                 </div>
@@ -80,7 +83,7 @@ export default function CatalogoCards() {
           );
         })}
       </div>
-        {visibleProducts < product.length && (
+        {visibleProducts < filteredProducts.length && (
          <div className="box-btn-catalogo">
             <button onClick={cargarTarjetas} className="btn-catalogo">mostrar más</button>
          </div>
