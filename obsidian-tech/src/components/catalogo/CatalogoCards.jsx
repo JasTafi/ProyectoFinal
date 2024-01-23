@@ -26,11 +26,11 @@ export default function CatalogoCards({ initialValues }) {
     applyFilter(initialValues);
   };
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     getAllProductsFromDB()
       .then(({ data }) => {
-        setProduct(data)
-        setLoading(false)
+        setProduct(data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -40,10 +40,18 @@ export default function CatalogoCards({ initialValues }) {
       <button onClick={handleFilter} className="btn-catalogo-filter">
         filtrar
       </button>
-      <div className={loading ? "container-cards-catalogo col": "container-cards-catalogo"}>
+      <div
+        className={
+          loading ? "container-cards-catalogo col" : "container-cards-catalogo"
+        }
+      >
         {loading ? (
           <div className="container-loader">
             <span className="loader-catalogo"></span>
+          </div>
+        ) : filteredProducts.length === 0 ? (
+          <div className="container-unproduct">
+            <h4>No se encontraron productos</h4>
           </div>
         ) : (
           filteredProducts.slice(0, visibleProducts).map((card, index) => {

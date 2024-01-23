@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AddPurchaseOrder } from "../../services/user_service";
+import { AddPurchaseOrder, GetCarProducts } from "../../services/user_service";
 import { DataProvider } from "../../context/DataContext";
 import Loader from "../loader/Loader.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +11,7 @@ import "../purchaseOrder/PurchaseOrder.css";
 import { ModalPurchase } from "../modalPurchaseConfirm/ModalPurchase.jsx";
 import { useProductCar } from "../../hooks/useProductCar.jsx";
 export const PurchaseOrder = () => {
-  const { userInfo, setProducto } = useContext(DataProvider);
+  const { userInfo,producto ,setProducto } = useContext(DataProvider);
   //estado para manejar Loader
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
@@ -19,8 +19,8 @@ export const PurchaseOrder = () => {
   }, 2000);
   //estado para manejar modalPurchase
   const [showModalPurchase, setShowModalPurchase] = useState(false);
-  //custom hook para leer productos del carrito
-  const {product} = useProductCar();
+
+  const [product, setProduct] = useState([]);
   //estado para iterar id de car_products
   const [productBuy, setProductBuy] = useState([]);
   //estado para manejar handleSubmit
@@ -33,26 +33,38 @@ export const PurchaseOrder = () => {
     provincia: "",
     localidad: "",
   });
-  async function iterarId(array) {
-    const newArray = [];
-    try {
-      array.map((item) => {
-        return newArray.push(item._id);
-      });
-      return setProductBuy(newArray);
-    } catch (error) {
-      return console.log(error);
-    }
-  }
+  // async function iterarId(array) {
+  //   const newArray = [];
+  //   try {
+  //     array.map((item) => {
+  //       return newArray.push(item._id);
+  //     });
+  //     return setProductBuy(newArray);
+  //   } catch (error) {
+  //     return console.log(error);
+  //   }
+  // }
+  useEffect(() => {
+    GetCarProducts({
+      id: userInfo.user.id,
+      token: userInfo.user.token,
+    })
+      .then(({ car_products }) => {
+        setProduct(car_products),
+        setProductBuy(car_products)
+      })
+      .catch((err) => console.log(err));
+  }, [producto]);
 
   //validaciones
   function validateForm() {
-    if(productBuy.length == 0){
+    if (productBuy.length == 0) {
       Notification({
-        message: "Por favor agrega productos al carrito para realizar la compra",
+        message:
+          "Por favor agrega productos al carrito para realizar la compra",
         type: "error",
       });
-      return false
+      return false;
     }
     if (
       formData.nombres.trim() === "" ||
@@ -82,7 +94,10 @@ export const PurchaseOrder = () => {
     }
     const numberRegex = /^\d+$/; // Acepta solo dígitos
     if (!numberRegex.test(formData.numero)) {
-      Notification({ message: 'El campo de número solo debe contener dígitos', type: 'error' });
+      Notification({
+        message: "El campo de número solo debe contener dígitos",
+        type: "error",
+      });
       return false;
     }
     return true;
@@ -113,7 +128,6 @@ export const PurchaseOrder = () => {
     if (!validateForm()) {
       return;
     }
-
     AddPurchaseOrder({
       userId: userInfo.user.id,
       products: productBuy,

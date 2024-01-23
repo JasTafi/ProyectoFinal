@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { DataProvider } from "../../context/DataContext";
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import { Notification } from "../../services/tostifyNot";
 
@@ -22,6 +22,7 @@ const ProductDetail = () => {
     producto,
     setProducto,
   } = useContext(DataProvider);
+  const navigate = useNavigate()
   //custom para manejar addFavorites
   const handleAddFavorites = useHandleAddFavorite();
   //custom para manejar addCar
@@ -103,6 +104,18 @@ const ProductDetail = () => {
   function addProduct() {
     handleAddCar(id);
   }
+  function handleBuy(){
+    if(!islogged){
+      Notification({
+        message: "Debes iniciar sesion para comprar el producto",
+        type: "error",
+      });
+    }else{
+      handleAddCar(id)
+      navigate('/compra')
+    }
+
+  }
   return (
     <section className="section-product-detail section">
       <div className="product-detail-container container grid">
@@ -155,7 +168,7 @@ const ProductDetail = () => {
           </div>
           <div className="boxBuyAndAdd">
             <button onClick={addProduct}>Agregar al carrito</button>
-            <button>Comprar ya!</button>
+            <button onClick={handleBuy}>Comprar ya!</button>
           </div>
         </article>
 
