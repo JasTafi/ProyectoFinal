@@ -12,7 +12,7 @@ import RegistroPage from "./page/RegistroPage";
 import { ObsidianNavbar } from "./components/navegacion/ObsidianNavbar";
 import { DataContext } from "./context/DataContext";
 import Footer from "./components/footer/Footer";
-import { RutaProtejida } from "./components/RutaProtejida/RutaProtejida";
+import { CatalogoPage } from "./page/CatalogoPage";
 import { PurchasePage } from "./page/PurchasePage";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,14 +30,8 @@ function App() {
           <Route path="recContraseña" element={<RecContraseñaPage />} />
           <Route path="nosotros" element={<NosotrosPage />} />
           <Route path="favoritos" element={<FavoritosPage />} />
-          <Route
-            path="/compra"
-            element={
-              <RutaProtejida>
-                <PurchasePage />
-              </RutaProtejida>
-            }
-          />
+          <Route path="/compra" element={<PurchasePage />} />
+          <Route path="/catalogo" element={<CatalogoPage />} />
           <Route path="*" element={<Error404Page />} />
         </Routes>
         <ToastContainer />

@@ -31,10 +31,6 @@ const RecoveryPassword = () => {
             } else {
               Notification({ message: 'Correo no registrado', type: 'error' })
             }
-            console.log({
-              ok: true,
-              message: "Solicitud de verificacion de correo exitosa",
-            });
           })
           .catch((error) => {
             console.error(
@@ -49,7 +45,7 @@ const RecoveryPassword = () => {
   return (
     <section className="containerRegisterGral">
       <div className="contentRegister">
-        <h2>Por favor igresa tu email</h2>
+        <h2>Por favor ingresa tu email</h2>
         <h4>Enviaremos un codigo al mismo, asi podes registrar tu nueva contraseña</h4>
         <p>Segui los pasos a continuacion</p>
       </div>

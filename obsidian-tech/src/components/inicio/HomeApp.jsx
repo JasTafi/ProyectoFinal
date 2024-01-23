@@ -43,7 +43,7 @@ export const HomeApp = () => {
                 para brindarte el máximo rendimiento y comodidad.
               </p>
               <div className="buttonLinkContainer">
-                <Link to={"/"} className="button">
+                <Link to={'/catalogo'} className="button">
                   Ver Catalogo
                 </Link>
               </div>
