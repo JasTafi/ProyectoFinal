@@ -2,29 +2,12 @@
   position: relative;
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: 100%;
   padding-top: 4.5rem;
 }
-/* .alertRegister {
-  border-left: 2px solid #7035c0;
-  position: absolute;
-  top: 12%;
-  background-color: #111;
-  border-radius: 10px;
-  color: #fff;
-  display: grid;
-  place-content: center;
-  opacity: 0;
-  height: 70px;
-  width: 250px;
-}
-.alertRegister.show {
-  opacity: 1;
-  transition: all 0.3s ease-in-out;
-} */
 .containerForm {
   width: 100%;
-  height: 420px;
+  height: 100%;
   display: grid;
   place-items: center;
 }
@@ -63,6 +46,7 @@
   color: #6d717a;
   font-size: 0.9rem;
   padding: 8px 20px;
+  margin-bottom: .5rem;
 }
 .containerForm form .campo:focus {
   outline: none;
@@ -71,6 +55,7 @@
   font-weight: 600;
   font-size: 0.9rem;
   color: #7c7c7c;
+  margin: .5rem 0;
 }
 .containerForm .btnInputReg {
   background: linear-gradient(to right, #7035c0, #0396fe);
@@ -87,11 +72,16 @@
 /* Media Query */
 @media (min-width: 320px) and (max-width: 425px) {
   .containerForm {
-    height: 80vh;
+    height: 100%;
     padding: 0 5px;
   }
   .containerForm form {
-    width: 100%;
+    width: 90%;
+    height: 90%;
   }
 }
-
+@media screen and (min-width:768px) {
+  .containerForm form {
+    height: 90%;
+  }
+}

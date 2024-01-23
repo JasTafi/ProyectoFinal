@@ -85,9 +85,9 @@ function Example({ item }) {
                 // Validacion nombre
                 if (!valores.nombreMo) {
                   errores.nombreMo = "Por favor ingresa el nombre del producto";
-                } else if (!/^[\w\s]{5,60}$/.test(valores.nombreMo)) {
+                } else if (!/^[\w\s]{5,120}$/.test(valores.nombreMo)) {
                   errores.nombreMo =
-                    "El nombre debe contener entre 5 y 60 caracteres y el unico simbolo que acepta es _";
+                    "El nombre debe contener entre 5 y 120 caracteres y el unico simbolo que acepta es _";
                 }
 
                 // Validacion categoria
@@ -119,9 +119,9 @@ function Example({ item }) {
                 if (!valores.descripcionMo) {
                   errores.descripcionMo =
                     "Por favor ingresa la descripcion del producto";
-                } else if (!/^.{5,80}$/.test(valores.descripcionMo)) {
+                } else if (!/^.{5,300}$/.test(valores.descripcionMo)) {
                   errores.descripcionMo =
-                    "La descripción debe contener entre 5 y 80 caracteres";
+                    "La descripción debe contener entre 5 y 300 caracteres";
                 }
 
                 // Validacion imagen
