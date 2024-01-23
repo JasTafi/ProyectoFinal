@@ -26,11 +26,13 @@ export const CardProduct = () => {
   //custom hook para agregar carrito
   const handleAddCar = useHandleAddCar();
   const [dataApi, setDataApi] = useState([]); //trae los productos
-
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
+    setLoading(true)
     getAllProductsFromDB()
       .then(({ data }) => {
-        setDataApi(data);
+        setDataApi(data),
+        setLoading(false)
       })
       .catch((error) => console.log(error));
   }, []);
@@ -38,50 +40,52 @@ export const CardProduct = () => {
   return (
     <>
       <div className="swiperContainer">
-        <Swiper
-          slidesPerView={5}
-          spaceBetween={10}
-          navigation={true}
-          loop={true}
-          pagination={{
-            dynamicBullets: true,
-            clickable: true,
-          }}
-          breakpoints={{
-            320: {
-              slidesPerView: 1.1,
-              spaceBetween: 10,
-            },
-            425: {
-              slidesPerView: 1.3,
-              spaceBetween: 15,
-            },
-            576: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            640: {
-              slidesPerView: 2.2,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 2.9,
-              spaceBetween: 10,
-            },
-            1024: {
-              slidesPerView: 4.2,
-              spaceBetween: 10,
-            },
-            1440: {
-              slidesPerView: 5,
-              spaceBetween: 10,
-            },
-          }}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          {
-            dataApi.map((item, index) => {
+        {loading ? (
+          <span className="loader-catalogo"></span>
+        ) : (
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={10}
+            navigation={true}
+            loop={true}
+            pagination={{
+              dynamicBullets: true,
+              clickable: true,
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1.1,
+                spaceBetween: 10,
+              },
+              425: {
+                slidesPerView: 1.3,
+                spaceBetween: 15,
+              },
+              576: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 2.2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 2.9,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 4.2,
+                spaceBetween: 10,
+              },
+              1440: {
+                slidesPerView: 5,
+                spaceBetween: 10,
+              },
+            }}
+            modules={[Pagination, Navigation]}
+            className="mySwiper"
+          >
+            {dataApi.map((item, index) => {
               return (
                 <SwiperSlide key={index}>
                   <div className="cardBorder">
@@ -132,9 +136,9 @@ export const CardProduct = () => {
                   </div>
                 </SwiperSlide>
               );
-            })
-          }
-        </Swiper>
+            })}
+          </Swiper>
+        )}
       </div>
       <div className="paginacion" />
     </>
