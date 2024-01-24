@@ -7,9 +7,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { DeleteCarProduct } from "../../services/user_service";
 import { Notification } from "../../services/tostifyNot";
 
-import "../purchaseOrder/PurchaseOrder.css";
 import { ModalPurchase } from "../modalPurchaseConfirm/ModalPurchase.jsx";
-import { useProductCar } from "../../hooks/useProductCar.jsx";
+import "../purchaseOrder/PurchaseOrder.css";
 export const PurchaseOrder = () => {
   const { userInfo,producto ,setProducto } = useContext(DataProvider);
   //estado para manejar Loader
@@ -19,9 +18,8 @@ export const PurchaseOrder = () => {
   }, 2000);
   //estado para manejar modalPurchase
   const [showModalPurchase, setShowModalPurchase] = useState(false);
-
+  //estado para manejar GetAllCarProduct
   const [product, setProduct] = useState([]);
-  //estado para iterar id de car_products
   const [productBuy, setProductBuy] = useState([]);
   //estado para manejar handleSubmit
   const [formData, setFormData] = useState({
@@ -33,17 +31,7 @@ export const PurchaseOrder = () => {
     provincia: "",
     localidad: "",
   });
-  // async function iterarId(array) {
-  //   const newArray = [];
-  //   try {
-  //     array.map((item) => {
-  //       return newArray.push(item._id);
-  //     });
-  //     return setProductBuy(newArray);
-  //   } catch (error) {
-  //     return console.log(error);
-  //   }
-  // }
+
   useEffect(() => {
     GetCarProducts({
       id: userInfo.user.id,
@@ -53,7 +41,7 @@ export const PurchaseOrder = () => {
         setProduct(car_products),
         setProductBuy(car_products)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))     
   }, [producto]);
 
   //validaciones
@@ -334,6 +322,7 @@ export const PurchaseOrder = () => {
                     })
                   )}
                 </div>
+                <span className="total-price">Total: $ {product.reduce((total, producto) => total + producto.precio, 0).toFixed(2)}</span>
               </div>
             </div>
           </div>
