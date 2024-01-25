@@ -181,7 +181,7 @@ async function AddPurchaseOrder({
       provincia,
     },
   });
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido`, {
+  const response = await fetch(`${Puerto.URL_GLOBAL}/user/pedido`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -203,7 +203,7 @@ async function UpdatePedido({
     nuevoEstado,
     mail
   })
-  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido/modificar`, {
+  const response = await fetch(`${Puerto.URL_GLOBAL}/user/pedido/modificar`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
