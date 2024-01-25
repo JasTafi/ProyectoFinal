@@ -119,7 +119,7 @@ function Example({ item }) {
                 if (!valores.descripcionMo) {
                   errores.descripcionMo =
                     "Por favor ingresa la descripcion del producto";
-                } else if (/^.{5,1000}$/.test(valores.descripcionMo)) {
+                } else if (!/^[\s\S]{5,1000}$/.test(valores.descripcionMo)) {
                   errores.descripcionMo =
                     "La descripción debe contener entre 5 y 1000 caracteres";
                 }

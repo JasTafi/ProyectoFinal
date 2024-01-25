@@ -94,11 +94,12 @@
 }
 .container-unproduct {
   width: 100%;
-  height: 50vh;
-  position: absolute;
-  top: 70%;
+  height: 20vh;
+  position: relative;
+  top: 20%;
   display: grid;
   place-content: center;
+  margin-top: 1rem;
 }
 .box-btn-catalogo {
   width: 100%;
@@ -133,7 +134,7 @@
 }
 @media screen and (min-width: 320px) {
   .col {
-    height: 45vh;
+    height: 50vh;
   }
   .filter-price {
    flex-direction: column;
@@ -156,6 +157,9 @@
 	.filter-box-input span {
 		padding-inline: .5rem;
 	}
+  .container-unproduct {
+    left: 50%;
+  }
 }
 @media screen and (min-width: 1024px) {
   .container-cards-catalogo {
@@ -164,5 +168,12 @@
   .col {
     height: 50vh;
     grid-template-columns: 1fr;
+  }
+  .container-unproduct h4 {
+    position: absolute;
+    width: 40vw;
+  }
+  .container-filters {
+    column-gap: 3rem;
   }
 }

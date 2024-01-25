@@ -20,14 +20,11 @@ export const PurchaseList = () => {
         setActualizar(false)
       })
       .catch((err) => console.log(err));
-  }, [actualizar]);
-
-  useEffect(() => {
     setStatus((prevStatus) => ({
       ...prevStatus,
       pedidoId: selectedId
     }));
-  }, [selectedId]);
+  }, [actualizar,selectedId]);
 
   const handleSelectedId = (idPedido, mail) => {
     setSelectedId(idPedido),
@@ -50,7 +47,6 @@ export const PurchaseList = () => {
     })
     .then(res => {
       setActualizar(true)
-      console.log(res)
     })
     .catch(err => console.log(err))
   }

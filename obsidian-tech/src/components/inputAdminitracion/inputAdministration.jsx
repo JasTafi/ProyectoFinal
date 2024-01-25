@@ -27,9 +27,9 @@ const InputComponent = () => {
           // Validacion nombre
           if (!valores.nombrePro) {
             errores.nombrePro = "Por favor ingresa el nombre del producto";
-          } else if (!/^[\w\s.]{5,200}$/.test(valores.nombrePro)) {
+          } else if (!/^[\w\s.]{5,150}$/.test(valores.nombrePro)) {
             errores.nombrePro =
-              "El nombre debe contener entre 5 y 200 caracteres y los unicos simbolos que acepta son _ y . ";
+              "El nombre debe contener entre 5 y 150 caracteres y los unicos simbolos que acepta son _ y . ";
           }
 
           // Validacion categoria
@@ -57,7 +57,7 @@ const InputComponent = () => {
           // Validacion descripcion
           if (!valores.descripcion) {
             errores.descripcion = "Por favor ingresa la descripcion del producto";
-          } else if (/^.{5,1000}$/.test(valores.descripcion)) {
+          } else if (!/^[\s\S]{5,1000}$/.test(valores.descripcion)) {
             errores.descripcion = "La descripción debe contener entre 5 y 1000 caracteres"
           }
 
