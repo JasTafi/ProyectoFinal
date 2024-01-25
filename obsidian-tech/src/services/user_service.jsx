@@ -191,4 +191,25 @@ async function AddPurchaseOrder({
   });
   return await response.json();
 }
-export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, EmailVerification, ModifyPassword, GetUserByEmail, GetAllPedidos, AddPurchaseOrder};
+async function UpdatePedido({
+  pedidoId,
+  virtualDelete,
+  nuevoEstado,
+  mail
+}){
+  const body = JSON.stringify({
+    pedidoId,
+    virtualDelete,
+    nuevoEstado,
+    mail
+  })
+  const response = await fetch(`${Puerto.URL_LOCAL}/user/pedido/modificar`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: body
+  })
+  return await response.json()
+}
+export { CreateUser, Login, AddFavoriteProduct, GetFavoriteProduct, DeleteFavoriteById, AddCarProduct, GetCarProducts, DeleteCarProduct, EmailVerification, ModifyPassword, GetUserByEmail, GetAllPedidos, AddPurchaseOrder, UpdatePedido};

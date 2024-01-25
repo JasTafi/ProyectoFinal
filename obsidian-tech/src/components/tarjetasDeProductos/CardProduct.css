@@ -3,11 +3,12 @@
     justify-content: center;
     background-color: transparent;
     backdrop-filter: blur(3px);
+    height: 540px;
     width: 100%;
     padding: 1rem;
 }
 .mySwiper {
-    height: 540px;
+    height: 100%;
     width: 100%;
 }
 

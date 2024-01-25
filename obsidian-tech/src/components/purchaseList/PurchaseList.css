@@ -1,0 +1,26 @@
+.container-status-delete {
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.modify-status select {
+    padding: .5rem;
+    border: 1px solid #111;
+}
+.box-button-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: .5rem;
+}
+.box-button-form button {
+    padding: .3rem .5rem;
+    border: 1px solid #111;
+    border-radius: .3rem;
+}
+.box-button-form button:hover {
+    color: #3333ff;
+    border: 1px solid #3333ff;
+    background-color: rgb(210, 210, 255);
+    transition: all .4s;
+}

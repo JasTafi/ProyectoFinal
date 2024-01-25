@@ -126,12 +126,19 @@ select {
   height: 100%;
   position: relative;
 }
+.total-price {
+  font-weight: 600;
+  color: #fff;
+}
 .sale-content {
   background-color: var(--color-section);
   position: sticky;
   top: 0;
   width: 100%;
   padding-block: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .card-container {
   border-radius: 0.3rem;
