@@ -243,7 +243,7 @@ const About = () => {
                     </a>
                   </div>
                 </div>
-                <div className="about-card">
+                <div className="about-card last">
                   <img src={ramiro} alt="" />
                   <h5>Ramiro Juarez</h5>
                   <p>Staff Engineer.(Tucumán - Argentina)</p>
