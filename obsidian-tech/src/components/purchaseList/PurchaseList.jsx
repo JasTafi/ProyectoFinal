@@ -91,7 +91,8 @@ export const PurchaseList = () => {
                 name="estado"
                 id="status"
                 onChange={(e) => {
-                  handleSelectedId(_id, mail), handleStatus(e);
+                  handleSelectedId(_id, mail);
+                  handleStatus(e);
                 }}
               >
                 <option>Seleccionar</option>
