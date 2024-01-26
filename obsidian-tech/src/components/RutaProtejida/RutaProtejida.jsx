@@ -20,8 +20,7 @@ export const RutaProtejida = ({ children }) => {
 //para proteger Administracion
 export const ProtectedAdm = ({children}) => {
   const {userInfo: {user, islogged}} = useContext(DataProvider);
-  if(!user.administrador){
-    
+  if(!user.administrador && !islogged){
     Notification({message: 'usuario no autorizado', type: 'error'});
     return <Navigate to={'/'}/>
   }else{

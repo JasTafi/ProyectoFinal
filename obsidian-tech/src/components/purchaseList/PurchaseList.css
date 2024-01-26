@@ -27,3 +27,7 @@
     background-color: rgb(210, 210, 255);
     transition: all .4s;
 }
+.container-acordeon h4 {
+    text-align: center;
+    margin-top: .5rem;
+}
