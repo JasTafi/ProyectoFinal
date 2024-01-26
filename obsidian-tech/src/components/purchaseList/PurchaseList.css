@@ -4,6 +4,7 @@
     align-items: center;
 }
 .purchase-list-content {
+    display: grid;
     grid-template-columns: 1fr;
 }
 .modify-status select {
@@ -27,7 +28,18 @@
     background-color: rgb(210, 210, 255);
     transition: all .4s;
 }
-.container-acordeon h4 {
+.container-acordeon h5 {
     text-align: center;
     margin-top: .5rem;
+}
+@media screen and (min-width: 768px) {
+    .purchase-list-section {
+        grid-column: 1/ span 2;
+        padding-block: 1rem 2rem !important;
+        overflow-y: scroll;
+    }
+    .purchase-list-content {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem;
+    }
 }

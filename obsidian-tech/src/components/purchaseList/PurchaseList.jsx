@@ -125,11 +125,11 @@ export const PurchaseList = () => {
   return (
     <section className="purchase-list-section section">
       <div className="purchase-list-container grid container">
-        <div className="purchase-list-content">
           <h3 className="section-title">LISTA DE PEDIDOS</h3>
           <hr />
+        <div className="purchase-list-content">
           <div className="container-acordeon">
-            <h4>Pedidos sin realizar</h4>
+            <h5>Pedidos sin realizar</h5>
             <Accordion>
               {data
                 .filter(function (item) {
@@ -142,12 +142,25 @@ export const PurchaseList = () => {
             </Accordion>
           </div>
           <div className="container-acordeon">
-            <h4>Pedidos en preparacion</h4>
+            <h5>Pedidos en preparacion</h5>
             <Accordion>
               {data
                 .filter(function (item) {
                   return (
                     item.estado === "preparando" &&
+                    item.virtual_delete === false
+                  );
+                })
+                .map(renderPedido)}
+            </Accordion>
+          </div>
+          <div className="container-acordeon">
+            <h5>Pedidos Realizados</h5>
+            <Accordion>
+              {data
+                .filter(function (item) {
+                  return (
+                    item.estado === "realizado" &&
                     item.virtual_delete === false
                   );
                 })
