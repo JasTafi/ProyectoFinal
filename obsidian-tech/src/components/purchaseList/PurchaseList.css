@@ -3,6 +3,11 @@
     justify-content: space-around;
     align-items: center;
 }
+.nota {
+    font-weight: 400;
+    font-size: .9rem;
+    text-align: center;
+}
 .purchase-list-content {
     display: grid;
     grid-template-columns: 1fr;

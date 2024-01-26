@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { GetAllPedidos, UpdatePedido } from "../../services/user_service";
 import Accordion from "react-bootstrap/Accordion";
-import "../purchaseList/PurchaseList.css";
 import { Notification } from "../../services/tostifyNot";
+import "../purchaseList/PurchaseList.css";
 export const PurchaseList = () => {
   const [actualizar, setActualizar] = useState(false);
   const [data, setData] = useState([]);
@@ -11,7 +11,7 @@ export const PurchaseList = () => {
   const [status, setStatus] = useState({
     pedidoId: null,
     mail: "",
-    estado: "sin realizar",
+    estado: "",
     virtual_delete: false,
   });
   useEffect(() => {
@@ -39,19 +39,29 @@ export const PurchaseList = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    UpdatePedido({
-      pedidoId: status.pedidoId,
-      virtualDelete: status.virtual_delete,
-      nuevoEstado: status.estado,
-      mail: correo,
-    })
-      .then((res) => {
-        setActualizar(true);
-        Notification({message: 'Estado de pedido actualizado con exito', type:  'success'})
+    if(status.estado === ""){
+      Notification({message: 'Debe cambiar el estado de su pedido a realizado para eliminar', type: 'error'})
+    }else{
+      UpdatePedido({
+        pedidoId: status.pedidoId,
+        virtualDelete: status.virtual_delete,
+        nuevoEstado: status.estado,
+        mail: correo,
       })
-      .catch((err) => {
-        Notification({message: `Error al actualizar estado ${err}`, type: 'error'})
-      });
+        .then((res) => {
+          Notification({message: 'Estado de pedido actualizado con exito', type:  'success'});
+          setStatus({
+            pedidoId: null,
+            mail: '',
+            estado: '',
+            virtual_delete: false
+          })
+          setActualizar(true);
+        })
+        .catch((err) => {
+          Notification({message: `Error al actualizar estado ${err}`, type: 'error'})
+        });
+    }
   };
   const renderPedido = (item, index) => {
     const { nombres, apellidos } = item.nombre;
@@ -95,7 +105,7 @@ export const PurchaseList = () => {
                   handleStatus(e);
                 }}
               >
-                <option>Seleccionar</option>
+                <option value=''>Seleccionar</option>
                 <option value="sin realizar">Sin realizar</option>
                 <option value="preparando">Preparando</option>
                 <option value="realizado">Realizada</option>
@@ -128,6 +138,7 @@ export const PurchaseList = () => {
       <div className="purchase-list-container grid container">
           <h3 className="section-title">LISTA DE PEDIDOS</h3>
           <hr />
+          <p className="nota">Nota: para eliminar un pedido primero debe cambiar el estado de pedido a realizado!</p>
         <div className="purchase-list-content">
           <div className="container-acordeon">
             <h5>Pedidos sin realizar</h5>
