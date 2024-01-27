@@ -133,7 +133,6 @@ export const PurchaseOrder = () => {
       },
     })
       .then((res) => {
-        console.log(res),
           setFormData({
             nombres: "",
             apellidos: "",
@@ -185,6 +184,7 @@ export const PurchaseOrder = () => {
                       type="text"
                       name="provincia"
                       id=""
+                      minLength={2}
                       maxLength={40}
                       placeholder="Provincia"
                       value={formData.provincia}
@@ -195,6 +195,7 @@ export const PurchaseOrder = () => {
                       name="localidad"
                       id=""
                       placeholder="Localidad"
+                      minLength={3}
                       maxLength={40}
                       value={formData.localidad}
                       onChange={handleChange}
@@ -203,7 +204,8 @@ export const PurchaseOrder = () => {
                     <input
                       type="text"
                       name="departamento"
-                      maxLength={40}
+                      min={2}
+                      maxLength={10}
                       placeholder="Ejemplo: 1 A"
                       value={formData.departamento}
                       onChange={handleChange}
@@ -214,7 +216,8 @@ export const PurchaseOrder = () => {
                       type="text"
                       name="calle"
                       id=""
-                      maxLength={40}
+                      minLength={3}
+                      maxLength={30}
                       placeholder="Calle"
                       value={formData.calle}
                       onChange={handleChange}
@@ -223,7 +226,8 @@ export const PurchaseOrder = () => {
                       type="text"
                       name="numero"
                       id=""
-                      maxLength={10}
+                      minLength={1}
+                      maxLength={5}
                       placeholder="Número"
                       value={formData.numero}
                       onChange={handleChange}
@@ -236,12 +240,14 @@ export const PurchaseOrder = () => {
                       value={formData.nombres}
                       onChange={handleChange}
                       id=""
+                      minLength={2}
                       maxLength={40}
                       placeholder="Nombre/s:"
                     />
                     <input
                       type="text"
                       name="apellidos"
+                      minLength={2}
                       maxLength={40}
                       value={formData.apellidos}
                       onChange={handleChange}

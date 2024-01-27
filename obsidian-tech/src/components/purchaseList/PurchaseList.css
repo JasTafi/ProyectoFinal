@@ -3,6 +3,15 @@
     justify-content: space-around;
     align-items: center;
 }
+.nota {
+    font-weight: 400;
+    font-size: .9rem;
+    text-align: center;
+}
+.purchase-list-content {
+    display: grid;
+    grid-template-columns: 1fr;
+}
 .modify-status select {
     padding: .5rem;
     border: 1px solid #111;
@@ -23,4 +32,19 @@
     border: 1px solid #3333ff;
     background-color: rgb(210, 210, 255);
     transition: all .4s;
+}
+.container-acordeon h5 {
+    text-align: center;
+    margin-top: .5rem;
+}
+@media screen and (min-width: 768px) {
+    .purchase-list-section {
+        grid-column: 1/ span 2;
+        padding-block: 1rem 2rem !important;
+        overflow-y: scroll;
+    }
+    .purchase-list-content {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem;
+    }
 }

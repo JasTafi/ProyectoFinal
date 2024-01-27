@@ -89,6 +89,9 @@
     .about-card {
         width: 300px;
     }
+    .last {
+        grid-column: 2;
+    }
 }
 @media screen and (min-width: 1440px) {
     .about-container {
