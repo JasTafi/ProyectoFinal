@@ -23,7 +23,11 @@ export default function CatalogoCards({ initialValues }) {
     setVisibleProducts(visibleProducts + 4);
   };
   const handleFilter = () => {
-    applyFilter(initialValues);
+    const filteredValues = {
+      ...initialValues,
+      categoria: initialValues.categoria || "all",
+    };
+    applyFilter(filteredValues);
   };
   useEffect(() => {
     setLoading(true);
