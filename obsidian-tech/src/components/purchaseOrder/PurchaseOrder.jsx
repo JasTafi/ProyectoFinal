@@ -261,11 +261,12 @@ export const PurchaseOrder = () => {
                 <h4>Metodo de Pago</h4>
                 <form action="" className="payment-form">
                   <input
-                    type="number"
+                    type="text"
                     name=""
                     id=""
-                    maxLength={16}
+                    maxLength={19}
                     placeholder="numero de tarjeta"
+                    autoComplete="off"
                   />
                   <input
                     type="text"
